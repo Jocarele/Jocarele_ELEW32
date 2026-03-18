@@ -76,15 +76,34 @@ A imagem a seguir comprova a veracidade da resposta:
     IDE:
     - quais os comandos referentes a controle da execução
     (passo-a-passo, step-over, step-out, breakpoints,...) ?
-    - como visualizar registradores da CPU ?
-    - como visualizar registradores de periféricos integrados ?
+**Step :** Entra dentro da função na linha atual.
+
+**Step Over:** Executa a linha atual sem entrar em funções chamadas.
+
+**Step Out:** Executa o restante da função atual e volta para quem a chamou.
+
+**Run:** Executa o código continuamente até encontrar um breakpoint.
+
+**Stop:** Pausa a execução.
+
+**Breakpoints:** Clicar na margem cinza, a esquerda, da linha de código para ativar/desativar. Para gerenciar todos, vá em Debug -> Breakpoints.
+
+### como visualizar registradores da CPU ?
+
+Para achar os registradores, deve iniciar o modo debug, e ir em *View -> Register windown*. Nessa janela podemos encontrar: R0-R15, xPSR, MSP, PSP.
+
+### como visualizar registradores de periféricos integrados ?
+
+Para achar os Periféricos, deve iniciar o modo debug, e ir em *Peripherals -> System Viewer*. Nessa janela podemos encontraros periféricos do chip  como o GPIOA, USART1, ADC.
+
+
     - como visualizar/modificar endereços específicos de memória ?
     - como visualizar o valor de variáveis ou de expressões ?
     - porque nem todas as variáveis podem ter seu valor visualizado ?
     - qual o papel dos comandos de:
-    Options for Target
-    Manage Run-Time Environment
-    PackInstaller
+        Options for Target
+        Manage Run-Time Environment
+        PackInstaller
     - o que acontece se retirar o elemento CMSIS (verde) dos itens do projeto?
 
 [documentação ARM compilador 6](https://developer.arm.com/documentation/101754/0624/armclang-Reference/Other-Compiler-specific-Features/Predefined-macros)
