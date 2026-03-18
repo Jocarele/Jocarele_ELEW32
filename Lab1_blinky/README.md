@@ -110,11 +110,11 @@ Diversas razões entre a otimização do compilador(ignorando variáveis não us
 
 ### qual o papel dos comandos de:
 
-**Options for target - Faz a configuração de toda a compilação e hardware do projeto.
+**Options for target:** Faz a configuração de toda a compilação e hardware do projeto.
 
-**Manage Run-Time Environment - Permite selecionar os componentes de software que vão ser usados no projeto.
+**Manage Run-Time Environment:** Permite selecionar os componentes de software que vão ser usados no projeto.
 
-**PackInstaller - Gerencia os DFP (Device Family Pack) que tem os drivers, headers entre outros.
+**PackInstaller:** Gerencia os DFP (Device Family Pack) que tem os drivers, headers entre outros.
 
 ### o que acontece se retirar o elemento CMSIS (verde) dos itens do projeto?
 
