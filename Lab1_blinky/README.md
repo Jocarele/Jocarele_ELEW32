@@ -96,6 +96,29 @@ Para achar os registradores, deve iniciar o modo debug, e ir em *View -> Registe
 
 Para achar os Periféricos, deve iniciar o modo debug, e ir em *Peripherals -> System Viewer*. Nessa janela podemos encontraros periféricos do chip  como o GPIOA, USART1, ADC.
 
+### como visualizar/modificar endereços específicos de memória?
+
+Para visualizar os endereços específicos de memória, devemos iniciar o modo debug, e ir em *View-> Memory Windows -> Memory 1. Nessa janela podemos digitar no campo o endereço desejado tipo 0x20000000 para memória RAM e ao clicar na celúla da memória podemos digitar um novo valor desejado.
+
+### como visualizar o valor de variáveis ou expressões?
+
+Para visualizar o valor de variáveis ou expressões, podemos ir em *view->Watch Windows -> Watch 1 e ao digitar a varíavel ou expressão como msTicks podemos ver o valor atualizado em tempo real durante o debug.
+
+### porque nem todas as variáveis podem ter seu valor visualizado?
+
+Diversas razões entre a otimização do compilador(ignorando variáveis não usadas, manter variáveis temporárias) fazendo ela nao existir mais em memória. Outras razões possíveis podem ser as variáveis estarem fora do escopo(local a uma função) ou também  variável declarada mas nunca usada.
+
+### qual o papel dos comandos de:
+
+**Options for target - Faz a configuração de toda a compilação e hardware do projeto.
+
+**Manage Run-Time Environment - Permite selecionar os componentes de software que vão ser usados no projeto.
+
+**PackInstaller - Gerencia os DFP (Device Family Pack) que tem os drivers, headers entre outros.
+
+### o que acontece se retirar o elemento CMSIS (verde) dos itens do projeto?
+
+Se retirarmos o elemento CMSIS(verde) do projeto que tem as definições do cortex-m, arquvios de inicialização, acesso padronizado aos registradores, drivers básicos e configurações de interrupções diversos problemas podem acontecer entre: o projeto não compilar, arquivos importante sumirem, sistema nao iniciar corretamente e acessos ao registradores quebrarem.
 
     - como visualizar/modificar endereços específicos de memória ?
     - como visualizar o valor de variáveis ou de expressões ?
