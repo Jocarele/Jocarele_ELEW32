@@ -66,7 +66,8 @@ Para compilar corretamente o projeto no Keil, os seguintes passos foram executad
 * `IntMasterEnable()`: Habilita o processamento global de interrupções pelo processador.
 
 **6.4 Garantia da Memória Flash**
-Nenhuma função que faça a realocação vetorial para a RAM (como `IntVTableMapToRam()`) foi utilizada. Além disso, a verificação no depurador confirmou que o registrador VTOR permanece apontando para a posição `0x00000000` durante a execução, assegurando que o vetor de exceções está operando na memória Flash.
+
+Nenhuma função que faça a realocação vetorial para a RAM foi utilizada. Além disso, a verificação no depurador confirmou que o registrador VTOR permanece apontando para a posição `0x00000000` durante a execução, assegurando que o vetor de exceções está operando na memória Flash.
 ![VTOR](./assets/image.png)
 
 ## 7. Projeto (design) da solução
