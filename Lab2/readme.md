@@ -1,7 +1,9 @@
 # Relatório do Lab 2
 
-NOMES: João Lucas Marques Camilo
-    Bruno
+NOMES:  João Lucas Marques Camilo
+
+        Bruno
+    
 ---
 
 ## 1. Introdução
