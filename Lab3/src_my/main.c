@@ -10,7 +10,8 @@
 
 /**
  * @file     main.c
- * @author   Bruno Ribeiro Basilio
+ * @authors   Bruno Ribeiro Basilio
+							João Lucas Marques Camilo
  * @brief    Solution for lab3 to calculate the pixels of a histogram
  * @version  1.0
  * @date     01/04/2026
@@ -21,31 +22,17 @@
  *      File includes
  *
  *------------------------------------------------------------------------------*/
+
 #define PART_TM4C1294NCPDT
 
-#include "TM4C129.h"
-#include "core_cm4.h"
+#include "main.h"
 
-#include <stdint.h>
-#include <stdbool.h>
-
-#include "inc/hw_memmap.h"
-#include "driverlib/sysctl.h"
-#include "driverlib/pin_map.h"
-#include "driverlib/gpio.h"
-
-#include "driverlib/rom.h"
-#include "driverlib/rom_map.h"
-
-#include "uartstdio.h"
 /*------------------------------------------------------------------------------
  *
  *      Typedefs and constants
  *
  *------------------------------------------------------------------------------*/
-extern const uint16_t width1;
-extern const uint16_t height1;
-extern const uint8_t * const p_start_image1;
+
 /*------------------------------------------------------------------------------
  *
  *      Global vars
@@ -64,7 +51,7 @@ uint32_t clock;
  *      Functions
  *
  *------------------------------------------------------------------------------*/
-extern uint16_t EightBitHistogram(uint16_t w, uint16_t h, uint8_t *img, uint16_t *hist);
+
 
 void ConfigUART(void)
 {
@@ -81,6 +68,30 @@ void ConfigUART(void)
 
     UARTStdioConfig(0, 115200, clock);
 }
+
+void debug(void) {
+    // 'static' tira o vetor da Stack para evitar Stack Overflow
+    static uint16_t hist2[256] = {0}; 
+    
+    int tam = width1 * height1;
+    
+
+    for (int i = 0; i < tam; i++) {
+        int pixel = p_start_image1[i];
+        hist2[pixel] += 1;
+    }
+    
+    for (int i = 0; i < 256; i++) {
+			int diferenca = hist[i] - hist2[i]; 
+        
+			if (diferenca != 0)
+				UARTprintf("Diferenca = %d\n", diferenca);
+        
+    }
+    
+    UARTprintf("Debug finalizado.\n");
+}
+	
 
 int main(void)
 {
@@ -113,6 +124,7 @@ int main(void)
     {
 			UARTprintf("Valor %d -> %d\n", i, hist[i]);
     }
-
+		debug();
+		
     while(1){}
 }

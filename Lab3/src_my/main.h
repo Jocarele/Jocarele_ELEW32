@@ -3,7 +3,7 @@
 |       Prof. Douglas Renaux
 | __________________________________________________________________________________
 |
-|		Lab 1
+|		Lab 3
 | __________________________________________________________________________________
 */
 
@@ -23,14 +23,31 @@
  *
  *------------------------------------------------------------------------------*/
 #include <stdint.h>
+#include "TM4C129.h"
+#include "core_cm4.h"
 
+#include <stdint.h>
+#include <stdbool.h>
+
+#include "inc/hw_memmap.h"
+#include "driverlib/sysctl.h"
+#include "driverlib/pin_map.h"
+#include "driverlib/gpio.h"
+
+#include "driverlib/rom.h"
+#include "driverlib/rom_map.h"
+
+#include "uartstdio.h"
 
 /*------------------------------------------------------------------------------
  *
  *      Global Typedefs, constants and defines
  *
  *------------------------------------------------------------------------------*/
-
+extern uint16_t EightBitHistogram(uint16_t w, uint16_t h, uint8_t *img, uint16_t *hist);
+extern const uint16_t width1;
+extern const uint16_t height1;
+extern const uint8_t * const p_start_image1;
 /*------------------------------------------------------------------------------
  *
  *      Classes

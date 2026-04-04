@@ -10,8 +10,8 @@
       <TargetName>Target 1</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pArmCC>6160000::V6.16::ARMCLANG</pArmCC>
-      <pCCUsed>6160000::V6.16::ARMCLANG</pCCUsed>
+      <pArmCC>6240000::V6.24::ARMCLANG</pArmCC>
+      <pCCUsed>6240000::V6.24::ARMCLANG</pCCUsed>
       <uAC6>1</uAC6>
       <TargetOption>
         <TargetCommonOption>
@@ -187,6 +187,7 @@
             <RvdsVP>2</RvdsVP>
             <RvdsMve>0</RvdsMve>
             <RvdsCdeCp>0</RvdsCdeCp>
+            <nBranchProt>0</nBranchProt>
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
@@ -340,7 +341,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>.\src_others;..\..\Tivaware_C_Series-2.2.0.285\driverlib;..\..\Tivaware_C_Series-2.2.0.285\utils;..\..\Tivaware_C_Series-2.2.0.285</IncludePath>
+              <IncludePath>.\src_others;C:\ti\TivaWare_C_Series-2.2.0.295\driverlib;C:\ti\TivaWare_C_Series-2.2.0.295\utils;C:\ti\TivaWare_C_Series-2.2.0.295</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
