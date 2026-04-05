@@ -151,16 +151,16 @@ Essa escolha garante compatibilidade com os tipos de dados utilizados e eficiên
 
 O diagrama a seguir representa, de forma simplificada, o fluxo de execução da função:
 
-Início
-↓
-Verifica tamanho da imagem
-↓
-Zera histograma
-↓
-Loop de pixels
-↓
-Incrementa histograma[pixel]
-↓
+Início<br>
+↓<br>
+Verifica tamanho da imagem<br>
+↓<br>
+Zera histograma<br>
+↓<br>
+Loop de pixels<br>
+↓<br>
+Incrementa histograma[pixel]<br>
+↓<br>
 Fim
 
 ## 8. Configuração do projeto na IDE (Keil uVision)
