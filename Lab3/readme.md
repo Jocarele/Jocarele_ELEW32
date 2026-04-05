@@ -22,20 +22,21 @@ Este relatório descreve a interação com código assembly que será uma rotina
 Elaborar uma rotina em assembly que será chamada de um programa em C ou C++. A rotina deve gerar um histograma de uma imagem em tons de cinza. O histograma deve ser apresentado textualmente em um terminal TTY.
 
 ## 4. Especificação da solução
-> **TODO:** Fazer requisitos.
+Os requisitos pedidos para a solução foram os seguintes:
 
 **Requisitos Funcionais**
-* **RF1:** [TODO]
-    * **RF1.1:** [TODO]
-* **RF2:** [TODO]
-* **RF3:** [TODO]
+* **RF1:** A função deve calcular o histograma de uma imagem em tons de cinza de 8 bits.
+    * **RF1.1:** Cada pixel da imagem, com valores entre 0 e 255, deve incrementar a posição correspondente no vetor de histograma.
+* **RF2:** O vetor de histograma deve ser inicializado com zero antes do processamento da imagem.
+* **RF3:** A função deve retornar o total de pixels processados.
+* **RF4:**  Caso o número total de pixels (largura × altura) seja superior a 65536, a função deve retornar 0 como código de erro.
 
 **Requisitos e Restrições Não Funcionais**
-* **RNF 1:** [TODO]
-* **RNF 2:** [TODO]
-* **RNF 3:** [TODO]
-* **RNF 4:** [TODO]
-* **RNF 5:** [TODO]
+* **RNF 1:** A rotina deve ser implementada em assembly ARM.
+* **RNF 2:** A função deve seguir o padrão AAPCS para passagem de parâmetros entre C e assembly.
+* **RNF 3:** O histograma deve utilizar inteiros sem sinal de 16 bits.
+* **RNF 4:** O algoritmo deve ser eficiente, percorrendo a imagem apenas uma vez.
+* **RNF 5:** O tempo de execução deve ser medido em ciclos de clock utilizando o contador DWT.
 
 ## 5. Estudo da plataforma de HW
 
@@ -46,7 +47,11 @@ Para iniciar o contador, deve-se setar o `CYCCNT`, dando início ao contador de 
 
 ### 5.2 Tamanho Stack
 
-A placa **TM4C1294NCPDT** tem configurado no keil o tamanho de pilha *stack* de 512 bytes, como demonstrado na imagem 1. Então, para que eu tenha um vetores *uint16* de 256 de tamanho , é necessário alocar o outro vetor em outra parte da memória, colocando por exemplo, o atributo **static**, pois o vetor ocupa no total 512 bytes de memória.
+A placa **TM4C1294NCPDT** possui, no ambiente Keil, um tamanho de pilha (stack) configurado em 512 bytes, conforme ilustrado na Imagem 1. 
+
+Considerando um vetor de 256 posições do tipo uint16_t, o consumo total de memória é de 512 bytes. Dessa forma, a alocação desse vetor na stack pode levar a estouro de pilha (stack overflow). 
+
+Para evitar esse problema, optou-se por utilizar o modificador static, garantindo que o vetor seja alocado em outra região de memória, fora da stack.
 
 ![Imagem 1 - stack_size](./assets/stack_size.png)
 ## 6. Estudo da plataforma de SW
@@ -57,7 +62,7 @@ A placa **TM4C1294NCPDT** tem configurado no keil o tamanho de pilha *stack* de 
 De acordo com a documentação, para juntar dois módulos separados através do *GNU assembler*, é necessário usar o atributo `extern` no código em C para chamar uma função em assembly. É possível também fazer uma função assembly no código C utilizando o atributo `asm`.
 
 #### 6.1.2 Argumentos
-A tabela 1 mostra os registradores que são passados como argumentos: `R0`-`R3` e `R12`. Caso seja necessário utilizar mais registradores, é obrigatório dar *push* na pilha (stack) no começo da função para armazenar seus valores originais, e *pop* ao sair da função.
+A tabela 1 mostra os registradores utilizados para passagem de parâmetros. De acordo com o padrão AAPCS, os registradores R0 a R3 são utilizados para essa finalidade e o registrador R12 pode ser utilizado como registrador temporário (intra-procedural scratch register). Caso seja necessário utilizar mais registradores, é obrigatório dar *push* na pilha (stack) no começo da função para armazenar seus valores originais, e *pop* ao sair da função.
 
 ![Tabela 1 - Registradores](./assets/registradores.png)
 
@@ -65,12 +70,12 @@ Como o exercício requer calcular o histograma de uma imagem, teremos como parâ
 
 ```assembly	
 ; Entrada:
-;   R0 = largura (width) (int 4 bytes)
-;   R1 = altura (height) (int 4 bytes)
-;   R2 = ponteiro para a imagem (ponteiro para o vetor 4 bytes)
-;   R3 = ponteiro para o histograma (256 posições) (ponteiro para o vetor 4 bytes)
+;   R0 = largura (uint16_t)
+;   R1 = altura (uint16_t)
+;   R2 = ponteiro para imagem (uint8_t*)
+;   R3 = ponteiro para histograma com 256 posições (uint16_t*)
 ; Saída:
-;   R0 = total de pixels (ou 0 em caso de erro) (int 4 bytes)
+;   R0 = total de pixels (uint16_t)
 ```
 
 #### 6.1.3 Comandos Assembly
@@ -93,7 +98,70 @@ Como o exercício requer calcular o histograma de uma imagem, teremos como parâ
 **EightBitHistogram:**
 `SALVA REGISTRADORES PILHA` -> `ZERA HISTOGRAMA` -> `CONTA PIXELS` -> `RETURN`
 
-> **TODO:** Verificar se precisa detalhar o looping do zeramento e da contagem no diagrama UML.FAZER UML
+### 7.1 Planejamento das estruturas de dados
+
+A imagem é representada como um vetor de elementos do tipo uint8_t, onde cada posição corresponde a um pixel com valores entre 0 e 255.
+
+O histograma é representado como um vetor de 256 posições do tipo uint16_t, onde cada índice corresponde à contagem de ocorrências de um valor de pixel.
+
+### 7.2 Alocação de registradores
+
+A alocação de registradores foi planejada da seguinte forma (alguns já foram detalhados anteriormente):
+
+R0: largura da imagem (width)
+R1: altura da imagem (height)
+R2: ponteiro para o início da imagem
+R3: ponteiro para o vetor de histograma
+R4: contador total de pixels
+R5: índice de iteração
+R6: valor do pixel atual
+
+### 7.3 Algoritmo da solução
+
+O algoritmo implementado segue os seguintes passos:
+
+1. Verificar se o número total de pixels (width × height) excede 65536. Em caso positivo, retornar 0.
+2. Inicializar o vetor de histograma com zero.
+3. Percorrer todos os pixels da imagem:
+   - Ler o valor do pixel.
+   - Incrementar a posição correspondente no vetor de histograma.
+4. Retornar o total de pixels processados.
+
+### 7.4 Organização da memória
+
+A organização da memória pode ser representada da seguinte forma:
+
+Imagem (uint8_t):
+[p_image] → | pixel0 | pixel1 | pixel2 | ... |
+
+Histograma (uint16_t):
+[p_histogram] → | h0 | h1 | h2 | ... | h255 |
+
+Cada posição do histograma armazena a quantidade de ocorrências de um valor específico de pixel.
+
+### 7.5 Escolha das instruções
+
+Para leitura dos pixels da imagem, foi utilizada a instrução LDRB, pois os dados são de 8 bits.
+
+Para armazenamento no histograma, foi utilizada a instrução STRH, pois cada posição do histograma é composta por 16 bits.
+
+Essa escolha garante compatibilidade com os tipos de dados utilizados e eficiência no acesso à memória.
+
+### 7.6 UML
+
+O diagrama a seguir representa, de forma simplificada, o fluxo de execução da função:
+
+Início
+↓
+Verifica tamanho da imagem
+↓
+Zera histograma
+↓
+Loop de pixels
+↓
+Incrementa histograma[pixel]
+↓
+Fim
 
 ## 8. Configuração do projeto na IDE (Keil uVision)
 
@@ -104,6 +172,12 @@ Foi necessário apontar os diretórios de inclusão (Include Paths) para as segu
 * `C:\ti\TivaWare_C_Series-2.2.0.295`
 * `C:\ti\TivaWare_C_Series-2.2.0.295\driverlib`
 * `.\src_others`
+
+  A organização dos arquivos do projeto segue a seguinte estrutura:
+
+- main.c: responsável pela execução dos testes e chamada da função em assembly.
+- histogram.s: implementação da função EightBitHistogram em assembly.
+- images.c: contém as imagens utilizadas para teste.
 
 ## 9. Teste e depuração
 
@@ -146,11 +220,23 @@ Clocks: 347958
 Debug finalizado.
 
 ```
-### 9.2 teste clock
-> **TODO:** Eu to sem ideia, qualquer coisa apagar tópico.
 
+Isso valida que a implementação em assembly está correta, pois produziu resultados idênticos à implementação de referência em C.
 
-[TODO] 
+### 9.2 Teste de desempenho (clock)
+
+A medição do tempo de execução foi realizada utilizando o contador DWT_CYCCNT do processador Cortex-M4.
+
+O procedimento consiste em:
+
+1. Ler o valor inicial do contador antes da chamada da função.
+2. Executar a função EightBitHistogram.
+3. Ler o valor final do contador após a execução.
+4. Calcular a diferença entre os valores.
+
+Tempo (em ciclos) = valor_final - valor_inicial
+
+Esse método permite obter a quantidade de ciclos de clock utilizados pela rotina, com resolução de 1 ciclo.
 
 ## 10. Referências
 
