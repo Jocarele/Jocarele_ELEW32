@@ -343,7 +343,7 @@
 -Wno-c11-extensions</MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>.\src_others;C:\ti\TivaWare_C_Series-2.2.0.295;C:\ti\TivaWare_C_Series-2.2.0.295\driverlib;C:\ti\TivaWare_C_Series-2.2.0.295\utils</IncludePath>
+              <IncludePath>.\src_others;..\..\..\TivaWare_C_Series-2.2.0.295;..\..\..\TivaWare_C_Series-2.2.0.295\driverlib;..\..\..\TivaWare_C_Series-2.2.0.295\utils</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
