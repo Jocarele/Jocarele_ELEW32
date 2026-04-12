@@ -25,7 +25,8 @@ O sistema deve:
 
 Ler continuamente os valores do joystick (horizontal, vertical e botão)
 Enviar essas informações pela UART0 a cada aproximadamente 200 ms
-Controlar um LED RGB de acordo com a posição do joystick
+Controlar um LED RGB de acordo com a posição do joystick.
+
 ##4. Especificação da solução
 
 **Requisitos Funcionais:**
@@ -66,7 +67,7 @@ J37 → PF2 → LED vermelho
 J38 → PF3 → LED verde
 J39 → PG0 → LED azul
 
-Durante a implementação inicial, foram utilizados pinos incorretos, o que impediu o funcionamento do LED. Após a análise do diagrama de pinagem da BoosterPack, foi possível identificar o mapeamento correto.
+Inicialmente, o controle do LED não apresentou o comportamento esperado. A partir da análise do diagrama de pinagem da BoosterPack, foi possível identificar o mapeamento correto dos pinos.
 
 ### Joystick
 
@@ -74,28 +75,29 @@ O joystick é composto por dois potenciômetros (eixos X e Y) e um botão digita
 
 A leitura dos eixos foi realizada por meio do ADC0:
 
-PD3 → ADC Channel 13 → eixo X
+* PE4 → ADC Channel 9 → eixo X
 
-PD2 → ADC Channel 12 → eixo Y
+* PE3 → ADC Channel 0 → eixo Y
 
 Os valores obtidos variam de 0 a 4095, devido à resolução de 12 bits do ADC.
 
 O botão foi configurado como entrada digital:
 
-PJ1 → entrada com resistor de pull-up interno
+PC6 → entrada com resistor de pull-up interno
 
 **Mapeamento Cortex-M ↔ BoosterPack**
 
 Com a BoosterPack MKII conectada na posição BoosterPack 1, os sinais são encaminhados através dos headers da placa Tiva até o microcontrolador.
 
 Mapeamento Cortex-M ↔ BoosterPack
-Periférico	Pino no TM4C1294
-Joystick X	PD3
-Joystick Y	PD2
-Botão	PJ1
-LED Vermelho	PF2
-LED Verde	PF3
-LED Azul	PG0
+| Periférico   | Pino no TM4C1294 |
+|-------------|------------------|
+| Joystick X  | PE4              |
+| Joystick Y  | PE3              |
+| Botão       | PC6              |
+| LED Vermelho| PF2              |
+| LED Verde   | PF3              |
+| LED Azul    | PG0              |
 
 **Descrição do mapeamento de pinos**
 
@@ -110,15 +112,16 @@ No caso do LED RGB, por exemplo, os sinais identificados como J37, J38 e J39 cor
 Dessa forma, a correta interpretação do mapeamento de pinos é essencial para a integração entre a aplicação desenvolvida e os periféricos disponíveis na BoosterPack.
 
 **Configuração dos pinos**
-UART
+
+**UART**
 PA0 → RX
 PA1 → TX
-ADC
-PD2 → entrada analógica
-PD3 → entrada analógica
-Botão
-PJ1 → entrada digital com pull-up
-LED RGB
+**ADC**
+PE3 → entrada analógica
+PE4 → entrada analógica
+**Botão**
+PC6 → entrada digital com pull-up
+**LED RGB**
 Configurado como saída digital (GPIO)
 
 ### Diagrama em blocos
@@ -260,7 +263,7 @@ Além disso, quando o joystick foi posicionado próximo ao centro, foram observa
 
 Apesar de haver pequenas variações (ruído), os valores se mantêm relativamente estáveis, o que é esperado em leituras analógicas.
 
-E ao ser pressionado o botão BTN muda para 1 enquanto o botão estiver pressionado
+Quando o botão é pressionado, o valor de BTN passa para 1, retornando a 0 quando liberado.
 
 ### Análise do problema
 
