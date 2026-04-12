@@ -218,6 +218,32 @@ A comunicação UART funcionou corretamente, exibindo os dados no terminal seria
 
 O botão também respondeu corretamente às interações.
 
+Quando o joystick foi deslocado para uma das extremidades, observou-se que os valores atingem o limite máximo do conversor A/D, conforme mostrado abaixo:
+
+X:4095 Y:4095 BTN:0
+
+Esse comportamento indica que ambos os eixos estão operando corretamente e atingindo o valor máximo esperado (4095), correspondente à resolução de 12 bits do ADC.
+
+Ao movimentar o joystick parcialmente, foram obtidos valores intermediários, como:
+
+X:4095 Y:3666
+X:4095 Y:3697
+X:4095 Y:3709
+X:3223 Y:3006
+
+Esses valores demonstram a variação contínua e proporcional dos sinais analógicos, confirmando o correto funcionamento da leitura dos eixos X e Y.
+
+Além disso, quando o joystick foi posicionado próximo ao centro, foram observados valores intermediários mais baixos, como:
+
+X:1741 Y:0
+X:1665 Y:0
+X:1648 Y:0
+X:1610 Y:0
+
+Apesar de haver pequenas variações (ruído), os valores se mantêm relativamente estáveis, o que é esperado em leituras analógicas.
+
+E ao ser pressionado o botão BTN muda para 1 enquanto o botão estiver pressionado
+
 ### Problema encontrado
 
 O LED RGB da BoosterPack MKII não apresentou funcionamento estável.
