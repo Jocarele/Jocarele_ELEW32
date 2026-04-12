@@ -58,11 +58,15 @@ Botão pressionado → LED desligado
 
 O LED RGB utilizado está presente na placa BoosterPack MKII e é controlado por sinais digitais provenientes do microcontrolador.
 
-Cada cor do LED (vermelho, verde e azul) pode ser acionada individualmente, permitindo a formação de diferentes combinações de cores.
+Cada cor do LED (vermelho, verde e azul) é acionada individualmente por um pino GPIO, permitindo a combinação de cores conforme os sinais aplicados.
 
-Durante o desenvolvimento, foi implementada uma lógica de controle baseada nos valores do joystick, associando os eixos às cores do LED e utilizando o botão para desligamento.
+De acordo com o mapeamento da BoosterPack MKII, os sinais do LED RGB estão conectados aos seguintes pinos do microcontrolador:
 
-A lógica de software foi validada durante os testes, porém o LED RGB não apresentou funcionamento estável, indicando que o problema não está relacionado à implementação do código.
+J37 → PF2 → LED vermelho
+J38 → PF3 → LED verde
+J39 → PG0 → LED azul
+
+Durante a implementação inicial, foram utilizados pinos incorretos, o que impediu o funcionamento do LED. Após a análise do diagrama de pinagem da BoosterPack, foi possível identificar o mapeamento correto.
 
 ### Joystick
 
@@ -83,15 +87,28 @@ PJ1 → entrada com resistor de pull-up interno
 
 Com a BoosterPack MKII conectada na posição BoosterPack 1, os sinais são encaminhados através dos headers da placa Tiva até o microcontrolador.
 
-Mapeamento utilizado:
-| Periférico | Pino |
-| ---------- | ---- |
-| Joystick X | PD3  |
-| Joystick Y | PD2  |
-| Botão      | PJ1  |
-| LED RGB    | GPIO |
+Mapeamento Cortex-M ↔ BoosterPack
+Periférico	Pino no TM4C1294
+Joystick X	PD3
+Joystick Y	PD2
+Botão	PJ1
+LED Vermelho	PF2
+LED Verde	PF3
+LED Azul	PG0
 
-**Configuração dos pinos
+**Descrição do mapeamento de pinos**
+
+A tabela apresentada relaciona os sinais físicos da BoosterPack MKII com os pinos correspondentes do microcontrolador TM4C1294.
+
+A identificação dos sinais na BoosterPack é feita por meio dos conectores (J1, J2, J3 e J4), onde cada pino possui uma função específica, como entrada analógica, saída digital ou comunicação com periféricos.
+
+Esses sinais são encaminhados diretamente para os pinos do microcontrolador através dos headers da placa Tiva, permitindo que o software acesse os dispositivos conectados à BoosterPack.
+
+No caso do LED RGB, por exemplo, os sinais identificados como J37, J38 e J39 correspondem, respectivamente, aos pinos PF2, PF3 e PG0 do microcontrolador. Essa relação é fundamental para garantir que o controle implementado em software atue corretamente sobre o hardware.
+
+Dessa forma, a correta interpretação do mapeamento de pinos é essencial para a integração entre a aplicação desenvolvida e os periféricos disponíveis na BoosterPack.
+
+**Configuração dos pinos**
 UART
 PA0 → RX
 PA1 → TX
@@ -250,27 +267,17 @@ O LED RGB da BoosterPack MKII não apresentou funcionamento estável.
 
 ### Análise do problema
 
-Durante os testes práticos, foi observado que o LED RGB apresentou comportamento intermitente.
+Durante os testes iniciais, o LED RGB não apresentou funcionamento conforme esperado, mesmo com a lógica de controle implementada.
 
-Ao pressionar manualmente a região dos pinos de conexão entre a BoosterPack e a placa Tiva, o LED passou a responder temporariamente aos comandos.
+A partir da análise do diagrama de pinagem da BoosterPack MKII, foi possível identificar a correspondência entre os sinais do LED RGB e os pinos do microcontrolador.
 
-Esse comportamento sugere:
+Verificou-se que o LED RGB está conectado aos seguintes pinos:
 
-Mau contato elétrico
-Encaixe mecânico incompleto
-Possível falha de soldagem
-Conclusão dos testes
+PF2 (vermelho)
+PF3 (verde)
+PG0 (azul)
 
-* ✔ UART funcionando corretamente
-* ✔ ADC funcionando corretamente
-* ✔ Botão funcionando corretamente
-* ❌ LED RGB não funcionando de forma estável
-
-### Conclusão técnica
-
-Com base nos testes realizados, conclui-se que o problema está associado a uma falha física de conexão entre a BoosterPack e a placa Tiva, e não à lógica implementada no software.
-
-Para confirmação, seria necessário verificar o esquemático da placa e realizar testes de continuidade elétrica.
+Com base nessa identificação, foi possível compreender o comportamento observado e alinhar o controle do software ao mapeamento físico da BoosterPack.
 
 ## 10. Referências
 
