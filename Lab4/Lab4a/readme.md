@@ -124,6 +124,12 @@ PC6 → entrada digital com pull-up
 **LED RGB**
 Configurado como saída digital (GPIO)
 
+Para o correto funcionamento dos periféricos, os pinos devem ser configurados de acordo com sua função. Os pinos utilizados pelo ADC (PE3 e PE4) são configurados como entradas analógicas, permitindo a leitura dos sinais contínuos do joystick.
+
+O botão (PC6) é configurado como entrada digital com resistor de pull-up interno, garantindo um nível lógico definido quando não pressionado.
+
+Já os pinos do LED RGB (PF2, PF3 e PG0) são configurados como saídas digitais, possibilitando o acionamento das cores por meio da escrita de níveis lógicos
+
 ### Diagrama em blocos
 
 O sistema pode ser dividido em três partes principais: computador, placa Tiva e BoosterPack.
