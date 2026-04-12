@@ -71,6 +71,7 @@ O joystick é composto por dois potenciômetros (eixos X e Y) e um botão digita
 A leitura dos eixos foi realizada por meio do ADC0:
 
 PD3 → ADC Channel 13 → eixo X
+
 PD2 → ADC Channel 12 → eixo Y
 
 Os valores obtidos variam de 0 a 4095, devido à resolução de 12 bits do ADC.

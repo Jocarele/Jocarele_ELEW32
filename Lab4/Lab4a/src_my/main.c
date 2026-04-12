@@ -65,22 +65,33 @@ void ConfigUART(void)
  */
 void ConfigADC(void)
 {
-    MAP_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOD);
+    MAP_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOC);
+	  MAP_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOE);
+
     MAP_SysCtlPeripheralEnable(SYSCTL_PERIPH_ADC0);
 
     while(!MAP_SysCtlPeripheralReady(SYSCTL_PERIPH_ADC0)){}
-    while(!MAP_SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOD)){}
+    while(!MAP_SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOC)){}
+		while(!MAP_SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOE)){}
 
-    // PD2 (Y) e PD3 (X)
-    MAP_GPIOPinTypeADC(GPIO_PORTD_BASE, GPIO_PIN_2 | GPIO_PIN_3);
+    
+    MAP_GPIOPinTypeADC(GPIO_PORTE_BASE, GPIO_PIN_4);// PD2 (X)
+		MAP_GPIOPinTypeADC(GPIO_PORTE_BASE, GPIO_PIN_3);// PD3 (y)
+		
+		// =============BUTAO JOYSTICK
+		MAP_GPIOPinTypeGPIOInput(GPIO_PORTC_BASE, GPIO_PIN_6);
+		MAP_GPIOPadConfigSet(GPIO_PORTC_BASE, GPIO_PIN_6,
+                         GPIO_STRENGTH_2MA,
+                         GPIO_PIN_TYPE_STD_WPU);
+			//============
 
     MAP_ADCSequenceConfigure(ADC0_BASE, 0, ADC_TRIGGER_PROCESSOR, 0);
 
     // CH13 = PD3 (X)
     // CH12 = PD2 (Y)
-    MAP_ADCSequenceStepConfigure(ADC0_BASE, 0, 0, ADC_CTL_CH13);
+    MAP_ADCSequenceStepConfigure(ADC0_BASE, 0, 0, ADC_CTL_CH9);
     MAP_ADCSequenceStepConfigure(ADC0_BASE, 0, 1,
-        ADC_CTL_CH12 | ADC_CTL_IE | ADC_CTL_END);
+        ADC_CTL_CH0 | ADC_CTL_IE | ADC_CTL_END);
 
     MAP_ADCSequenceEnable(ADC0_BASE, 0);
     MAP_ADCIntClear(ADC0_BASE, 0);
@@ -96,9 +107,7 @@ void ConfigButton(void)
 
     MAP_GPIOPinTypeGPIOInput(GPIO_PORTJ_BASE, GPIO_PIN_1);
 
-    MAP_GPIOPadConfigSet(GPIO_PORTJ_BASE, GPIO_PIN_1,
-                         GPIO_STRENGTH_2MA,
-                         GPIO_PIN_TYPE_STD_WPU);
+
 }
 
 /**
@@ -106,11 +115,16 @@ void ConfigButton(void)
  */
 void ConfigLED(void)
 {
-    MAP_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOJ);
-    while(!MAP_SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOJ)){}
+		// PJ 37,38 39 -> PF1,PF2,PG0
+    MAP_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF);
+    MAP_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOG);
+    
+    while(!MAP_SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOF)){}
+    while(!MAP_SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOG)){}
 
-    MAP_GPIOPinTypeGPIOOutput(GPIO_PORTJ_BASE,
-                              GPIO_PIN_4 | GPIO_PIN_5 | GPIO_PIN_6);
+    MAP_GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_2 | GPIO_PIN_3);
+
+    MAP_GPIOPinTypeGPIOOutput(GPIO_PORTG_BASE, GPIO_PIN_0);
 }
 
 /**
@@ -125,7 +139,7 @@ int main(void)
 
     ConfigUART();
     ConfigADC();
-    ConfigButton();
+    //ConfigButton();
     ConfigLED();
 
     uint32_t adcValues[2];
@@ -142,7 +156,7 @@ int main(void)
         MAP_ADCIntClear(ADC0_BASE, 0);
 
         /* ===== Leitura do botão ===== */
-        uint8_t btn = (MAP_GPIOPinRead(GPIO_PORTJ_BASE, GPIO_PIN_1) == 0);
+        uint8_t btn = (MAP_GPIOPinRead(GPIO_PORTC_BASE, GPIO_PIN_6) == 0);
 
         /* ===== Envio UART ) ===== */
 				UARTprintf("X:%4u Y:%4u BTN:%u\n",
@@ -150,26 +164,30 @@ int main(void)
 
         /* ===== Controle do LED RGB ===== */
 
-				uint8_t cor = 0;
+				uint8_t cor1 = 0;
+				uint8_t cor2 = 0;
 
 				/* Eixo X ? vermelho e azul */
 				if(adcValues[0] > 3000)
-						cor |= GPIO_PIN_4; // vermelho
+						cor1 |= GPIO_PIN_2; // vermelho
 
 				if(adcValues[0] < 1000)
-						cor |= GPIO_PIN_6; // azul
+						cor2 |= GPIO_PIN_0; // azul
 
 				/* Eixo Y ? verde */
 				if(adcValues[1] > 3000)
-						cor |= GPIO_PIN_5; // verde
+						cor1 |= GPIO_PIN_3; // verde
 
 				/* Botão ? apaga tudo */
-				if(btn)
-						cor = 0;
+				if(btn){
+						cor1 = 0;
+						cor2 = 0;
+				}
 
-				MAP_GPIOPinWrite(GPIO_PORTJ_BASE,
-												 GPIO_PIN_4 | GPIO_PIN_5 | GPIO_PIN_6,
-												 cor);
+				MAP_GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2 | GPIO_PIN_3, cor1);
+
+        // Escreve na Porta G (Pino 0)
+        MAP_GPIOPinWrite(GPIO_PORTG_BASE, GPIO_PIN_0, cor2);
 
         /* ===== Delay ~200 ms ===== */
         MAP_SysCtlDelay(clock / 15);
