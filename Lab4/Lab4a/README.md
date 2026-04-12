@@ -181,31 +181,36 @@ O sistema pode ser dividido em três partes principais: computador, placa Tiva e
 
 INÍCIO → Configuração do clock → Configuração UART → Configuração ADC → Configuração GPIO → Loop principal
 
-No loop principal:
+**No loop principal:**
 
-**1.**Leitura dos valores do ADC
-**2.**Leitura do botão
-**3.**Envio dos dados via UART
-**4.**Cálculo da cor do LED
-**5.**Escrita nos pinos de saída
-**6.**Atraso de aproximadamente 200 ms
+**1.** Leitura dos valores do ADC
+
+**2.** Leitura do botão
+
+**3.** Envio dos dados via UART
+
+**4.** Cálculo da cor do LED
+
+**5.** Escrita nos pinos de saída
+
+**6.** Atraso de aproximadamente 200 ms
 
 ## 8. Configuração do projeto na IDE (Keil uVision)
-O Target do Keil foi configurado selecionando o microcontrolador TM4C1294NCPDT. Foram inclusos os arquivos uartstdio.h e uartstdio.c para o funcionamento do terminal serial. Também foi utilizada a biblioteca driverlib.lib para acesso às funções de abstração de hardware.
+O Target do Keil foi configurado selecionando o microcontrolador TM4C1294NCPDT. Foram inclusos os arquivos `uartstdio.h` e `uartstdio.c` para o funcionamento do terminal serial. Também foi utilizada a biblioteca driverlib.lib para acesso às funções de abstração de hardware.
 
 Foi necessário configurar os diretórios de inclusão (Include Paths) para as seguintes pastas:
 
-..\..\..\TivaWare_C_Series-2.2.0.295\utils
-..\..\..\TivaWare_C_Series-2.2.0.295
-..\..\..\TivaWare_C_Series-2.2.0.295\driverlib
-.\src_others
+* ..\..\..\TivaWare_C_Series-2.2.0.295\utils
+* ..\..\..\TivaWare_C_Series-2.2.0.295
+* ..\..\..\TivaWare_C_Series-2.2.0.295\driverlib
+* .\src_others
 
 A organização dos arquivos do projeto segue a seguinte estrutura:
 
 main.c: responsável pela configuração dos periféricos, leitura do joystick, controle do LED RGB e envio dos dados via UART.
 
 ## 9. Teste e depuração
-**Resultados**
+### Resultados
 
 A leitura do joystick apresentou valores coerentes, com aproximadamente 2000 na posição central e valores próximos aos extremos (0 e 4095) quando deslocado.
 
@@ -213,11 +218,11 @@ A comunicação UART funcionou corretamente, exibindo os dados no terminal seria
 
 O botão também respondeu corretamente às interações.
 
-**Problema encontrado**
+### Problema encontrado
 
 O LED RGB da BoosterPack MKII não apresentou funcionamento estável.
 
-**Análise do problema**
+### Análise do problema
 
 Durante os testes práticos, foi observado que o LED RGB apresentou comportamento intermitente.
 
@@ -230,12 +235,12 @@ Encaixe mecânico incompleto
 Possível falha de soldagem
 Conclusão dos testes
 
-✔ UART funcionando corretamente
-✔ ADC funcionando corretamente
-✔ Botão funcionando corretamente
-❌ LED RGB não funcionando de forma estável
+* ✔ UART funcionando corretamente
+* ✔ ADC funcionando corretamente
+* ✔ Botão funcionando corretamente
+* ❌ LED RGB não funcionando de forma estável
 
-**Conclusão técnica**
+### Conclusão técnica
 
 Com base nos testes realizados, conclui-se que o problema está associado a uma falha física de conexão entre a BoosterPack e a placa Tiva, e não à lógica implementada no software.
 
