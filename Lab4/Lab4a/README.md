@@ -1,17 +1,17 @@
-##Relatório do Lab4a
+## Relatório do Lab4a
 
-##Nomes:
+## Nomes:
 
 João Lucas Marques Camilo
 Bruno Ribeiro Basilio
 
-##1. Introdução
+## 1. Introdução
 
 Este relatório apresenta o desenvolvimento de um sistema embarcado capaz de realizar a leitura de um joystick (eixos X, Y e botão), enviar os valores obtidos via comunicação serial UART e controlar um LED RGB com base nesses dados.
 
 O objetivo do experimento é integrar diferentes periféricos do microcontrolador TM4C1294NCPDT, utilizando módulos como GPIO, ADC e UART, além de explorar a interação com a placa BoosterPack MKII.
 
-##2. Planejamento do processo de desenvolvimento
+## 2. Planejamento do processo de desenvolvimento
 
 Inicialmente foi realizada uma revisão sobre o funcionamento do módulo ADC e da comunicação UART no microcontrolador. Em seguida, foi estudada a forma de leitura de sinais analógicos provenientes do joystick.
 
@@ -19,7 +19,7 @@ Após isso, foi feita a implementação da leitura dos eixos X e Y, bem como do 
 
 Por fim, foi implementado o controle do LED RGB e realizados testes práticos, seguidos de depuração e análise dos resultados obtidos.
 
-##3. Definição do problema a ser resolvido
+## 3. Definição do problema a ser resolvido
 
 O sistema deve:
 
@@ -53,8 +53,8 @@ Botão pressionado → LED desligado
 
 **RNF2:** Utilizar a biblioteca TivaWare para configuração dos periféricos.
 
-##5.Estudo da plataforma de HW
-**LED RGB**
+## 5.Estudo da plataforma de HW
+### LED RGB
 
 O LED RGB utilizado está presente na placa BoosterPack MKII e é controlado por sinais digitais provenientes do microcontrolador.
 
@@ -64,7 +64,7 @@ Durante o desenvolvimento, foi implementada uma lógica de controle baseada nos 
 
 A lógica de software foi validada durante os testes, porém o LED RGB não apresentou funcionamento estável, indicando que o problema não está relacionado à implementação do código.
 
-**Joystick**
+### Joystick
 
 O joystick é composto por dois potenciômetros (eixos X e Y) e um botão digital.
 
@@ -103,45 +103,41 @@ PJ1 → entrada digital com pull-up
 LED RGB
 Configurado como saída digital (GPIO)
 
-##Diagrama em blocos
+### Diagrama em blocos
 
 O sistema pode ser dividido em três partes principais: computador, placa Tiva e BoosterPack.
 
-                +---------------------------+
-                |        Computador         |
-                |   (Terminal Serial)       |
-                +-------------+-------------+
-                              |
-                           UART0
-                              |
-+-----------------------------------------------------------+
-|                Placa Tiva C (TM4C1294)                    |
-|                                                           |
-|   +-------------------+    +-------------------+           |
-|   |   Microcontrolador|    |   Periféricos     |           |
-|   |   Cortex-M4F      |    |                   |           |
-|   |                   |    |  - ADC0           |           |
-|   |                   |    |  - GPIO           |           |
-|   |                   |    |  - UART0          |           |
-|   +---------+---------+    +---------+---------+           |
-|             |                          |                   |
-|             +-----------+--------------+                   |
-|                         |                                  |
-|                 Headers BoosterPack                        |
-+------------------------+----------------------------------+
-                         |
-                         |
-        +----------------+----------------+
-        |        BoosterPack MKII         |
-        |                                |
-        |   - Joystick (ADC X/Y)         |
-        |   - Botão (GPIO)               |
-        |   - LED RGB (GPIO)             |
-        +--------------------------------+
+        +---------------------------+
+        |        Computador         |
+        |    (Terminal Serial)      |
+        +-------------+-------------+
+                      |
+                   UART0
+                      |
+        +-------------+-------------+
+        |        Placa Tiva C       |
+        |       (TM4C1294)          |
+        |                           |
+        |  +---------------------+  |
+        |  |  Cortex-M4F (CPU)   |  |
+        |  +---------------------+  |
+        |  | ADC0 | GPIO | UART0 |  |
+        |  +---------------------+  |
+        +-------------+-------------+
+                      |
+              Headers BoosterPack
+                      |
+        +-------------+-------------+
+        |      BoosterPack MKII     |
+        |                           |
+        |  Joystick (ADC X/Y)       |
+        |  Botão (GPIO)             |
+        |  LED RGB (GPIO)           |
+        +---------------------------+
 
 
-##6. Estudo da plataforma de SW
-##6.1 Funções utilizadas
+## 6. Estudo da plataforma de SW
+### 6.1 Funções utilizadas
 
 **SysCtlClockFreqSet():** Configura o clock principal do sistema para 120 MHz.
 
@@ -153,35 +149,35 @@ O sistema pode ser dividido em três partes principais: computador, placa Tiva e
 
 **GPIOPinTypeUART():** Configura pinos para comunicação serial.
 
-**UARTStdioConfig():**Inicializa a UART com o baud rate desejado.
+**UARTStdioConfig():** Inicializa a UART com o baud rate desejado.
 
-**GPIOPinTypeADC():**Configura pinos como entradas analógicas.
+**GPIOPinTypeADC():** Configura pinos como entradas analógicas.
 
-**ADCSequenceConfigure():**Configura o sequenciador do ADC.
+**ADCSequenceConfigure():** Configura o sequenciador do ADC.
 
-**ADCSequenceStepConfigure():**Define os canais que serão lidos.
+**ADCSequenceStepConfigure():** Define os canais que serão lidos.
 
-**ADCProcessorTrigger():**Inicia a conversão ADC via software.
+**ADCProcessorTrigger():** Inicia a conversão ADC via software.
 
-**ADCSequenceDataGet():**Obtém os valores convertidos.
+**ADCSequenceDataGet():** Obtém os valores convertidos.
 
-**ADCIntClear():**Limpa a flag de interrupção do ADC.
+**ADCIntClear():** Limpa a flag de interrupção do ADC.
 
-**GPIOPinTypeGPIOInput():**Configura um pino como entrada digital.
+**GPIOPinTypeGPIOInput():** Configura um pino como entrada digital.
 
-**GPIOPadConfigSet():**Configura o resistor de pull-up interno.
+**GPIOPadConfigSet():** Configura o resistor de pull-up interno.
 
-**GPIOPinTypeGPIOOutput():**Configura um pino como saída digital.
+**GPIOPinTypeGPIOOutput():** Configura um pino como saída digital.
 
-**GPIOPinWrite():**Escreve o valor lógico nos pinos.
+**GPIOPinWrite():** Escreve o valor lógico nos pinos.
 
-**SysCtlDelay():**Gera um atraso aproximado.
+**SysCtlDelay():** Gera um atraso aproximado.
 
-**UARTprintf():**Envia dados formatados pela UART.
+**UARTprintf():** Envia dados formatados pela UART.
 
-##7.Projeto (design) da solução
+## 7.Projeto (design) da solução
 
-**Fluxo de execução:**
+### Fluxo de execução:
 
 INÍCIO → Configuração do clock → Configuração UART → Configuração ADC → Configuração GPIO → Loop principal
 
@@ -194,7 +190,7 @@ No loop principal:
 **5.**Escrita nos pinos de saída
 **6.**Atraso de aproximadamente 200 ms
 
-##8. Configuração do projeto na IDE (Keil uVision)
+## 8. Configuração do projeto na IDE (Keil uVision)
 O Target do Keil foi configurado selecionando o microcontrolador TM4C1294NCPDT. Foram inclusos os arquivos uartstdio.h e uartstdio.c para o funcionamento do terminal serial. Também foi utilizada a biblioteca driverlib.lib para acesso às funções de abstração de hardware.
 
 Foi necessário configurar os diretórios de inclusão (Include Paths) para as seguintes pastas:
@@ -208,7 +204,7 @@ A organização dos arquivos do projeto segue a seguinte estrutura:
 
 main.c: responsável pela configuração dos periféricos, leitura do joystick, controle do LED RGB e envio dos dados via UART.
 
-##9. Teste e depuração
+## 9. Teste e depuração
 **Resultados**
 
 A leitura do joystick apresentou valores coerentes, com aproximadamente 2000 na posição central e valores próximos aos extremos (0 e 4095) quando deslocado.
@@ -245,7 +241,7 @@ Com base nos testes realizados, conclui-se que o problema está associado a uma 
 
 Para confirmação, seria necessário verificar o esquemático da placa e realizar testes de continuidade elétrica.
 
-##10. Referências
+## 10. Referências
 
 TEXAS INSTRUMENTS. Tiva™ TM4C1294NCPDT Microcontroller Data Sheet.
 
