@@ -1,7 +1,25 @@
+/*__________________________________________________________________________________
+|       Disciplina de Sistemas Embarcados - 2023-1
+|       Prof. Douglas Renaux
+| __________________________________________________________________________________
+|
+|       Lab 4B
+| __________________________________________________________________________________
+*/
+
+/**
+ * @file     main.c
+ * @authors  Bruno Ribeiro Basilio
+ *           JoÃ£o Lucas Marques Camilo
+ * @brief    Time measuring of three differents techincs
+ * @version  1.0
+ * @date     April, 2026
+ ******************************************************************************/
+
 #include "main.h"
 
 
-// Endereço final: 0x4006.4008
+// EndereÃ§o final: 0x4006.4008
 #define PORTN_PIN1_DATA (*((volatile uint32_t *)0x40064008))
 
 // contadorees de ciclo
@@ -34,14 +52,14 @@ int main(void)
     uint32_t start_time, end_time;
     uint32_t i;
 
-    // 1. Configura o clock do sistema para a frequência máxima (120 MHz)
+    // 1. Configura o clock do sistema para a frequÃªncia mÃ¡xima (120 MHz)
     clock = SysCtlClockFreqSet((SYSCTL_XTAL_25MHZ | 
 													SYSCTL_OSC_MAIN | 
                            SYSCTL_USE_PLL | 
                            SYSCTL_CFG_VCO_480), 120000000);
 		ConfigUART();
 
-    // 2. Habilita o periférico Port N e configura o pino 1 como saída
+    // 2. Habilita o perifÃ©rico Port N e configura o pino 1 como saÃ­da
     SysCtlPeripheralEnable(SYSCTL_PERIPH_GPION);
     while(!SysCtlPeripheralReady(SYSCTL_PERIPH_GPION));
     GPIOPinTypeGPIOOutput(GPIO_PORTN_BASE, GPIO_PIN_1);
@@ -49,7 +67,7 @@ int main(void)
     SysTickPeriodSet(0x00FFFFFF); // 16.777.215 ciclos
     SysTickEnable();
 
-    // TÉCNICA 1: TivaWare (DriverLib)
+    // TÃ‰CNICA 1: TivaWare (DriverLib)
 	
     start_time = SysTickValueGet(); // Inicia a contagem
     
@@ -62,7 +80,7 @@ int main(void)
     end_time = SysTickValueGet(); // Para a contagem
     ciclos_TivaWare = start_time - end_time; // Calcula o delta (conta pra baixo)
 
-    // TÉCNICA 2: C 
+    // TÃ‰CNICA 2: C 
 		
     start_time = SysTickValueGet();
     
@@ -75,7 +93,7 @@ int main(void)
     end_time = SysTickValueGet();
     ciclos_C_Direto = start_time - end_time;
 
-    // TÉCNICA 3: Assembly Inline
+    // TÃ‰CNICA 3: Assembly Inline
     start_time = SysTickValueGet();
     
     __asm (
@@ -93,7 +111,7 @@ int main(void)
     end_time = SysTickValueGet();
     ciclos_Assembly_inline = start_time - end_time;
 		
-		// TÉCNICA 4: Assembly outline
+		// TÃ‰CNICA 4: Assembly outline
 
 		start_time = SysTickValueGet();
 		thousand_pulse();
