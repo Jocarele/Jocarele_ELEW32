@@ -75,8 +75,8 @@ void ConfigADC(void)
 		while(!MAP_SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOE)){}
 
     
-    MAP_GPIOPinTypeADC(GPIO_PORTE_BASE, GPIO_PIN_4);// PD2 (X)
-		MAP_GPIOPinTypeADC(GPIO_PORTE_BASE, GPIO_PIN_3);// PD3 (y)
+    MAP_GPIOPinTypeADC(GPIO_PORTE_BASE, GPIO_PIN_4);// PE2 (X)
+		MAP_GPIOPinTypeADC(GPIO_PORTE_BASE, GPIO_PIN_3);// PE3 (y)
 		
 		// =============BUTAO JOYSTICK
 		MAP_GPIOPinTypeGPIOInput(GPIO_PORTC_BASE, GPIO_PIN_6);
@@ -87,8 +87,8 @@ void ConfigADC(void)
 
     MAP_ADCSequenceConfigure(ADC0_BASE, 0, ADC_TRIGGER_PROCESSOR, 0);
 
-    // CH13 = PD3 (X)
-    // CH12 = PD2 (Y)
+    // CH9 = PE3 (X)
+    // CH0 = PE2 (Y)
     MAP_ADCSequenceStepConfigure(ADC0_BASE, 0, 0, ADC_CTL_CH9);
     MAP_ADCSequenceStepConfigure(ADC0_BASE, 0, 1,
         ADC_CTL_CH0 | ADC_CTL_IE | ADC_CTL_END);
@@ -97,18 +97,6 @@ void ConfigADC(void)
     MAP_ADCIntClear(ADC0_BASE, 0);
 }
 
-/**
- * Configuração do botão do joystick
- */
-void ConfigButton(void)
-{
-    MAP_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOJ);
-    while(!MAP_SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOJ)){}
-
-    MAP_GPIOPinTypeGPIOInput(GPIO_PORTJ_BASE, GPIO_PIN_1);
-
-
-}
 
 /**
  * Configuração do LED RGB
@@ -139,7 +127,6 @@ int main(void)
 
     ConfigUART();
     ConfigADC();
-    //ConfigButton();
     ConfigLED();
 
     uint32_t adcValues[2];
