@@ -163,7 +163,7 @@ O diagrama de objetos representa a interação entre as threads e os mecanismos 
 - Thread 0 ativa uma event flag (`event_flags_0`)  
 - Thread 5 aguarda essa event flag  
 
-(O diagrama foi elaborado conforme a notação apresentada em aula.)
+![Diagrama ThreadX](ThreadX.drawio.png)
 
 ---
 
