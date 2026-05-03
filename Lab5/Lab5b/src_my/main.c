@@ -114,27 +114,7 @@ CHAR    *pointer = TX_NULL;
     /* Allocate the message queue.  */
     tx_byte_allocate(&byte_pool_0, (VOID **) &pointer, DEMO_QUEUE_SIZE*sizeof(ULONG), TX_NO_WAIT);
 
-    /* Create the message queue shared by threads 1 and 2.  */
-    tx_queue_create(&queue_0, "queue 0", TX_1_ULONG, pointer, DEMO_QUEUE_SIZE*sizeof(ULONG));
-
-    /* Create the semaphore used by threads 3 and 4.  */
-    tx_semaphore_create(&semaphore_0, "semaphore 0", 1);
-
-    /* Create the event flags group used by threads 1 and 5.  */
-    tx_event_flags_create(&event_flags_0, "event flags 0");
-
-    /* Create the mutex used by thread 6 and 7 without priority inheritance.  */
-    tx_mutex_create(&mutex_0, "mutex 0", TX_NO_INHERIT);
-
-    /* Allocate the memory for a small block pool.  */
-    tx_byte_allocate(&byte_pool_0, (VOID **) &pointer, DEMO_BLOCK_POOL_SIZE, TX_NO_WAIT);
-
-    /* Create a block memory pool to allocate a message buffer from.  */
-    tx_block_pool_create(&block_pool_0, "block pool 0", sizeof(ULONG), pointer, DEMO_BLOCK_POOL_SIZE);
-
-    /* Allocate a block and release the block memory.  */
-    tx_block_allocate(&block_pool_0, (VOID **) &pointer, TX_NO_WAIT);
-
+    
     /* Release the block back to the pool.  */
     tx_block_release(pointer);
 }
@@ -146,7 +126,7 @@ CHAR    *pointer = TX_NULL;
 void thread_0_entry(ULONG thread_input)
 {
     
-    // stat já começa valendo os LEDs acesos
+    // stat jï¿½ comeï¿½a valendo os LEDs acesos
     int stat = (USER_LED1);
 		stat = ~stat & 0x01; 
 

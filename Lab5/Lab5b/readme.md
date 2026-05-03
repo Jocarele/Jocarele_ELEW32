@@ -42,20 +42,29 @@ Abaixo estão as tabelas referentes ao projeto desenvolvido, mapeando a thread a
 
 ---
 
-## 5. Processo de Inicialização
+## 5. Descrição Detalhada do Processo de Inicialização
 
-A inicialização do sistema ocorre em etapas sucessivas, desde o Reset do hardware até a execução da thread:
+O processo de inicialização do Lab5b é dividido em etapas que preparam o hardware, o ambiente da linguagem C e, por fim, o kernel do RTOS. Abaixo, detalha-se o caminho percorrido desde o Reset até a execução da thread do LED.
 
-1. **Vetor de Reset (`startup_TM4C129.s`):** Ao alimentar a placa, a CPU busca o endereço da função `Reset_Handler`. Este código em Assembly faz configurações críticas de hardware, como a habilitação da FPU (Unidade de Ponto Flutuante).
-2. **Ambiente C (`__main`):** O controle passa para a biblioteca de tempo de execução C, que copia dados da Flash para a RAM e limpa a seção `.bss`. Em seguida, a função `main()` é chamada.
-3. **Setup de Hardware e Kernel (`main.c`):** - O clock é configurado para **120 MHz** via `SysCtlClockFreqSet`.
-   - A Porta N (LED) é habilitada.
-   - O sistema chama `tx_kernel_enter()`, que inicia o processo de "subida" do RTOS.
-4. **Baixo Nível (`tx_initialize_low_level.s`):** O ThreadX assume o controle e configura o **SysTick**. Com a CPU a 120 MHz, o registrador de reload é configurado para gerar interrupções a **100 Hz** (10ms por tick). As prioridades de interrupção (SVC e PendSV) são ajustadas para permitir a troca de contexto segura.
-5. **Definição da Aplicação (`tx_application_define`):** O kernel chama esta função para que o usuário crie seus recursos. Aqui criamos a `thread_0` e alocamos sua pilha (*stack*).
-6. **Agendamento (`_tx_thread_schedule`):** Após as definições, o escalonador é iniciado. Ele detecta que a `thread_0` está pronta, restaura seu contexto nos registradores da CPU e inicia a execução da função `thread_0_entry`.
+### Passo 1: startup_TM4C129.s
+Assim que a placa é energizada ou o botão de Reset é pressionado, o processador Cortex-M4 executa uma rotina automática de hardware: ele lê os dois primeiros endereços da memória Flash. O primeiro fornece o endereço da pilha (Stack Pointer) e o segundo o endereço da primeira instrução a ser executada, chamada de `Reset_Handler`. 
 
----
+### Passo 2: __main
+Ainda no arquivo de startup, após o `Reset_Handler`, o processador salta para a rotina `__main` que copia as variáveis que têm valores iniciais da Flash para a RAM e zera o restante da memória.
+
+### Passo 3: main.c
+Já dentro do `main()`, é realizado a configuração de clock utilizando a função `SysCtlClockFreqSet` da TivaWare para configurar o PLL e o oscilador externo para que a CPU rode a **120 MHz**. 
+
+### Passo 4: tx_initialize_low_level.s
+Ao chamar `tx_kernel_enter()`, o ThreadX assume o controle. É necessário configurar o **SysTick** para o arquivo em assembly, o qual o RTOS usa  para calcular quanto tempo o cronômetro deve contar para apitar exatamente 100 vezes por segundo (100 Hz). 
+
+### Passo 5: tx_application_define
+ O sistema executa `tx_application_define`, onde são criados:
+1.  **Byte Pool**: que é a reserva de memória RAM para as futuras aplicações (no caso a thread0)
+2.  **thread_0**: definindo sua função de entrada (`thread_0_entry`) e sua prioridade. O estado da thread passa a ser "Ready" (Pronta).
+
+### Passo 6: O Início do Escalonamento (Multitarefa)
+Por fim, o kernel termina sua inicialização e inicia o **Scheduler (Escalonador)**, o responsavel por identificar a prontidão da `thread_0`, carregando seu contexto (registradores do processador) e salta para o código que faz o LED piscar. 
 
 ## 6. Teste de Temporização e Resultados
 
