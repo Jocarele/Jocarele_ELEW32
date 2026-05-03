@@ -164,7 +164,7 @@ O diagrama de objetos representa a interação entre as threads e os mecanismos 
 - Thread 5 aguarda essa event flag  
 
 <p align="center">
-  <img src="../ThreadX.drawio.png" width="600">
+  <img src="../Lab5/ThreadX.drawio.png" width="600">
 </p>
 
 ---
