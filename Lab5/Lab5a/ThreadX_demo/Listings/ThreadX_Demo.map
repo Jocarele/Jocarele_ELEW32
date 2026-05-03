@@ -1,0 +1,1860 @@
+Component: Arm Compiler for Embedded 6.24 Tool: armlink [5f371500]
+
+==============================================================================
+
+Section Cross References
+
+    demo_threadx.o(.text) refers to sysctl.o(i.SysCtlClockFreqSet) for SysCtlClockFreqSet
+    demo_threadx.o(.text) refers to system_tm4c129.o(.data.SystemCoreClock) for SystemCoreClock
+    demo_threadx.o(.text) refers to tx_initialize_kernel_enter.o(.text) for _tx_initialize_kernel_enter
+    demo_threadx.o(.text) refers to demo_threadx.o(.bss.byte_pool_0) for byte_pool_0
+    demo_threadx.o(.text) refers to demo_threadx.o(.bss.memory_area) for memory_area
+    demo_threadx.o(.text) refers to txe_byte_pool_create.o(.text) for _txe_byte_pool_create
+    demo_threadx.o(.text) refers to txe_byte_allocate.o(.text) for _txe_byte_allocate
+    demo_threadx.o(.text) refers to demo_threadx.o(.bss.thread_0) for thread_0
+    demo_threadx.o(.text) refers to txe_thread_create.o(.text) for _txe_thread_create
+    demo_threadx.o(.text) refers to demo_threadx.o(.bss.thread_1) for thread_1
+    demo_threadx.o(.text) refers to demo_threadx.o(.bss.thread_2) for thread_2
+    demo_threadx.o(.text) refers to demo_threadx.o(.bss.thread_3) for thread_3
+    demo_threadx.o(.text) refers to demo_threadx.o(.bss.thread_4) for thread_4
+    demo_threadx.o(.text) refers to demo_threadx.o(.bss.thread_5) for thread_5
+    demo_threadx.o(.text) refers to demo_threadx.o(.bss.thread_6) for thread_6
+    demo_threadx.o(.text) refers to demo_threadx.o(.bss.thread_7) for thread_7
+    demo_threadx.o(.text) refers to demo_threadx.o(.bss.queue_0) for queue_0
+    demo_threadx.o(.text) refers to txe_queue_create.o(.text) for _txe_queue_create
+    demo_threadx.o(.text) refers to demo_threadx.o(.bss.semaphore_0) for semaphore_0
+    demo_threadx.o(.text) refers to txe_semaphore_create.o(.text) for _txe_semaphore_create
+    demo_threadx.o(.text) refers to demo_threadx.o(.bss.event_flags_0) for event_flags_0
+    demo_threadx.o(.text) refers to txe_event_flags_create.o(.text) for _txe_event_flags_create
+    demo_threadx.o(.text) refers to demo_threadx.o(.bss.mutex_0) for mutex_0
+    demo_threadx.o(.text) refers to txe_mutex_create.o(.text) for _txe_mutex_create
+    demo_threadx.o(.text) refers to demo_threadx.o(.bss.block_pool_0) for block_pool_0
+    demo_threadx.o(.text) refers to txe_block_pool_create.o(.text) for _txe_block_pool_create
+    demo_threadx.o(.text) refers to txe_block_allocate.o(.text) for _txe_block_allocate
+    demo_threadx.o(.text) refers to txe_block_release.o(.text) for _txe_block_release
+    demo_threadx.o(.text) refers to demo_threadx.o(.bss.thread_0_counter) for thread_0_counter
+    demo_threadx.o(.text) refers to tx_thread_sleep.o(.text) for _tx_thread_sleep
+    demo_threadx.o(.text) refers to txe_event_flags_set.o(.text) for _txe_event_flags_set
+    demo_threadx.o(.text) refers to demo_threadx.o(.bss.thread_1_counter) for thread_1_counter
+    demo_threadx.o(.text) refers to demo_threadx.o(.bss.thread_1_messages_sent) for thread_1_messages_sent
+    demo_threadx.o(.text) refers to txe_queue_send.o(.text) for _txe_queue_send
+    demo_threadx.o(.text) refers to demo_threadx.o(.bss.thread_2_counter) for thread_2_counter
+    demo_threadx.o(.text) refers to txe_queue_receive.o(.text) for _txe_queue_receive
+    demo_threadx.o(.text) refers to demo_threadx.o(.bss.thread_2_messages_received) for thread_2_messages_received
+    demo_threadx.o(.text) refers to demo_threadx.o(.bss.thread_4_counter) for thread_4_counter
+    demo_threadx.o(.text) refers to demo_threadx.o(.bss.thread_3_counter) for thread_3_counter
+    demo_threadx.o(.text) refers to txe_semaphore_get.o(.text) for _txe_semaphore_get
+    demo_threadx.o(.text) refers to txe_semaphore_put.o(.text) for _txe_semaphore_put
+    demo_threadx.o(.text) refers to demo_threadx.o(.bss.thread_5_counter) for thread_5_counter
+    demo_threadx.o(.text) refers to txe_event_flags_get.o(.text) for _txe_event_flags_get
+    demo_threadx.o(.text) refers to demo_threadx.o(.bss.thread_7_counter) for thread_7_counter
+    demo_threadx.o(.text) refers to demo_threadx.o(.bss.thread_6_counter) for thread_6_counter
+    demo_threadx.o(.text) refers to txe_mutex_put.o(.text) for _txe_mutex_put
+    demo_threadx.o(.text) refers to txe_mutex_get.o(.text) for _txe_mutex_get
+    demo_threadx.o(.ARM.exidx) refers to demo_threadx.o(.text) for [Anonymous Symbol]
+    tx_initialize_low_level.o(.text) refers (Special) to startup_tm4c129.o(HEAP) for HeapMem
+    tx_initialize_low_level.o(.text) refers (Special) to startup_tm4c129.o(STACK) for StackMem
+    tx_initialize_low_level.o(.text) refers (Special) to __main.o(!!!main) for __main
+    tx_initialize_low_level.o(.text) refers (Special) to tx_thread_schedule.o(.text) for __tx_PendSVHandler
+    tx_initialize_low_level.o(.text) refers (Special) to tx_thread_context_restore.o(.text) for _tx_thread_context_restore
+    tx_initialize_low_level.o(.text) refers (Special) to tx_thread_context_save.o(.text) for _tx_thread_context_save
+    tx_initialize_low_level.o(.text) refers to tx_timer_interrupt.o(.text) for _tx_timer_interrupt
+    tx_initialize_low_level.o(.text) refers to tx_initialize_high_level.o(.bss._tx_initialize_unused_memory) for _tx_initialize_unused_memory
+    tx_initialize_low_level.o(.text) refers to startup_tm4c129.o(RESET) for __tx_vectors
+    tx_initialize_low_level.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_system_stack_ptr) for _tx_thread_system_stack_ptr
+    system_tm4c129.o(.text) refers to system_tm4c129.o(.data.SystemCoreClock) for SystemCoreClock
+    system_tm4c129.o(.ARM.exidx) refers to system_tm4c129.o(.text) for [Anonymous Symbol]
+    startup_tm4c129.o(STACK) refers (Special) to heapauxi.o(.text) for __use_two_region_memory
+    startup_tm4c129.o(STACK) refers (Special) to tx_initialize_high_level.o(.bss._tx_initialize_unused_memory) for _tx_initialize_unused_memory
+    startup_tm4c129.o(STACK) refers (Special) to tx_thread_context_restore.o(.text) for _tx_thread_context_restore
+    startup_tm4c129.o(STACK) refers (Special) to tx_thread_context_save.o(.text) for _tx_thread_context_save
+    startup_tm4c129.o(STACK) refers (Special) to tx_thread_initialize.o(.bss._tx_thread_system_stack_ptr) for _tx_thread_system_stack_ptr
+    startup_tm4c129.o(STACK) refers (Special) to tx_timer_interrupt.o(.text) for _tx_timer_interrupt
+    startup_tm4c129.o(HEAP) refers (Special) to heapauxi.o(.text) for __use_two_region_memory
+    startup_tm4c129.o(HEAP) refers (Special) to tx_initialize_high_level.o(.bss._tx_initialize_unused_memory) for _tx_initialize_unused_memory
+    startup_tm4c129.o(HEAP) refers (Special) to tx_thread_context_restore.o(.text) for _tx_thread_context_restore
+    startup_tm4c129.o(HEAP) refers (Special) to tx_thread_context_save.o(.text) for _tx_thread_context_save
+    startup_tm4c129.o(HEAP) refers (Special) to tx_thread_initialize.o(.bss._tx_thread_system_stack_ptr) for _tx_thread_system_stack_ptr
+    startup_tm4c129.o(HEAP) refers (Special) to tx_timer_interrupt.o(.text) for _tx_timer_interrupt
+    startup_tm4c129.o(RESET) refers (Special) to heapauxi.o(.text) for __use_two_region_memory
+    startup_tm4c129.o(RESET) refers (Special) to tx_initialize_high_level.o(.bss._tx_initialize_unused_memory) for _tx_initialize_unused_memory
+    startup_tm4c129.o(RESET) refers (Special) to tx_thread_context_restore.o(.text) for _tx_thread_context_restore
+    startup_tm4c129.o(RESET) refers (Special) to tx_thread_context_save.o(.text) for _tx_thread_context_save
+    startup_tm4c129.o(RESET) refers (Special) to tx_thread_initialize.o(.bss._tx_thread_system_stack_ptr) for _tx_thread_system_stack_ptr
+    startup_tm4c129.o(RESET) refers (Special) to tx_timer_interrupt.o(.text) for _tx_timer_interrupt
+    startup_tm4c129.o(RESET) refers to startup_tm4c129.o(STACK) for __initial_sp
+    startup_tm4c129.o(RESET) refers to startup_tm4c129.o(.text) for Reset_Handler
+    startup_tm4c129.o(RESET) refers to tx_thread_schedule.o(.text) for __tx_PendSVHandler
+    startup_tm4c129.o(RESET) refers to tx_initialize_low_level.o(.text) for __tx_SysTickHandler
+    startup_tm4c129.o(.text) refers (Special) to heapauxi.o(.text) for __use_two_region_memory
+    startup_tm4c129.o(.text) refers (Special) to tx_initialize_high_level.o(.bss._tx_initialize_unused_memory) for _tx_initialize_unused_memory
+    startup_tm4c129.o(.text) refers (Special) to tx_thread_context_restore.o(.text) for _tx_thread_context_restore
+    startup_tm4c129.o(.text) refers (Special) to tx_thread_context_save.o(.text) for _tx_thread_context_save
+    startup_tm4c129.o(.text) refers (Special) to tx_thread_initialize.o(.bss._tx_thread_system_stack_ptr) for _tx_thread_system_stack_ptr
+    startup_tm4c129.o(.text) refers (Special) to tx_timer_interrupt.o(.text) for _tx_timer_interrupt
+    startup_tm4c129.o(.text) refers to system_tm4c129.o(.text) for SystemInit
+    startup_tm4c129.o(.text) refers to __main.o(!!!main) for __main
+    startup_tm4c129.o(.text) refers to startup_tm4c129.o(HEAP) for Heap_Mem
+    startup_tm4c129.o(.text) refers to startup_tm4c129.o(STACK) for Stack_Mem
+    sysctl.o(i.SysCtlClockFreqSet) refers to sysctl.o(.constdata) for .constdata
+    sysctl.o(i.SysCtlClockGet) refers to sysctl.o(.constdata) for .constdata
+    sysctl.o(i.SysCtlClockSet) refers to sysctl.o(.emb_text) for SysCtlDelay
+    sysctl.o(i.SysCtlDeepSleep) refers to cpu.o(.emb_text) for CPUwfi
+    sysctl.o(i.SysCtlIntRegister) refers to interrupt.o(i.IntRegister) for IntRegister
+    sysctl.o(i.SysCtlIntRegister) refers to interrupt.o(i.IntEnable) for IntEnable
+    sysctl.o(i.SysCtlIntUnregister) refers to interrupt.o(i.IntDisable) for IntDisable
+    sysctl.o(i.SysCtlIntUnregister) refers to interrupt.o(i.IntUnregister) for IntUnregister
+    sysctl.o(i.SysCtlSleep) refers to cpu.o(.emb_text) for CPUwfi
+    sysctl.o(i.SysCtlVCOGet) refers to sysctl.o(.constdata) for .constdata
+    tx_thread_schedule.o(.text) refers (Special) to tx_thread_initialize.o(.bss._tx_thread_system_stack_ptr) for _tx_thread_system_stack_ptr
+    tx_thread_schedule.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_current_ptr) for _tx_thread_current_ptr
+    tx_thread_schedule.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_execute_ptr) for _tx_thread_execute_ptr
+    tx_thread_schedule.o(.text) refers to tx_timer_initialize.o(.bss._tx_timer_time_slice) for _tx_timer_time_slice
+    tx_thread_schedule.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_preempt_disable) for _tx_thread_preempt_disable
+    tx_timer_interrupt.o(.text) refers to tx_timer_initialize.o(.bss._tx_timer_system_clock) for _tx_timer_system_clock
+    tx_timer_interrupt.o(.text) refers to tx_timer_initialize.o(.bss._tx_timer_time_slice) for _tx_timer_time_slice
+    tx_timer_interrupt.o(.text) refers to tx_timer_initialize.o(.bss._tx_timer_expired_time_slice) for _tx_timer_expired_time_slice
+    tx_timer_interrupt.o(.text) refers to tx_timer_initialize.o(.bss._tx_timer_current_ptr) for _tx_timer_current_ptr
+    tx_timer_interrupt.o(.text) refers to tx_timer_initialize.o(.bss._tx_timer_expired) for _tx_timer_expired
+    tx_timer_interrupt.o(.text) refers to tx_timer_initialize.o(.bss._tx_timer_list_end) for _tx_timer_list_end
+    tx_timer_interrupt.o(.text) refers to tx_timer_initialize.o(.bss._tx_timer_list_start) for _tx_timer_list_start
+    tx_timer_interrupt.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_preempt_disable) for _tx_thread_preempt_disable
+    tx_timer_interrupt.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_current_ptr) for _tx_thread_current_ptr
+    tx_timer_interrupt.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_execute_ptr) for _tx_thread_execute_ptr
+    tx_timer_interrupt.o(.text) refers to tx_timer_expiration_process.o(.text) for _tx_timer_expiration_process
+    tx_timer_interrupt.o(.text) refers to tx_thread_time_slice.o(.text) for _tx_thread_time_slice
+    tx_initialize_high_level.o(.text) refers to tx_thread_initialize.o(.text) for _tx_thread_initialize
+    tx_initialize_high_level.o(.text) refers to tx_timer_initialize.o(.text) for _tx_timer_initialize
+    tx_initialize_high_level.o(.text) refers to tx_initialize_high_level.o(.bss._tx_semaphore_created_ptr) for _tx_semaphore_created_ptr
+    tx_initialize_high_level.o(.text) refers to tx_initialize_high_level.o(.bss._tx_semaphore_created_count) for _tx_semaphore_created_count
+    tx_initialize_high_level.o(.text) refers to tx_initialize_high_level.o(.bss._tx_queue_created_ptr) for _tx_queue_created_ptr
+    tx_initialize_high_level.o(.text) refers to tx_initialize_high_level.o(.bss._tx_queue_created_count) for _tx_queue_created_count
+    tx_initialize_high_level.o(.text) refers to tx_initialize_high_level.o(.bss._tx_event_flags_created_ptr) for _tx_event_flags_created_ptr
+    tx_initialize_high_level.o(.text) refers to tx_initialize_high_level.o(.bss._tx_event_flags_created_count) for _tx_event_flags_created_count
+    tx_initialize_high_level.o(.text) refers to tx_initialize_high_level.o(.bss._tx_block_pool_created_ptr) for _tx_block_pool_created_ptr
+    tx_initialize_high_level.o(.text) refers to tx_initialize_high_level.o(.bss._tx_block_pool_created_count) for _tx_block_pool_created_count
+    tx_initialize_high_level.o(.text) refers to tx_initialize_high_level.o(.bss._tx_byte_pool_created_ptr) for _tx_byte_pool_created_ptr
+    tx_initialize_high_level.o(.text) refers to tx_initialize_high_level.o(.bss._tx_byte_pool_created_count) for _tx_byte_pool_created_count
+    tx_initialize_high_level.o(.text) refers to tx_initialize_high_level.o(.bss._tx_mutex_created_ptr) for _tx_mutex_created_ptr
+    tx_initialize_high_level.o(.text) refers to tx_initialize_high_level.o(.bss._tx_mutex_created_count) for _tx_mutex_created_count
+    tx_initialize_high_level.o(.ARM.exidx) refers to tx_initialize_high_level.o(.text) for [Anonymous Symbol]
+    tx_initialize_kernel_enter.o(.text) refers to tx_thread_initialize.o(.data._tx_thread_system_state) for _tx_thread_system_state
+    tx_initialize_kernel_enter.o(.text) refers to tx_initialize_low_level.o(.text) for _tx_initialize_low_level
+    tx_initialize_kernel_enter.o(.text) refers to tx_initialize_high_level.o(.text) for _tx_initialize_high_level
+    tx_initialize_kernel_enter.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_preempt_disable) for _tx_thread_preempt_disable
+    tx_initialize_kernel_enter.o(.text) refers to tx_initialize_high_level.o(.bss._tx_initialize_unused_memory) for _tx_initialize_unused_memory
+    tx_initialize_kernel_enter.o(.text) refers to demo_threadx.o(.text) for tx_application_define
+    tx_initialize_kernel_enter.o(.text) refers to tx_thread_schedule.o(.text) for _tx_thread_schedule
+    tx_initialize_kernel_enter.o(.ARM.exidx) refers to tx_initialize_kernel_enter.o(.text) for [Anonymous Symbol]
+    tx_thread_initialize.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_current_ptr) for _tx_thread_current_ptr
+    tx_thread_initialize.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_execute_ptr) for _tx_thread_execute_ptr
+    tx_thread_initialize.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_priority_maps) for _tx_thread_priority_maps
+    tx_thread_initialize.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_preempted_maps) for _tx_thread_preempted_maps
+    tx_thread_initialize.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_highest_priority) for _tx_thread_highest_priority
+    tx_thread_initialize.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_priority_list) for _tx_thread_priority_list
+    tx_thread_initialize.o(.text) refers to rt_memclr_w.o(.text) for __aeabi_memclr4
+    tx_thread_initialize.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_created_ptr) for _tx_thread_created_ptr
+    tx_thread_initialize.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_created_count) for _tx_thread_created_count
+    tx_thread_initialize.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_preempt_disable) for _tx_thread_preempt_disable
+    tx_thread_initialize.o(.text) refers to tx_thread_initialize.o(.bss._tx_build_options) for _tx_build_options
+    tx_thread_initialize.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_mutex_release) for _tx_thread_mutex_release
+    tx_thread_initialize.o(.ARM.exidx) refers to tx_thread_initialize.o(.text) for [Anonymous Symbol]
+    tx_thread_sleep.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_current_ptr) for _tx_thread_current_ptr
+    tx_thread_sleep.o(.text) refers to tx_thread_initialize.o(.data._tx_thread_system_state) for _tx_thread_system_state
+    tx_thread_sleep.o(.text) refers to tx_timer_initialize.o(.bss._tx_timer_thread) for _tx_timer_thread
+    tx_thread_sleep.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_preempt_disable) for _tx_thread_preempt_disable
+    tx_thread_sleep.o(.text) refers to tx_thread_system_suspend.o(.text) for _tx_thread_system_suspend
+    tx_thread_sleep.o(.ARM.exidx) refers to tx_thread_sleep.o(.text) for [Anonymous Symbol]
+    txe_block_allocate.o(.text) refers to tx_block_allocate.o(.text) for _tx_block_allocate
+    txe_block_allocate.o(.text) refers to tx_thread_initialize.o(.data._tx_thread_system_state) for _tx_thread_system_state
+    txe_block_allocate.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_current_ptr) for _tx_thread_current_ptr
+    txe_block_allocate.o(.text) refers to tx_timer_initialize.o(.bss._tx_timer_thread) for _tx_timer_thread
+    txe_block_allocate.o(.ARM.exidx) refers to txe_block_allocate.o(.text) for [Anonymous Symbol]
+    txe_block_pool_create.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_preempt_disable) for _tx_thread_preempt_disable
+    txe_block_pool_create.o(.text) refers to tx_initialize_high_level.o(.bss._tx_block_pool_created_ptr) for _tx_block_pool_created_ptr
+    txe_block_pool_create.o(.text) refers to tx_initialize_high_level.o(.bss._tx_block_pool_created_count) for _tx_block_pool_created_count
+    txe_block_pool_create.o(.text) refers to tx_thread_system_preempt_check.o(.text) for _tx_thread_system_preempt_check
+    txe_block_pool_create.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_current_ptr) for _tx_thread_current_ptr
+    txe_block_pool_create.o(.text) refers to tx_thread_initialize.o(.data._tx_thread_system_state) for _tx_thread_system_state
+    txe_block_pool_create.o(.text) refers to tx_timer_initialize.o(.bss._tx_timer_thread) for _tx_timer_thread
+    txe_block_pool_create.o(.text) refers to tx_block_pool_create.o(.text) for _tx_block_pool_create
+    txe_block_pool_create.o(.ARM.exidx) refers to txe_block_pool_create.o(.text) for [Anonymous Symbol]
+    txe_block_release.o(.text) refers to tx_block_release.o(.text) for _tx_block_release
+    txe_block_release.o(.ARM.exidx) refers to txe_block_release.o(.text) for [Anonymous Symbol]
+    txe_byte_allocate.o(.text) refers to tx_thread_initialize.o(.data._tx_thread_system_state) for _tx_thread_system_state
+    txe_byte_allocate.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_current_ptr) for _tx_thread_current_ptr
+    txe_byte_allocate.o(.text) refers to tx_timer_initialize.o(.bss._tx_timer_thread) for _tx_timer_thread
+    txe_byte_allocate.o(.text) refers to tx_byte_allocate.o(.text) for _tx_byte_allocate
+    txe_byte_allocate.o(.ARM.exidx) refers to txe_byte_allocate.o(.text) for [Anonymous Symbol]
+    txe_byte_pool_create.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_preempt_disable) for _tx_thread_preempt_disable
+    txe_byte_pool_create.o(.text) refers to tx_initialize_high_level.o(.bss._tx_byte_pool_created_ptr) for _tx_byte_pool_created_ptr
+    txe_byte_pool_create.o(.text) refers to tx_initialize_high_level.o(.bss._tx_byte_pool_created_count) for _tx_byte_pool_created_count
+    txe_byte_pool_create.o(.text) refers to tx_thread_system_preempt_check.o(.text) for _tx_thread_system_preempt_check
+    txe_byte_pool_create.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_current_ptr) for _tx_thread_current_ptr
+    txe_byte_pool_create.o(.text) refers to tx_thread_initialize.o(.data._tx_thread_system_state) for _tx_thread_system_state
+    txe_byte_pool_create.o(.text) refers to tx_timer_initialize.o(.bss._tx_timer_thread) for _tx_timer_thread
+    txe_byte_pool_create.o(.text) refers to tx_byte_pool_create.o(.text) for _tx_byte_pool_create
+    txe_byte_pool_create.o(.ARM.exidx) refers to txe_byte_pool_create.o(.text) for [Anonymous Symbol]
+    txe_event_flags_create.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_preempt_disable) for _tx_thread_preempt_disable
+    txe_event_flags_create.o(.text) refers to tx_initialize_high_level.o(.bss._tx_event_flags_created_ptr) for _tx_event_flags_created_ptr
+    txe_event_flags_create.o(.text) refers to tx_initialize_high_level.o(.bss._tx_event_flags_created_count) for _tx_event_flags_created_count
+    txe_event_flags_create.o(.text) refers to tx_thread_system_preempt_check.o(.text) for _tx_thread_system_preempt_check
+    txe_event_flags_create.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_current_ptr) for _tx_thread_current_ptr
+    txe_event_flags_create.o(.text) refers to tx_thread_initialize.o(.data._tx_thread_system_state) for _tx_thread_system_state
+    txe_event_flags_create.o(.text) refers to tx_timer_initialize.o(.bss._tx_timer_thread) for _tx_timer_thread
+    txe_event_flags_create.o(.text) refers to tx_event_flags_create.o(.text) for _tx_event_flags_create
+    txe_event_flags_create.o(.ARM.exidx) refers to txe_event_flags_create.o(.text) for [Anonymous Symbol]
+    txe_event_flags_get.o(.text) refers to tx_thread_initialize.o(.data._tx_thread_system_state) for _tx_thread_system_state
+    txe_event_flags_get.o(.text) refers to tx_event_flags_get.o(.text) for _tx_event_flags_get
+    txe_event_flags_get.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_current_ptr) for _tx_thread_current_ptr
+    txe_event_flags_get.o(.text) refers to tx_timer_initialize.o(.bss._tx_timer_thread) for _tx_timer_thread
+    txe_event_flags_get.o(.ARM.exidx) refers to txe_event_flags_get.o(.text) for [Anonymous Symbol]
+    txe_event_flags_set.o(.text) refers to tx_event_flags_set.o(.text) for _tx_event_flags_set
+    txe_event_flags_set.o(.ARM.exidx) refers to txe_event_flags_set.o(.text) for [Anonymous Symbol]
+    txe_mutex_create.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_preempt_disable) for _tx_thread_preempt_disable
+    txe_mutex_create.o(.text) refers to tx_initialize_high_level.o(.bss._tx_mutex_created_ptr) for _tx_mutex_created_ptr
+    txe_mutex_create.o(.text) refers to tx_initialize_high_level.o(.bss._tx_mutex_created_count) for _tx_mutex_created_count
+    txe_mutex_create.o(.text) refers to tx_thread_system_preempt_check.o(.text) for _tx_thread_system_preempt_check
+    txe_mutex_create.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_current_ptr) for _tx_thread_current_ptr
+    txe_mutex_create.o(.text) refers to tx_timer_initialize.o(.bss._tx_timer_thread) for _tx_timer_thread
+    txe_mutex_create.o(.text) refers to tx_thread_initialize.o(.data._tx_thread_system_state) for _tx_thread_system_state
+    txe_mutex_create.o(.text) refers to tx_mutex_create.o(.text) for _tx_mutex_create
+    txe_mutex_create.o(.ARM.exidx) refers to txe_mutex_create.o(.text) for [Anonymous Symbol]
+    txe_mutex_get.o(.text) refers to tx_thread_initialize.o(.data._tx_thread_system_state) for _tx_thread_system_state
+    txe_mutex_get.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_current_ptr) for _tx_thread_current_ptr
+    txe_mutex_get.o(.text) refers to tx_timer_initialize.o(.bss._tx_timer_thread) for _tx_timer_thread
+    txe_mutex_get.o(.text) refers to tx_mutex_get.o(.text) for _tx_mutex_get
+    txe_mutex_get.o(.ARM.exidx) refers to txe_mutex_get.o(.text) for [Anonymous Symbol]
+    txe_mutex_put.o(.text) refers to tx_thread_initialize.o(.data._tx_thread_system_state) for _tx_thread_system_state
+    txe_mutex_put.o(.text) refers to tx_mutex_put.o(.text) for _tx_mutex_put
+    txe_mutex_put.o(.ARM.exidx) refers to txe_mutex_put.o(.text) for [Anonymous Symbol]
+    txe_queue_create.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_preempt_disable) for _tx_thread_preempt_disable
+    txe_queue_create.o(.text) refers to tx_initialize_high_level.o(.bss._tx_queue_created_ptr) for _tx_queue_created_ptr
+    txe_queue_create.o(.text) refers to tx_initialize_high_level.o(.bss._tx_queue_created_count) for _tx_queue_created_count
+    txe_queue_create.o(.text) refers to tx_thread_system_preempt_check.o(.text) for _tx_thread_system_preempt_check
+    txe_queue_create.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_current_ptr) for _tx_thread_current_ptr
+    txe_queue_create.o(.text) refers to tx_thread_initialize.o(.data._tx_thread_system_state) for _tx_thread_system_state
+    txe_queue_create.o(.text) refers to tx_timer_initialize.o(.bss._tx_timer_thread) for _tx_timer_thread
+    txe_queue_create.o(.text) refers to tx_queue_create.o(.text) for _tx_queue_create
+    txe_queue_create.o(.ARM.exidx) refers to txe_queue_create.o(.text) for [Anonymous Symbol]
+    txe_queue_receive.o(.text) refers to tx_queue_receive.o(.text) for _tx_queue_receive
+    txe_queue_receive.o(.text) refers to tx_thread_initialize.o(.data._tx_thread_system_state) for _tx_thread_system_state
+    txe_queue_receive.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_current_ptr) for _tx_thread_current_ptr
+    txe_queue_receive.o(.text) refers to tx_timer_initialize.o(.bss._tx_timer_thread) for _tx_timer_thread
+    txe_queue_receive.o(.ARM.exidx) refers to txe_queue_receive.o(.text) for [Anonymous Symbol]
+    txe_queue_send.o(.text) refers to tx_queue_send.o(.text) for _tx_queue_send
+    txe_queue_send.o(.text) refers to tx_thread_initialize.o(.data._tx_thread_system_state) for _tx_thread_system_state
+    txe_queue_send.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_current_ptr) for _tx_thread_current_ptr
+    txe_queue_send.o(.text) refers to tx_timer_initialize.o(.bss._tx_timer_thread) for _tx_timer_thread
+    txe_queue_send.o(.ARM.exidx) refers to txe_queue_send.o(.text) for [Anonymous Symbol]
+    txe_semaphore_create.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_preempt_disable) for _tx_thread_preempt_disable
+    txe_semaphore_create.o(.text) refers to tx_initialize_high_level.o(.bss._tx_semaphore_created_ptr) for _tx_semaphore_created_ptr
+    txe_semaphore_create.o(.text) refers to tx_initialize_high_level.o(.bss._tx_semaphore_created_count) for _tx_semaphore_created_count
+    txe_semaphore_create.o(.text) refers to tx_thread_system_preempt_check.o(.text) for _tx_thread_system_preempt_check
+    txe_semaphore_create.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_current_ptr) for _tx_thread_current_ptr
+    txe_semaphore_create.o(.text) refers to tx_timer_initialize.o(.bss._tx_timer_thread) for _tx_timer_thread
+    txe_semaphore_create.o(.text) refers to tx_thread_initialize.o(.data._tx_thread_system_state) for _tx_thread_system_state
+    txe_semaphore_create.o(.text) refers to tx_semaphore_create.o(.text) for _tx_semaphore_create
+    txe_semaphore_create.o(.ARM.exidx) refers to txe_semaphore_create.o(.text) for [Anonymous Symbol]
+    txe_semaphore_get.o(.text) refers to tx_semaphore_get.o(.text) for _tx_semaphore_get
+    txe_semaphore_get.o(.text) refers to tx_thread_initialize.o(.data._tx_thread_system_state) for _tx_thread_system_state
+    txe_semaphore_get.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_current_ptr) for _tx_thread_current_ptr
+    txe_semaphore_get.o(.text) refers to tx_timer_initialize.o(.bss._tx_timer_thread) for _tx_timer_thread
+    txe_semaphore_get.o(.ARM.exidx) refers to txe_semaphore_get.o(.text) for [Anonymous Symbol]
+    txe_semaphore_put.o(.text) refers to tx_semaphore_put.o(.text) for _tx_semaphore_put
+    txe_semaphore_put.o(.ARM.exidx) refers to txe_semaphore_put.o(.text) for [Anonymous Symbol]
+    txe_thread_create.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_preempt_disable) for _tx_thread_preempt_disable
+    txe_thread_create.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_created_count) for _tx_thread_created_count
+    txe_thread_create.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_created_ptr) for _tx_thread_created_ptr
+    txe_thread_create.o(.text) refers to tx_thread_system_preempt_check.o(.text) for _tx_thread_system_preempt_check
+    txe_thread_create.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_current_ptr) for _tx_thread_current_ptr
+    txe_thread_create.o(.text) refers to tx_thread_initialize.o(.data._tx_thread_system_state) for _tx_thread_system_state
+    txe_thread_create.o(.text) refers to tx_timer_initialize.o(.bss._tx_timer_thread) for _tx_timer_thread
+    txe_thread_create.o(.text) refers to tx_thread_create.o(.text) for _tx_thread_create
+    txe_thread_create.o(.ARM.exidx) refers to txe_thread_create.o(.text) for [Anonymous Symbol]
+    interrupt.o(i.IntDisable) refers to interrupt.o(.constdata) for .constdata
+    interrupt.o(i.IntEnable) refers to interrupt.o(.constdata) for .constdata
+    interrupt.o(i.IntIsEnabled) refers to interrupt.o(.constdata) for .constdata
+    interrupt.o(i.IntMasterDisable) refers to cpu.o(.emb_text) for CPUcpsid
+    interrupt.o(i.IntMasterEnable) refers to cpu.o(.emb_text) for CPUcpsie
+    interrupt.o(i.IntPendClear) refers to interrupt.o(.constdata) for .constdata
+    interrupt.o(i.IntPendSet) refers to interrupt.o(.constdata) for .constdata
+    interrupt.o(i.IntPriorityGet) refers to interrupt.o(.constdata) for .constdata
+    interrupt.o(i.IntPriorityGroupingGet) refers to interrupt.o(.constdata) for .constdata
+    interrupt.o(i.IntPriorityGroupingSet) refers to interrupt.o(.constdata) for .constdata
+    interrupt.o(i.IntPriorityMaskGet) refers to cpu.o(.emb_text) for CPUbasepriGet
+    interrupt.o(i.IntPriorityMaskSet) refers to cpu.o(.emb_text) for CPUbasepriSet
+    interrupt.o(i.IntPrioritySet) refers to interrupt.o(.constdata) for .constdata
+    interrupt.o(i.IntRegister) refers to interrupt.o(vtable) for vtable
+    interrupt.o(i.IntUnregister) refers to interrupt.o(i._IntDefaultHandler) for _IntDefaultHandler
+    interrupt.o(i.IntUnregister) refers to interrupt.o(vtable) for vtable
+    tx_block_allocate.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_preempt_disable) for _tx_thread_preempt_disable
+    tx_block_allocate.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_current_ptr) for _tx_thread_current_ptr
+    tx_block_allocate.o(.text) refers to tx_block_pool_cleanup.o(.text) for _tx_block_pool_cleanup
+    tx_block_allocate.o(.text) refers to tx_thread_system_suspend.o(.text) for _tx_thread_system_suspend
+    tx_block_allocate.o(.ARM.exidx) refers to tx_block_allocate.o(.text) for [Anonymous Symbol]
+    tx_block_pool_create.o(.text) refers to rt_memclr_w.o(.text) for __aeabi_memclr4
+    tx_block_pool_create.o(.text) refers to tx_initialize_high_level.o(.bss._tx_block_pool_created_count) for _tx_block_pool_created_count
+    tx_block_pool_create.o(.text) refers to tx_initialize_high_level.o(.bss._tx_block_pool_created_ptr) for _tx_block_pool_created_ptr
+    tx_block_pool_create.o(.ARM.exidx) refers to tx_block_pool_create.o(.text) for [Anonymous Symbol]
+    tx_block_release.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_preempt_disable) for _tx_thread_preempt_disable
+    tx_block_release.o(.text) refers to tx_thread_system_resume.o(.text) for _tx_thread_system_resume
+    tx_block_release.o(.ARM.exidx) refers to tx_block_release.o(.text) for [Anonymous Symbol]
+    tx_byte_allocate.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_current_ptr) for _tx_thread_current_ptr
+    tx_byte_allocate.o(.text) refers to tx_byte_pool_search.o(.text) for _tx_byte_pool_search
+    tx_byte_allocate.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_preempt_disable) for _tx_thread_preempt_disable
+    tx_byte_allocate.o(.text) refers to tx_byte_pool_cleanup.o(.text) for _tx_byte_pool_cleanup
+    tx_byte_allocate.o(.text) refers to tx_thread_system_suspend.o(.text) for _tx_thread_system_suspend
+    tx_byte_allocate.o(.ARM.exidx) refers to tx_byte_allocate.o(.text) for [Anonymous Symbol]
+    tx_byte_pool_create.o(.text) refers to rt_memclr_w.o(.text) for __aeabi_memclr4
+    tx_byte_pool_create.o(.text) refers to tx_initialize_high_level.o(.bss._tx_byte_pool_created_count) for _tx_byte_pool_created_count
+    tx_byte_pool_create.o(.text) refers to tx_initialize_high_level.o(.bss._tx_byte_pool_created_ptr) for _tx_byte_pool_created_ptr
+    tx_byte_pool_create.o(.ARM.exidx) refers to tx_byte_pool_create.o(.text) for [Anonymous Symbol]
+    tx_event_flags_create.o(.text) refers to rt_memclr_w.o(.text) for __aeabi_memclr4
+    tx_event_flags_create.o(.text) refers to tx_initialize_high_level.o(.bss._tx_event_flags_created_count) for _tx_event_flags_created_count
+    tx_event_flags_create.o(.text) refers to tx_initialize_high_level.o(.bss._tx_event_flags_created_ptr) for _tx_event_flags_created_ptr
+    tx_event_flags_create.o(.ARM.exidx) refers to tx_event_flags_create.o(.text) for [Anonymous Symbol]
+    tx_event_flags_get.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_preempt_disable) for _tx_thread_preempt_disable
+    tx_event_flags_get.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_current_ptr) for _tx_thread_current_ptr
+    tx_event_flags_get.o(.text) refers to tx_event_flags_cleanup.o(.text) for _tx_event_flags_cleanup
+    tx_event_flags_get.o(.text) refers to tx_thread_system_suspend.o(.text) for _tx_thread_system_suspend
+    tx_event_flags_get.o(.ARM.exidx) refers to tx_event_flags_get.o(.text) for [Anonymous Symbol]
+    tx_event_flags_set.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_preempt_disable) for _tx_thread_preempt_disable
+    tx_event_flags_set.o(.text) refers to tx_thread_system_resume.o(.text) for _tx_thread_system_resume
+    tx_event_flags_set.o(.text) refers to tx_thread_system_preempt_check.o(.text) for _tx_thread_system_preempt_check
+    tx_event_flags_set.o(.ARM.exidx) refers to tx_event_flags_set.o(.text) for [Anonymous Symbol]
+    tx_mutex_create.o(.text) refers to rt_memclr_w.o(.text) for __aeabi_memclr4
+    tx_mutex_create.o(.text) refers to tx_initialize_high_level.o(.bss._tx_mutex_created_count) for _tx_mutex_created_count
+    tx_mutex_create.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_mutex_release) for _tx_thread_mutex_release
+    tx_mutex_create.o(.text) refers to tx_mutex_cleanup.o(.text) for _tx_mutex_thread_release
+    tx_mutex_create.o(.text) refers to tx_initialize_high_level.o(.bss._tx_mutex_created_ptr) for _tx_mutex_created_ptr
+    tx_mutex_create.o(.ARM.exidx) refers to tx_mutex_create.o(.text) for [Anonymous Symbol]
+    tx_mutex_get.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_current_ptr) for _tx_thread_current_ptr
+    tx_mutex_get.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_preempt_disable) for _tx_thread_preempt_disable
+    tx_mutex_get.o(.text) refers to tx_mutex_cleanup.o(.text) for _tx_mutex_cleanup
+    tx_mutex_get.o(.text) refers to tx_mutex_priority_change.o(.text) for _tx_mutex_priority_change
+    tx_mutex_get.o(.text) refers to tx_thread_system_suspend.o(.text) for _tx_thread_system_suspend
+    tx_mutex_get.o(.ARM.exidx) refers to tx_mutex_get.o(.text) for [Anonymous Symbol]
+    tx_mutex_put.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_current_ptr) for _tx_thread_current_ptr
+    tx_mutex_put.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_preempt_disable) for _tx_thread_preempt_disable
+    tx_mutex_put.o(.text) refers to tx_mutex_prioritize.o(.text) for _tx_mutex_prioritize
+    tx_mutex_put.o(.text) refers to tx_mutex_priority_change.o(.text) for _tx_mutex_priority_change
+    tx_mutex_put.o(.text) refers to tx_thread_system_preempt_check.o(.text) for _tx_thread_system_preempt_check
+    tx_mutex_put.o(.text) refers to tx_thread_system_resume.o(.text) for _tx_thread_system_resume
+    tx_mutex_put.o(.ARM.exidx) refers to tx_mutex_put.o(.text) for [Anonymous Symbol]
+    tx_queue_create.o(.text) refers to rt_memclr_w.o(.text) for __aeabi_memclr4
+    tx_queue_create.o(.text) refers to tx_initialize_high_level.o(.bss._tx_queue_created_count) for _tx_queue_created_count
+    tx_queue_create.o(.text) refers to tx_initialize_high_level.o(.bss._tx_queue_created_ptr) for _tx_queue_created_ptr
+    tx_queue_create.o(.ARM.exidx) refers to tx_queue_create.o(.text) for [Anonymous Symbol]
+    tx_queue_receive.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_preempt_disable) for _tx_thread_preempt_disable
+    tx_queue_receive.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_current_ptr) for _tx_thread_current_ptr
+    tx_queue_receive.o(.text) refers to tx_queue_cleanup.o(.text) for _tx_queue_cleanup
+    tx_queue_receive.o(.text) refers to tx_thread_system_suspend.o(.text) for _tx_thread_system_suspend
+    tx_queue_receive.o(.text) refers to tx_thread_system_resume.o(.text) for _tx_thread_system_resume
+    tx_queue_receive.o(.ARM.exidx) refers to tx_queue_receive.o(.text) for [Anonymous Symbol]
+    tx_queue_send.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_preempt_disable) for _tx_thread_preempt_disable
+    tx_queue_send.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_current_ptr) for _tx_thread_current_ptr
+    tx_queue_send.o(.text) refers to tx_queue_cleanup.o(.text) for _tx_queue_cleanup
+    tx_queue_send.o(.text) refers to tx_thread_system_suspend.o(.text) for _tx_thread_system_suspend
+    tx_queue_send.o(.text) refers to tx_thread_system_resume.o(.text) for _tx_thread_system_resume
+    tx_queue_send.o(.ARM.exidx) refers to tx_queue_send.o(.text) for [Anonymous Symbol]
+    tx_semaphore_create.o(.text) refers to tx_initialize_high_level.o(.bss._tx_semaphore_created_count) for _tx_semaphore_created_count
+    tx_semaphore_create.o(.text) refers to tx_initialize_high_level.o(.bss._tx_semaphore_created_ptr) for _tx_semaphore_created_ptr
+    tx_semaphore_create.o(.ARM.exidx) refers to tx_semaphore_create.o(.text) for [Anonymous Symbol]
+    tx_semaphore_get.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_preempt_disable) for _tx_thread_preempt_disable
+    tx_semaphore_get.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_current_ptr) for _tx_thread_current_ptr
+    tx_semaphore_get.o(.text) refers to tx_semaphore_cleanup.o(.text) for _tx_semaphore_cleanup
+    tx_semaphore_get.o(.text) refers to tx_thread_system_suspend.o(.text) for _tx_thread_system_suspend
+    tx_semaphore_get.o(.ARM.exidx) refers to tx_semaphore_get.o(.text) for [Anonymous Symbol]
+    tx_semaphore_put.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_preempt_disable) for _tx_thread_preempt_disable
+    tx_semaphore_put.o(.text) refers to tx_thread_system_resume.o(.text) for _tx_thread_system_resume
+    tx_semaphore_put.o(.ARM.exidx) refers to tx_semaphore_put.o(.text) for [Anonymous Symbol]
+    tx_thread_create.o(.text) refers to aeabi_memset.o(.text) for __aeabi_memset
+    tx_thread_create.o(.text) refers to rt_memclr_w.o(.text) for __aeabi_memclr4
+    tx_thread_create.o(.text) refers to tx_thread_timeout.o(.text) for _tx_thread_timeout
+    tx_thread_create.o(.text) refers to tx_thread_shell_entry.o(.text) for _tx_thread_shell_entry
+    tx_thread_create.o(.text) refers to tx_thread_stack_build.o(.text) for _tx_thread_stack_build
+    tx_thread_create.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_created_count) for _tx_thread_created_count
+    tx_thread_create.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_created_ptr) for _tx_thread_created_ptr
+    tx_thread_create.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_preempt_disable) for _tx_thread_preempt_disable
+    tx_thread_create.o(.text) refers to tx_thread_initialize.o(.data._tx_thread_system_state) for _tx_thread_system_state
+    tx_thread_create.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_execute_ptr) for _tx_thread_execute_ptr
+    tx_thread_create.o(.text) refers to tx_thread_system_preempt_check.o(.text) for _tx_thread_system_preempt_check
+    tx_thread_create.o(.text) refers to tx_thread_system_resume.o(.text) for _tx_thread_system_resume
+    tx_thread_create.o(.ARM.exidx) refers to tx_thread_create.o(.text) for [Anonymous Symbol]
+    tx_thread_system_preempt_check.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_preempt_disable) for _tx_thread_preempt_disable
+    tx_thread_system_preempt_check.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_current_ptr) for _tx_thread_current_ptr
+    tx_thread_system_preempt_check.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_execute_ptr) for _tx_thread_execute_ptr
+    tx_thread_system_preempt_check.o(.ARM.exidx) refers to tx_thread_system_preempt_check.o(.text) for [Anonymous Symbol]
+    tx_thread_system_suspend.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_current_ptr) for _tx_thread_current_ptr
+    tx_thread_system_suspend.o(.text) refers to tx_timer_system_activate.o(.text) for _tx_timer_system_activate
+    tx_thread_system_suspend.o(.text) refers to tx_timer_initialize.o(.bss._tx_timer_time_slice) for _tx_timer_time_slice
+    tx_thread_system_suspend.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_preempt_disable) for _tx_thread_preempt_disable
+    tx_thread_system_suspend.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_execute_ptr) for _tx_thread_execute_ptr
+    tx_thread_system_suspend.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_priority_list) for _tx_thread_priority_list
+    tx_thread_system_suspend.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_preempted_maps) for _tx_thread_preempted_maps
+    tx_thread_system_suspend.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_priority_maps) for _tx_thread_priority_maps
+    tx_thread_system_suspend.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_highest_priority) for _tx_thread_highest_priority
+    tx_thread_system_suspend.o(.ARM.exidx) refers to tx_thread_system_suspend.o(.text) for [Anonymous Symbol]
+    tx_thread_time_slice.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_current_ptr) for _tx_thread_current_ptr
+    tx_thread_time_slice.o(.text) refers to tx_timer_initialize.o(.bss._tx_timer_expired_time_slice) for _tx_timer_expired_time_slice
+    tx_thread_time_slice.o(.text) refers to tx_timer_initialize.o(.bss._tx_timer_time_slice) for _tx_timer_time_slice
+    tx_thread_time_slice.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_highest_priority) for _tx_thread_highest_priority
+    tx_thread_time_slice.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_priority_list) for _tx_thread_priority_list
+    tx_thread_time_slice.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_execute_ptr) for _tx_thread_execute_ptr
+    tx_thread_time_slice.o(.ARM.exidx) refers to tx_thread_time_slice.o(.text) for [Anonymous Symbol]
+    tx_timer_expiration_process.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_preempt_disable) for _tx_thread_preempt_disable
+    tx_timer_expiration_process.o(.text) refers to tx_timer_initialize.o(.bss._tx_timer_thread) for _tx_timer_thread
+    tx_timer_expiration_process.o(.text) refers to tx_thread_system_resume.o(.text) for _tx_thread_system_resume
+    tx_timer_expiration_process.o(.ARM.exidx) refers to tx_timer_expiration_process.o(.text) for [Anonymous Symbol]
+    tx_timer_initialize.o(.text) refers to tx_timer_initialize.o(.bss._tx_timer_system_clock) for _tx_timer_system_clock
+    tx_timer_initialize.o(.text) refers to tx_timer_initialize.o(.bss._tx_timer_time_slice) for _tx_timer_time_slice
+    tx_timer_initialize.o(.text) refers to tx_timer_initialize.o(.bss._tx_timer_expired_time_slice) for _tx_timer_expired_time_slice
+    tx_timer_initialize.o(.text) refers to tx_timer_initialize.o(.bss._tx_timer_expired) for _tx_timer_expired
+    tx_timer_initialize.o(.text) refers to tx_timer_initialize.o(.bss._tx_timer_expired_timer_ptr) for _tx_timer_expired_timer_ptr
+    tx_timer_initialize.o(.text) refers to tx_timer_initialize.o(.bss._tx_timer_list) for _tx_timer_list
+    tx_timer_initialize.o(.text) refers to rt_memclr_w.o(.text) for __aeabi_memclr4
+    tx_timer_initialize.o(.text) refers to tx_timer_initialize.o(.bss._tx_timer_list_start) for _tx_timer_list_start
+    tx_timer_initialize.o(.text) refers to tx_timer_initialize.o(.bss._tx_timer_current_ptr) for _tx_timer_current_ptr
+    tx_timer_initialize.o(.text) refers to tx_timer_initialize.o(.bss._tx_timer_list_end) for _tx_timer_list_end
+    tx_timer_initialize.o(.text) refers to tx_timer_initialize.o(.bss._tx_timer_stack_start) for _tx_timer_stack_start
+    tx_timer_initialize.o(.text) refers to tx_timer_initialize.o(.bss._tx_timer_thread_stack_area) for _tx_timer_thread_stack_area
+    tx_timer_initialize.o(.text) refers to tx_timer_initialize.o(.bss._tx_timer_stack_size) for _tx_timer_stack_size
+    tx_timer_initialize.o(.text) refers to tx_timer_initialize.o(.bss._tx_timer_priority) for _tx_timer_priority
+    tx_timer_initialize.o(.text) refers to tx_timer_initialize.o(.bss._tx_timer_thread) for _tx_timer_thread
+    tx_timer_initialize.o(.text) refers to tx_timer_thread_entry.o(.text) for _tx_timer_thread_entry
+    tx_timer_initialize.o(.text) refers to tx_thread_create.o(.text) for _tx_thread_create
+    tx_timer_initialize.o(.text) refers to tx_timer_initialize.o(.bss._tx_timer_created_ptr) for _tx_timer_created_ptr
+    tx_timer_initialize.o(.text) refers to tx_timer_initialize.o(.bss._tx_timer_created_count) for _tx_timer_created_count
+    tx_timer_initialize.o(.ARM.exidx) refers to tx_timer_initialize.o(.text) for [Anonymous Symbol]
+    tx_block_pool_cleanup.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_preempt_disable) for _tx_thread_preempt_disable
+    tx_block_pool_cleanup.o(.text) refers to tx_thread_system_resume.o(.text) for _tx_thread_system_resume
+    tx_block_pool_cleanup.o(.ARM.exidx) refers to tx_block_pool_cleanup.o(.text) for [Anonymous Symbol]
+    tx_byte_pool_cleanup.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_preempt_disable) for _tx_thread_preempt_disable
+    tx_byte_pool_cleanup.o(.text) refers to tx_thread_system_resume.o(.text) for _tx_thread_system_resume
+    tx_byte_pool_cleanup.o(.ARM.exidx) refers to tx_byte_pool_cleanup.o(.text) for [Anonymous Symbol]
+    tx_byte_pool_search.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_current_ptr) for _tx_thread_current_ptr
+    tx_byte_pool_search.o(.ARM.exidx) refers to tx_byte_pool_search.o(.text) for [Anonymous Symbol]
+    tx_event_flags_cleanup.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_preempt_disable) for _tx_thread_preempt_disable
+    tx_event_flags_cleanup.o(.text) refers to tx_thread_system_resume.o(.text) for _tx_thread_system_resume
+    tx_event_flags_cleanup.o(.ARM.exidx) refers to tx_event_flags_cleanup.o(.text) for [Anonymous Symbol]
+    tx_mutex_cleanup.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_preempt_disable) for _tx_thread_preempt_disable
+    tx_mutex_cleanup.o(.text) refers to tx_thread_system_resume.o(.text) for _tx_thread_system_resume
+    tx_mutex_cleanup.o(.text) refers to tx_mutex_put.o(.text) for _tx_mutex_put
+    tx_mutex_cleanup.o(.ARM.exidx) refers to tx_mutex_cleanup.o(.text) for [Anonymous Symbol]
+    tx_mutex_prioritize.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_preempt_disable) for _tx_thread_preempt_disable
+    tx_mutex_prioritize.o(.text) refers to tx_thread_system_preempt_check.o(.text) for _tx_thread_system_preempt_check
+    tx_mutex_prioritize.o(.ARM.exidx) refers to tx_mutex_prioritize.o(.text) for [Anonymous Symbol]
+    tx_mutex_priority_change.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_execute_ptr) for _tx_thread_execute_ptr
+    tx_mutex_priority_change.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_preempt_disable) for _tx_thread_preempt_disable
+    tx_mutex_priority_change.o(.text) refers to tx_thread_system_suspend.o(.text) for _tx_thread_system_suspend
+    tx_mutex_priority_change.o(.text) refers to tx_thread_system_resume.o(.text) for _tx_thread_system_resume
+    tx_mutex_priority_change.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_preempted_maps) for _tx_thread_preempted_maps
+    tx_mutex_priority_change.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_priority_list) for _tx_thread_priority_list
+    tx_mutex_priority_change.o(.ARM.exidx) refers to tx_mutex_priority_change.o(.text) for [Anonymous Symbol]
+    tx_queue_cleanup.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_preempt_disable) for _tx_thread_preempt_disable
+    tx_queue_cleanup.o(.text) refers to tx_thread_system_resume.o(.text) for _tx_thread_system_resume
+    tx_queue_cleanup.o(.ARM.exidx) refers to tx_queue_cleanup.o(.text) for [Anonymous Symbol]
+    tx_semaphore_cleanup.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_preempt_disable) for _tx_thread_preempt_disable
+    tx_semaphore_cleanup.o(.text) refers to tx_thread_system_resume.o(.text) for _tx_thread_system_resume
+    tx_semaphore_cleanup.o(.ARM.exidx) refers to tx_semaphore_cleanup.o(.text) for [Anonymous Symbol]
+    tx_thread_shell_entry.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_current_ptr) for _tx_thread_current_ptr
+    tx_thread_shell_entry.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_mutex_release) for _tx_thread_mutex_release
+    tx_thread_shell_entry.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_preempt_disable) for _tx_thread_preempt_disable
+    tx_thread_shell_entry.o(.text) refers to tx_thread_system_suspend.o(.text) for _tx_thread_system_suspend
+    tx_thread_shell_entry.o(.ARM.exidx) refers to tx_thread_shell_entry.o(.text) for [Anonymous Symbol]
+    tx_thread_system_resume.o(.text) refers to tx_timer_system_deactivate.o(.text) for _tx_timer_system_deactivate
+    tx_thread_system_resume.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_preempt_disable) for _tx_thread_preempt_disable
+    tx_thread_system_resume.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_execute_ptr) for _tx_thread_execute_ptr
+    tx_thread_system_resume.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_current_ptr) for _tx_thread_current_ptr
+    tx_thread_system_resume.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_priority_list) for _tx_thread_priority_list
+    tx_thread_system_resume.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_priority_maps) for _tx_thread_priority_maps
+    tx_thread_system_resume.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_highest_priority) for _tx_thread_highest_priority
+    tx_thread_system_resume.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_preempted_maps) for _tx_thread_preempted_maps
+    tx_thread_system_resume.o(.ARM.exidx) refers to tx_thread_system_resume.o(.text) for [Anonymous Symbol]
+    tx_thread_timeout.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_preempt_disable) for _tx_thread_preempt_disable
+    tx_thread_timeout.o(.text) refers to tx_thread_system_resume.o(.text) for _tx_thread_system_resume
+    tx_thread_timeout.o(.ARM.exidx) refers to tx_thread_timeout.o(.text) for [Anonymous Symbol]
+    tx_timer_system_activate.o(.text) refers to tx_timer_initialize.o(.bss._tx_timer_current_ptr) for _tx_timer_current_ptr
+    tx_timer_system_activate.o(.text) refers to tx_timer_initialize.o(.bss._tx_timer_list_start) for _tx_timer_list_start
+    tx_timer_system_activate.o(.text) refers to tx_timer_initialize.o(.bss._tx_timer_list_end) for _tx_timer_list_end
+    tx_timer_system_activate.o(.ARM.exidx) refers to tx_timer_system_activate.o(.text) for [Anonymous Symbol]
+    tx_timer_thread_entry.o(.text) refers to tx_timer_initialize.o(.bss._tx_timer_current_ptr) for _tx_timer_current_ptr
+    tx_timer_thread_entry.o(.text) refers to tx_timer_initialize.o(.bss._tx_timer_expired) for _tx_timer_expired
+    tx_timer_thread_entry.o(.text) refers to tx_timer_initialize.o(.bss._tx_timer_expired_timer_ptr) for _tx_timer_expired_timer_ptr
+    tx_timer_thread_entry.o(.text) refers to tx_timer_initialize.o(.bss._tx_timer_list_end) for _tx_timer_list_end
+    tx_timer_thread_entry.o(.text) refers to tx_timer_initialize.o(.bss._tx_timer_list_start) for _tx_timer_list_start
+    tx_timer_thread_entry.o(.text) refers to tx_timer_system_activate.o(.text) for _tx_timer_system_activate
+    tx_timer_thread_entry.o(.text) refers to tx_timer_initialize.o(.bss._tx_timer_thread) for _tx_timer_thread
+    tx_timer_thread_entry.o(.text) refers to tx_thread_initialize.o(.bss._tx_thread_preempt_disable) for _tx_thread_preempt_disable
+    tx_timer_thread_entry.o(.text) refers to tx_thread_system_suspend.o(.text) for _tx_thread_system_suspend
+    tx_timer_thread_entry.o(.ARM.exidx) refers to tx_timer_thread_entry.o(.text) for [Anonymous Symbol]
+    tx_timer_system_deactivate.o(.ARM.exidx) refers to tx_timer_system_deactivate.o(.text) for [Anonymous Symbol]
+    aeabi_memset.o(.text) refers to rt_memclr.o(.text) for _memset
+    __main.o(!!!main) refers to __rtentry.o(.ARM.Collect$$rtentry$$00000000) for __rt_entry
+    __rtentry.o(.ARM.Collect$$rtentry$$00000000) refers (Special) to __rtentry2.o(.ARM.Collect$$rtentry$$0000000A) for __rt_entry_li
+    __rtentry.o(.ARM.Collect$$rtentry$$00000000) refers (Special) to __rtentry2.o(.ARM.Collect$$rtentry$$0000000D) for __rt_entry_main
+    __rtentry.o(.ARM.Collect$$rtentry$$00000000) refers (Special) to __rtentry2.o(.ARM.Collect$$rtentry$$0000000C) for __rt_entry_postli_1
+    __rtentry.o(.ARM.Collect$$rtentry$$00000000) refers (Special) to __rtentry2.o(.ARM.Collect$$rtentry$$00000009) for __rt_entry_postsh_1
+    __rtentry.o(.ARM.Collect$$rtentry$$00000000) refers (Special) to __rtentry2.o(.ARM.Collect$$rtentry$$00000002) for __rt_entry_presh_1
+    __rtentry.o(.ARM.Collect$$rtentry$$00000000) refers (Special) to __rtentry4.o(.ARM.Collect$$rtentry$$00000004) for __rt_entry_sh
+    rt_memclr.o(.text) refers to rt_memclr_w.o(.text) for _memset_w
+    __rtentry2.o(.ARM.Collect$$rtentry$$00000008) refers to boardinit2.o(.text) for _platform_post_stackheap_init
+    __rtentry2.o(.ARM.Collect$$rtentry$$0000000A) refers to libinit.o(.ARM.Collect$$libinit$$00000000) for __rt_lib_init
+    __rtentry2.o(.ARM.Collect$$rtentry$$0000000B) refers to boardinit3.o(.text) for _platform_post_lib_init
+    __rtentry2.o(.ARM.Collect$$rtentry$$0000000D) refers to demo_threadx.o(.text) for main
+    __rtentry2.o(.ARM.Collect$$rtentry$$0000000D) refers to exit.o(.text) for exit
+    __rtentry2.o(.ARM.exidx) refers to __rtentry2.o(.ARM.Collect$$rtentry$$00000001) for .ARM.Collect$$rtentry$$00000001
+    __rtentry2.o(.ARM.exidx) refers to __rtentry2.o(.ARM.Collect$$rtentry$$00000008) for .ARM.Collect$$rtentry$$00000008
+    __rtentry2.o(.ARM.exidx) refers to __rtentry2.o(.ARM.Collect$$rtentry$$0000000A) for .ARM.Collect$$rtentry$$0000000A
+    __rtentry2.o(.ARM.exidx) refers to __rtentry2.o(.ARM.Collect$$rtentry$$0000000B) for .ARM.Collect$$rtentry$$0000000B
+    __rtentry2.o(.ARM.exidx) refers to __rtentry2.o(.ARM.Collect$$rtentry$$0000000D) for .ARM.Collect$$rtentry$$0000000D
+    __rtentry4.o(.ARM.Collect$$rtentry$$00000004) refers to sys_stackheap_outer.o(.text) for __user_setup_stackheap
+    __rtentry4.o(.ARM.exidx) refers to __rtentry4.o(.ARM.Collect$$rtentry$$00000004) for .ARM.Collect$$rtentry$$00000004
+    sys_stackheap_outer.o(.text) refers to libspace.o(.text) for __user_perproc_libspace
+    sys_stackheap_outer.o(.text) refers to startup_tm4c129.o(.text) for __user_initial_stackheap
+    exit.o(.text) refers to rtexit.o(.ARM.Collect$$rtexit$$00000000) for __rt_exit
+    libinit.o(.ARM.Collect$$libinit$$00000000) refers (Special) to libinit2.o(.ARM.Collect$$libinit$$00000030) for __rt_lib_init_alloca_1
+    libinit.o(.ARM.Collect$$libinit$$00000000) refers (Special) to libinit2.o(.ARM.Collect$$libinit$$0000002E) for __rt_lib_init_argv_1
+    libinit.o(.ARM.Collect$$libinit$$00000000) refers (Special) to libinit2.o(.ARM.Collect$$libinit$$0000001D) for __rt_lib_init_atexit_1
+    libinit.o(.ARM.Collect$$libinit$$00000000) refers (Special) to libinit2.o(.ARM.Collect$$libinit$$00000023) for __rt_lib_init_clock_1
+    libinit.o(.ARM.Collect$$libinit$$00000000) refers (Special) to libinit2.o(.ARM.Collect$$libinit$$00000034) for __rt_lib_init_cpp_1
+    libinit.o(.ARM.Collect$$libinit$$00000000) refers (Special) to libinit2.o(.ARM.Collect$$libinit$$00000032) for __rt_lib_init_exceptions_1
+    libinit.o(.ARM.Collect$$libinit$$00000000) refers (Special) to libinit2.o(.ARM.Collect$$libinit$$00000001) for __rt_lib_init_fp_1
+    libinit.o(.ARM.Collect$$libinit$$00000000) refers (Special) to libinit2.o(.ARM.Collect$$libinit$$00000021) for __rt_lib_init_fp_trap_1
+    libinit.o(.ARM.Collect$$libinit$$00000000) refers (Special) to libinit2.o(.ARM.Collect$$libinit$$00000025) for __rt_lib_init_getenv_1
+    libinit.o(.ARM.Collect$$libinit$$00000000) refers (Special) to libinit2.o(.ARM.Collect$$libinit$$0000000C) for __rt_lib_init_heap_1
+    libinit.o(.ARM.Collect$$libinit$$00000000) refers (Special) to libinit2.o(.ARM.Collect$$libinit$$00000013) for __rt_lib_init_lc_collate_1
+    libinit.o(.ARM.Collect$$libinit$$00000000) refers (Special) to libinit2.o(.ARM.Collect$$libinit$$00000015) for __rt_lib_init_lc_ctype_1
+    libinit.o(.ARM.Collect$$libinit$$00000000) refers (Special) to libinit2.o(.ARM.Collect$$libinit$$00000017) for __rt_lib_init_lc_monetary_1
+    libinit.o(.ARM.Collect$$libinit$$00000000) refers (Special) to libinit2.o(.ARM.Collect$$libinit$$00000019) for __rt_lib_init_lc_numeric_1
+    libinit.o(.ARM.Collect$$libinit$$00000000) refers (Special) to libinit2.o(.ARM.Collect$$libinit$$0000001B) for __rt_lib_init_lc_time_1
+    libinit.o(.ARM.Collect$$libinit$$00000000) refers (Special) to libinit2.o(.ARM.Collect$$libinit$$00000006) for __rt_lib_init_preinit_1
+    libinit.o(.ARM.Collect$$libinit$$00000000) refers (Special) to libinit2.o(.ARM.Collect$$libinit$$00000010) for __rt_lib_init_rand_1
+    libinit.o(.ARM.Collect$$libinit$$00000000) refers (Special) to libinit2.o(.ARM.Collect$$libinit$$00000004) for __rt_lib_init_relocate_pie_1
+    libinit.o(.ARM.Collect$$libinit$$00000000) refers (Special) to libinit2.o(.ARM.Collect$$libinit$$00000035) for __rt_lib_init_return
+    libinit.o(.ARM.Collect$$libinit$$00000000) refers (Special) to libinit2.o(.ARM.Collect$$libinit$$0000001F) for __rt_lib_init_signal_1
+    libinit.o(.ARM.Collect$$libinit$$00000000) refers (Special) to libinit2.o(.ARM.Collect$$libinit$$00000027) for __rt_lib_init_stdio_1
+    libinit.o(.ARM.Collect$$libinit$$00000000) refers (Special) to libinit2.o(.ARM.Collect$$libinit$$0000000E) for __rt_lib_init_user_alloc_1
+    libspace.o(.text) refers to libspace.o(.bss) for __libspace_start
+    rtexit.o(.ARM.Collect$$rtexit$$00000000) refers (Special) to rtexit2.o(.ARM.Collect$$rtexit$$00000004) for __rt_exit_exit
+    rtexit.o(.ARM.Collect$$rtexit$$00000000) refers (Special) to rtexit2.o(.ARM.Collect$$rtexit$$00000003) for __rt_exit_ls
+    rtexit.o(.ARM.Collect$$rtexit$$00000000) refers (Special) to rtexit2.o(.ARM.Collect$$rtexit$$00000002) for __rt_exit_prels_1
+    rtexit.o(.ARM.exidx) refers (Special) to rtexit2.o(.ARM.Collect$$rtexit$$00000004) for __rt_exit_exit
+    rtexit.o(.ARM.exidx) refers (Special) to rtexit2.o(.ARM.Collect$$rtexit$$00000003) for __rt_exit_ls
+    rtexit.o(.ARM.exidx) refers (Special) to rtexit2.o(.ARM.Collect$$rtexit$$00000002) for __rt_exit_prels_1
+    rtexit.o(.ARM.exidx) refers to rtexit.o(.ARM.Collect$$rtexit$$00000000) for .ARM.Collect$$rtexit$$00000000
+    libinit2.o(.ARM.Collect$$libinit$$00000001) refers to fpinit.o(x$fpl$fpinit) for _fp_init
+    libinit2.o(.ARM.Collect$$libinit$$00000012) refers to libinit2.o(.ARM.Collect$$libinit$$00000011) for .ARM.Collect$$libinit$$00000011
+    libinit2.o(.ARM.Collect$$libinit$$00000014) refers to libinit2.o(.ARM.Collect$$libinit$$00000011) for .ARM.Collect$$libinit$$00000011
+    libinit2.o(.ARM.Collect$$libinit$$00000016) refers to libinit2.o(.ARM.Collect$$libinit$$00000011) for .ARM.Collect$$libinit$$00000011
+    libinit2.o(.ARM.Collect$$libinit$$00000018) refers to libinit2.o(.ARM.Collect$$libinit$$00000011) for .ARM.Collect$$libinit$$00000011
+    libinit2.o(.ARM.Collect$$libinit$$0000001A) refers to libinit2.o(.ARM.Collect$$libinit$$00000011) for .ARM.Collect$$libinit$$00000011
+    libinit2.o(.ARM.Collect$$libinit$$00000028) refers to argv_veneer.o(.emb_text) for __ARM_argv_veneer
+    libinit2.o(.ARM.Collect$$libinit$$00000029) refers to argv_veneer.o(.emb_text) for __ARM_argv_veneer
+    rtexit2.o(.ARM.Collect$$rtexit$$00000003) refers to libshutdown.o(.ARM.Collect$$libshutdown$$00000000) for __rt_lib_shutdown
+    rtexit2.o(.ARM.Collect$$rtexit$$00000004) refers to sys_exit.o(.text) for _sys_exit
+    rtexit2.o(.ARM.exidx) refers to rtexit2.o(.ARM.Collect$$rtexit$$00000001) for .ARM.Collect$$rtexit$$00000001
+    rtexit2.o(.ARM.exidx) refers to rtexit2.o(.ARM.Collect$$rtexit$$00000003) for .ARM.Collect$$rtexit$$00000003
+    rtexit2.o(.ARM.exidx) refers to rtexit2.o(.ARM.Collect$$rtexit$$00000004) for .ARM.Collect$$rtexit$$00000004
+    argv_veneer.o(.emb_text) refers to no_argv.o(.text) for __ARM_get_argv
+    sys_exit.o(.text) refers (Special) to use_no_semi.o(.text) for __I$use$semihosting
+    sys_exit.o(.text) refers (Special) to indicate_semi.o(.text) for __semihosting_library_function
+    sys_exit_hlt.o(.text) refers (Special) to use_no_semi.o(.text) for __I$use$semihosting
+    sys_exit_hlt.o(.text) refers (Special) to indicate_semi.o(.text) for __semihosting_library_function
+    _get_argv_nomalloc.o(.text) refers (Special) to hrguard.o(.text) for __heap_region$guard
+    _get_argv_nomalloc.o(.text) refers to defsig_rtmem_outer.o(.text) for __rt_SIGRTMEM
+    _get_argv_nomalloc.o(.text) refers to sys_command.o(.text) for _sys_command_string
+    libshutdown.o(.ARM.Collect$$libshutdown$$00000000) refers (Special) to libshutdown2.o(.ARM.Collect$$libshutdown$$00000002) for __rt_lib_shutdown_cpp_1
+    libshutdown.o(.ARM.Collect$$libshutdown$$00000000) refers (Special) to libshutdown2.o(.ARM.Collect$$libshutdown$$00000007) for __rt_lib_shutdown_fp_trap_1
+    libshutdown.o(.ARM.Collect$$libshutdown$$00000000) refers (Special) to libshutdown2.o(.ARM.Collect$$libshutdown$$0000000F) for __rt_lib_shutdown_heap_1
+    libshutdown.o(.ARM.Collect$$libshutdown$$00000000) refers (Special) to libshutdown2.o(.ARM.Collect$$libshutdown$$00000010) for __rt_lib_shutdown_return
+    libshutdown.o(.ARM.Collect$$libshutdown$$00000000) refers (Special) to libshutdown2.o(.ARM.Collect$$libshutdown$$0000000A) for __rt_lib_shutdown_signal_1
+    libshutdown.o(.ARM.Collect$$libshutdown$$00000000) refers (Special) to libshutdown2.o(.ARM.Collect$$libshutdown$$00000004) for __rt_lib_shutdown_stdio_1
+    libshutdown.o(.ARM.Collect$$libshutdown$$00000000) refers (Special) to libshutdown2.o(.ARM.Collect$$libshutdown$$0000000C) for __rt_lib_shutdown_user_alloc_1
+    sys_command.o(.text) refers (Special) to use_no_semi.o(.text) for __I$use$semihosting
+    sys_command.o(.text) refers (Special) to indicate_semi.o(.text) for __semihosting_library_function
+    sys_command_hlt.o(.text) refers (Special) to use_no_semi.o(.text) for __I$use$semihosting
+    sys_command_hlt.o(.text) refers (Special) to indicate_semi.o(.text) for __semihosting_library_function
+    defsig_rtmem_outer.o(.text) refers to defsig_rtmem_inner.o(.text) for __rt_SIGRTMEM_inner
+    defsig_rtmem_outer.o(.text) refers to defsig_exit.o(.text) for __sig_exit
+    defsig_rtmem_formal.o(.text) refers to rt_raise.o(.text) for __rt_raise
+    rt_raise.o(.text) refers to __raise.o(.text) for __raise
+    rt_raise.o(.text) refers to sys_exit.o(.text) for _sys_exit
+    defsig_exit.o(.text) refers to sys_exit.o(.text) for _sys_exit
+    defsig_rtmem_inner.o(.text) refers to defsig_general.o(.text) for __default_signal_display
+    __raise.o(.text) refers to defsig.o(CL$$defsig) for __default_signal_handler
+    defsig_general.o(.text) refers to sys_wrch.o(.text) for _ttywrch
+    sys_wrch.o(.text) refers (Special) to use_no_semi.o(.text) for __I$use$semihosting
+    sys_wrch.o(.text) refers (Special) to indicate_semi.o(.text) for __semihosting_library_function
+    sys_wrch_hlt.o(.text) refers (Special) to use_no_semi.o(.text) for __I$use$semihosting
+    sys_wrch_hlt.o(.text) refers (Special) to indicate_semi.o(.text) for __semihosting_library_function
+    defsig.o(CL$$defsig) refers to defsig_rtmem_inner.o(.text) for __rt_SIGRTMEM_inner
+    defsig_abrt_inner.o(.text) refers to defsig_general.o(.text) for __default_signal_display
+    defsig_fpe_inner.o(.text) refers to defsig_general.o(.text) for __default_signal_display
+    defsig_rtred_inner.o(.text) refers to defsig_general.o(.text) for __default_signal_display
+    defsig_stak_inner.o(.text) refers to defsig_general.o(.text) for __default_signal_display
+    defsig_pvfn_inner.o(.text) refers to defsig_general.o(.text) for __default_signal_display
+    defsig_cppl_inner.o(.text) refers to defsig_general.o(.text) for __default_signal_display
+    defsig_segv_inner.o(.text) refers to defsig_general.o(.text) for __default_signal_display
+    defsig_other.o(.text) refers to defsig_general.o(.text) for __default_signal_display
+
+
+==============================================================================
+
+Removing Unused input sections from the image.
+
+    Removing demo_threadx.o(.ARM.exidx), (64 bytes).
+    Removing demo_threadx.o(.ARM.use_no_argv), (4 bytes).
+    Removing system_tm4c129.o(.ARM.exidx), (16 bytes).
+    Removing sysctl.o(.emb_text), (6 bytes).
+    Removing sysctl.o(i.SysCtlAltClkConfig), (12 bytes).
+    Removing sysctl.o(i.SysCtlClockGet), (340 bytes).
+    Removing sysctl.o(i.SysCtlClockOutConfig), (20 bytes).
+    Removing sysctl.o(i.SysCtlClockSet), (288 bytes).
+    Removing sysctl.o(i.SysCtlDeepSleep), (32 bytes).
+    Removing sysctl.o(i.SysCtlDeepSleepClockConfigSet), (112 bytes).
+    Removing sysctl.o(i.SysCtlDeepSleepClockSet), (12 bytes).
+    Removing sysctl.o(i.SysCtlDeepSleepPowerSet), (12 bytes).
+    Removing sysctl.o(i.SysCtlFlashSectorSizeGet), (56 bytes).
+    Removing sysctl.o(i.SysCtlFlashSizeGet), (56 bytes).
+    Removing sysctl.o(i.SysCtlGPIOAHBDisable), (28 bytes).
+    Removing sysctl.o(i.SysCtlGPIOAHBEnable), (24 bytes).
+    Removing sysctl.o(i.SysCtlIntClear), (12 bytes).
+    Removing sysctl.o(i.SysCtlIntDisable), (16 bytes).
+    Removing sysctl.o(i.SysCtlIntEnable), (16 bytes).
+    Removing sysctl.o(i.SysCtlIntRegister), (20 bytes).
+    Removing sysctl.o(i.SysCtlIntStatus), (16 bytes).
+    Removing sysctl.o(i.SysCtlIntUnregister), (18 bytes).
+    Removing sysctl.o(i.SysCtlLDODeepSleepGet), (12 bytes).
+    Removing sysctl.o(i.SysCtlLDODeepSleepSet), (12 bytes).
+    Removing sysctl.o(i.SysCtlLDOSleepGet), (12 bytes).
+    Removing sysctl.o(i.SysCtlLDOSleepSet), (12 bytes).
+    Removing sysctl.o(i.SysCtlMOSCConfigSet), (12 bytes).
+    Removing sysctl.o(i.SysCtlNMIClear), (16 bytes).
+    Removing sysctl.o(i.SysCtlNMIStatus), (12 bytes).
+    Removing sysctl.o(i.SysCtlPIOSCCalibrate), (76 bytes).
+    Removing sysctl.o(i.SysCtlPWMClockGet), (24 bytes).
+    Removing sysctl.o(i.SysCtlPWMClockSet), (20 bytes).
+    Removing sysctl.o(i.SysCtlPeripheralClockGating), (68 bytes).
+    Removing sysctl.o(i.SysCtlPeripheralDeepSleepDisable), (40 bytes).
+    Removing sysctl.o(i.SysCtlPeripheralDeepSleepEnable), (40 bytes).
+    Removing sysctl.o(i.SysCtlPeripheralDisable), (40 bytes).
+    Removing sysctl.o(i.SysCtlPeripheralEnable), (40 bytes).
+    Removing sysctl.o(i.SysCtlPeripheralPowerOff), (40 bytes).
+    Removing sysctl.o(i.SysCtlPeripheralPowerOn), (40 bytes).
+    Removing sysctl.o(i.SysCtlPeripheralPresent), (44 bytes).
+    Removing sysctl.o(i.SysCtlPeripheralReady), (44 bytes).
+    Removing sysctl.o(i.SysCtlPeripheralReset), (60 bytes).
+    Removing sysctl.o(i.SysCtlPeripheralSleepDisable), (40 bytes).
+    Removing sysctl.o(i.SysCtlPeripheralSleepEnable), (40 bytes).
+    Removing sysctl.o(i.SysCtlReset), (16 bytes).
+    Removing sysctl.o(i.SysCtlResetBehaviorGet), (12 bytes).
+    Removing sysctl.o(i.SysCtlResetBehaviorSet), (12 bytes).
+    Removing sysctl.o(i.SysCtlResetCauseClear), (16 bytes).
+    Removing sysctl.o(i.SysCtlResetCauseGet), (12 bytes).
+    Removing sysctl.o(i.SysCtlSRAMSizeGet), (16 bytes).
+    Removing sysctl.o(i.SysCtlSleep), (4 bytes).
+    Removing sysctl.o(i.SysCtlSleepPowerSet), (12 bytes).
+    Removing sysctl.o(i.SysCtlUSBPLLDisable), (16 bytes).
+    Removing sysctl.o(i.SysCtlUSBPLLEnable), (16 bytes).
+    Removing sysctl.o(i.SysCtlVCOGet), (120 bytes).
+    Removing sysctl.o(i.SysCtlVoltageEventClear), (16 bytes).
+    Removing sysctl.o(i.SysCtlVoltageEventConfig), (12 bytes).
+    Removing sysctl.o(i.SysCtlVoltageEventStatus), (12 bytes).
+    Removing tx_initialize_high_level.o(.ARM.exidx), (8 bytes).
+    Removing tx_initialize_kernel_enter.o(.ARM.exidx), (8 bytes).
+    Removing tx_thread_initialize.o(.ARM.exidx), (8 bytes).
+    Removing tx_thread_initialize.o(.data._tx_version_id), (122 bytes).
+    Removing tx_thread_initialize.o(.rodata._tx_thread_special_string), (87 bytes).
+    Removing tx_thread_sleep.o(.ARM.exidx), (8 bytes).
+    Removing txe_block_allocate.o(.ARM.exidx), (8 bytes).
+    Removing txe_block_pool_create.o(.ARM.exidx), (8 bytes).
+    Removing txe_block_release.o(.ARM.exidx), (8 bytes).
+    Removing txe_byte_allocate.o(.ARM.exidx), (8 bytes).
+    Removing txe_byte_pool_create.o(.ARM.exidx), (8 bytes).
+    Removing txe_event_flags_create.o(.ARM.exidx), (8 bytes).
+    Removing txe_event_flags_get.o(.ARM.exidx), (8 bytes).
+    Removing txe_event_flags_set.o(.ARM.exidx), (8 bytes).
+    Removing txe_mutex_create.o(.ARM.exidx), (8 bytes).
+    Removing txe_mutex_get.o(.ARM.exidx), (8 bytes).
+    Removing txe_mutex_put.o(.ARM.exidx), (8 bytes).
+    Removing txe_queue_create.o(.ARM.exidx), (8 bytes).
+    Removing txe_queue_receive.o(.ARM.exidx), (8 bytes).
+    Removing txe_queue_send.o(.ARM.exidx), (8 bytes).
+    Removing txe_semaphore_create.o(.ARM.exidx), (8 bytes).
+    Removing txe_semaphore_get.o(.ARM.exidx), (8 bytes).
+    Removing txe_semaphore_put.o(.ARM.exidx), (8 bytes).
+    Removing txe_thread_create.o(.ARM.exidx), (8 bytes).
+    Removing cpu.o(.emb_text), (38 bytes).
+    Removing interrupt.o(i.IntDisable), (100 bytes).
+    Removing interrupt.o(i.IntEnable), (100 bytes).
+    Removing interrupt.o(i.IntIsEnabled), (96 bytes).
+    Removing interrupt.o(i.IntMasterDisable), (14 bytes).
+    Removing interrupt.o(i.IntMasterEnable), (14 bytes).
+    Removing interrupt.o(i.IntPendClear), (68 bytes).
+    Removing interrupt.o(i.IntPendSet), (84 bytes).
+    Removing interrupt.o(i.IntPriorityGet), (28 bytes).
+    Removing interrupt.o(i.IntPriorityGroupingGet), (36 bytes).
+    Removing interrupt.o(i.IntPriorityGroupingSet), (28 bytes).
+    Removing interrupt.o(i.IntPriorityMaskGet), (4 bytes).
+    Removing interrupt.o(i.IntPriorityMaskSet), (4 bytes).
+    Removing interrupt.o(i.IntPrioritySet), (40 bytes).
+    Removing interrupt.o(i.IntRegister), (52 bytes).
+    Removing interrupt.o(i.IntTrigger), (12 bytes).
+    Removing interrupt.o(i.IntUnregister), (20 bytes).
+    Removing interrupt.o(i._IntDefaultHandler), (2 bytes).
+    Removing interrupt.o(.constdata), (268 bytes).
+    Removing interrupt.o(vtable), (620 bytes).
+    Removing tx_block_allocate.o(.ARM.exidx), (8 bytes).
+    Removing tx_block_pool_create.o(.ARM.exidx), (8 bytes).
+    Removing tx_block_release.o(.ARM.exidx), (8 bytes).
+    Removing tx_byte_allocate.o(.ARM.exidx), (8 bytes).
+    Removing tx_byte_pool_create.o(.ARM.exidx), (8 bytes).
+    Removing tx_event_flags_create.o(.ARM.exidx), (8 bytes).
+    Removing tx_event_flags_get.o(.ARM.exidx), (8 bytes).
+    Removing tx_event_flags_set.o(.ARM.exidx), (8 bytes).
+    Removing tx_mutex_create.o(.ARM.exidx), (8 bytes).
+    Removing tx_mutex_get.o(.ARM.exidx), (8 bytes).
+    Removing tx_mutex_put.o(.ARM.exidx), (8 bytes).
+    Removing tx_queue_create.o(.ARM.exidx), (8 bytes).
+    Removing tx_queue_receive.o(.ARM.exidx), (8 bytes).
+    Removing tx_queue_send.o(.ARM.exidx), (8 bytes).
+    Removing tx_semaphore_create.o(.ARM.exidx), (8 bytes).
+    Removing tx_semaphore_get.o(.ARM.exidx), (8 bytes).
+    Removing tx_semaphore_put.o(.ARM.exidx), (8 bytes).
+    Removing tx_thread_create.o(.ARM.exidx), (8 bytes).
+    Removing tx_thread_system_preempt_check.o(.ARM.exidx), (8 bytes).
+    Removing tx_thread_system_suspend.o(.ARM.exidx), (8 bytes).
+    Removing tx_thread_time_slice.o(.ARM.exidx), (8 bytes).
+    Removing tx_timer_expiration_process.o(.ARM.exidx), (8 bytes).
+    Removing tx_timer_initialize.o(.ARM.exidx), (8 bytes).
+    Removing tx_block_pool_cleanup.o(.ARM.exidx), (8 bytes).
+    Removing tx_byte_pool_cleanup.o(.ARM.exidx), (8 bytes).
+    Removing tx_byte_pool_search.o(.ARM.exidx), (8 bytes).
+    Removing tx_event_flags_cleanup.o(.ARM.exidx), (8 bytes).
+    Removing tx_mutex_cleanup.o(.ARM.exidx), (16 bytes).
+    Removing tx_mutex_prioritize.o(.ARM.exidx), (8 bytes).
+    Removing tx_mutex_priority_change.o(.ARM.exidx), (8 bytes).
+    Removing tx_queue_cleanup.o(.ARM.exidx), (8 bytes).
+    Removing tx_semaphore_cleanup.o(.ARM.exidx), (8 bytes).
+    Removing tx_thread_shell_entry.o(.ARM.exidx), (8 bytes).
+    Removing tx_thread_system_resume.o(.ARM.exidx), (8 bytes).
+    Removing tx_thread_timeout.o(.ARM.exidx), (8 bytes).
+    Removing tx_timer_system_activate.o(.ARM.exidx), (8 bytes).
+    Removing tx_timer_thread_entry.o(.ARM.exidx), (8 bytes).
+    Removing tx_timer_system_deactivate.o(.ARM.exidx), (8 bytes).
+
+140 unused section(s) (total 4541 bytes) removed from the image.
+
+==============================================================================
+
+Image Symbol Table
+
+    Local Symbols
+
+    Symbol Name                              Value     Ov Type        Size  Object(Section)
+
+    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit1.o ABSOLUTE
+    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit2.o ABSOLUTE
+    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit3.o ABSOLUTE
+    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardshut.o ABSOLUTE
+    ../clib/angel/handlers.s                 0x00000000   Number         0  __scatter_copy.o ABSOLUTE
+    ../clib/angel/handlers.s                 0x00000000   Number         0  __scatter_zi.o ABSOLUTE
+    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry.o ABSOLUTE
+    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry2.o ABSOLUTE
+    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry4.o ABSOLUTE
+    ../clib/angel/kernel.s                   0x00000000   Number         0  rtexit.o ABSOLUTE
+    ../clib/angel/kernel.s                   0x00000000   Number         0  rtexit2.o ABSOLUTE
+    ../clib/angel/rt.s                       0x00000000   Number         0  rt_raise.o ABSOLUTE
+    ../clib/angel/scatter.s                  0x00000000   Number         0  __scatter.o ABSOLUTE
+    ../clib/angel/startup.s                  0x00000000   Number         0  __main.o ABSOLUTE
+    ../clib/angel/sys.s                      0x00000000   Number         0  sys_stackheap_outer.o ABSOLUTE
+    ../clib/angel/sys.s                      0x00000000   Number         0  libspace.o ABSOLUTE
+    ../clib/angel/sys.s                      0x00000000   Number         0  use_no_semi.o ABSOLUTE
+    ../clib/angel/sys.s                      0x00000000   Number         0  indicate_semi.o ABSOLUTE
+    ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_exit.o ABSOLUTE
+    ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_exit_hlt.o ABSOLUTE
+    ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_command.o ABSOLUTE
+    ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_command_hlt.o ABSOLUTE
+    ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_wrch.o ABSOLUTE
+    ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_wrch_hlt.o ABSOLUTE
+    ../clib/armsys.c                         0x00000000   Number         0  argv_veneer.o ABSOLUTE
+    ../clib/armsys.c                         0x00000000   Number         0  argv_veneer.o ABSOLUTE
+    ../clib/armsys.c                         0x00000000   Number         0  _get_argv_nomalloc.o ABSOLUTE
+    ../clib/armsys.c                         0x00000000   Number         0  no_argv.o ABSOLUTE
+    ../clib/heapalloc.c                      0x00000000   Number         0  hrguard.o ABSOLUTE
+    ../clib/heapaux.c                        0x00000000   Number         0  heapauxi.o ABSOLUTE
+    ../clib/libinit.s                        0x00000000   Number         0  libinit.o ABSOLUTE
+    ../clib/libinit.s                        0x00000000   Number         0  libinit2.o ABSOLUTE
+    ../clib/libinit.s                        0x00000000   Number         0  libshutdown.o ABSOLUTE
+    ../clib/libinit.s                        0x00000000   Number         0  libshutdown2.o ABSOLUTE
+    ../clib/memcpset.s                       0x00000000   Number         0  aeabi_memset.o ABSOLUTE
+    ../clib/memcpset.s                       0x00000000   Number         0  rt_memclr_w.o ABSOLUTE
+    ../clib/memcpset.s                       0x00000000   Number         0  rt_memclr.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_outer.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_formal.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_exit.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  __raise.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_general.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_abrt_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_fpe_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_rtred_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_stak_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_pvfn_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_cppl_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_segv_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_other.o ABSOLUTE
+    ../clib/signal.s                         0x00000000   Number         0  defsig.o ABSOLUTE
+    ../clib/stdlib.c                         0x00000000   Number         0  exit.o ABSOLUTE
+    ../fplib/fpinit.s                        0x00000000   Number         0  fpinit.o ABSOLUTE
+    ../src/tx_thread_context_restore.s       0x00000000   Number         0  tx_thread_context_restore.o ABSOLUTE
+    ../src/tx_thread_context_save.s          0x00000000   Number         0  tx_thread_context_save.o ABSOLUTE
+    ../src/tx_thread_schedule.s              0x00000000   Number         0  tx_thread_schedule.o ABSOLUTE
+    ../src/tx_thread_stack_build.s           0x00000000   Number         0  tx_thread_stack_build.o ABSOLUTE
+    ../src/tx_timer_interrupt.s              0x00000000   Number         0  tx_timer_interrupt.o ABSOLUTE
+    ModifiedSource/startup_TM4C129.s         0x00000000   Number         0  startup_tm4c129.o ABSOLUTE
+    ModifiedSource/tx_initialize_low_level.s 0x00000000   Number         0  tx_initialize_low_level.o ABSOLUTE
+    cpu.c                                    0x00000000   Number         0  cpu.o ABSOLUTE
+    cpu.c                                    0x00000000   Number         0  cpu.o ABSOLUTE
+    dc.s                                     0x00000000   Number         0  dc.o ABSOLUTE
+    demo_threadx.c                           0x00000000   Number         0  demo_threadx.o ABSOLUTE
+    interrupt.c                              0x00000000   Number         0  interrupt.o ABSOLUTE
+    sysctl.c                                 0x00000000   Number         0  sysctl.o ABSOLUTE
+    sysctl.c                                 0x00000000   Number         0  sysctl.o ABSOLUTE
+    system_TM4C129.c                         0x00000000   Number         0  system_tm4c129.o ABSOLUTE
+    tx_block_allocate.c                      0x00000000   Number         0  tx_block_allocate.o ABSOLUTE
+    tx_block_pool_cleanup.c                  0x00000000   Number         0  tx_block_pool_cleanup.o ABSOLUTE
+    tx_block_pool_create.c                   0x00000000   Number         0  tx_block_pool_create.o ABSOLUTE
+    tx_block_release.c                       0x00000000   Number         0  tx_block_release.o ABSOLUTE
+    tx_byte_allocate.c                       0x00000000   Number         0  tx_byte_allocate.o ABSOLUTE
+    tx_byte_pool_cleanup.c                   0x00000000   Number         0  tx_byte_pool_cleanup.o ABSOLUTE
+    tx_byte_pool_create.c                    0x00000000   Number         0  tx_byte_pool_create.o ABSOLUTE
+    tx_byte_pool_search.c                    0x00000000   Number         0  tx_byte_pool_search.o ABSOLUTE
+    tx_event_flags_cleanup.c                 0x00000000   Number         0  tx_event_flags_cleanup.o ABSOLUTE
+    tx_event_flags_create.c                  0x00000000   Number         0  tx_event_flags_create.o ABSOLUTE
+    tx_event_flags_get.c                     0x00000000   Number         0  tx_event_flags_get.o ABSOLUTE
+    tx_event_flags_set.c                     0x00000000   Number         0  tx_event_flags_set.o ABSOLUTE
+    tx_initialize_high_level.c               0x00000000   Number         0  tx_initialize_high_level.o ABSOLUTE
+    tx_initialize_kernel_enter.c             0x00000000   Number         0  tx_initialize_kernel_enter.o ABSOLUTE
+    tx_mutex_cleanup.c                       0x00000000   Number         0  tx_mutex_cleanup.o ABSOLUTE
+    tx_mutex_create.c                        0x00000000   Number         0  tx_mutex_create.o ABSOLUTE
+    tx_mutex_get.c                           0x00000000   Number         0  tx_mutex_get.o ABSOLUTE
+    tx_mutex_prioritize.c                    0x00000000   Number         0  tx_mutex_prioritize.o ABSOLUTE
+    tx_mutex_priority_change.c               0x00000000   Number         0  tx_mutex_priority_change.o ABSOLUTE
+    tx_mutex_put.c                           0x00000000   Number         0  tx_mutex_put.o ABSOLUTE
+    tx_queue_cleanup.c                       0x00000000   Number         0  tx_queue_cleanup.o ABSOLUTE
+    tx_queue_create.c                        0x00000000   Number         0  tx_queue_create.o ABSOLUTE
+    tx_queue_receive.c                       0x00000000   Number         0  tx_queue_receive.o ABSOLUTE
+    tx_queue_send.c                          0x00000000   Number         0  tx_queue_send.o ABSOLUTE
+    tx_semaphore_cleanup.c                   0x00000000   Number         0  tx_semaphore_cleanup.o ABSOLUTE
+    tx_semaphore_create.c                    0x00000000   Number         0  tx_semaphore_create.o ABSOLUTE
+    tx_semaphore_get.c                       0x00000000   Number         0  tx_semaphore_get.o ABSOLUTE
+    tx_semaphore_put.c                       0x00000000   Number         0  tx_semaphore_put.o ABSOLUTE
+    tx_thread_create.c                       0x00000000   Number         0  tx_thread_create.o ABSOLUTE
+    tx_thread_initialize.c                   0x00000000   Number         0  tx_thread_initialize.o ABSOLUTE
+    tx_thread_shell_entry.c                  0x00000000   Number         0  tx_thread_shell_entry.o ABSOLUTE
+    tx_thread_sleep.c                        0x00000000   Number         0  tx_thread_sleep.o ABSOLUTE
+    tx_thread_system_preempt_check.c         0x00000000   Number         0  tx_thread_system_preempt_check.o ABSOLUTE
+    tx_thread_system_resume.c                0x00000000   Number         0  tx_thread_system_resume.o ABSOLUTE
+    tx_thread_system_suspend.c               0x00000000   Number         0  tx_thread_system_suspend.o ABSOLUTE
+    tx_thread_time_slice.c                   0x00000000   Number         0  tx_thread_time_slice.o ABSOLUTE
+    tx_thread_timeout.c                      0x00000000   Number         0  tx_thread_timeout.o ABSOLUTE
+    tx_timer_expiration_process.c            0x00000000   Number         0  tx_timer_expiration_process.o ABSOLUTE
+    tx_timer_initialize.c                    0x00000000   Number         0  tx_timer_initialize.o ABSOLUTE
+    tx_timer_system_activate.c               0x00000000   Number         0  tx_timer_system_activate.o ABSOLUTE
+    tx_timer_system_deactivate.c             0x00000000   Number         0  tx_timer_system_deactivate.o ABSOLUTE
+    tx_timer_thread_entry.c                  0x00000000   Number         0  tx_timer_thread_entry.o ABSOLUTE
+    txe_block_allocate.c                     0x00000000   Number         0  txe_block_allocate.o ABSOLUTE
+    txe_block_pool_create.c                  0x00000000   Number         0  txe_block_pool_create.o ABSOLUTE
+    txe_block_release.c                      0x00000000   Number         0  txe_block_release.o ABSOLUTE
+    txe_byte_allocate.c                      0x00000000   Number         0  txe_byte_allocate.o ABSOLUTE
+    txe_byte_pool_create.c                   0x00000000   Number         0  txe_byte_pool_create.o ABSOLUTE
+    txe_event_flags_create.c                 0x00000000   Number         0  txe_event_flags_create.o ABSOLUTE
+    txe_event_flags_get.c                    0x00000000   Number         0  txe_event_flags_get.o ABSOLUTE
+    txe_event_flags_set.c                    0x00000000   Number         0  txe_event_flags_set.o ABSOLUTE
+    txe_mutex_create.c                       0x00000000   Number         0  txe_mutex_create.o ABSOLUTE
+    txe_mutex_get.c                          0x00000000   Number         0  txe_mutex_get.o ABSOLUTE
+    txe_mutex_put.c                          0x00000000   Number         0  txe_mutex_put.o ABSOLUTE
+    txe_queue_create.c                       0x00000000   Number         0  txe_queue_create.o ABSOLUTE
+    txe_queue_receive.c                      0x00000000   Number         0  txe_queue_receive.o ABSOLUTE
+    txe_queue_send.c                         0x00000000   Number         0  txe_queue_send.o ABSOLUTE
+    txe_semaphore_create.c                   0x00000000   Number         0  txe_semaphore_create.o ABSOLUTE
+    txe_semaphore_get.c                      0x00000000   Number         0  txe_semaphore_get.o ABSOLUTE
+    txe_semaphore_put.c                      0x00000000   Number         0  txe_semaphore_put.o ABSOLUTE
+    txe_thread_create.c                      0x00000000   Number         0  txe_thread_create.o ABSOLUTE
+    RESET                                    0x00000000   Section      512  startup_tm4c129.o(RESET)
+    !!!main                                  0x00000200   Section        8  __main.o(!!!main)
+    !!!scatter                               0x00000208   Section       92  __scatter.o(!!!scatter)
+    !!handler_copy                           0x00000264   Section       26  __scatter_copy.o(!!handler_copy)
+    !!handler_null                           0x00000280   Section        2  __scatter.o(!!handler_null)
+    !!handler_zi                             0x00000284   Section       28  __scatter_zi.o(!!handler_zi)
+    .ARM.Collect$$libinit$$00000000          0x000002a0   Section        2  libinit.o(.ARM.Collect$$libinit$$00000000)
+    .ARM.Collect$$libinit$$00000001          0x000002a2   Section        4  libinit2.o(.ARM.Collect$$libinit$$00000001)
+    .ARM.Collect$$libinit$$00000004          0x000002a6   Section        0  libinit2.o(.ARM.Collect$$libinit$$00000004)
+    .ARM.Collect$$libinit$$00000006          0x000002a6   Section        0  libinit2.o(.ARM.Collect$$libinit$$00000006)
+    .ARM.Collect$$libinit$$0000000C          0x000002a6   Section        0  libinit2.o(.ARM.Collect$$libinit$$0000000C)
+    .ARM.Collect$$libinit$$0000000E          0x000002a6   Section        0  libinit2.o(.ARM.Collect$$libinit$$0000000E)
+    .ARM.Collect$$libinit$$00000010          0x000002a6   Section        0  libinit2.o(.ARM.Collect$$libinit$$00000010)
+    .ARM.Collect$$libinit$$00000013          0x000002a6   Section        0  libinit2.o(.ARM.Collect$$libinit$$00000013)
+    .ARM.Collect$$libinit$$00000015          0x000002a6   Section        0  libinit2.o(.ARM.Collect$$libinit$$00000015)
+    .ARM.Collect$$libinit$$00000017          0x000002a6   Section        0  libinit2.o(.ARM.Collect$$libinit$$00000017)
+    .ARM.Collect$$libinit$$00000019          0x000002a6   Section        0  libinit2.o(.ARM.Collect$$libinit$$00000019)
+    .ARM.Collect$$libinit$$0000001B          0x000002a6   Section        0  libinit2.o(.ARM.Collect$$libinit$$0000001B)
+    .ARM.Collect$$libinit$$0000001D          0x000002a6   Section        0  libinit2.o(.ARM.Collect$$libinit$$0000001D)
+    .ARM.Collect$$libinit$$0000001F          0x000002a6   Section        0  libinit2.o(.ARM.Collect$$libinit$$0000001F)
+    .ARM.Collect$$libinit$$00000021          0x000002a6   Section        0  libinit2.o(.ARM.Collect$$libinit$$00000021)
+    .ARM.Collect$$libinit$$00000023          0x000002a6   Section        0  libinit2.o(.ARM.Collect$$libinit$$00000023)
+    .ARM.Collect$$libinit$$00000025          0x000002a6   Section        0  libinit2.o(.ARM.Collect$$libinit$$00000025)
+    .ARM.Collect$$libinit$$00000027          0x000002a6   Section        0  libinit2.o(.ARM.Collect$$libinit$$00000027)
+    .ARM.Collect$$libinit$$0000002E          0x000002a6   Section        0  libinit2.o(.ARM.Collect$$libinit$$0000002E)
+    .ARM.Collect$$libinit$$00000030          0x000002a6   Section        0  libinit2.o(.ARM.Collect$$libinit$$00000030)
+    .ARM.Collect$$libinit$$00000032          0x000002a6   Section        0  libinit2.o(.ARM.Collect$$libinit$$00000032)
+    .ARM.Collect$$libinit$$00000034          0x000002a6   Section        0  libinit2.o(.ARM.Collect$$libinit$$00000034)
+    .ARM.Collect$$libinit$$00000035          0x000002a6   Section        2  libinit2.o(.ARM.Collect$$libinit$$00000035)
+    .ARM.Collect$$libshutdown$$00000000      0x000002a8   Section        2  libshutdown.o(.ARM.Collect$$libshutdown$$00000000)
+    .ARM.Collect$$libshutdown$$00000002      0x000002aa   Section        0  libshutdown2.o(.ARM.Collect$$libshutdown$$00000002)
+    .ARM.Collect$$libshutdown$$00000004      0x000002aa   Section        0  libshutdown2.o(.ARM.Collect$$libshutdown$$00000004)
+    .ARM.Collect$$libshutdown$$00000007      0x000002aa   Section        0  libshutdown2.o(.ARM.Collect$$libshutdown$$00000007)
+    .ARM.Collect$$libshutdown$$0000000A      0x000002aa   Section        0  libshutdown2.o(.ARM.Collect$$libshutdown$$0000000A)
+    .ARM.Collect$$libshutdown$$0000000C      0x000002aa   Section        0  libshutdown2.o(.ARM.Collect$$libshutdown$$0000000C)
+    .ARM.Collect$$libshutdown$$0000000F      0x000002aa   Section        0  libshutdown2.o(.ARM.Collect$$libshutdown$$0000000F)
+    .ARM.Collect$$libshutdown$$00000010      0x000002aa   Section        2  libshutdown2.o(.ARM.Collect$$libshutdown$$00000010)
+    .ARM.Collect$$rtentry$$00000000          0x000002ac   Section        0  __rtentry.o(.ARM.Collect$$rtentry$$00000000)
+    .ARM.Collect$$rtentry$$00000002          0x000002ac   Section        0  __rtentry2.o(.ARM.Collect$$rtentry$$00000002)
+    .ARM.Collect$$rtentry$$00000004          0x000002ac   Section        6  __rtentry4.o(.ARM.Collect$$rtentry$$00000004)
+    .ARM.Collect$$rtentry$$00000009          0x000002b2   Section        0  __rtentry2.o(.ARM.Collect$$rtentry$$00000009)
+    .ARM.Collect$$rtentry$$0000000A          0x000002b2   Section        4  __rtentry2.o(.ARM.Collect$$rtentry$$0000000A)
+    .ARM.Collect$$rtentry$$0000000C          0x000002b6   Section        0  __rtentry2.o(.ARM.Collect$$rtentry$$0000000C)
+    .ARM.Collect$$rtentry$$0000000D          0x000002b6   Section        8  __rtentry2.o(.ARM.Collect$$rtentry$$0000000D)
+    .ARM.Collect$$rtexit$$00000000           0x000002be   Section        2  rtexit.o(.ARM.Collect$$rtexit$$00000000)
+    .ARM.Collect$$rtexit$$00000002           0x000002c0   Section        0  rtexit2.o(.ARM.Collect$$rtexit$$00000002)
+    .ARM.Collect$$rtexit$$00000003           0x000002c0   Section        4  rtexit2.o(.ARM.Collect$$rtexit$$00000003)
+    .ARM.Collect$$rtexit$$00000004           0x000002c4   Section        6  rtexit2.o(.ARM.Collect$$rtexit$$00000004)
+    [Anonymous Symbol]                       0x000002cc   Section        0  demo_threadx.o(.text)
+    $v0                                      0x00000804   Number         0  tx_initialize_low_level.o(.text)
+    .text                                    0x00000804   Section      120  tx_initialize_low_level.o(.text)
+    [Anonymous Symbol]                       0x0000087c   Section        0  system_tm4c129.o(.text)
+    $v0                                      0x000008b4   Number         0  startup_tm4c129.o(.text)
+    .text                                    0x000008b4   Section      300  startup_tm4c129.o(.text)
+    $v0                                      0x000009e0   Number         0  tx_thread_context_restore.o(.text)
+    .text                                    0x000009e0   Section        8  tx_thread_context_restore.o(.text)
+    $v0                                      0x000009e8   Number         0  tx_thread_context_save.o(.text)
+    .text                                    0x000009e8   Section        4  tx_thread_context_save.o(.text)
+    $v0                                      0x000009ec   Number         0  tx_thread_schedule.o(.text)
+    .text                                    0x000009ec   Section      224  tx_thread_schedule.o(.text)
+    $v0                                      0x00000acc   Number         0  tx_timer_interrupt.o(.text)
+    .text                                    0x00000acc   Section      232  tx_timer_interrupt.o(.text)
+    [Anonymous Symbol]                       0x00000bb4   Section        0  tx_initialize_high_level.o(.text)
+    [Anonymous Symbol]                       0x00000c3c   Section        0  tx_initialize_kernel_enter.o(.text)
+    [Anonymous Symbol]                       0x00000c8c   Section        0  tx_thread_initialize.o(.text)
+    [Anonymous Symbol]                       0x00000d0c   Section        0  tx_thread_sleep.o(.text)
+    [Anonymous Symbol]                       0x00000d9c   Section        0  txe_block_allocate.o(.text)
+    [Anonymous Symbol]                       0x00000e04   Section        0  txe_block_pool_create.o(.text)
+    [Anonymous Symbol]                       0x00000f80   Section        0  txe_block_release.o(.text)
+    [Anonymous Symbol]                       0x00000fa0   Section        0  txe_byte_allocate.o(.text)
+    [Anonymous Symbol]                       0x00001058   Section        0  txe_byte_pool_create.o(.text)
+    [Anonymous Symbol]                       0x000011c8   Section        0  txe_event_flags_create.o(.text)
+    [Anonymous Symbol]                       0x0000130c   Section        0  txe_event_flags_get.o(.text)
+    [Anonymous Symbol]                       0x000013ac   Section        0  txe_event_flags_set.o(.text)
+    [Anonymous Symbol]                       0x000013d4   Section        0  txe_mutex_create.o(.text)
+    [Anonymous Symbol]                       0x00001518   Section        0  txe_mutex_get.o(.text)
+    [Anonymous Symbol]                       0x00001590   Section        0  txe_mutex_put.o(.text)
+    [Anonymous Symbol]                       0x000015d0   Section        0  txe_queue_create.o(.text)
+    [Anonymous Symbol]                       0x00001748   Section        0  txe_queue_receive.o(.text)
+    [Anonymous Symbol]                       0x000017b0   Section        0  txe_queue_send.o(.text)
+    [Anonymous Symbol]                       0x00001818   Section        0  txe_semaphore_create.o(.text)
+    [Anonymous Symbol]                       0x00001938   Section        0  txe_semaphore_get.o(.text)
+    [Anonymous Symbol]                       0x0000198c   Section        0  txe_semaphore_put.o(.text)
+    [Anonymous Symbol]                       0x000019a4   Section        0  txe_thread_create.o(.text)
+    [Anonymous Symbol]                       0x00001b3c   Section        0  tx_block_allocate.o(.text)
+    [Anonymous Symbol]                       0x00001bec   Section        0  tx_block_pool_create.o(.text)
+    [Anonymous Symbol]                       0x00001d18   Section        0  tx_block_release.o(.text)
+    [Anonymous Symbol]                       0x00001d80   Section        0  tx_byte_allocate.o(.text)
+    [Anonymous Symbol]                       0x00001e50   Section        0  tx_byte_pool_create.o(.text)
+    [Anonymous Symbol]                       0x00001edc   Section        0  tx_event_flags_create.o(.text)
+    [Anonymous Symbol]                       0x00001f34   Section        0  tx_event_flags_get.o(.text)
+    [Anonymous Symbol]                       0x00002034   Section        0  tx_event_flags_set.o(.text)
+    [Anonymous Symbol]                       0x00002240   Section        0  tx_mutex_create.o(.text)
+    [Anonymous Symbol]                       0x000022ac   Section        0  tx_mutex_get.o(.text)
+    [Anonymous Symbol]                       0x000023c4   Section        0  tx_mutex_put.o(.text)
+    [Anonymous Symbol]                       0x00002634   Section        0  tx_queue_create.o(.text)
+    [Anonymous Symbol]                       0x000026b0   Section        0  tx_queue_receive.o(.text)
+    [Anonymous Symbol]                       0x00002a7c   Section        0  tx_queue_send.o(.text)
+    [Anonymous Symbol]                       0x00002cb4   Section        0  tx_semaphore_create.o(.text)
+    [Anonymous Symbol]                       0x00002d14   Section        0  tx_semaphore_get.o(.text)
+    [Anonymous Symbol]                       0x00002db8   Section        0  tx_semaphore_put.o(.text)
+    [Anonymous Symbol]                       0x00002e1c   Section        0  tx_thread_create.o(.text)
+    [Anonymous Symbol]                       0x00002f44   Section        0  tx_thread_system_preempt_check.o(.text)
+    [Anonymous Symbol]                       0x00002f90   Section        0  tx_thread_system_suspend.o(.text)
+    [Anonymous Symbol]                       0x00003190   Section        0  tx_thread_time_slice.o(.text)
+    [Anonymous Symbol]                       0x00003200   Section        0  tx_timer_expiration_process.o(.text)
+    [Anonymous Symbol]                       0x00003224   Section        0  tx_timer_initialize.o(.text)
+    $v0                                      0x00003334   Number         0  tx_thread_stack_build.o(.text)
+    .text                                    0x00003334   Section       64  tx_thread_stack_build.o(.text)
+    [Anonymous Symbol]                       0x00003374   Section        0  tx_block_pool_cleanup.o(.text)
+    [Anonymous Symbol]                       0x00003408   Section        0  tx_byte_pool_cleanup.o(.text)
+    [Anonymous Symbol]                       0x0000349c   Section        0  tx_byte_pool_search.o(.text)
+    [Anonymous Symbol]                       0x0000358c   Section        0  tx_event_flags_cleanup.o(.text)
+    [Anonymous Symbol]                       0x00003628   Section        0  tx_mutex_cleanup.o(.text)
+    [Anonymous Symbol]                       0x00003704   Section        0  tx_mutex_prioritize.o(.text)
+    [Anonymous Symbol]                       0x000037bc   Section        0  tx_mutex_priority_change.o(.text)
+    [Anonymous Symbol]                       0x00003898   Section        0  tx_queue_cleanup.o(.text)
+    [Anonymous Symbol]                       0x00003934   Section        0  tx_semaphore_cleanup.o(.text)
+    [Anonymous Symbol]                       0x000039c8   Section        0  tx_thread_shell_entry.o(.text)
+    [Anonymous Symbol]                       0x00003a48   Section        0  tx_thread_system_resume.o(.text)
+    [Anonymous Symbol]                       0x00003b98   Section        0  tx_thread_timeout.o(.text)
+    [Anonymous Symbol]                       0x00003bcc   Section        0  tx_timer_system_activate.o(.text)
+    [Anonymous Symbol]                       0x00003c28   Section        0  tx_timer_thread_entry.o(.text)
+    [Anonymous Symbol]                       0x00003d68   Section        0  tx_timer_system_deactivate.o(.text)
+    .text                                    0x00003d96   Section       16  aeabi_memset.o(.text)
+    .text                                    0x00003da6   Section       78  rt_memclr_w.o(.text)
+    .text                                    0x00003df4   Section        0  heapauxi.o(.text)
+    .text                                    0x00003dfa   Section       68  rt_memclr.o(.text)
+    .text                                    0x00003e3e   Section       74  sys_stackheap_outer.o(.text)
+    .text                                    0x00003e88   Section        0  exit.o(.text)
+    .text                                    0x00003e9c   Section        8  libspace.o(.text)
+    .text                                    0x00003ea4   Section        0  sys_exit.o(.text)
+    .text                                    0x00003eb0   Section        2  use_no_semi.o(.text)
+    .text                                    0x00003eb2   Section        0  indicate_semi.o(.text)
+    i.SysCtlClockFreqSet                     0x00003eb4   Section        0  sysctl.o(i.SysCtlClockFreqSet)
+    $v0                                      0x00004198   Number         0  fpinit.o(x$fpl$fpinit)
+    x$fpl$fpinit                             0x00004198   Section       26  fpinit.o(x$fpl$fpinit)
+    g_pui32VCOFrequencies                    0x000041b4   Data           8  sysctl.o(.constdata)
+    .constdata                               0x000041b4   Section      596  sysctl.o(.constdata)
+    g_pui32Xtals                             0x000041bc   Data         108  sysctl.o(.constdata)
+    g_pppui32XTALtoVCO                       0x00004228   Data         432  sysctl.o(.constdata)
+    g_sXTALtoMEMTIM                          0x000043d8   Data          48  sysctl.o(.constdata)
+    .bss                                     0x20000008   Section       96  libspace.o(.bss)
+    Heap_Mem                                 0x20003138   Data           0  startup_tm4c129.o(HEAP)
+    Stack_Mem                                0x20003138   Data         512  startup_tm4c129.o(STACK)
+    HEAP                                     0x20003138   Section        0  startup_tm4c129.o(HEAP)
+    STACK                                    0x20003138   Section      512  startup_tm4c129.o(STACK)
+    __initial_sp                             0x20003338   Data           0  startup_tm4c129.o(STACK)
+
+    Global Symbols
+
+    Symbol Name                              Value     Ov Type        Size  Object(Section)
+
+    BuildAttributes$$THM_ISAv4$E$P$D$K$B$S$7EM$VFPi3$EXTD16$VFPS$VFMA$PE$A:L22UL41UL21$X:L11$S22US41US21$IEEE1$IW$~IW$USESV6$~STKCKD$USESV7$~SHL$OTIME$ROPI$EBA8$UX$STANDARDLIB$REQ8$PRES8$EABIv2 0x00000000   Number         0  anon$$obj.o ABSOLUTE
+    __Vectors                                0x00000000   Data           4  startup_tm4c129.o(RESET)
+    __tx_vectors                             0x00000000   Data           0  startup_tm4c129.o(RESET)
+    __ARM_exceptions_init                     - Undefined Weak Reference
+    __alloca_initialize                       - Undefined Weak Reference
+    __arm_preinit_                            - Undefined Weak Reference
+    __arm_relocate_pie_                       - Undefined Weak Reference
+    __cpp_initialize__aeabi_                  - Undefined Weak Reference
+    __cxa_finalize                            - Undefined Weak Reference
+    __rt_locale                               - Undefined Weak Reference
+    __sigvec_lookup                           - Undefined Weak Reference
+    _atexit_init                              - Undefined Weak Reference
+    _call_atexit_fns                          - Undefined Weak Reference
+    _clock_init                               - Undefined Weak Reference
+    _fp_trap_init                             - Undefined Weak Reference
+    _fp_trap_shutdown                         - Undefined Weak Reference
+    _get_lc_collate                           - Undefined Weak Reference
+    _get_lc_ctype                             - Undefined Weak Reference
+    _get_lc_monetary                          - Undefined Weak Reference
+    _get_lc_numeric                           - Undefined Weak Reference
+    _get_lc_time                              - Undefined Weak Reference
+    _getenv_init                              - Undefined Weak Reference
+    _handle_redirection                       - Undefined Weak Reference
+    _init_alloc                               - Undefined Weak Reference
+    _init_user_alloc                          - Undefined Weak Reference
+    _initio                                   - Undefined Weak Reference
+    _rand_init                                - Undefined Weak Reference
+    _signal_finish                            - Undefined Weak Reference
+    _signal_init                              - Undefined Weak Reference
+    _terminate_alloc                          - Undefined Weak Reference
+    _terminate_user_alloc                     - Undefined Weak Reference
+    _terminateio                              - Undefined Weak Reference
+    __Vectors_End                            0x00000200   Data           0  startup_tm4c129.o(RESET)
+    __Vectors_Size                           0x00000200   Number         0  startup_tm4c129.o ABSOLUTE
+    __main                                   0x00000201   Thumb Code     8  __main.o(!!!main)
+    __scatterload                            0x00000209   Thumb Code     0  __scatter.o(!!!scatter)
+    __scatterload_rt2                        0x00000209   Thumb Code    84  __scatter.o(!!!scatter)
+    __scatterload_rt2_thumb_only             0x00000209   Thumb Code     0  __scatter.o(!!!scatter)
+    __scatterload_loop                       0x00000213   Thumb Code     0  __scatter.o(!!!scatter)
+    __scatterload_copy                       0x00000265   Thumb Code    26  __scatter_copy.o(!!handler_copy)
+    __scatterload_null                       0x00000281   Thumb Code     2  __scatter.o(!!handler_null)
+    __scatterload_zeroinit                   0x00000285   Thumb Code    28  __scatter_zi.o(!!handler_zi)
+    __rt_lib_init                            0x000002a1   Thumb Code     0  libinit.o(.ARM.Collect$$libinit$$00000000)
+    __rt_lib_init_fp_1                       0x000002a3   Thumb Code     0  libinit2.o(.ARM.Collect$$libinit$$00000001)
+    __rt_lib_init_alloca_1                   0x000002a7   Thumb Code     0  libinit2.o(.ARM.Collect$$libinit$$00000030)
+    __rt_lib_init_argv_1                     0x000002a7   Thumb Code     0  libinit2.o(.ARM.Collect$$libinit$$0000002E)
+    __rt_lib_init_atexit_1                   0x000002a7   Thumb Code     0  libinit2.o(.ARM.Collect$$libinit$$0000001D)
+    __rt_lib_init_clock_1                    0x000002a7   Thumb Code     0  libinit2.o(.ARM.Collect$$libinit$$00000023)
+    __rt_lib_init_cpp_1                      0x000002a7   Thumb Code     0  libinit2.o(.ARM.Collect$$libinit$$00000034)
+    __rt_lib_init_exceptions_1               0x000002a7   Thumb Code     0  libinit2.o(.ARM.Collect$$libinit$$00000032)
+    __rt_lib_init_fp_trap_1                  0x000002a7   Thumb Code     0  libinit2.o(.ARM.Collect$$libinit$$00000021)
+    __rt_lib_init_getenv_1                   0x000002a7   Thumb Code     0  libinit2.o(.ARM.Collect$$libinit$$00000025)
+    __rt_lib_init_heap_1                     0x000002a7   Thumb Code     0  libinit2.o(.ARM.Collect$$libinit$$0000000C)
+    __rt_lib_init_lc_collate_1               0x000002a7   Thumb Code     0  libinit2.o(.ARM.Collect$$libinit$$00000013)
+    __rt_lib_init_lc_ctype_1                 0x000002a7   Thumb Code     0  libinit2.o(.ARM.Collect$$libinit$$00000015)
+    __rt_lib_init_lc_monetary_1              0x000002a7   Thumb Code     0  libinit2.o(.ARM.Collect$$libinit$$00000017)
+    __rt_lib_init_lc_numeric_1               0x000002a7   Thumb Code     0  libinit2.o(.ARM.Collect$$libinit$$00000019)
+    __rt_lib_init_lc_time_1                  0x000002a7   Thumb Code     0  libinit2.o(.ARM.Collect$$libinit$$0000001B)
+    __rt_lib_init_preinit_1                  0x000002a7   Thumb Code     0  libinit2.o(.ARM.Collect$$libinit$$00000006)
+    __rt_lib_init_rand_1                     0x000002a7   Thumb Code     0  libinit2.o(.ARM.Collect$$libinit$$00000010)
+    __rt_lib_init_relocate_pie_1             0x000002a7   Thumb Code     0  libinit2.o(.ARM.Collect$$libinit$$00000004)
+    __rt_lib_init_return                     0x000002a7   Thumb Code     0  libinit2.o(.ARM.Collect$$libinit$$00000035)
+    __rt_lib_init_signal_1                   0x000002a7   Thumb Code     0  libinit2.o(.ARM.Collect$$libinit$$0000001F)
+    __rt_lib_init_stdio_1                    0x000002a7   Thumb Code     0  libinit2.o(.ARM.Collect$$libinit$$00000027)
+    __rt_lib_init_user_alloc_1               0x000002a7   Thumb Code     0  libinit2.o(.ARM.Collect$$libinit$$0000000E)
+    __rt_lib_shutdown                        0x000002a9   Thumb Code     0  libshutdown.o(.ARM.Collect$$libshutdown$$00000000)
+    __rt_lib_shutdown_cpp_1                  0x000002ab   Thumb Code     0  libshutdown2.o(.ARM.Collect$$libshutdown$$00000002)
+    __rt_lib_shutdown_fp_trap_1              0x000002ab   Thumb Code     0  libshutdown2.o(.ARM.Collect$$libshutdown$$00000007)
+    __rt_lib_shutdown_heap_1                 0x000002ab   Thumb Code     0  libshutdown2.o(.ARM.Collect$$libshutdown$$0000000F)
+    __rt_lib_shutdown_return                 0x000002ab   Thumb Code     0  libshutdown2.o(.ARM.Collect$$libshutdown$$00000010)
+    __rt_lib_shutdown_signal_1               0x000002ab   Thumb Code     0  libshutdown2.o(.ARM.Collect$$libshutdown$$0000000A)
+    __rt_lib_shutdown_stdio_1                0x000002ab   Thumb Code     0  libshutdown2.o(.ARM.Collect$$libshutdown$$00000004)
+    __rt_lib_shutdown_user_alloc_1           0x000002ab   Thumb Code     0  libshutdown2.o(.ARM.Collect$$libshutdown$$0000000C)
+    __rt_entry                               0x000002ad   Thumb Code     0  __rtentry.o(.ARM.Collect$$rtentry$$00000000)
+    __rt_entry_presh_1                       0x000002ad   Thumb Code     0  __rtentry2.o(.ARM.Collect$$rtentry$$00000002)
+    __rt_entry_sh                            0x000002ad   Thumb Code     0  __rtentry4.o(.ARM.Collect$$rtentry$$00000004)
+    __rt_entry_li                            0x000002b3   Thumb Code     0  __rtentry2.o(.ARM.Collect$$rtentry$$0000000A)
+    __rt_entry_postsh_1                      0x000002b3   Thumb Code     0  __rtentry2.o(.ARM.Collect$$rtentry$$00000009)
+    __rt_entry_main                          0x000002b7   Thumb Code     0  __rtentry2.o(.ARM.Collect$$rtentry$$0000000D)
+    __rt_entry_postli_1                      0x000002b7   Thumb Code     0  __rtentry2.o(.ARM.Collect$$rtentry$$0000000C)
+    __rt_exit                                0x000002bf   Thumb Code     0  rtexit.o(.ARM.Collect$$rtexit$$00000000)
+    __rt_exit_ls                             0x000002c1   Thumb Code     0  rtexit2.o(.ARM.Collect$$rtexit$$00000003)
+    __rt_exit_prels_1                        0x000002c1   Thumb Code     0  rtexit2.o(.ARM.Collect$$rtexit$$00000002)
+    __rt_exit_exit                           0x000002c5   Thumb Code     0  rtexit2.o(.ARM.Collect$$rtexit$$00000004)
+    main                                     0x000002cd   Thumb Code    40  demo_threadx.o(.text)
+    tx_application_define                    0x000002f5   Thumb Code   668  demo_threadx.o(.text)
+    thread_0_entry                           0x00000639   Thumb Code    48  demo_threadx.o(.text)
+    thread_1_entry                           0x00000669   Thumb Code    86  demo_threadx.o(.text)
+    thread_2_entry                           0x000006c1   Thumb Code    94  demo_threadx.o(.text)
+    thread_3_and_4_entry                     0x00000721   Thumb Code    72  demo_threadx.o(.text)
+    thread_5_entry                           0x00000769   Thumb Code    60  demo_threadx.o(.text)
+    thread_6_and_7_entry                     0x000007a5   Thumb Code    96  demo_threadx.o(.text)
+    _tx_initialize_low_level                 0x00000805   Thumb Code     0  tx_initialize_low_level.o(.text)
+    __tx_SysTickHandler                      0x00000853   Thumb Code     0  tx_initialize_low_level.o(.text)
+    SystemCoreClockUpdate                    0x0000087d   Thumb Code    20  system_tm4c129.o(.text)
+    SystemInit                               0x00000891   Thumb Code    36  system_tm4c129.o(.text)
+    Reset_Handler                            0x000008b5   Thumb Code     8  startup_tm4c129.o(.text)
+    NMI_Handler                              0x000008bd   Thumb Code     2  startup_tm4c129.o(.text)
+    HardFault_Handler                        0x000008bf   Thumb Code     2  startup_tm4c129.o(.text)
+    MemManage_Handler                        0x000008c1   Thumb Code     2  startup_tm4c129.o(.text)
+    BusFault_Handler                         0x000008c3   Thumb Code     2  startup_tm4c129.o(.text)
+    UsageFault_Handler                       0x000008c5   Thumb Code     2  startup_tm4c129.o(.text)
+    SVC_Handler                              0x000008c7   Thumb Code     2  startup_tm4c129.o(.text)
+    DebugMon_Handler                         0x000008c9   Thumb Code     2  startup_tm4c129.o(.text)
+    SysTick_Handler                          0x000008cd   Thumb Code     2  startup_tm4c129.o(.text)
+    GPIOA_Handler                            0x000008cf   Thumb Code     2  startup_tm4c129.o(.text)
+    GPIOB_Handler                            0x000008d1   Thumb Code     2  startup_tm4c129.o(.text)
+    GPIOC_Handler                            0x000008d3   Thumb Code     2  startup_tm4c129.o(.text)
+    GPIOD_Handler                            0x000008d5   Thumb Code     2  startup_tm4c129.o(.text)
+    GPIOE_Handler                            0x000008d7   Thumb Code     2  startup_tm4c129.o(.text)
+    UART0_Handler                            0x000008d9   Thumb Code     2  startup_tm4c129.o(.text)
+    UART1_Handler                            0x000008db   Thumb Code     2  startup_tm4c129.o(.text)
+    SSI0_Handler                             0x000008dd   Thumb Code     2  startup_tm4c129.o(.text)
+    I2C0_Handler                             0x000008df   Thumb Code     2  startup_tm4c129.o(.text)
+    PMW0_FAULT_Handler                       0x000008e1   Thumb Code     2  startup_tm4c129.o(.text)
+    PWM0_0_Handler                           0x000008e3   Thumb Code     2  startup_tm4c129.o(.text)
+    PWM0_1_Handler                           0x000008e5   Thumb Code     2  startup_tm4c129.o(.text)
+    PWM0_2_Handler                           0x000008e7   Thumb Code     2  startup_tm4c129.o(.text)
+    QEI0_Handler                             0x000008e9   Thumb Code     2  startup_tm4c129.o(.text)
+    ADC0SS0_Handler                          0x000008eb   Thumb Code     2  startup_tm4c129.o(.text)
+    ADC0SS1_Handler                          0x000008ed   Thumb Code     2  startup_tm4c129.o(.text)
+    ADC0SS2_Handler                          0x000008ef   Thumb Code     2  startup_tm4c129.o(.text)
+    ADC0SS3_Handler                          0x000008f1   Thumb Code     2  startup_tm4c129.o(.text)
+    WDT0_Handler                             0x000008f3   Thumb Code     2  startup_tm4c129.o(.text)
+    TIMER0A_Handler                          0x000008f5   Thumb Code     2  startup_tm4c129.o(.text)
+    TIMER0B_Handler                          0x000008f7   Thumb Code     2  startup_tm4c129.o(.text)
+    TIMER1A_Handler                          0x000008f9   Thumb Code     2  startup_tm4c129.o(.text)
+    TIMER1B_Handler                          0x000008fb   Thumb Code     2  startup_tm4c129.o(.text)
+    TIMER2A_Handler                          0x000008fd   Thumb Code     2  startup_tm4c129.o(.text)
+    TIMER2B_Handler                          0x000008ff   Thumb Code     2  startup_tm4c129.o(.text)
+    COMP0_Handler                            0x00000901   Thumb Code     2  startup_tm4c129.o(.text)
+    COMP1_Handler                            0x00000903   Thumb Code     2  startup_tm4c129.o(.text)
+    COMP2_Handler                            0x00000905   Thumb Code     2  startup_tm4c129.o(.text)
+    SYSCTL_Handler                           0x00000907   Thumb Code     2  startup_tm4c129.o(.text)
+    FLASH_Handler                            0x00000909   Thumb Code     2  startup_tm4c129.o(.text)
+    GPIOF_Handler                            0x0000090b   Thumb Code     2  startup_tm4c129.o(.text)
+    GPIOG_Handler                            0x0000090d   Thumb Code     2  startup_tm4c129.o(.text)
+    GPIOH_Handler                            0x0000090f   Thumb Code     2  startup_tm4c129.o(.text)
+    UART2_Handler                            0x00000911   Thumb Code     2  startup_tm4c129.o(.text)
+    SSI1_Handler                             0x00000913   Thumb Code     2  startup_tm4c129.o(.text)
+    TIMER3A_Handler                          0x00000915   Thumb Code     2  startup_tm4c129.o(.text)
+    TIMER3B_Handler                          0x00000917   Thumb Code     2  startup_tm4c129.o(.text)
+    I2C1_Handler                             0x00000919   Thumb Code     2  startup_tm4c129.o(.text)
+    CAN0_Handler                             0x0000091b   Thumb Code     2  startup_tm4c129.o(.text)
+    CAN1_Handler                             0x0000091d   Thumb Code     2  startup_tm4c129.o(.text)
+    ETH_Handler                              0x0000091f   Thumb Code     2  startup_tm4c129.o(.text)
+    HIB_Handler                              0x00000921   Thumb Code     2  startup_tm4c129.o(.text)
+    USB0_Handler                             0x00000923   Thumb Code     2  startup_tm4c129.o(.text)
+    PWM0_3_Handler                           0x00000925   Thumb Code     2  startup_tm4c129.o(.text)
+    UDMA_Handler                             0x00000927   Thumb Code     2  startup_tm4c129.o(.text)
+    UDMAERR_Handler                          0x00000929   Thumb Code     2  startup_tm4c129.o(.text)
+    ADC1SS0_Handler                          0x0000092b   Thumb Code     2  startup_tm4c129.o(.text)
+    ADC1SS1_Handler                          0x0000092d   Thumb Code     2  startup_tm4c129.o(.text)
+    ADC1SS2_Handler                          0x0000092f   Thumb Code     2  startup_tm4c129.o(.text)
+    ADC1SS3_Handler                          0x00000931   Thumb Code     2  startup_tm4c129.o(.text)
+    EBI0_Handler                             0x00000933   Thumb Code     2  startup_tm4c129.o(.text)
+    GPIOJ_Handler                            0x00000935   Thumb Code     2  startup_tm4c129.o(.text)
+    GPIOK_Handler                            0x00000937   Thumb Code     2  startup_tm4c129.o(.text)
+    GPIOL_Handler                            0x00000939   Thumb Code     2  startup_tm4c129.o(.text)
+    SSI2_Handler                             0x0000093b   Thumb Code     2  startup_tm4c129.o(.text)
+    SSI3_Handler                             0x0000093d   Thumb Code     2  startup_tm4c129.o(.text)
+    UART3_Handler                            0x0000093f   Thumb Code     2  startup_tm4c129.o(.text)
+    UART4_Handler                            0x00000941   Thumb Code     2  startup_tm4c129.o(.text)
+    UART5_Handler                            0x00000943   Thumb Code     2  startup_tm4c129.o(.text)
+    UART6_Handler                            0x00000945   Thumb Code     2  startup_tm4c129.o(.text)
+    UART7_Handler                            0x00000947   Thumb Code     2  startup_tm4c129.o(.text)
+    I2C2_Handler                             0x00000949   Thumb Code     2  startup_tm4c129.o(.text)
+    I2C3_Handler                             0x0000094b   Thumb Code     2  startup_tm4c129.o(.text)
+    TIMER4A_Handler                          0x0000094d   Thumb Code     2  startup_tm4c129.o(.text)
+    TIMER4B_Handler                          0x0000094f   Thumb Code     2  startup_tm4c129.o(.text)
+    TIMER5A_Handler                          0x00000951   Thumb Code     2  startup_tm4c129.o(.text)
+    TIMER5B_Handler                          0x00000953   Thumb Code     2  startup_tm4c129.o(.text)
+    WTIMER0A_Handler                         0x00000955   Thumb Code     2  startup_tm4c129.o(.text)
+    WTIMER0B_Handler                         0x00000957   Thumb Code     2  startup_tm4c129.o(.text)
+    WTIMER1A_Handler                         0x00000959   Thumb Code     2  startup_tm4c129.o(.text)
+    WTIMER1B_Handler                         0x0000095b   Thumb Code     2  startup_tm4c129.o(.text)
+    WTIMER2A_Handler                         0x0000095d   Thumb Code     2  startup_tm4c129.o(.text)
+    WTIMER2B_Handler                         0x0000095f   Thumb Code     2  startup_tm4c129.o(.text)
+    WTIMER3A_Handler                         0x00000961   Thumb Code     2  startup_tm4c129.o(.text)
+    WTIMER3B_Handler                         0x00000963   Thumb Code     2  startup_tm4c129.o(.text)
+    WTIMER4A_Handler                         0x00000965   Thumb Code     2  startup_tm4c129.o(.text)
+    WTIMER4B_Handler                         0x00000967   Thumb Code     2  startup_tm4c129.o(.text)
+    WTIMER5A_Handler                         0x00000969   Thumb Code     2  startup_tm4c129.o(.text)
+    WTIMER5B_Handler                         0x0000096b   Thumb Code     2  startup_tm4c129.o(.text)
+    FPU_Handler                              0x0000096d   Thumb Code     2  startup_tm4c129.o(.text)
+    I2C4_Handler                             0x0000096f   Thumb Code     2  startup_tm4c129.o(.text)
+    I2C5_Handler                             0x00000971   Thumb Code     2  startup_tm4c129.o(.text)
+    GPIOM_Handler                            0x00000973   Thumb Code     2  startup_tm4c129.o(.text)
+    GPION_Handler                            0x00000975   Thumb Code     2  startup_tm4c129.o(.text)
+    TAMPER_Handler                           0x00000977   Thumb Code     2  startup_tm4c129.o(.text)
+    GPIOP0_Handler                           0x00000979   Thumb Code     2  startup_tm4c129.o(.text)
+    GPIOP1_Handler                           0x0000097b   Thumb Code     2  startup_tm4c129.o(.text)
+    GPIOP2_Handler                           0x0000097d   Thumb Code     2  startup_tm4c129.o(.text)
+    GPIOP3_Handler                           0x0000097f   Thumb Code     2  startup_tm4c129.o(.text)
+    GPIOP4_Handler                           0x00000981   Thumb Code     2  startup_tm4c129.o(.text)
+    GPIOP5_Handler                           0x00000983   Thumb Code     2  startup_tm4c129.o(.text)
+    GPIOP6_Handler                           0x00000985   Thumb Code     2  startup_tm4c129.o(.text)
+    GPIOP7_Handler                           0x00000987   Thumb Code     2  startup_tm4c129.o(.text)
+    GPIOQ0_Handler                           0x00000989   Thumb Code     2  startup_tm4c129.o(.text)
+    GPIOQ1_Handler                           0x0000098b   Thumb Code     2  startup_tm4c129.o(.text)
+    GPIOQ2_Handler                           0x0000098d   Thumb Code     2  startup_tm4c129.o(.text)
+    GPIOQ3_Handler                           0x0000098f   Thumb Code     2  startup_tm4c129.o(.text)
+    GPIOQ4_Handler                           0x00000991   Thumb Code     2  startup_tm4c129.o(.text)
+    GPIOQ5_Handler                           0x00000993   Thumb Code     2  startup_tm4c129.o(.text)
+    GPIOQ6_Handler                           0x00000995   Thumb Code     2  startup_tm4c129.o(.text)
+    GPIOQ7_Handler                           0x00000997   Thumb Code     2  startup_tm4c129.o(.text)
+    GPIOR_Handler                            0x00000999   Thumb Code     2  startup_tm4c129.o(.text)
+    GPIOS_Handler                            0x0000099b   Thumb Code     2  startup_tm4c129.o(.text)
+    SHAMD5_Handler                           0x0000099d   Thumb Code     2  startup_tm4c129.o(.text)
+    AES_Handler                              0x0000099f   Thumb Code     2  startup_tm4c129.o(.text)
+    DES3DES_Handler                          0x000009a1   Thumb Code     2  startup_tm4c129.o(.text)
+    LCDCONTROLLER_Handler                    0x000009a3   Thumb Code     2  startup_tm4c129.o(.text)
+    TIMER6A_Handler                          0x000009a5   Thumb Code     2  startup_tm4c129.o(.text)
+    TIMER6B_Handler                          0x000009a7   Thumb Code     2  startup_tm4c129.o(.text)
+    TIMER7A_Handler                          0x000009a9   Thumb Code     2  startup_tm4c129.o(.text)
+    TIMER7B_Handler                          0x000009ab   Thumb Code     2  startup_tm4c129.o(.text)
+    I2C6_Handler                             0x000009ad   Thumb Code     2  startup_tm4c129.o(.text)
+    I2C7_Handler                             0x000009af   Thumb Code     2  startup_tm4c129.o(.text)
+    HIMSCANKEYBOARD_Handler                  0x000009b1   Thumb Code     2  startup_tm4c129.o(.text)
+    ONEWIRE_Handler                          0x000009b3   Thumb Code     2  startup_tm4c129.o(.text)
+    HIMPS2_Handler                           0x000009b5   Thumb Code     2  startup_tm4c129.o(.text)
+    HIMLEDSEQUENCER_Handler                  0x000009b7   Thumb Code     2  startup_tm4c129.o(.text)
+    HIMCONSUMERIR_Handler                    0x000009b9   Thumb Code     2  startup_tm4c129.o(.text)
+    I2C8_Handler                             0x000009bb   Thumb Code     2  startup_tm4c129.o(.text)
+    I2C9_Handler                             0x000009bd   Thumb Code     2  startup_tm4c129.o(.text)
+    GPIOT_Handler                            0x000009bf   Thumb Code     2  startup_tm4c129.o(.text)
+    __user_initial_stackheap                 0x000009c1   Thumb Code     0  startup_tm4c129.o(.text)
+    _tx_thread_context_restore               0x000009e1   Thumb Code     0  tx_thread_context_restore.o(.text)
+    _tx_thread_context_save                  0x000009e9   Thumb Code     0  tx_thread_context_save.o(.text)
+    _tx_thread_schedule                      0x000009ed   Thumb Code     0  tx_thread_schedule.o(.text)
+    PendSV_Handler                           0x00000a19   Thumb Code     0  tx_thread_schedule.o(.text)
+    __tx_PendSVHandler                       0x00000a19   Thumb Code     0  tx_thread_schedule.o(.text)
+    tx_thread_fpu_enable                     0x00000abd   Thumb Code     0  tx_thread_schedule.o(.text)
+    tx_thread_fpu_disable                    0x00000abf   Thumb Code     0  tx_thread_schedule.o(.text)
+    _tx_vfp_access                           0x00000ac1   Thumb Code     0  tx_thread_schedule.o(.text)
+    _tx_timer_interrupt                      0x00000acd   Thumb Code     0  tx_timer_interrupt.o(.text)
+    _tx_initialize_high_level                0x00000bb5   Thumb Code   134  tx_initialize_high_level.o(.text)
+    _tx_initialize_kernel_enter              0x00000c3d   Thumb Code    78  tx_initialize_kernel_enter.o(.text)
+    _tx_thread_initialize                    0x00000c8d   Thumb Code   128  tx_thread_initialize.o(.text)
+    _tx_thread_sleep                         0x00000d0d   Thumb Code   142  tx_thread_sleep.o(.text)
+    _txe_block_allocate                      0x00000d9d   Thumb Code   102  txe_block_allocate.o(.text)
+    _txe_block_pool_create                   0x00000e05   Thumb Code   378  txe_block_pool_create.o(.text)
+    _txe_block_release                       0x00000f81   Thumb Code    30  txe_block_release.o(.text)
+    _txe_byte_allocate                       0x00000fa1   Thumb Code   182  txe_byte_allocate.o(.text)
+    _txe_byte_pool_create                    0x00001059   Thumb Code   366  txe_byte_pool_create.o(.text)
+    _txe_event_flags_create                  0x000011c9   Thumb Code   322  txe_event_flags_create.o(.text)
+    _txe_event_flags_get                     0x0000130d   Thumb Code   160  txe_event_flags_get.o(.text)
+    _txe_event_flags_set                     0x000013ad   Thumb Code    38  txe_event_flags_set.o(.text)
+    _txe_mutex_create                        0x000013d5   Thumb Code   324  txe_mutex_create.o(.text)
+    _txe_mutex_get                           0x00001519   Thumb Code   118  txe_mutex_get.o(.text)
+    _txe_mutex_put                           0x00001591   Thumb Code    64  txe_mutex_put.o(.text)
+    _txe_queue_create                        0x000015d1   Thumb Code   376  txe_queue_create.o(.text)
+    _txe_queue_receive                       0x00001749   Thumb Code   102  txe_queue_receive.o(.text)
+    _txe_queue_send                          0x000017b1   Thumb Code   102  txe_queue_send.o(.text)
+    _txe_semaphore_create                    0x00001819   Thumb Code   286  txe_semaphore_create.o(.text)
+    _txe_semaphore_get                       0x00001939   Thumb Code    82  txe_semaphore_get.o(.text)
+    _txe_semaphore_put                       0x0000198d   Thumb Code    24  txe_semaphore_put.o(.text)
+    _txe_thread_create                       0x000019a5   Thumb Code   408  txe_thread_create.o(.text)
+    _tx_block_allocate                       0x00001b3d   Thumb Code   174  tx_block_allocate.o(.text)
+    _tx_block_pool_create                    0x00001bed   Thumb Code   298  tx_block_pool_create.o(.text)
+    _tx_block_release                        0x00001d19   Thumb Code   104  tx_block_release.o(.text)
+    _tx_byte_allocate                        0x00001d81   Thumb Code   208  tx_byte_allocate.o(.text)
+    _tx_byte_pool_create                     0x00001e51   Thumb Code   138  tx_byte_pool_create.o(.text)
+    _tx_event_flags_create                   0x00001edd   Thumb Code    88  tx_event_flags_create.o(.text)
+    _tx_event_flags_get                      0x00001f35   Thumb Code   256  tx_event_flags_get.o(.text)
+    _tx_event_flags_set                      0x00002035   Thumb Code   522  tx_event_flags_set.o(.text)
+    _tx_mutex_create                         0x00002241   Thumb Code   106  tx_mutex_create.o(.text)
+    _tx_mutex_get                            0x000022ad   Thumb Code   278  tx_mutex_get.o(.text)
+    _tx_mutex_put                            0x000023c5   Thumb Code   622  tx_mutex_put.o(.text)
+    _tx_queue_create                         0x00002635   Thumb Code   124  tx_queue_create.o(.text)
+    _tx_queue_receive                        0x000026b1   Thumb Code   970  tx_queue_receive.o(.text)
+    _tx_queue_send                           0x00002a7d   Thumb Code   568  tx_queue_send.o(.text)
+    _tx_semaphore_create                     0x00002cb5   Thumb Code    94  tx_semaphore_create.o(.text)
+    _tx_semaphore_get                        0x00002d15   Thumb Code   164  tx_semaphore_get.o(.text)
+    _tx_semaphore_put                        0x00002db9   Thumb Code    98  tx_semaphore_put.o(.text)
+    _tx_thread_create                        0x00002e1d   Thumb Code   296  tx_thread_create.o(.text)
+    _tx_thread_system_preempt_check          0x00002f45   Thumb Code    74  tx_thread_system_preempt_check.o(.text)
+    _tx_thread_system_suspend                0x00002f91   Thumb Code   512  tx_thread_system_suspend.o(.text)
+    _tx_thread_time_slice                    0x00003191   Thumb Code   112  tx_thread_time_slice.o(.text)
+    _tx_timer_expiration_process             0x00003201   Thumb Code    36  tx_timer_expiration_process.o(.text)
+    _tx_timer_initialize                     0x00003225   Thumb Code   252  tx_timer_initialize.o(.text)
+    _tx_thread_stack_build                   0x00003335   Thumb Code     0  tx_thread_stack_build.o(.text)
+    _tx_block_pool_cleanup                   0x00003375   Thumb Code   146  tx_block_pool_cleanup.o(.text)
+    _tx_byte_pool_cleanup                    0x00003409   Thumb Code   146  tx_byte_pool_cleanup.o(.text)
+    _tx_byte_pool_search                     0x0000349d   Thumb Code   240  tx_byte_pool_search.o(.text)
+    _tx_event_flags_cleanup                  0x0000358d   Thumb Code   154  tx_event_flags_cleanup.o(.text)
+    _tx_mutex_cleanup                        0x00003629   Thumb Code   146  tx_mutex_cleanup.o(.text)
+    _tx_mutex_thread_release                 0x000036bd   Thumb Code    70  tx_mutex_cleanup.o(.text)
+    _tx_mutex_prioritize                     0x00003705   Thumb Code   182  tx_mutex_prioritize.o(.text)
+    _tx_mutex_priority_change                0x000037bd   Thumb Code   220  tx_mutex_priority_change.o(.text)
+    _tx_queue_cleanup                        0x00003899   Thumb Code   154  tx_queue_cleanup.o(.text)
+    _tx_semaphore_cleanup                    0x00003935   Thumb Code   146  tx_semaphore_cleanup.o(.text)
+    _tx_thread_shell_entry                   0x000039c9   Thumb Code   126  tx_thread_shell_entry.o(.text)
+    _tx_thread_system_resume                 0x00003a49   Thumb Code   334  tx_thread_system_resume.o(.text)
+    _tx_thread_timeout                       0x00003b99   Thumb Code    52  tx_thread_timeout.o(.text)
+    _tx_timer_system_activate                0x00003bcd   Thumb Code    90  tx_timer_system_activate.o(.text)
+    _tx_timer_thread_entry                   0x00003c29   Thumb Code   320  tx_timer_thread_entry.o(.text)
+    _tx_timer_system_deactivate              0x00003d69   Thumb Code    46  tx_timer_system_deactivate.o(.text)
+    __aeabi_memset                           0x00003d97   Thumb Code    16  aeabi_memset.o(.text)
+    __aeabi_memclr4                          0x00003da7   Thumb Code     0  rt_memclr_w.o(.text)
+    __aeabi_memclr8                          0x00003da7   Thumb Code     0  rt_memclr_w.o(.text)
+    __rt_memclr_w                            0x00003da7   Thumb Code     0  rt_memclr_w.o(.text)
+    _memset_w                                0x00003dab   Thumb Code    74  rt_memclr_w.o(.text)
+    __use_two_region_memory                  0x00003df5   Thumb Code     2  heapauxi.o(.text)
+    __rt_heap_escrow$2region                 0x00003df7   Thumb Code     2  heapauxi.o(.text)
+    __rt_heap_expand$2region                 0x00003df9   Thumb Code     2  heapauxi.o(.text)
+    __aeabi_memclr                           0x00003dfb   Thumb Code     0  rt_memclr.o(.text)
+    __rt_memclr                              0x00003dfb   Thumb Code     0  rt_memclr.o(.text)
+    _memset                                  0x00003dff   Thumb Code    64  rt_memclr.o(.text)
+    __user_setup_stackheap                   0x00003e3f   Thumb Code    74  sys_stackheap_outer.o(.text)
+    exit                                     0x00003e89   Thumb Code    18  exit.o(.text)
+    __user_libspace                          0x00003e9d   Thumb Code     8  libspace.o(.text)
+    __user_perproc_libspace                  0x00003e9d   Thumb Code     0  libspace.o(.text)
+    __user_perthread_libspace                0x00003e9d   Thumb Code     0  libspace.o(.text)
+    _sys_exit                                0x00003ea5   Thumb Code     8  sys_exit.o(.text)
+    __I$use$semihosting                      0x00003eb1   Thumb Code     0  use_no_semi.o(.text)
+    __use_no_semihosting_swi                 0x00003eb1   Thumb Code     2  use_no_semi.o(.text)
+    __semihosting_library_function           0x00003eb3   Thumb Code     0  indicate_semi.o(.text)
+    SysCtlClockFreqSet                       0x00003eb5   Thumb Code   700  sysctl.o(i.SysCtlClockFreqSet)
+    _fp_init                                 0x00004199   Thumb Code    26  fpinit.o(x$fpl$fpinit)
+    __fplib_config_fpu_vfp                   0x000041b1   Thumb Code     0  fpinit.o(x$fpl$fpinit)
+    __fplib_config_pureend_doubles           0x000041b1   Thumb Code     0  fpinit.o(x$fpl$fpinit)
+    Region$$Table$$Base                      0x00004408   Number         0  anon$$obj.o(Region$$Table)
+    Image$$RO$$Limit                         0x00004428   Number         0  anon$$obj.o ABSOLUTE
+    Region$$Table$$Limit                     0x00004428   Number         0  anon$$obj.o(Region$$Table)
+    Image$$RW$$Base                          0x20000000   Number         0  anon$$obj.o ABSOLUTE
+    SystemCoreClock                          0x20000000   Data           4  system_tm4c129.o(.data.SystemCoreClock)
+    _tx_thread_system_state                  0x20000004   Data           4  tx_thread_initialize.o(.data._tx_thread_system_state)
+    Image$$ZI$$Base                          0x20000008   Number         0  anon$$obj.o ABSOLUTE
+    __libspace_start                         0x20000008   Data          96  libspace.o(.bss)
+    __temporary_stack_top$libspace           0x20000068   Data           0  libspace.o(.bss)
+    _tx_block_pool_created_count             0x20000068   Data           4  tx_initialize_high_level.o(.bss._tx_block_pool_created_count)
+    _tx_block_pool_created_ptr               0x2000006c   Data           4  tx_initialize_high_level.o(.bss._tx_block_pool_created_ptr)
+    _tx_build_options                        0x20000070   Data           4  tx_thread_initialize.o(.bss._tx_build_options)
+    _tx_byte_pool_created_count              0x20000074   Data           4  tx_initialize_high_level.o(.bss._tx_byte_pool_created_count)
+    _tx_byte_pool_created_ptr                0x20000078   Data           4  tx_initialize_high_level.o(.bss._tx_byte_pool_created_ptr)
+    _tx_event_flags_created_count            0x2000007c   Data           4  tx_initialize_high_level.o(.bss._tx_event_flags_created_count)
+    _tx_event_flags_created_ptr              0x20000080   Data           4  tx_initialize_high_level.o(.bss._tx_event_flags_created_ptr)
+    _tx_initialize_unused_memory             0x20000084   Data           4  tx_initialize_high_level.o(.bss._tx_initialize_unused_memory)
+    _tx_mutex_created_count                  0x20000088   Data           4  tx_initialize_high_level.o(.bss._tx_mutex_created_count)
+    _tx_mutex_created_ptr                    0x2000008c   Data           4  tx_initialize_high_level.o(.bss._tx_mutex_created_ptr)
+    _tx_queue_created_count                  0x20000090   Data           4  tx_initialize_high_level.o(.bss._tx_queue_created_count)
+    _tx_queue_created_ptr                    0x20000094   Data           4  tx_initialize_high_level.o(.bss._tx_queue_created_ptr)
+    _tx_semaphore_created_count              0x20000098   Data           4  tx_initialize_high_level.o(.bss._tx_semaphore_created_count)
+    _tx_semaphore_created_ptr                0x2000009c   Data           4  tx_initialize_high_level.o(.bss._tx_semaphore_created_ptr)
+    _tx_thread_created_count                 0x200000a0   Data           4  tx_thread_initialize.o(.bss._tx_thread_created_count)
+    _tx_thread_created_ptr                   0x200000a4   Data           4  tx_thread_initialize.o(.bss._tx_thread_created_ptr)
+    _tx_thread_current_ptr                   0x200000a8   Data           4  tx_thread_initialize.o(.bss._tx_thread_current_ptr)
+    _tx_thread_execute_ptr                   0x200000ac   Data           4  tx_thread_initialize.o(.bss._tx_thread_execute_ptr)
+    _tx_thread_highest_priority              0x200000b0   Data           4  tx_thread_initialize.o(.bss._tx_thread_highest_priority)
+    _tx_thread_mutex_release                 0x200000b4   Data           4  tx_thread_initialize.o(.bss._tx_thread_mutex_release)
+    _tx_thread_preempt_disable               0x200000b8   Data           4  tx_thread_initialize.o(.bss._tx_thread_preempt_disable)
+    _tx_thread_preempted_maps                0x200000bc   Data           4  tx_thread_initialize.o(.bss._tx_thread_preempted_maps)
+    _tx_thread_priority_list                 0x200000c0   Data         128  tx_thread_initialize.o(.bss._tx_thread_priority_list)
+    _tx_thread_priority_maps                 0x20000140   Data           4  tx_thread_initialize.o(.bss._tx_thread_priority_maps)
+    _tx_thread_system_stack_ptr              0x20000144   Data           4  tx_thread_initialize.o(.bss._tx_thread_system_stack_ptr)
+    _tx_timer_created_count                  0x20000148   Data           4  tx_timer_initialize.o(.bss._tx_timer_created_count)
+    _tx_timer_created_ptr                    0x2000014c   Data           4  tx_timer_initialize.o(.bss._tx_timer_created_ptr)
+    _tx_timer_current_ptr                    0x20000150   Data           4  tx_timer_initialize.o(.bss._tx_timer_current_ptr)
+    _tx_timer_expired                        0x20000154   Data           4  tx_timer_initialize.o(.bss._tx_timer_expired)
+    _tx_timer_expired_time_slice             0x20000158   Data           4  tx_timer_initialize.o(.bss._tx_timer_expired_time_slice)
+    _tx_timer_expired_timer_ptr              0x2000015c   Data           4  tx_timer_initialize.o(.bss._tx_timer_expired_timer_ptr)
+    _tx_timer_list                           0x20000160   Data         128  tx_timer_initialize.o(.bss._tx_timer_list)
+    _tx_timer_list_end                       0x200001e0   Data           4  tx_timer_initialize.o(.bss._tx_timer_list_end)
+    _tx_timer_list_start                     0x200001e4   Data           4  tx_timer_initialize.o(.bss._tx_timer_list_start)
+    _tx_timer_priority                       0x200001e8   Data           4  tx_timer_initialize.o(.bss._tx_timer_priority)
+    _tx_timer_stack_size                     0x200001ec   Data           4  tx_timer_initialize.o(.bss._tx_timer_stack_size)
+    _tx_timer_stack_start                    0x200001f0   Data           4  tx_timer_initialize.o(.bss._tx_timer_stack_start)
+    _tx_timer_system_clock                   0x200001f4   Data           4  tx_timer_initialize.o(.bss._tx_timer_system_clock)
+    _tx_timer_thread                         0x200001f8   Data         180  tx_timer_initialize.o(.bss._tx_timer_thread)
+    _tx_timer_thread_stack_area              0x200002ac   Data        1024  tx_timer_initialize.o(.bss._tx_timer_thread_stack_area)
+    _tx_timer_time_slice                     0x200006ac   Data           4  tx_timer_initialize.o(.bss._tx_timer_time_slice)
+    block_pool_0                             0x200006b0   Data          48  demo_threadx.o(.bss.block_pool_0)
+    byte_pool_0                              0x200006e0   Data          52  demo_threadx.o(.bss.byte_pool_0)
+    event_flags_0                            0x20000714   Data          40  demo_threadx.o(.bss.event_flags_0)
+    memory_area                              0x2000073c   Data        9120  demo_threadx.o(.bss.memory_area)
+    mutex_0                                  0x20002adc   Data          52  demo_threadx.o(.bss.mutex_0)
+    queue_0                                  0x20002b10   Data          60  demo_threadx.o(.bss.queue_0)
+    semaphore_0                              0x20002b4c   Data          32  demo_threadx.o(.bss.semaphore_0)
+    thread_0                                 0x20002b6c   Data         180  demo_threadx.o(.bss.thread_0)
+    thread_0_counter                         0x20002c20   Data           4  demo_threadx.o(.bss.thread_0_counter)
+    thread_1                                 0x20002c24   Data         180  demo_threadx.o(.bss.thread_1)
+    thread_1_counter                         0x20002cd8   Data           4  demo_threadx.o(.bss.thread_1_counter)
+    thread_1_messages_sent                   0x20002cdc   Data           4  demo_threadx.o(.bss.thread_1_messages_sent)
+    thread_2                                 0x20002ce0   Data         180  demo_threadx.o(.bss.thread_2)
+    thread_2_counter                         0x20002d94   Data           4  demo_threadx.o(.bss.thread_2_counter)
+    thread_2_messages_received               0x20002d98   Data           4  demo_threadx.o(.bss.thread_2_messages_received)
+    thread_3                                 0x20002d9c   Data         180  demo_threadx.o(.bss.thread_3)
+    thread_3_counter                         0x20002e50   Data           4  demo_threadx.o(.bss.thread_3_counter)
+    thread_4                                 0x20002e54   Data         180  demo_threadx.o(.bss.thread_4)
+    thread_4_counter                         0x20002f08   Data           4  demo_threadx.o(.bss.thread_4_counter)
+    thread_5                                 0x20002f0c   Data         180  demo_threadx.o(.bss.thread_5)
+    thread_5_counter                         0x20002fc0   Data           4  demo_threadx.o(.bss.thread_5_counter)
+    thread_6                                 0x20002fc4   Data         180  demo_threadx.o(.bss.thread_6)
+    thread_6_counter                         0x20003078   Data           4  demo_threadx.o(.bss.thread_6_counter)
+    thread_7                                 0x2000307c   Data         180  demo_threadx.o(.bss.thread_7)
+    thread_7_counter                         0x20003130   Data           4  demo_threadx.o(.bss.thread_7_counter)
+    HeapMem                                  0x20003138   Data           0  startup_tm4c129.o(HEAP)
+    StackMem                                 0x20003138   Data           0  startup_tm4c129.o(STACK)
+    Image$$ZI$$Limit                         0x20003338   Number         0  anon$$obj.o ABSOLUTE
+
+
+
+==============================================================================
+
+Memory Map of the image
+
+  Image Entry point : 0x000008b5
+
+  Load Region LR_1 (Base: 0x00000000, Size: 0x00004430, Max: 0xffffffff, ABSOLUTE)
+
+    Execution Region ER_RO (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x00004428, Max: 0xffffffff, ABSOLUTE)
+
+    Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x00000000   0x00000000   0x00000200   Data   RO           50    RESET               startup_tm4c129.o
+    0x00000200   0x00000200   0x00000008   Code   RO         1107  * !!!main             c_w.l(__main.o)
+    0x00000208   0x00000208   0x0000005c   Code   RO         1274    !!!scatter          c_w.l(__scatter.o)
+    0x00000264   0x00000264   0x0000001a   Code   RO         1278    !!handler_copy      c_w.l(__scatter_copy.o)
+    0x0000027e   0x0000027e   0x00000002   PAD
+    0x00000280   0x00000280   0x00000002   Code   RO         1275    !!handler_null      c_w.l(__scatter.o)
+    0x00000282   0x00000282   0x00000002   PAD
+    0x00000284   0x00000284   0x0000001c   Code   RO         1280    !!handler_zi        c_w.l(__scatter_zi.o)
+    0x000002a0   0x000002a0   0x00000002   Code   RO         1136    .ARM.Collect$$libinit$$00000000  c_w.l(libinit.o)
+    0x000002a2   0x000002a2   0x00000004   Code   RO         1142    .ARM.Collect$$libinit$$00000001  c_w.l(libinit2.o)
+    0x000002a6   0x000002a6   0x00000000   Code   RO         1145    .ARM.Collect$$libinit$$00000004  c_w.l(libinit2.o)
+    0x000002a6   0x000002a6   0x00000000   Code   RO         1147    .ARM.Collect$$libinit$$00000006  c_w.l(libinit2.o)
+    0x000002a6   0x000002a6   0x00000000   Code   RO         1150    .ARM.Collect$$libinit$$0000000C  c_w.l(libinit2.o)
+    0x000002a6   0x000002a6   0x00000000   Code   RO         1152    .ARM.Collect$$libinit$$0000000E  c_w.l(libinit2.o)
+    0x000002a6   0x000002a6   0x00000000   Code   RO         1154    .ARM.Collect$$libinit$$00000010  c_w.l(libinit2.o)
+    0x000002a6   0x000002a6   0x00000000   Code   RO         1157    .ARM.Collect$$libinit$$00000013  c_w.l(libinit2.o)
+    0x000002a6   0x000002a6   0x00000000   Code   RO         1159    .ARM.Collect$$libinit$$00000015  c_w.l(libinit2.o)
+    0x000002a6   0x000002a6   0x00000000   Code   RO         1161    .ARM.Collect$$libinit$$00000017  c_w.l(libinit2.o)
+    0x000002a6   0x000002a6   0x00000000   Code   RO         1163    .ARM.Collect$$libinit$$00000019  c_w.l(libinit2.o)
+    0x000002a6   0x000002a6   0x00000000   Code   RO         1165    .ARM.Collect$$libinit$$0000001B  c_w.l(libinit2.o)
+    0x000002a6   0x000002a6   0x00000000   Code   RO         1167    .ARM.Collect$$libinit$$0000001D  c_w.l(libinit2.o)
+    0x000002a6   0x000002a6   0x00000000   Code   RO         1169    .ARM.Collect$$libinit$$0000001F  c_w.l(libinit2.o)
+    0x000002a6   0x000002a6   0x00000000   Code   RO         1171    .ARM.Collect$$libinit$$00000021  c_w.l(libinit2.o)
+    0x000002a6   0x000002a6   0x00000000   Code   RO         1173    .ARM.Collect$$libinit$$00000023  c_w.l(libinit2.o)
+    0x000002a6   0x000002a6   0x00000000   Code   RO         1175    .ARM.Collect$$libinit$$00000025  c_w.l(libinit2.o)
+    0x000002a6   0x000002a6   0x00000000   Code   RO         1177    .ARM.Collect$$libinit$$00000027  c_w.l(libinit2.o)
+    0x000002a6   0x000002a6   0x00000000   Code   RO         1181    .ARM.Collect$$libinit$$0000002E  c_w.l(libinit2.o)
+    0x000002a6   0x000002a6   0x00000000   Code   RO         1183    .ARM.Collect$$libinit$$00000030  c_w.l(libinit2.o)
+    0x000002a6   0x000002a6   0x00000000   Code   RO         1185    .ARM.Collect$$libinit$$00000032  c_w.l(libinit2.o)
+    0x000002a6   0x000002a6   0x00000000   Code   RO         1187    .ARM.Collect$$libinit$$00000034  c_w.l(libinit2.o)
+    0x000002a6   0x000002a6   0x00000002   Code   RO         1188    .ARM.Collect$$libinit$$00000035  c_w.l(libinit2.o)
+    0x000002a8   0x000002a8   0x00000002   Code   RO         1210    .ARM.Collect$$libshutdown$$00000000  c_w.l(libshutdown.o)
+    0x000002aa   0x000002aa   0x00000000   Code   RO         1225    .ARM.Collect$$libshutdown$$00000002  c_w.l(libshutdown2.o)
+    0x000002aa   0x000002aa   0x00000000   Code   RO         1227    .ARM.Collect$$libshutdown$$00000004  c_w.l(libshutdown2.o)
+    0x000002aa   0x000002aa   0x00000000   Code   RO         1230    .ARM.Collect$$libshutdown$$00000007  c_w.l(libshutdown2.o)
+    0x000002aa   0x000002aa   0x00000000   Code   RO         1233    .ARM.Collect$$libshutdown$$0000000A  c_w.l(libshutdown2.o)
+    0x000002aa   0x000002aa   0x00000000   Code   RO         1235    .ARM.Collect$$libshutdown$$0000000C  c_w.l(libshutdown2.o)
+    0x000002aa   0x000002aa   0x00000000   Code   RO         1238    .ARM.Collect$$libshutdown$$0000000F  c_w.l(libshutdown2.o)
+    0x000002aa   0x000002aa   0x00000002   Code   RO         1239    .ARM.Collect$$libshutdown$$00000010  c_w.l(libshutdown2.o)
+    0x000002ac   0x000002ac   0x00000000   Code   RO         1109    .ARM.Collect$$rtentry$$00000000  c_w.l(__rtentry.o)
+    0x000002ac   0x000002ac   0x00000000   Code   RO         1113    .ARM.Collect$$rtentry$$00000002  c_w.l(__rtentry2.o)
+    0x000002ac   0x000002ac   0x00000006   Code   RO         1125    .ARM.Collect$$rtentry$$00000004  c_w.l(__rtentry4.o)
+    0x000002b2   0x000002b2   0x00000000   Code   RO         1115    .ARM.Collect$$rtentry$$00000009  c_w.l(__rtentry2.o)
+    0x000002b2   0x000002b2   0x00000004   Code   RO         1116    .ARM.Collect$$rtentry$$0000000A  c_w.l(__rtentry2.o)
+    0x000002b6   0x000002b6   0x00000000   Code   RO         1118    .ARM.Collect$$rtentry$$0000000C  c_w.l(__rtentry2.o)
+    0x000002b6   0x000002b6   0x00000008   Code   RO         1119    .ARM.Collect$$rtentry$$0000000D  c_w.l(__rtentry2.o)
+    0x000002be   0x000002be   0x00000002   Code   RO         1140    .ARM.Collect$$rtexit$$00000000  c_w.l(rtexit.o)
+    0x000002c0   0x000002c0   0x00000000   Code   RO         1190    .ARM.Collect$$rtexit$$00000002  c_w.l(rtexit2.o)
+    0x000002c0   0x000002c0   0x00000004   Code   RO         1191    .ARM.Collect$$rtexit$$00000003  c_w.l(rtexit2.o)
+    0x000002c4   0x000002c4   0x00000006   Code   RO         1192    .ARM.Collect$$rtexit$$00000004  c_w.l(rtexit2.o)
+    0x000002ca   0x000002ca   0x00000002   PAD
+    0x000002cc   0x000002cc   0x00000538   Code   RO            1    .text               demo_threadx.o
+    0x00000804   0x00000804   0x00000078   Code   RO           35    .text               tx_initialize_low_level.o
+    0x0000087c   0x0000087c   0x00000038   Code   RO           40    .text               system_tm4c129.o
+    0x000008b4   0x000008b4   0x0000012c   Code   RO           51  * .text               startup_tm4c129.o
+    0x000009e0   0x000009e0   0x00000008   Code   RO          431    .text               ThreadX_Library.lib(tx_thread_context_restore.o)
+    0x000009e8   0x000009e8   0x00000004   Code   RO          434    .text               ThreadX_Library.lib(tx_thread_context_save.o)
+    0x000009ec   0x000009ec   0x000000e0   Code   RO          437    .text               ThreadX_Library.lib(tx_thread_schedule.o)
+    0x00000acc   0x00000acc   0x000000e8   Code   RO          440    .text               ThreadX_Library.lib(tx_timer_interrupt.o)
+    0x00000bb4   0x00000bb4   0x00000086   Code   RO          443    .text               ThreadX_Library.lib(tx_initialize_high_level.o)
+    0x00000c3a   0x00000c3a   0x00000002   PAD
+    0x00000c3c   0x00000c3c   0x0000004e   Code   RO          463    .text               ThreadX_Library.lib(tx_initialize_kernel_enter.o)
+    0x00000c8a   0x00000c8a   0x00000002   PAD
+    0x00000c8c   0x00000c8c   0x00000080   Code   RO          470    .text               ThreadX_Library.lib(tx_thread_initialize.o)
+    0x00000d0c   0x00000d0c   0x0000008e   Code   RO          492    .text               ThreadX_Library.lib(tx_thread_sleep.o)
+    0x00000d9a   0x00000d9a   0x00000002   PAD
+    0x00000d9c   0x00000d9c   0x00000066   Code   RO          500    .text               ThreadX_Library.lib(txe_block_allocate.o)
+    0x00000e02   0x00000e02   0x00000002   PAD
+    0x00000e04   0x00000e04   0x0000017a   Code   RO          508    .text               ThreadX_Library.lib(txe_block_pool_create.o)
+    0x00000f7e   0x00000f7e   0x00000002   PAD
+    0x00000f80   0x00000f80   0x0000001e   Code   RO          516    .text               ThreadX_Library.lib(txe_block_release.o)
+    0x00000f9e   0x00000f9e   0x00000002   PAD
+    0x00000fa0   0x00000fa0   0x000000b6   Code   RO          524    .text               ThreadX_Library.lib(txe_byte_allocate.o)
+    0x00001056   0x00001056   0x00000002   PAD
+    0x00001058   0x00001058   0x0000016e   Code   RO          532    .text               ThreadX_Library.lib(txe_byte_pool_create.o)
+    0x000011c6   0x000011c6   0x00000002   PAD
+    0x000011c8   0x000011c8   0x00000142   Code   RO          540    .text               ThreadX_Library.lib(txe_event_flags_create.o)
+    0x0000130a   0x0000130a   0x00000002   PAD
+    0x0000130c   0x0000130c   0x000000a0   Code   RO          548    .text               ThreadX_Library.lib(txe_event_flags_get.o)
+    0x000013ac   0x000013ac   0x00000026   Code   RO          556    .text               ThreadX_Library.lib(txe_event_flags_set.o)
+    0x000013d2   0x000013d2   0x00000002   PAD
+    0x000013d4   0x000013d4   0x00000144   Code   RO          564    .text               ThreadX_Library.lib(txe_mutex_create.o)
+    0x00001518   0x00001518   0x00000076   Code   RO          572    .text               ThreadX_Library.lib(txe_mutex_get.o)
+    0x0000158e   0x0000158e   0x00000002   PAD
+    0x00001590   0x00001590   0x00000040   Code   RO          580    .text               ThreadX_Library.lib(txe_mutex_put.o)
+    0x000015d0   0x000015d0   0x00000178   Code   RO          588    .text               ThreadX_Library.lib(txe_queue_create.o)
+    0x00001748   0x00001748   0x00000066   Code   RO          596    .text               ThreadX_Library.lib(txe_queue_receive.o)
+    0x000017ae   0x000017ae   0x00000002   PAD
+    0x000017b0   0x000017b0   0x00000066   Code   RO          604    .text               ThreadX_Library.lib(txe_queue_send.o)
+    0x00001816   0x00001816   0x00000002   PAD
+    0x00001818   0x00001818   0x0000011e   Code   RO          612    .text               ThreadX_Library.lib(txe_semaphore_create.o)
+    0x00001936   0x00001936   0x00000002   PAD
+    0x00001938   0x00001938   0x00000052   Code   RO          620    .text               ThreadX_Library.lib(txe_semaphore_get.o)
+    0x0000198a   0x0000198a   0x00000002   PAD
+    0x0000198c   0x0000198c   0x00000018   Code   RO          628    .text               ThreadX_Library.lib(txe_semaphore_put.o)
+    0x000019a4   0x000019a4   0x00000198   Code   RO          636    .text               ThreadX_Library.lib(txe_thread_create.o)
+    0x00001b3c   0x00001b3c   0x000000ae   Code   RO          764    .text               ThreadX_Library.lib(tx_block_allocate.o)
+    0x00001bea   0x00001bea   0x00000002   PAD
+    0x00001bec   0x00001bec   0x0000012a   Code   RO          772    .text               ThreadX_Library.lib(tx_block_pool_create.o)
+    0x00001d16   0x00001d16   0x00000002   PAD
+    0x00001d18   0x00001d18   0x00000068   Code   RO          780    .text               ThreadX_Library.lib(tx_block_release.o)
+    0x00001d80   0x00001d80   0x000000d0   Code   RO          788    .text               ThreadX_Library.lib(tx_byte_allocate.o)
+    0x00001e50   0x00001e50   0x0000008a   Code   RO          796    .text               ThreadX_Library.lib(tx_byte_pool_create.o)
+    0x00001eda   0x00001eda   0x00000002   PAD
+    0x00001edc   0x00001edc   0x00000058   Code   RO          804    .text               ThreadX_Library.lib(tx_event_flags_create.o)
+    0x00001f34   0x00001f34   0x00000100   Code   RO          812    .text               ThreadX_Library.lib(tx_event_flags_get.o)
+    0x00002034   0x00002034   0x0000020a   Code   RO          821    .text               ThreadX_Library.lib(tx_event_flags_set.o)
+    0x0000223e   0x0000223e   0x00000002   PAD
+    0x00002240   0x00002240   0x0000006a   Code   RO          830    .text               ThreadX_Library.lib(tx_mutex_create.o)
+    0x000022aa   0x000022aa   0x00000002   PAD
+    0x000022ac   0x000022ac   0x00000116   Code   RO          838    .text               ThreadX_Library.lib(tx_mutex_get.o)
+    0x000023c2   0x000023c2   0x00000002   PAD
+    0x000023c4   0x000023c4   0x0000026e   Code   RO          846    .text               ThreadX_Library.lib(tx_mutex_put.o)
+    0x00002632   0x00002632   0x00000002   PAD
+    0x00002634   0x00002634   0x0000007c   Code   RO          854    .text               ThreadX_Library.lib(tx_queue_create.o)
+    0x000026b0   0x000026b0   0x000003ca   Code   RO          862    .text               ThreadX_Library.lib(tx_queue_receive.o)
+    0x00002a7a   0x00002a7a   0x00000002   PAD
+    0x00002a7c   0x00002a7c   0x00000238   Code   RO          870    .text               ThreadX_Library.lib(tx_queue_send.o)
+    0x00002cb4   0x00002cb4   0x0000005e   Code   RO          878    .text               ThreadX_Library.lib(tx_semaphore_create.o)
+    0x00002d12   0x00002d12   0x00000002   PAD
+    0x00002d14   0x00002d14   0x000000a4   Code   RO          886    .text               ThreadX_Library.lib(tx_semaphore_get.o)
+    0x00002db8   0x00002db8   0x00000062   Code   RO          894    .text               ThreadX_Library.lib(tx_semaphore_put.o)
+    0x00002e1a   0x00002e1a   0x00000002   PAD
+    0x00002e1c   0x00002e1c   0x00000128   Code   RO          902    .text               ThreadX_Library.lib(tx_thread_create.o)
+    0x00002f44   0x00002f44   0x0000004a   Code   RO          910    .text               ThreadX_Library.lib(tx_thread_system_preempt_check.o)
+    0x00002f8e   0x00002f8e   0x00000002   PAD
+    0x00002f90   0x00002f90   0x00000200   Code   RO          919    .text               ThreadX_Library.lib(tx_thread_system_suspend.o)
+    0x00003190   0x00003190   0x00000070   Code   RO          927    .text               ThreadX_Library.lib(tx_thread_time_slice.o)
+    0x00003200   0x00003200   0x00000024   Code   RO          936    .text               ThreadX_Library.lib(tx_timer_expiration_process.o)
+    0x00003224   0x00003224   0x00000110   Code   RO          944    .text               ThreadX_Library.lib(tx_timer_initialize.o)
+    0x00003334   0x00003334   0x00000040   Code   RO          968    .text               ThreadX_Library.lib(tx_thread_stack_build.o)
+    0x00003374   0x00003374   0x00000092   Code   RO          971    .text               ThreadX_Library.lib(tx_block_pool_cleanup.o)
+    0x00003406   0x00003406   0x00000002   PAD
+    0x00003408   0x00003408   0x00000092   Code   RO          980    .text               ThreadX_Library.lib(tx_byte_pool_cleanup.o)
+    0x0000349a   0x0000349a   0x00000002   PAD
+    0x0000349c   0x0000349c   0x000000f0   Code   RO          989    .text               ThreadX_Library.lib(tx_byte_pool_search.o)
+    0x0000358c   0x0000358c   0x0000009a   Code   RO          997    .text               ThreadX_Library.lib(tx_event_flags_cleanup.o)
+    0x00003626   0x00003626   0x00000002   PAD
+    0x00003628   0x00003628   0x000000da   Code   RO         1006    .text               ThreadX_Library.lib(tx_mutex_cleanup.o)
+    0x00003702   0x00003702   0x00000002   PAD
+    0x00003704   0x00003704   0x000000b6   Code   RO         1015    .text               ThreadX_Library.lib(tx_mutex_prioritize.o)
+    0x000037ba   0x000037ba   0x00000002   PAD
+    0x000037bc   0x000037bc   0x000000dc   Code   RO         1023    .text               ThreadX_Library.lib(tx_mutex_priority_change.o)
+    0x00003898   0x00003898   0x0000009a   Code   RO         1032    .text               ThreadX_Library.lib(tx_queue_cleanup.o)
+    0x00003932   0x00003932   0x00000002   PAD
+    0x00003934   0x00003934   0x00000092   Code   RO         1041    .text               ThreadX_Library.lib(tx_semaphore_cleanup.o)
+    0x000039c6   0x000039c6   0x00000002   PAD
+    0x000039c8   0x000039c8   0x0000007e   Code   RO         1050    .text               ThreadX_Library.lib(tx_thread_shell_entry.o)
+    0x00003a46   0x00003a46   0x00000002   PAD
+    0x00003a48   0x00003a48   0x0000014e   Code   RO         1058    .text               ThreadX_Library.lib(tx_thread_system_resume.o)
+    0x00003b96   0x00003b96   0x00000002   PAD
+    0x00003b98   0x00003b98   0x00000034   Code   RO         1066    .text               ThreadX_Library.lib(tx_thread_timeout.o)
+    0x00003bcc   0x00003bcc   0x0000005a   Code   RO         1074    .text               ThreadX_Library.lib(tx_timer_system_activate.o)
+    0x00003c26   0x00003c26   0x00000002   PAD
+    0x00003c28   0x00003c28   0x00000140   Code   RO         1082    .text               ThreadX_Library.lib(tx_timer_thread_entry.o)
+    0x00003d68   0x00003d68   0x0000002e   Code   RO         1091    .text               ThreadX_Library.lib(tx_timer_system_deactivate.o)
+    0x00003d96   0x00003d96   0x00000010   Code   RO         1101    .text               c_w.l(aeabi_memset.o)
+    0x00003da6   0x00003da6   0x0000004e   Code   RO         1103    .text               c_w.l(rt_memclr_w.o)
+    0x00003df4   0x00003df4   0x00000006   Code   RO         1105    .text               c_w.l(heapauxi.o)
+    0x00003dfa   0x00003dfa   0x00000044   Code   RO         1110    .text               c_w.l(rt_memclr.o)
+    0x00003e3e   0x00003e3e   0x0000004a   Code   RO         1127    .text               c_w.l(sys_stackheap_outer.o)
+    0x00003e88   0x00003e88   0x00000012   Code   RO         1129    .text               c_w.l(exit.o)
+    0x00003e9a   0x00003e9a   0x00000002   PAD
+    0x00003e9c   0x00003e9c   0x00000008   Code   RO         1137    .text               c_w.l(libspace.o)
+    0x00003ea4   0x00003ea4   0x0000000c   Code   RO         1200    .text               c_w.l(sys_exit.o)
+    0x00003eb0   0x00003eb0   0x00000002   Code   RO         1215    .text               c_w.l(use_no_semi.o)
+    0x00003eb2   0x00003eb2   0x00000000   Code   RO         1217    .text               c_w.l(indicate_semi.o)
+    0x00003eb2   0x00003eb2   0x00000002   PAD
+    0x00003eb4   0x00003eb4   0x000002e4   Code   RO           57    i.SysCtlClockFreqSet  driverlib.lib(sysctl.o)
+    0x00004198   0x00004198   0x0000001a   Code   RO         1198    x$fpl$fpinit        fz_wm.l(fpinit.o)
+    0x000041b2   0x000041b2   0x00000002   PAD
+    0x000041b4   0x000041b4   0x00000254   Data   RO          111    .constdata          driverlib.lib(sysctl.o)
+    0x00004408   0x00004408   0x00000020   Data   RO         1273    Region$$Table       anon$$obj.o
+
+
+    Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x00004428, Size: 0x00000008, Max: 0xffffffff, ABSOLUTE)
+
+    Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x20000000   0x00004428   0x00000004   Data   RW           42    .data.SystemCoreClock  system_tm4c129.o
+    0x20000004   0x0000442c   0x00000004   Data   RW          473    .data._tx_thread_system_state  ThreadX_Library.lib(tx_thread_initialize.o)
+
+
+    Execution Region ER_ZI (Exec base: 0x20000008, Load base: 0x00004430, Size: 0x00003330, Max: 0xffffffff, ABSOLUTE)
+
+    Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x20000008        -       0x00000060   Zero   RW         1138    .bss                c_w.l(libspace.o)
+    0x20000068        -       0x00000004   Zero   RW          452    .bss._tx_block_pool_created_count  ThreadX_Library.lib(tx_initialize_high_level.o)
+    0x2000006c        -       0x00000004   Zero   RW          451    .bss._tx_block_pool_created_ptr  ThreadX_Library.lib(tx_initialize_high_level.o)
+    0x20000070        -       0x00000004   Zero   RW          485    .bss._tx_build_options  ThreadX_Library.lib(tx_thread_initialize.o)
+    0x20000074        -       0x00000004   Zero   RW          454    .bss._tx_byte_pool_created_count  ThreadX_Library.lib(tx_initialize_high_level.o)
+    0x20000078        -       0x00000004   Zero   RW          453    .bss._tx_byte_pool_created_ptr  ThreadX_Library.lib(tx_initialize_high_level.o)
+    0x2000007c        -       0x00000004   Zero   RW          450    .bss._tx_event_flags_created_count  ThreadX_Library.lib(tx_initialize_high_level.o)
+    0x20000080        -       0x00000004   Zero   RW          449    .bss._tx_event_flags_created_ptr  ThreadX_Library.lib(tx_initialize_high_level.o)
+    0x20000084        -       0x00000004   Zero   RW          457    .bss._tx_initialize_unused_memory  ThreadX_Library.lib(tx_initialize_high_level.o)
+    0x20000088        -       0x00000004   Zero   RW          456    .bss._tx_mutex_created_count  ThreadX_Library.lib(tx_initialize_high_level.o)
+    0x2000008c        -       0x00000004   Zero   RW          455    .bss._tx_mutex_created_ptr  ThreadX_Library.lib(tx_initialize_high_level.o)
+    0x20000090        -       0x00000004   Zero   RW          448    .bss._tx_queue_created_count  ThreadX_Library.lib(tx_initialize_high_level.o)
+    0x20000094        -       0x00000004   Zero   RW          447    .bss._tx_queue_created_ptr  ThreadX_Library.lib(tx_initialize_high_level.o)
+    0x20000098        -       0x00000004   Zero   RW          446    .bss._tx_semaphore_created_count  ThreadX_Library.lib(tx_initialize_high_level.o)
+    0x2000009c        -       0x00000004   Zero   RW          445    .bss._tx_semaphore_created_ptr  ThreadX_Library.lib(tx_initialize_high_level.o)
+    0x200000a0        -       0x00000004   Zero   RW          482    .bss._tx_thread_created_count  ThreadX_Library.lib(tx_thread_initialize.o)
+    0x200000a4        -       0x00000004   Zero   RW          481    .bss._tx_thread_created_ptr  ThreadX_Library.lib(tx_thread_initialize.o)
+    0x200000a8        -       0x00000004   Zero   RW          475    .bss._tx_thread_current_ptr  ThreadX_Library.lib(tx_thread_initialize.o)
+    0x200000ac        -       0x00000004   Zero   RW          476    .bss._tx_thread_execute_ptr  ThreadX_Library.lib(tx_thread_initialize.o)
+    0x200000b0        -       0x00000004   Zero   RW          479    .bss._tx_thread_highest_priority  ThreadX_Library.lib(tx_thread_initialize.o)
+    0x200000b4        -       0x00000004   Zero   RW          484    .bss._tx_thread_mutex_release  ThreadX_Library.lib(tx_thread_initialize.o)
+    0x200000b8        -       0x00000004   Zero   RW          483    .bss._tx_thread_preempt_disable  ThreadX_Library.lib(tx_thread_initialize.o)
+    0x200000bc        -       0x00000004   Zero   RW          478    .bss._tx_thread_preempted_maps  ThreadX_Library.lib(tx_thread_initialize.o)
+    0x200000c0        -       0x00000080   Zero   RW          480    .bss._tx_thread_priority_list  ThreadX_Library.lib(tx_thread_initialize.o)
+    0x20000140        -       0x00000004   Zero   RW          477    .bss._tx_thread_priority_maps  ThreadX_Library.lib(tx_thread_initialize.o)
+    0x20000144        -       0x00000004   Zero   RW          486    .bss._tx_thread_system_stack_ptr  ThreadX_Library.lib(tx_thread_initialize.o)
+    0x20000148        -       0x00000004   Zero   RW          961    .bss._tx_timer_created_count  ThreadX_Library.lib(tx_timer_initialize.o)
+    0x2000014c        -       0x00000004   Zero   RW          960    .bss._tx_timer_created_ptr  ThreadX_Library.lib(tx_timer_initialize.o)
+    0x20000150        -       0x00000004   Zero   RW          953    .bss._tx_timer_current_ptr  ThreadX_Library.lib(tx_timer_initialize.o)
+    0x20000154        -       0x00000004   Zero   RW          949    .bss._tx_timer_expired  ThreadX_Library.lib(tx_timer_initialize.o)
+    0x20000158        -       0x00000004   Zero   RW          948    .bss._tx_timer_expired_time_slice  ThreadX_Library.lib(tx_timer_initialize.o)
+    0x2000015c        -       0x00000004   Zero   RW          950    .bss._tx_timer_expired_timer_ptr  ThreadX_Library.lib(tx_timer_initialize.o)
+    0x20000160        -       0x00000080   Zero   RW          951    .bss._tx_timer_list  ThreadX_Library.lib(tx_timer_initialize.o)
+    0x200001e0        -       0x00000004   Zero   RW          954    .bss._tx_timer_list_end  ThreadX_Library.lib(tx_timer_initialize.o)
+    0x200001e4        -       0x00000004   Zero   RW          952    .bss._tx_timer_list_start  ThreadX_Library.lib(tx_timer_initialize.o)
+    0x200001e8        -       0x00000004   Zero   RW          958    .bss._tx_timer_priority  ThreadX_Library.lib(tx_timer_initialize.o)
+    0x200001ec        -       0x00000004   Zero   RW          957    .bss._tx_timer_stack_size  ThreadX_Library.lib(tx_timer_initialize.o)
+    0x200001f0        -       0x00000004   Zero   RW          956    .bss._tx_timer_stack_start  ThreadX_Library.lib(tx_timer_initialize.o)
+    0x200001f4        -       0x00000004   Zero   RW          946    .bss._tx_timer_system_clock  ThreadX_Library.lib(tx_timer_initialize.o)
+    0x200001f8        -       0x000000b4   Zero   RW          959    .bss._tx_timer_thread  ThreadX_Library.lib(tx_timer_initialize.o)
+    0x200002ac        -       0x00000400   Zero   RW          955    .bss._tx_timer_thread_stack_area  ThreadX_Library.lib(tx_timer_initialize.o)
+    0x200006ac        -       0x00000004   Zero   RW          947    .bss._tx_timer_time_slice  ThreadX_Library.lib(tx_timer_initialize.o)
+    0x200006b0        -       0x00000030   Zero   RW           17    .bss.block_pool_0   demo_threadx.o
+    0x200006e0        -       0x00000034   Zero   RW            3    .bss.byte_pool_0    demo_threadx.o
+    0x20000714        -       0x00000028   Zero   RW           15    .bss.event_flags_0  demo_threadx.o
+    0x2000073c        -       0x000023a0   Zero   RW            4    .bss.memory_area    demo_threadx.o
+    0x20002adc        -       0x00000034   Zero   RW           16    .bss.mutex_0        demo_threadx.o
+    0x20002b10        -       0x0000003c   Zero   RW           13    .bss.queue_0        demo_threadx.o
+    0x20002b4c        -       0x00000020   Zero   RW           14    .bss.semaphore_0    demo_threadx.o
+    0x20002b6c        -       0x000000b4   Zero   RW            5    .bss.thread_0       demo_threadx.o
+    0x20002c20        -       0x00000004   Zero   RW           18    .bss.thread_0_counter  demo_threadx.o
+    0x20002c24        -       0x000000b4   Zero   RW            6    .bss.thread_1       demo_threadx.o
+    0x20002cd8        -       0x00000004   Zero   RW           19    .bss.thread_1_counter  demo_threadx.o
+    0x20002cdc        -       0x00000004   Zero   RW           20    .bss.thread_1_messages_sent  demo_threadx.o
+    0x20002ce0        -       0x000000b4   Zero   RW            7    .bss.thread_2       demo_threadx.o
+    0x20002d94        -       0x00000004   Zero   RW           21    .bss.thread_2_counter  demo_threadx.o
+    0x20002d98        -       0x00000004   Zero   RW           22    .bss.thread_2_messages_received  demo_threadx.o
+    0x20002d9c        -       0x000000b4   Zero   RW            8    .bss.thread_3       demo_threadx.o
+    0x20002e50        -       0x00000004   Zero   RW           23    .bss.thread_3_counter  demo_threadx.o
+    0x20002e54        -       0x000000b4   Zero   RW            9    .bss.thread_4       demo_threadx.o
+    0x20002f08        -       0x00000004   Zero   RW           24    .bss.thread_4_counter  demo_threadx.o
+    0x20002f0c        -       0x000000b4   Zero   RW           10    .bss.thread_5       demo_threadx.o
+    0x20002fc0        -       0x00000004   Zero   RW           25    .bss.thread_5_counter  demo_threadx.o
+    0x20002fc4        -       0x000000b4   Zero   RW           11    .bss.thread_6       demo_threadx.o
+    0x20003078        -       0x00000004   Zero   RW           26    .bss.thread_6_counter  demo_threadx.o
+    0x2000307c        -       0x000000b4   Zero   RW           12    .bss.thread_7       demo_threadx.o
+    0x20003130        -       0x00000004   Zero   RW           27    .bss.thread_7_counter  demo_threadx.o
+    0x20003134   0x00004430   0x00000004   PAD
+    0x20003138        -       0x00000000   Zero   RW           49    HEAP                startup_tm4c129.o
+    0x20003138        -       0x00000200   Zero   RW           48    STACK               startup_tm4c129.o
+
+
+==============================================================================
+
+Image component sizes
+
+
+      Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
+
+      1336        168          0          0      10884       8440   demo_threadx.o
+       300         22        512          0        512       5992   startup_tm4c129.o
+        56          0          0          4          0       1417   system_tm4c129.o
+       120         30          0          0          0        336   tx_initialize_low_level.o
+
+    ----------------------------------------------------------------------
+      1812        220        544          4      11400      16185   Object Totals
+         0          0         32          0          0          0   (incl. Generated)
+         0          0          0          0          4          0   (incl. Padding)
+
+    ----------------------------------------------------------------------
+
+      Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Library Member Name
+
+       174          0          0          0          0       5263   tx_block_allocate.o
+       146          0          0          0          0       4744   tx_block_pool_cleanup.o
+       298          0          0          0          0       5598   tx_block_pool_create.o
+       104          0          0          0          0       4733   tx_block_release.o
+       208          0          0          0          0       5240   tx_byte_allocate.o
+       146          0          0          0          0       4747   tx_byte_pool_cleanup.o
+       138          0          0          0          0       4978   tx_byte_pool_create.o
+       240          0          0          0          0       6008   tx_byte_pool_search.o
+       154          0          0          0          0       4868   tx_event_flags_cleanup.o
+        88          0          0          0          0       4434   tx_event_flags_create.o
+       256          0          0          0          0       5981   tx_event_flags_get.o
+       522          0          0          0          0       6711   tx_event_flags_set.o
+       134          0          0          0         52       6422   tx_initialize_high_level.o
+        78          0          0          0          0        715   tx_initialize_kernel_enter.o
+       218          0          0          0          0       4722   tx_mutex_cleanup.o
+       106          0          0          0          0       4012   tx_mutex_create.o
+       278          0          0          0          0       4662   tx_mutex_get.o
+       182          0          0          0          0       4564   tx_mutex_prioritize.o
+       220          0          0          0          0       4561   tx_mutex_priority_change.o
+       622          0          0          0          0       5929   tx_mutex_put.o
+       154          0          0          0          0       4757   tx_queue_cleanup.o
+       124          0          0          0          0       4759   tx_queue_create.o
+       970          0          0          0          0       7701   tx_queue_receive.o
+       568          0          0          0          0       6630   tx_queue_send.o
+       146          0          0          0          0       4563   tx_semaphore_cleanup.o
+        94          0          0          0          0       4282   tx_semaphore_create.o
+       164          0          0          0          0       4664   tx_semaphore_get.o
+        98          0          0          0          0       4440   tx_semaphore_put.o
+         8          2          0          0          0        264   tx_thread_context_restore.o
+         4          2          0          0          0        260   tx_thread_context_save.o
+       296          0          0          0          0       4848   tx_thread_create.o
+       128          0          0          4        172       3977   tx_thread_initialize.o
+       224          6          0          0          0        336   tx_thread_schedule.o
+       126          0          0          0          0       4227   tx_thread_shell_entry.o
+       142          0          0          0          0       4268   tx_thread_sleep.o
+        64          0          0          0          0        280   tx_thread_stack_build.o
+        74          0          0          0          0       3948   tx_thread_system_preempt_check.o
+       334          0          0          0          0       4874   tx_thread_system_resume.o
+       512          0          0          0          0       5468   tx_thread_system_suspend.o
+       112          0          0          0          0       3788   tx_thread_time_slice.o
+        52          0          0          0          0       3921   tx_thread_timeout.o
+        36          0          0          0          0       3684   tx_timer_expiration_process.o
+       272         20          0          0       1384       4294   tx_timer_initialize.o
+       232          0          0          0          0        336   tx_timer_interrupt.o
+        90          0          0          0          0       1449   tx_timer_system_activate.o
+        46          0          0          0          0       1288   tx_timer_system_deactivate.o
+       320          0          0          0          0       4915   tx_timer_thread_entry.o
+       102          0          0          0          0       4344   txe_block_allocate.o
+       378          0          0          0          0       5492   txe_block_pool_create.o
+        30          0          0          0          0       4044   txe_block_release.o
+       182          0          0          0          0       4577   txe_byte_allocate.o
+       366          0          0          0          0       5409   txe_byte_pool_create.o
+       322          0          0          0          0       5229   txe_event_flags_create.o
+       160          0          0          0          0       4349   txe_event_flags_get.o
+        38          0          0          0          0       4032   txe_event_flags_set.o
+       324          0          0          0          0       4745   txe_mutex_create.o
+       118          0          0          0          0       3798   txe_mutex_get.o
+        64          0          0          0          0       3597   txe_mutex_put.o
+       376          0          0          0          0       5475   txe_queue_create.o
+       102          0          0          0          0       4341   txe_queue_receive.o
+       102          0          0          0          0       4324   txe_queue_send.o
+       286          0          0          0          0       5069   txe_semaphore_create.o
+        82          0          0          0          0       4055   txe_semaphore_get.o
+        24          0          0          0          0       3683   txe_semaphore_put.o
+       408          0          0          0          0       5428   txe_thread_create.o
+         8          0          0          0          0         68   __main.o
+         0          0          0          0          0          0   __rtentry.o
+        12          0          0          0          0          0   __rtentry2.o
+         6          0          0          0          0          0   __rtentry4.o
+        94          8          0          0          0          0   __scatter.o
+        26          0          0          0          0          0   __scatter_copy.o
+        28          0          0          0          0          0   __scatter_zi.o
+        16          0          0          0          0         68   aeabi_memset.o
+        18          0          0          0          0         80   exit.o
+         6          0          0          0          0        152   heapauxi.o
+         0          0          0          0          0          0   indicate_semi.o
+         2          0          0          0          0          0   libinit.o
+         6          0          0          0          0          0   libinit2.o
+         2          0          0          0          0          0   libshutdown.o
+         2          0          0          0          0          0   libshutdown2.o
+         8          4          0          0         96         68   libspace.o
+        68          0          0          0          0         68   rt_memclr.o
+        78          0          0          0          0         80   rt_memclr_w.o
+         2          0          0          0          0          0   rtexit.o
+        10          0          0          0          0          0   rtexit2.o
+        12          4          0          0          0         68   sys_exit.o
+        74          0          0          0          0         80   sys_stackheap_outer.o
+         2          0          0          0          0         68   use_no_semi.o
+       740         40        596          0          0       7961   sysctl.o
+        26          0          0          0          0        116   fpinit.o
+
+    ----------------------------------------------------------------------
+     14496         86        596          4       1704     287981   Library Totals
+        84          0          0          0          0          0   (incl. Padding)
+
+    ----------------------------------------------------------------------
+
+      Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Library Name
+
+     13166         30          0          4       1608     279104   ThreadX_Library.lib
+       480         16          0          0         96        800   c_w.l
+       740         40        596          0          0       7961   driverlib.lib
+        26          0          0          0          0        116   fz_wm.l
+
+    ----------------------------------------------------------------------
+     14496         86        596          4       1704     287981   Library Totals
+
+    ----------------------------------------------------------------------
+
+==============================================================================
+
+
+      Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
+
+     16308        306       1140          8      13104     302702   Grand Totals
+     16308        306       1140          8      13104     302702   ELF Image Totals
+     16308        306       1140          8          0          0   ROM Totals
+
+==============================================================================
+
+    Total RO  Size (Code + RO Data)                17448 (  17.04kB)
+    Total RW  Size (RW Data + ZI Data)             13112 (  12.80kB)
+    Total ROM Size (Code + RO Data + RW Data)      17456 (  17.05kB)
+
+==============================================================================
+

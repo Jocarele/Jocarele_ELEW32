@@ -1,0 +1,20 @@
+Dependencies for Project 'ThreadX_Demo', Target 'ThreadX_Demo': (DO NOT MODIFY !)
+CompilerVersion: 6240000::V6.24::ARMCLANG
+F (.\ModifiedSource\demo_threadx.c)(0x69F62E88)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O1 -fno-function-sections -I . -I ./ModifiedSource -I ../../../../ThreadX/common/inc -I ../../../../ThreadX/ports/cortex_m4/keil/inc -I ../../../../ARM/CMSIS/5.9.0/CMSIS/Core/Include -I ../../../../TivaWare_C_Series-2.2.0.295-I./RTE/_ThreadX_Demo-IC:/Keil_v5/ARM/Packs/ARM/CMSIS/6.3.0/CMSIS/Core/Include-IC:/Keil_v5/ARM/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129-D__UVISION_VERSION="543" -DTM4C1294NCPDT -D_RTE_ -DPART_TM4C1294NCPDT -DTARGET_IS_TM4C129_RA2-o ./objects/demo_threadx.o -MMD)
+I (..\..\..\..\ThreadX\common\inc\tx_api.h)(0x69F61A0B)
+I (..\..\..\..\ThreadX\ports\cortex_m4\keil\inc\tx_port.h)(0x69F61A0C)
+I (C:\Keil_v5\ARM\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C129\TM4C129.h)(0x69B887AE)
+I (C:\Keil_v5\ARM\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C129\TM4C1294NCPDT.h)(0x69B887AF)
+I (C:\Keil_v5\ARM\Packs\ARM\CMSIS\6.3.0\CMSIS\Core\Include\core_cm4.h)(0x69B88423)
+I (C:\Keil_v5\ARM\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C129\system_TM4C129.h)(0x69B887AE)
+I (..\..\..\..\TivaWare_C_Series-2.2.0.295\driverlib\sysctl.h)(0x69F6055B)
+F (.\ModifiedSource\TM4C1294NCPDT.h)(0x69F62E88)()
+F (.\ModifiedSource\tx_initialize_low_level.s)(0x69F62E88)(--target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -masm=auto  -Wa,armasm,--diag_suppress=A1950W -c-gdwarf-4 -Wa,armasm,--pd,"__EVAL SETA 1"-I./RTE/_ThreadX_Demo-IC:/Keil_v5/ARM/Packs/ARM/CMSIS/6.3.0/CMSIS/Core/Include-IC:/Keil_v5/ARM/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129-Wa,armasm,--pd,"__UVISION_VERSION SETA 543" -Wa,armasm,--pd,"TM4C1294NCPDT SETA 1" -Wa,armasm,--pd,"_RTE_ SETA 1"-o ./objects/tx_initialize_low_level.o)
+F (.\ModifiedSource\system_TM4C129.c)(0x69F62E88)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O1 -fno-function-sections -I . -I ./ModifiedSource -I ../../../../ThreadX/common/inc -I ../../../../ThreadX/ports/cortex_m4/keil/inc -I ../../../../ARM/CMSIS/5.9.0/CMSIS/Core/Include -I ../../../../TivaWare_C_Series-2.2.0.295-I./RTE/_ThreadX_Demo-IC:/Keil_v5/ARM/Packs/ARM/CMSIS/6.3.0/CMSIS/Core/Include-IC:/Keil_v5/ARM/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129-D__UVISION_VERSION="543" -DTM4C1294NCPDT -D_RTE_ -DPART_TM4C1294NCPDT -DTARGET_IS_TM4C129_RA2-o ./objects/system_tm4c129.o -MMD)
+I (C:\Keil_v5\ARM\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C129\TM4C129.h)(0x69B887AE)
+I (C:\Keil_v5\ARM\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C129\TM4C1294NCPDT.h)(0x69B887AF)
+I (C:\Keil_v5\ARM\Packs\ARM\CMSIS\6.3.0\CMSIS\Core\Include\core_cm4.h)(0x69B88423)
+I (C:\Keil_v5\ARM\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C129\system_TM4C129.h)(0x69B887AE)
+F (.\ModifiedSource\startup_TM4C129.s)(0x69F62E88)(--target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -masm=auto  -Wa,armasm,--diag_suppress=A1950W -c-gdwarf-4 -Wa,armasm,--pd,"__EVAL SETA 1"-I./RTE/_ThreadX_Demo-IC:/Keil_v5/ARM/Packs/ARM/CMSIS/6.3.0/CMSIS/Core/Include-IC:/Keil_v5/ARM/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129-Wa,armasm,--pd,"__UVISION_VERSION SETA 543" -Wa,armasm,--pd,"TM4C1294NCPDT SETA 1" -Wa,armasm,--pd,"_RTE_ SETA 1"-o ./objects/startup_tm4c129.o)
+F (..\..\..\..\TivaWare_C_Series-2.2.0.295\driverlib\rvmdk\driverlib.lib)(0x69F6055B)()
+F (..\..\..\..\threadx\ports\cortex_m4\keil\example_build\lib_obj\ThreadX_Library.lib)(0x69F639A8)()
