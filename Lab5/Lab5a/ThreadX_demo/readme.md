@@ -10,7 +10,7 @@ Bruno Ribeiro Basilio
 
 Este relatório apresenta a análise de uma aplicação exemplo utilizando o sistema operacional de tempo real ThreadX.
 
-O objetivo do experimento é compreender o funcionamento de múltiplas threads, bem como os mecanismos de comunicação e sincronização oferecidos pelo RTOS, como filas (queues), semáforos (semaphores) e event flags.
+O objetivo do experimento é compreender o funcionamento de múltiplas threads, bem como os mecanismos de comunicação, sincronização e gerenciamento de memória oferecidos pelo RTOS, como filas (queues), semáforos (semaphores), mutex, event flags, byte pool e block pool.
 
 ---
 
@@ -30,9 +30,9 @@ O sistema tem como objetivo demonstrar o funcionamento básico do ThreadX por me
 
 O sistema deve:
 
-- Criar múltiplas threads com diferentes prioridades  
+- Criar oito threads com diferentes prioridades
 - Realizar comunicação entre threads utilizando fila de mensagens  
-- Controlar acesso a recurso compartilhado utilizando semáforo  
+- Controlar acesso a recurso compartilhado utilizando semáforo e mutex
 - Sincronizar execução entre threads utilizando event flags  
 
 ---
@@ -41,11 +41,14 @@ O sistema deve:
 
 ### Requisitos Funcionais:
 
-- RF1: Criar seis threads com diferentes prioridades  
+- RF1: Criar oito threads com diferentes prioridades  
 - RF2: Implementar comunicação entre threads por meio de uma fila  
 - RF3: Utilizar semáforo para controle de acesso concorrente  
 - RF4: Utilizar event flags para sincronização entre threads  
-- RF5: Demonstrar escalonamento com uso de prioridades e time slicing  
+- RF5: Demonstrar escalonamento com uso de prioridades e time slicing
+- RF6: Utilizar mutex para controle de acesso exclusivo  
+- RF7: Utilizar byte pool para alocação dinâmica de memória  
+- RF8: Utilizar block pool para gerenciamento de memória em blocos  
 
 ### Requisitos Não Funcionais:
 
@@ -78,13 +81,21 @@ O foco do laboratório está na análise do funcionamento do sistema operacional
 - `tx_semaphore_get()`: Obtém o semáforo  
 - `tx_semaphore_put()`: Libera o semáforo  
 - `tx_event_flags_set()`: Ativa uma flag  
-- `tx_event_flags_get()`: Aguarda uma flag  
+- `tx_event_flags_get()`: Aguarda uma flag
+- `tx_mutex_create()`: Cria um mutex  
+- `tx_mutex_get()`: Obtém o mutex  
+- `tx_mutex_put()`: Libera o mutex  
+- `tx_byte_pool_create()`: Cria pool de memória  
+- `tx_byte_allocate()`: Aloca memória do pool  
+- `tx_block_pool_create()`: Cria pool de blocos  
+- `tx_block_allocate()`: Aloca bloco  
+- `tx_block_release()`: Libera bloco  
 
 ---
 
 ## 7. Projeto (design) da solução
 
-O sistema é composto por seis threads que interagem entre si por meio de diferentes mecanismos do ThreadX.
+O sistema é composto por oito threads que interagem entre si por meio de diferentes mecanismos do ThreadX.
 
 ### Fluxo geral de execução:
 
@@ -97,7 +108,9 @@ INÍCIO → Inicialização do kernel → Criação das threads e objetos → Ex
 - **Thread 2:** Recebe mensagens da fila  
 - **Thread 3:** Utiliza semáforo  
 - **Thread 4:** Utiliza semáforo (concorrente com thread 3)  
-- **Thread 5:** Aguarda sinalização de event flag  
+- **Thread 5:** Aguarda sinalização de event flag
+- **Thread 6:** Utiliza mutex para acesso exclusivo a recurso compartilhado  
+- **Thread 7:** Utiliza mutex (concorrente com thread 6) 
 
 ---
 
@@ -119,7 +132,7 @@ A verificação do funcionamento foi feita por meio da análise lógica das inte
 
 ## 10. Tabela de Threads
 
-| Thread Name | Entry Function        | Stack Size | Priority | Auto Start | Time Slicing |
+| Thread Name | Entry Function     | Stack Size| Priority | Auto Start | Time Slicing|
 |------------|---------------------|-----------|----------|------------|-------------|
 | thread 0   | thread_0_entry      | 1024      | 1        | yes        | no          |
 | thread 1   | thread_1_entry      | 1024      | 16       | yes        | yes (4)     |
@@ -127,12 +140,13 @@ A verificação do funcionamento foi feita por meio da análise lógica das inte
 | thread 3   | thread_3_and_4_entry| 1024      | 8        | yes        | no          |
 | thread 4   | thread_3_and_4_entry| 1024      | 8        | yes        | no          |
 | thread 5   | thread_5_entry      | 1024      | 4        | yes        | no          |
-
+|thread 6    |thread_6_and_7_entry |  1024     |8         |yes         |no           |
+|thread 7    |thread_6_and_7_entry |  1024     |8         |yes         |no           |
 ---
 
 ## 11. Tabela de Objetos
 
-| Name            | Control Structure        | Size                     | Location |
+| Name            | Control Structure      | Size                     | Location |
 |-----------------|------------------------|--------------------------|----------|
 | thread_0        | TX_THREAD              | sizeof(TX_THREAD)        | Data     |
 | thread_1        | TX_THREAD              | sizeof(TX_THREAD)        | Data     |
@@ -140,6 +154,8 @@ A verificação do funcionamento foi feita por meio da análise lógica das inte
 | thread_3        | TX_THREAD              | sizeof(TX_THREAD)        | Data     |
 | thread_4        | TX_THREAD              | sizeof(TX_THREAD)        | Data     |
 | thread_5        | TX_THREAD              | sizeof(TX_THREAD)        | Data     |
+|thread_6         |TX_THREAD               |sizeof(TX_THREAD)         |Data      |
+|thread_7         |TX_THREAD               |sizeof(TX_THREAD)         |Data      |
 | queue_0         | TX_QUEUE               | sizeof(TX_QUEUE)         | Data     |
 | semaphore_0     | TX_SEMAPHORE           | sizeof(TX_SEMAPHORE)     | Data     |
 | event_flags_0   | TX_EVENT_FLAGS_GROUP   | sizeof(TX_EVENT_FLAGS_GROUP) | Data |
@@ -150,7 +166,10 @@ A verificação do funcionamento foi feita por meio da análise lógica das inte
 | thread_4_stack  | array                  | 1024 bytes               | BSS      |
 | thread_5_stack  | array                  | 1024 bytes               | BSS      |
 | queue_0_area    | array                  | 10 × sizeof(ULONG)       | BSS      |
-
+| mutex_0         | TX_MUTEX               | sizeof(TX_MUTEX)         | Data     |
+| byte_pool_0     | TX_BYTE_POOL           | sizeof(TX_BYTE_POOL)     | Data     |
+| block_pool_0    | TX_BLOCK_POOL          | sizeof(TX_BLOCK_POOL)    | Data     |
+| memory_area     | array                  | 9120 bytes               | BSS      |
 ---
 
 ## 12. Diagrama de Objetos
@@ -161,7 +180,8 @@ O diagrama de objetos representa a interação entre as threads e os mecanismos 
 - Thread 2 recebe mensagens da fila  
 - Threads 3 e 4 compartilham o semáforo (`semaphore_0`)  
 - Thread 0 ativa uma event flag (`event_flags_0`)  
-- Thread 5 aguarda essa event flag  
+- Thread 5 aguarda essa event flag
+- Threads 6 e 7 compartilham um mutex (`mutex_0`)  
 
 <p align="center">
   <img src="ThreadX.png" width="600">
