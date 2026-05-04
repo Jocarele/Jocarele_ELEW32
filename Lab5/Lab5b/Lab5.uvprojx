@@ -398,22 +398,22 @@
             <File>
               <FileName>tx_initialize_low_level.s</FileName>
               <FileType>2</FileType>
-              <FilePath>..\..\..\dougrenaux_ELEW32_public\ThreadX_demo\ModifiedSource\tx_initialize_low_level.s</FilePath>
+              <FilePath>..\Lab5a\ThreadX_demo\ModifiedSource\tx_initialize_low_level.s</FilePath>
             </File>
             <File>
               <FileName>system_TM4C129.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\dougrenaux_ELEW32_public\ThreadX_demo\ModifiedSource\system_TM4C129.c</FilePath>
+              <FilePath>..\Lab5a\ThreadX_demo\ModifiedSource\system_TM4C129.c</FilePath>
             </File>
             <File>
               <FileName>startup_TM4C129.s</FileName>
               <FileType>2</FileType>
-              <FilePath>..\..\..\dougrenaux_ELEW32_public\ThreadX_demo\ModifiedSource\startup_TM4C129.s</FilePath>
+              <FilePath>..\Lab5a\ThreadX_demo\ModifiedSource\startup_TM4C129.s</FilePath>
             </File>
             <File>
               <FileName>TM4C1294NCPDT.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\dougrenaux_ELEW32_public\ThreadX_demo\ModifiedSource\TM4C1294NCPDT.h</FilePath>
+              <FilePath>..\Lab5a\ThreadX_demo\ModifiedSource\TM4C1294NCPDT.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -423,12 +423,12 @@
             <File>
               <FileName>driverlib.lib</FileName>
               <FileType>4</FileType>
-              <FilePath>C:\ti\TivaWare_C_Series-2.2.0.295\driverlib\rvmdk\driverlib.lib</FilePath>
+              <FilePath>..\..\..\TivaWare_C_Series-2.2.0.295\driverlib\rvmdk\driverlib.lib</FilePath>
             </File>
             <File>
               <FileName>ThreadX_Library.lib</FileName>
               <FileType>4</FileType>
-              <FilePath>..\..\..\threadx\ports\cortex_m4\keil\example_build\ThreadX_Library.lib</FilePath>
+              <FilePath>..\..\..\threadx\ports\cortex_m4\keil\example_build\lib_obj\ThreadX_Library.lib</FilePath>
             </File>
           </Files>
         </Group>

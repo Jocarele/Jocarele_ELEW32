@@ -38,10 +38,7 @@
 
 TX_THREAD               thread_0;
 
-TX_QUEUE                queue_0;
-TX_SEMAPHORE            semaphore_0;
-TX_MUTEX                mutex_0;
-TX_EVENT_FLAGS_GROUP    event_flags_0;
+
 TX_BYTE_POOL            byte_pool_0;
 TX_BLOCK_POOL           block_pool_0;
 UCHAR                   memory_area[DEMO_BYTE_POOL_SIZE];

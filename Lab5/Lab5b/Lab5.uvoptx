@@ -139,10 +139,6 @@
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
-          <Key>DLGUARM</Key>
-        </SetRegEntry>
-        <SetRegEntry>
-          <Number>0</Number>
           <Key>UL2CM3</Key>
           <Name>UL2CM3(-S0 -C0 -P0 -FD20000000 -FC1000 -FN1 -FF0TM4C129_1024 -FS00 -FL0100000 -FP0($$Device:TM4C1294NCPDT$Flash\TM4C129_1024.FLM))</Name>
         </SetRegEntry>
@@ -226,7 +222,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\dougrenaux_ELEW32_public\ThreadX_demo\ModifiedSource\tx_initialize_low_level.s</PathWithFileName>
+      <PathWithFileName>..\Lab5a\ThreadX_demo\ModifiedSource\tx_initialize_low_level.s</PathWithFileName>
       <FilenameWithoutPath>tx_initialize_low_level.s</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -238,7 +234,7 @@
       <tvExp>1</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\dougrenaux_ELEW32_public\ThreadX_demo\ModifiedSource\system_TM4C129.c</PathWithFileName>
+      <PathWithFileName>..\Lab5a\ThreadX_demo\ModifiedSource\system_TM4C129.c</PathWithFileName>
       <FilenameWithoutPath>system_TM4C129.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -250,7 +246,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\dougrenaux_ELEW32_public\ThreadX_demo\ModifiedSource\startup_TM4C129.s</PathWithFileName>
+      <PathWithFileName>..\Lab5a\ThreadX_demo\ModifiedSource\startup_TM4C129.s</PathWithFileName>
       <FilenameWithoutPath>startup_TM4C129.s</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -262,7 +258,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\dougrenaux_ELEW32_public\ThreadX_demo\ModifiedSource\TM4C1294NCPDT.h</PathWithFileName>
+      <PathWithFileName>..\Lab5a\ThreadX_demo\ModifiedSource\TM4C1294NCPDT.h</PathWithFileName>
       <FilenameWithoutPath>TM4C1294NCPDT.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -282,7 +278,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>C:\ti\TivaWare_C_Series-2.2.0.295\driverlib\rvmdk\driverlib.lib</PathWithFileName>
+      <PathWithFileName>..\..\..\TivaWare_C_Series-2.2.0.295\driverlib\rvmdk\driverlib.lib</PathWithFileName>
       <FilenameWithoutPath>driverlib.lib</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -294,7 +290,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\threadx\ports\cortex_m4\keil\example_build\ThreadX_Library.lib</PathWithFileName>
+      <PathWithFileName>..\..\..\threadx\ports\cortex_m4\keil\example_build\lib_obj\ThreadX_Library.lib</PathWithFileName>
       <FilenameWithoutPath>ThreadX_Library.lib</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
