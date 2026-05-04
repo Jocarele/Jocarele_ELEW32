@@ -16,7 +16,8 @@
 #include "tx_api.h"
 
 // DR changes: file inclusions
-#include "TM4C129.h"				//also has declaration of SystemCoreClock
+//#include "TM4C129.h"				//also has declaration of SystemCoreClock
+extern uint32_t SystemCoreClock;
 #include "driverlib/sysctl.h"		//SysCtlClockFreqSet
 
 #include "driverlib/gpio.h"
