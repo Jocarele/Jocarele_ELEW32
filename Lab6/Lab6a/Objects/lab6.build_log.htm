@@ -1,0 +1,724 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: µVision V5.36.0.0
+Copyright (C) 2021 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: bruno basilio, utfpr, LIC=----
+ 
+Tool Versions:
+Toolchain:       MDK-Lite  Version: 5.36.0.0
+Toolchain Path:  C:\Keil_v5\ARM\ARMCLANG\Bin
+C Compiler:      ArmClang.exe V6.16
+Assembler:       Armasm.exe V6.16
+Linker/Locator:  ArmLink.exe V6.16
+Library Manager: ArmAr.exe V6.16
+Hex Converter:   FromElf.exe V6.16
+CPU DLL:         SARMCM3.DLL V5.36.0.0
+Dialog DLL:      DCM.DLL V1.17.3.0
+Target DLL:      lmidk-agdi.dll V???
+Dialog DLL:      TCM.DLL V1.53.0.0
+ 
+<h2>Project:</h2>
+C:\Users\rakio\OneDrive\Documents\Sistemas Embarcados\basiliobX_ELW32\Lab6\Lab6a\lab6.uvprojx
+Project File Date:  05/13/2026
+
+<h2>Output:</h2>
+*** Using Compiler 'V6.16', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
+Rebuild target 'Target 1'
+compiling tx_block_pool_cleanup.c...
+compiling tx_block_pool_create.c...
+compiling tx_block_allocate.c...
+compiling tx_block_pool_initialize.c...
+compiling tx_block_pool_delete.c...
+compiling tx_block_pool_info_get.c...
+compiling tx_block_pool_performance_info_get.c...
+compiling tx_block_pool_performance_system_info_get.c...
+compiling tx_block_pool_prioritize.c...
+compiling tx_block_release.c...
+compiling tx_byte_allocate.c...
+compiling tx_byte_pool_cleanup.c...
+compiling tx_byte_pool_create.c...
+compiling tx_byte_pool_delete.c...
+compiling tx_byte_pool_info_get.c...
+compiling tx_byte_pool_initialize.c...
+compiling tx_byte_pool_performance_system_info_get.c...
+compiling tx_byte_pool_performance_info_get.c...
+compiling tx_byte_pool_prioritize.c...
+compiling tx_byte_pool_search.c...
+compiling tx_byte_release.c...
+compiling tx_event_flags_create.c...
+compiling tx_event_flags_cleanup.c...
+compiling tx_event_flags_delete.c...
+compiling tx_event_flags_initialize.c...
+compiling tx_event_flags_get.c...
+compiling tx_event_flags_info_get.c...
+compiling tx_event_flags_performance_system_info_get.c...
+compiling tx_event_flags_performance_info_get.c...
+compiling tx_event_flags_set.c...
+compiling tx_initialize_kernel_enter.c...
+compiling tx_event_flags_set_notify.c...
+../../../ThreadX/common/src/tx_initialize_high_level.c(39): warning: In file included from...
+../../../ThreadX/common/inc\tx_semaphore.h(97): warning: no previous extern declaration for non-static variable '_tx_semaphore_created_ptr' [-Wmissing-variable-declarations]
+SEMAPHORE_DECLARE  TX_SEMAPHORE *   _tx_semaphore_created_ptr;
+                                    ^
+../../../ThreadX/common/inc\tx_semaphore.h(97): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+SEMAPHORE_DECLARE  TX_SEMAPHORE *   _tx_semaphore_created_ptr;
+                   ^
+../../../ThreadX/common/inc\tx_semaphore.h(102): warning: no previous extern declaration for non-static variable '_tx_semaphore_created_count' [-Wmissing-variable-declarations]
+SEMAPHORE_DECLARE  ULONG            _tx_semaphore_created_count;
+                                    ^
+../../../ThreadX/common/inc\tx_semaphore.h(102): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+SEMAPHORE_DECLARE  ULONG            _tx_semaphore_created_count;
+                   ^
+../../../ThreadX/common/src/tx_initialize_high_level.c(40): warning: In file included from...
+../../../ThreadX/common/inc\tx_queue.h(116): warning: no previous extern declaration for non-static variable '_tx_queue_created_ptr' [-Wmissing-variable-declarations]
+QUEUE_DECLARE  TX_QUEUE *   _tx_queue_created_ptr;
+                            ^
+../../../ThreadX/common/inc\tx_queue.h(116): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+QUEUE_DECLARE  TX_QUEUE *   _tx_queue_created_ptr;
+               ^
+../../../ThreadX/common/inc\tx_queue.h(121): warning: no previous extern declaration for non-static variable '_tx_queue_created_count' [-Wmissing-variable-declarations]
+QUEUE_DECLARE  ULONG        _tx_queue_created_count;
+                            ^
+../../../ThreadX/common/inc\tx_queue.h(121): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+QUEUE_DECLARE  ULONG        _tx_queue_created_count;
+               ^
+../../../ThreadX/common/src/tx_initialize_high_level.c(41): warning: In file included from...
+../../../ThreadX/common/inc\tx_event_flags.h(101): warning: no previous extern declaration for non-static variable '_tx_event_flags_created_ptr' [-Wmissing-variable-declarations]
+EVENT_FLAGS_DECLARE  TX_EVENT_FLAGS_GROUP * _tx_event_flags_created_ptr;
+                                            ^
+../../../ThreadX/common/inc\tx_event_flags.h(101): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+EVENT_FLAGS_DECLARE  TX_EVENT_FLAGS_GROUP * _tx_event_flags_created_ptr;
+                     ^
+../../../ThreadX/common/inc\tx_event_flags.h(106): warning: no previous extern declaration for non-static variable '_tx_event_flags_created_count' [-Wmissing-variable-declarations]
+EVENT_FLAGS_DECLARE  ULONG                  _tx_event_flags_created_count;
+                                            ^
+../../../ThreadX/common/inc\tx_event_flags.h(106): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+EVENT_FLAGS_DECLARE  ULONG                  _tx_event_flags_created_count;
+                     ^
+../../../ThreadX/common/src/tx_initialize_high_level.c(42): warning: In file included from...
+../../../ThreadX/common/inc\tx_mutex.h(104): warning: no previous extern declaration for non-static variable '_tx_mutex_created_ptr' [-Wmissing-variable-declarations]
+MUTEX_DECLARE  TX_MUTEX *   _tx_mutex_created_ptr;
+                            ^
+../../../ThreadX/common/inc\tx_mutex.h(104): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+MUTEX_DECLARE  TX_MUTEX *   _tx_mutex_created_ptr;
+               ^
+../../../ThreadX/common/inc\tx_mutex.h(109): warning: no previous extern declaration for non-static variable '_tx_mutex_created_count' [-Wmissing-variable-declarations]
+MUTEX_DECLARE  ULONG        _tx_mutex_created_count;
+                            ^
+../../../ThreadX/common/inc\tx_mutex.h(109): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+MUTEX_DECLARE  ULONG        _tx_mutex_created_count;
+               ^
+../../../ThreadX/common/src/tx_initialize_high_level.c(43): warning: In file included from...
+../../../ThreadX/common/inc\tx_block_pool.h(100): warning: no previous extern declaration for non-static variable '_tx_block_pool_created_ptr' [-Wmissing-variable-declarations]
+BLOCK_POOL_DECLARE  TX_BLOCK_POOL *         _tx_block_pool_created_ptr;
+                                            ^
+../../../ThreadX/common/inc\tx_block_pool.h(100): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+BLOCK_POOL_DECLARE  TX_BLOCK_POOL *         _tx_block_pool_created_ptr;
+                    ^
+../../../ThreadX/common/inc\tx_block_pool.h(105): warning: no previous extern declaration for non-static variable '_tx_block_pool_created_count' [-Wmissing-variable-declarations]
+BLOCK_POOL_DECLARE  ULONG                   _tx_block_pool_created_count;
+                                            ^
+../../../ThreadX/common/inc\tx_block_pool.h(105): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+BLOCK_POOL_DECLARE  ULONG                   _tx_block_pool_created_count;
+                    ^
+../../../ThreadX/common/src/tx_initialize_high_level.c(44): warning: In file included from...
+../../../ThreadX/common/inc\tx_byte_pool.h(116): warning: no previous extern declaration for non-static variable '_tx_byte_pool_created_ptr' [-Wmissing-variable-declarations]
+BYTE_POOL_DECLARE  TX_BYTE_POOL *   _tx_byte_pool_created_ptr;
+                                    ^
+../../../ThreadX/common/inc\tx_byte_pool.h(116): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+BYTE_POOL_DECLARE  TX_BYTE_POOL *   _tx_byte_pool_created_ptr;
+                   ^
+../../../ThreadX/common/inc\tx_byte_pool.h(121): warning: no previous extern declaration for non-static variable '_tx_byte_pool_created_count' [-Wmissing-variable-declarations]
+BYTE_POOL_DECLARE  ULONG            _tx_byte_pool_created_count;
+                                    ^
+../../../ThreadX/common/inc\tx_byte_pool.h(121): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+BYTE_POOL_DECLARE  ULONG            _tx_byte_pool_created_count;
+                   ^
+12 warnings generated.
+compiling tx_initialize_high_level.c...
+compiling tx_misra.c...
+compiling tx_initialize_kernel_setup.c...
+compiling tx_mutex_cleanup.c...
+compiling tx_mutex_delete.c...
+compiling tx_mutex_create.c...
+compiling tx_mutex_initialize.c...
+compiling tx_mutex_info_get.c...
+compiling tx_mutex_get.c...
+compiling tx_mutex_performance_info_get.c...
+compiling tx_mutex_performance_system_info_get.c...
+compiling tx_mutex_prioritize.c...
+compiling tx_queue_cleanup.c...
+compiling tx_mutex_put.c...
+compiling tx_mutex_priority_change.c...
+compiling tx_queue_create.c...
+compiling tx_queue_flush.c...
+compiling tx_queue_delete.c...
+compiling tx_queue_info_get.c...
+compiling tx_queue_initialize.c...
+compiling tx_queue_front_send.c...
+compiling tx_queue_performance_info_get.c...
+compiling tx_queue_performance_system_info_get.c...
+compiling tx_queue_prioritize.c...
+compiling tx_queue_receive.c...
+compiling tx_queue_send_notify.c...
+compiling tx_queue_send.c...
+compiling tx_semaphore_ceiling_put.c...
+compiling tx_semaphore_cleanup.c...
+compiling tx_semaphore_create.c...
+compiling tx_semaphore_get.c...
+compiling tx_semaphore_info_get.c...
+compiling tx_semaphore_delete.c...
+compiling tx_semaphore_initialize.c...
+compiling tx_semaphore_performance_info_get.c...
+compiling tx_semaphore_performance_system_info_get.c...
+compiling tx_semaphore_prioritize.c...
+compiling tx_semaphore_put_notify.c...
+compiling tx_semaphore_put.c...
+compiling tx_thread_delete.c...
+compiling tx_thread_create.c...
+compiling tx_thread_entry_exit_notify.c...
+compiling tx_thread_identify.c...
+compiling tx_thread_info_get.c...
+../../../ThreadX/common/src/tx_thread_initialize.c(33): warning: In file included from...
+../../../ThreadX/common/inc\tx_api.h(65): warning: In file included from...
+../../../ThreadX/ports/cortex_m4/keil/inc\tx_port.h(701): warning: no previous extern declaration for non-static variable '_tx_version_id' [-Wmissing-variable-declarations]
+CHAR                            _tx_version_id[] =
+                                ^
+../../../ThreadX/ports/cortex_m4/keil/inc\tx_port.h(701): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+CHAR                            _tx_version_id[] =
+^
+../../../ThreadX/common/src/tx_thread_initialize.c(270): warning: no previous extern declaration for non-static variable '_tx_thread_special_string' [-Wmissing-variable-declarations]
+const CHAR _tx_thread_special_string[] =
+           ^
+../../../ThreadX/common/src/tx_thread_initialize.c(270): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+const CHAR _tx_thread_special_string[] =
+      ^
+2 warnings generated.
+compiling tx_thread_initialize.c...
+compiling tx_thread_performance_system_info_get.c...
+compiling tx_thread_performance_info_get.c...
+compiling tx_thread_preemption_change.c...
+compiling tx_thread_priority_change.c...
+compiling tx_thread_relinquish.c...
+compiling tx_thread_reset.c...
+compiling tx_thread_shell_entry.c...
+compiling tx_thread_resume.c...
+compiling tx_thread_sleep.c...
+compiling tx_thread_stack_error_handler.c...
+compiling tx_thread_stack_analyze.c...
+compiling tx_thread_stack_error_notify.c...
+compiling tx_thread_suspend.c...
+compiling tx_thread_system_preempt_check.c...
+compiling tx_thread_system_resume.c...
+compiling tx_thread_terminate.c...
+compiling tx_thread_system_suspend.c...
+compiling tx_thread_time_slice.c...
+compiling tx_thread_timeout.c...
+compiling tx_thread_wait_abort.c...
+compiling tx_thread_time_slice_change.c...
+compiling tx_timer_activate.c...
+compiling tx_time_get.c...
+compiling tx_time_set.c...
+compiling tx_timer_create.c...
+compiling tx_timer_deactivate.c...
+compiling tx_timer_change.c...
+compiling tx_timer_expiration_process.c...
+compiling tx_timer_delete.c...
+compiling tx_timer_info_get.c...
+compiling tx_timer_performance_info_get.c...
+compiling tx_timer_initialize.c...
+compiling tx_timer_performance_system_info_get.c...
+compiling tx_timer_system_activate.c...
+compiling tx_timer_system_deactivate.c...
+compiling tx_timer_thread_entry.c...
+compiling tx_trace_enable.c...
+compiling tx_trace_buffer_full_notify.c...
+compiling tx_trace_disable.c...
+compiling tx_trace_initialize.c...
+compiling tx_trace_event_unfilter.c...
+compiling tx_trace_event_filter.c...
+compiling tx_trace_interrupt_control.c...
+compiling tx_trace_isr_enter_insert.c...
+compiling tx_trace_isr_exit_insert.c...
+compiling tx_trace_object_register.c...
+compiling tx_trace_object_unregister.c...
+compiling tx_trace_user_event_insert.c...
+compiling txe_block_allocate.c...
+compiling txe_block_pool_create.c...
+compiling txe_block_pool_delete.c...
+compiling txe_block_pool_info_get.c...
+compiling txe_block_release.c...
+compiling txe_block_pool_prioritize.c...
+compiling txe_byte_allocate.c...
+compiling txe_byte_pool_create.c...
+compiling txe_byte_pool_delete.c...
+compiling txe_byte_pool_info_get.c...
+compiling txe_byte_pool_prioritize.c...
+compiling txe_byte_release.c...
+compiling txe_event_flags_create.c...
+compiling txe_event_flags_delete.c...
+compiling txe_event_flags_get.c...
+compiling txe_event_flags_info_get.c...
+compiling txe_event_flags_set.c...
+compiling txe_event_flags_set_notify.c...
+compiling txe_mutex_create.c...
+compiling txe_mutex_delete.c...
+compiling txe_mutex_get.c...
+compiling txe_mutex_info_get.c...
+compiling txe_mutex_prioritize.c...
+compiling txe_mutex_put.c...
+compiling txe_queue_delete.c...
+compiling txe_queue_flush.c...
+compiling txe_queue_create.c...
+compiling txe_queue_info_get.c...
+compiling txe_queue_prioritize.c...
+compiling txe_queue_front_send.c...
+compiling txe_queue_send.c...
+compiling txe_queue_send_notify.c...
+compiling txe_queue_receive.c...
+compiling txe_semaphore_delete.c...
+compiling txe_semaphore_create.c...
+compiling txe_semaphore_ceiling_put.c...
+compiling txe_semaphore_get.c...
+compiling txe_semaphore_info_get.c...
+compiling txe_semaphore_prioritize.c...
+compiling txe_semaphore_put.c...
+compiling txe_semaphore_put_notify.c...
+compiling txe_thread_create.c...
+compiling txe_thread_delete.c...
+compiling txe_thread_info_get.c...
+compiling txe_thread_entry_exit_notify.c...
+compiling txe_thread_priority_change.c...
+compiling txe_thread_preemption_change.c...
+compiling txe_thread_relinquish.c...
+compiling txe_thread_reset.c...
+compiling txe_thread_resume.c...
+compiling txe_thread_suspend.c...
+compiling txe_thread_terminate.c...
+compiling txe_thread_time_slice_change.c...
+compiling txe_thread_wait_abort.c...
+compiling txe_timer_change.c...
+compiling txe_timer_create.c...
+compiling txe_timer_activate.c...
+compiling txe_timer_deactivate.c...
+compiling txe_timer_delete.c...
+compiling txe_timer_info_get.c...
+assembling tx_thread_context_restore.s...
+assembling tx_thread_context_save.s...
+assembling tx_thread_interrupt_control.s...
+assembling tx_thread_interrupt_restore.s...
+assembling tx_thread_interrupt_disable.s...
+assembling tx_thread_schedule.s...
+assembling tx_thread_system_return.s...
+assembling tx_thread_stack_build.s...
+assembling tx_timer_interrupt.s...
+main.c(29): warning: In file included from...
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129\TM4C129.h(26): warning: In file included from...
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(279): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(319): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(338): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(671): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(687): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(732): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(737): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(839): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(852): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(859): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(864): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(871): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(877): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(884): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(891): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(896): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(903): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(909): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(916): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(923): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(928): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(935): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(941): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(948): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(955): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(960): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(967): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(973): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(980): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(987): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(992): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(999): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(1005): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(1012): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(1019): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(1024): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(1031): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(1037): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(1044): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(1051): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(1056): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(1063): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(1069): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(1260): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(1267): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(1303): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(1308): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(1313): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(1318): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(1323): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(1328): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+main.c(76): warning: unused parameter 'argc' [-Wunused-parameter]
+int main(int argc, char ** argv)
+             ^
+main.c(76): warning: unused parameter 'argv' [-Wunused-parameter]
+int main(int argc, char ** argv)
+                           ^
+main.c(102): warning: unused parameter 'first_unused_memory' [-Wunused-parameter]
+void tx_application_define(void * first_unused_memory)
+                                  ^
+main.c(136): warning: no newline at end of file [-Wnewline-eof]
+}
+ ^
+main.c(127): warning: unused parameter 'thread_input' [-Wunused-parameter]
+void thread_0_entry(ULONG thread_input)
+                          ^
+main.c(128): warning: function 'thread_0_entry' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
+{
+^
+main.c(45): warning: no previous extern declaration for non-static variable 'thread_0' [-Wmissing-variable-declarations]
+TX_THREAD thread_0;
+          ^
+main.c(45): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+TX_THREAD thread_0;
+^
+58 warnings generated.
+compiling main.c...
+src_others/uartstdio.c(543): warning: implicit conversion changes signedness: 'unsigned int' to 'int' [-Wsign-conversion]
+    return(uIdx);
+    ~~~~~~ ^~~~
+src_others/uartstdio.c(676): warning: implicit conversion loses integer precision: 'int32_t' (aka 'int') to 'int8_t' (aka 'signed char') [-Wimplicit-int-conversion]
+        cChar = MAP_UARTCharGet(g_ui32Base);
+              ~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+../../../Tivaware_C_Series-2.2.0.295\driverlib/rom_map.h(5339): note: expanded from macro 'MAP_UARTCharGet'
+        UARTCharGet
+        ^
+src_others/uartstdio.c(747): warning: implicit conversion changes signedness: 'int8_t' (aka 'signed char') to 'char' [-Wsign-conversion]
+            pcBuf[ui32Count] = cChar;
+                             ~ ^~~~~
+src_others/uartstdio.c(757): warning: implicit conversion changes signedness: 'int8_t' (aka 'signed char') to 'unsigned char' [-Wsign-conversion]
+            MAP_UARTCharPut(g_ui32Base, cChar);
+            ~~~~~~~~~~~~~~~             ^~~~~
+src_others/uartstdio.c(774): warning: implicit conversion changes signedness: 'uint32_t' (aka 'unsigned int') to 'int' [-Wsign-conversion]
+    return(ui32Count);
+    ~~~~~~ ^~~~~~~~~
+src_others/uartstdio.c(825): warning: implicit conversion loses integer precision: 'int32_t' (aka 'int') to 'unsigned char' [-Wimplicit-int-conversion]
+    return(MAP_UARTCharGet(g_ui32Base));
+    ~~~~~~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+../../../Tivaware_C_Series-2.2.0.295\driverlib/rom_map.h(5339): note: expanded from macro 'MAP_UARTCharGet'
+        UARTCharGet
+        ^
+src_others/uartstdio.c(1012): warning: implicit conversion changes signedness: 'int32_t' (aka 'int') to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
+                        ui32Value = -(int32_t)ui32Value;
+                                  ~ ^~~~~~~~~~~~~~~~~~~
+7 warnings generated.
+compiling uartstdio.c...
+assembling startup_TM4C129.s...
+RTE/Device/TM4C1294NCPDT/system_TM4C129.c(14): warning: In file included from...
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129\TM4C129.h(26): warning: In file included from...
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(279): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(319): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(338): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(671): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(687): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(732): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(737): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(839): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(852): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(859): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(864): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(871): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(877): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(884): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(891): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(896): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(903): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(909): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(916): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(923): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(928): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(935): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(941): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(948): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(955): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(960): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(967): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(973): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(980): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(987): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(992): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(999): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(1005): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(1012): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(1019): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(1024): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(1031): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(1037): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(1044): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(1051): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(1056): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(1063): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(1069): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(1260): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(1267): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(1303): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(1308): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(1313): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(1318): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(1323): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/rakio/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129/TM4C1294NCPDT.h(1328): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+51 warnings generated.
+compiling system_TM4C129.c...
+linking...
+.\Objects\lab6.axf: Error: L6218E: Undefined symbol _tx_initialize_low_level (referred from tx_initialize_kernel_enter.o).
+Not enough information to list image symbols.
+Not enough information to list load addresses in the image map.
+Finished: 2 information, 0 warning and 1 error messages.
+".\Objects\lab6.axf" - 1 Error(s), 130 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                https://www.keil.com/pack/ARM.CMSIS.6.1.0.pack
+                ARM.CMSIS.6.1.0
+                CMSIS (Common Microcontroller Software Interface Standard)
+   * Component: CORE Version: 6.1.0
+
+Package Vendor: Keil
+                http://www.keil.com/pack/Keil.TM4C_DFP.1.1.0.pack
+                Keil.TM4C_DFP.1.1.0
+                Texas Instruments Tiva C Series Device Support and Examples
+   * Component: Startup Version: 1.0.0
+
+<h2>Collection of Component include folders:</h2>
+  .\RTE\_Target_1
+  C:\Users\rakio\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include
+  C:\Users\rakio\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C129
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE:6.1.0
+
+   * Component: Keil::Device:Startup:1.0.0
+      Source file:   Device\Source\system_TM4C129.c
+      Source file:   Device\Source\ARM\startup_TM4C129.s
+      Include file:  Device\Include\TM4C129\TM4C129.h
+Target not created.
+Build Time Elapsed:  00:00:36
+</pre>
+</body>
+</html>
