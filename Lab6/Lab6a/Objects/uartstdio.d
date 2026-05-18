@@ -1,7 +1,4 @@
 ./objects/uartstdio.o: src_others\uartstdio.c \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdarg.h \
   ..\..\..\Tivaware_C_Series-2.2.0.295\inc\hw_ints.h \
   ..\..\..\Tivaware_C_Series-2.2.0.295\inc\hw_memmap.h \
   ..\..\..\Tivaware_C_Series-2.2.0.295\inc\hw_types.h \

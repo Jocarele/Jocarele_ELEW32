@@ -71,11 +71,14 @@ __Vectors       DCD     __initial_sp              ; Top of Stack
                 DCD     0                         ; Reserved
                 DCD     0                         ; Reserved
                 DCD     0                         ; Reserved
-                DCD     SVC_Handler               ; SVCall Handler
+                //DCD     SVC_Handler               ; SVCall Handler
+				DCD     __tx_SVCallHandler         ; SVCall handler
                 DCD     DebugMon_Handler          ; Debug Monitor Handler
                 DCD     0                         ; Reserved
-                DCD     PendSV_Handler            ; PendSV Handler
-                DCD     SysTick_Handler           ; SysTick Handler
+                //DCD     PendSV_Handler            ; PendSV Handler
+				DCD     __tx_PendSVHandler         ; PendSV handler
+                //DCD     SysTick_Handler           ; SysTick Handler
+				DCD     __tx_SysTickHandler        ; SysTick handler
 
                 ; External Interrupts
 
@@ -990,27 +993,27 @@ GPIOT_Handler\
 
 ; User Initial Stack & Heap
 
-                IF      :DEF:__MICROLIB
-
-                EXPORT  __initial_sp
-                EXPORT  __heap_base
-                EXPORT  __heap_limit
-
-                ELSE
-
-                IMPORT  __use_two_region_memory
-                EXPORT  __user_initial_stackheap
-__user_initial_stackheap
-
-                LDR     R0, =  Heap_Mem
-                LDR     R1, =(Stack_Mem + Stack_Size)
-                LDR     R2, = (Heap_Mem +  Heap_Size)
-                LDR     R3, = Stack_Mem
-                BX      LR
-
-                ALIGN
-
-                ENDIF
+;                IF      :DEF:__MICROLIB
+;
+;                EXPORT  __initial_sp
+;                EXPORT  __heap_base
+;                EXPORT  __heap_limit
+;
+;                ELSE
+;
+;                IMPORT  __use_two_region_memory
+;                EXPORT  __user_initial_stackheap
+;__user_initial_stackheap
+;
+;                LDR     R0, =  Heap_Mem
+;                LDR     R1, =(Stack_Mem + Stack_Size)
+;                LDR     R2, = (Heap_Mem +  Heap_Size)
+;                LDR     R3, = Stack_Mem
+;                BX      LR
+;
+;                ALIGN
+;
+;                ENDIF
 
 
                 END
