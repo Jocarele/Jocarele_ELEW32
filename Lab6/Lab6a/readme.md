@@ -72,7 +72,7 @@ Com o processador operando a 120 MHz, calculou-se a quantidade de loops necessá
 
 $$\text{Ciclos por Loop} = \frac{39061}{1000} = 39,061 \text{ ciclos}$$
 
-$$\text{LOOPS_PARA_100MS} = \frac{12.000.000}{39,061} \approx 307.211$$
+$\text{100MS} = \frac{12.000.000}{39,061} \approx 307.211$
 
 ### 7.2 Lógica de Suspensão (Período)
 Para garantir que as tarefas executem em seus períodos corretos (Tabela 1), a lógica adotada em cada _while(1)_ foi:
