@@ -10,8 +10,8 @@
 /**
  * @file     main.c
  * @author   Bruno Ribeiro Basilio
-						 Jo„o Lucas Marques Camilo
- * @brief    Exemplo b·sico utilizando o RTOS ThreadX na TM4C1294.
+						 Jo√£o Lucas Marques Camilo
+ * @brief    Exemplo b√°sico utilizando o RTOS ThreadX na TM4C1294.
  *            O sistema configura o clock em 120 MHz, inicializa
  *            o kernel ThreadX e cria uma thread simples.
  *
@@ -166,7 +166,7 @@ int main()
 /**
  * Define os objetos iniciais do sistema
  *
- * @param[in] first_unused_memory - memÛria n„o utilizada
+ * @param[in] first_unused_memory - mem√≥ria n√£o utilizada
  */
 void    tx_application_define(void *first_unused_memory)
 {
@@ -201,20 +201,9 @@ void    tx_application_define(void *first_unused_memory)
             pointer, DEMO_STACK_SIZE, 
             12, 0, TX_NO_TIME_SLICE, TX_AUTO_START);
 
-    /* Allocate the message queue.  */
-    tx_byte_allocate(&byte_pool_0, (VOID **) &pointer, DEMO_QUEUE_SIZE*sizeof(ULONG), TX_NO_WAIT);
 		
     /* Create the mutex used by thread 6 and 7 without priority inheritance.  */
     tx_mutex_create(&mutex_0, "mutex 0", TX_INHERIT);
-
-    /* Allocate the memory for a small block pool.  */
-    tx_byte_allocate(&byte_pool_0, (VOID **) &pointer, DEMO_BLOCK_POOL_SIZE, TX_NO_WAIT);
-
-    /* Create a block memory pool to allocate a message buffer from.  */
-    tx_block_pool_create(&block_pool_0, "block pool 0", sizeof(ULONG), pointer, DEMO_BLOCK_POOL_SIZE);
-
-    /* Allocate a block and release the block memory.  */
-    tx_block_allocate(&block_pool_0, (VOID **) &pointer, TX_NO_WAIT);
 
     /* Release the block back to the pool.  */
     tx_block_release(pointer);
