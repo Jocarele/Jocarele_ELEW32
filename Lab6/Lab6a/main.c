@@ -58,6 +58,18 @@
 #define USER_LED3  GPIO_PIN_4
 #define LOOPS_PARA_100MS  307212
 
+#define PRIORIDADE_T0 10
+#define PREEMP_THRESHOLD_T0 0
+#define TIME_SLICE_T0 TX_NO_TIME_SLICE  //TX_NO_TIME_SLICE or number
+#define PRIORIDADE_T1 10
+#define PREEMP_THRESHOLD_T1 0
+#define TIME_SLICE_T1 TX_NO_TIME_SLICE  //TX_NO_TIME_SLICE or number
+#define PRIORIDADE_T2 10
+#define PREEMP_THRESHOLD_T2 0
+#define TIME_SLICE_T2 TX_NO_TIME_SLICE  //TX_NO_TIME_SLICE or number
+#define MUTEX 0
+
+
 
 /*------------------------------------------------------------------------------
  *
@@ -186,20 +198,20 @@ void    tx_application_define(void *first_unused_memory)
     /* Create the main thread.  */
     tx_thread_create(&thread_0, "thread 0", thread_0_entry, 0,  
             pointer, DEMO_STACK_SIZE, 
-            10, 0, TX_NO_TIME_SLICE, TX_AUTO_START);
+            PRIORIDADE_T0, PREEMP_THRESHOLD_T0, TIME_SLICE_T0, TX_AUTO_START);
 
 
     /* Allocate the stack for thread 1.  */
     tx_byte_allocate(&byte_pool_0, (VOID **) &pointer, DEMO_STACK_SIZE, TX_NO_WAIT);
 		tx_thread_create(&thread_1, "thread 1", thread_1_entry, 1,  
             pointer, DEMO_STACK_SIZE, 
-            11, 0, TX_NO_TIME_SLICE, TX_AUTO_START);
+            PRIORIDADE_T1, PREEMP_THRESHOLD_T1, TIME_SLICE_T1, TX_AUTO_START);
 
     /* Allocate the stack for thread 2.  */
     tx_byte_allocate(&byte_pool_0, (VOID **) &pointer, DEMO_STACK_SIZE, TX_NO_WAIT);
 		tx_thread_create(&thread_2, "thread 2", thread_2_entry, 2,  
             pointer, DEMO_STACK_SIZE, 
-            12, 0, TX_NO_TIME_SLICE, TX_AUTO_START);
+            PRIORIDADE_T2, PREEMP_THRESHOLD_T2, TIME_SLICE_T2, TX_AUTO_START);
 
 		
     /* Create the mutex used by thread 6 and 7 without priority inheritance.  */
@@ -235,12 +247,19 @@ void thread_0_entry(ULONG thread_input)
 	*/
     while(1)
 		{
-				tx_mutex_get(&mutex_0, TX_WAIT_FOREVER);
-				blink_led(led, (LOOPS_PARA_100MS * 3) / 2);
-				tx_mutex_put(&mutex_0);
-				blink_led(led, (LOOPS_PARA_100MS * 3) / 2);
-				blink_led(led,LOOPS_PARA_100MS*3);
-        tx_thread_sleep(70);
+				if (MUTEX)
+				{
+					tx_mutex_get(&mutex_0, TX_WAIT_FOREVER);
+					blink_led(led, (LOOPS_PARA_100MS * 3) / 2);
+					tx_mutex_put(&mutex_0);
+					blink_led(led, (LOOPS_PARA_100MS * 3) / 2);
+					tx_thread_sleep(70);
+
+				}else{
+					blink_led(led,LOOPS_PARA_100MS*3);
+					tx_thread_sleep(70);
+				}
+				
 
     }
 }
@@ -271,12 +290,18 @@ void    thread_2_entry(ULONG thread_input)
     while(1)
     {
 
-        /* Sleep for 10 ticks.  */			
-				tx_mutex_get(&mutex_0, TX_WAIT_FOREVER);
-				blink_led(led, (LOOPS_PARA_100MS * 8) / 2);
-				tx_mutex_put(&mutex_0);
-				blink_led(led, (LOOPS_PARA_100MS * 8) / 2);
-				tx_thread_sleep(320);
+				if (MUTEX)
+				{
+					tx_mutex_get(&mutex_0, TX_WAIT_FOREVER);
+					blink_led(led, (LOOPS_PARA_100MS * 8) / 2);
+					tx_mutex_put(&mutex_0);
+					blink_led(led, (LOOPS_PARA_100MS * 8) / 2);
+					tx_thread_sleep(320);
+
+				}else{
+					blink_led(led,LOOPS_PARA_100MS*8);
+					tx_thread_sleep(320);
+				}
 
 		}
 }
