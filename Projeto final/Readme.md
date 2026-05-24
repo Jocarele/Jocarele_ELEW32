@@ -14,7 +14,7 @@ UNIVERSIDADE TECNOLÓGICA FEDERAL DO PARANÁ
 ## Parte 1a - CONOPS
 
 ### 1. Introdução
-O presente projeto tem como objetivo o desenvolvimento de um osciloscópio digital embarcado capaz de adquirir sinais analógicos e apresentá-los graficamente em um display. O sistema será utilizado para visualizar sinais elétricos de baixa frequência, permitindo ao usuário acompanhar o comportamento das formas de onda em tempo real. O equipamento deverá receber sinais analógicos positivos entre 0 V e 3 V, permitindo a análise de sinais de até 2 kHz. O usuário poderá configurar parâmetros importantes do instrumento, como escala vertical, escala horizontal, taxa de aquisição e configurações de trigger. Além disso, o sistema contará com modos de operação contínuo e single-shot, permitindo tanto o monitoramento contínuo quanto a captura de eventos específicos. O projeto possui aplicação didática, podendo ser utilizado em laboratórios acadêmicos para auxiliar no estudo de eletrônica e sistemas embarcados.
+O presente projeto tem como objetivo o desenvolvimento de um osciloscópio digital embarcado capaz de adquirir sinais analógicos e apresentá-los graficamente em um display. O sistema será utilizado para visualizar sinais elétricos de baixa frequência, permitindo ao usuário acompanhar o comportamento das formas de onda em tempo real. O equipamento deverá receber sinais analógicos positivos entre 0 V e 3 V, permitindo a análise de sinais de até 2 kHz. O usuário poderá configurar parâmetros importantes do instrumento, como escala vertical, escala horizontal, taxa de aquisição e configurações de trigger. Além disso, o sistema contará com modos de operação contínuo e single-shot, permitindo tanto o monitoramento contínuo quanto a captura de eventos específicos. 
 
 ### 2. Descrição do Sistema
 O sistema consiste em um osciloscópio digital embarcado responsável por adquirir sinais analógicos externos, processar essas informações e exibi-las graficamente em um display. O usuário conecta um sinal analógico à entrada do sistema e pode configurar parâmetros relacionados à visualização do sinal. Após a aquisição, o sinal é exibido na tela em forma de gráfico, permitindo acompanhar sua variação ao longo do tempo. O sistema possui dois modos principais de utilização:
@@ -34,7 +34,6 @@ Já no modo de visualização, o sistema apresenta a forma de onda do sinal rece
 * interface de usuário para configuração;
 * display para apresentação gráfica das informações.
 
-O sistema será utilizado principalmente em ambientes acadêmicos e laboratoriais para análise básica de sinais elétricos.
 
 ### 3. Interface com o Usuário
 A interface do sistema foi planejada para ser simples e intuitiva, permitindo ao usuário configurar os parâmetros do osciloscópio e visualizar os sinais adquiridos de maneira prática. A interação com o sistema será realizada por meio de um controle de navegação integrado ao dispositivo, permitindo navegar entre menus e alterar parâmetros do osciloscópio. A interface será composta basicamente por duas telas principais:
