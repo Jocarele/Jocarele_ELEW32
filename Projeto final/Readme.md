@@ -53,7 +53,7 @@ Já a tela de configuração permitirá ao usuário alterar parâmetros do siste
 * modo de aquisição;
 * configurações de trigger.
 
-A navegação entre as opções deverá ser simples e adequada ao contexto didático do projeto. Como o sistema possui foco acadêmico, a interface prioriza clareza visual, facilidade de utilização e simplicidade operacional. 
+
 A seguir sera apresentado a ideia da interface planejada para o projeto: A interface do sistema será composta por duas telas principais: a tela de visualização do sinal e a tela de configuração. A navegação entre as telas e a alteração de parâmetros será realizada por meio do joystick do BoosterPack.
 
 ![diagrama](./assets/interface.png)
@@ -103,13 +103,13 @@ A seguir sera apresentado a ideia da interface planejada para o projeto: A inter
 Esta seção aborda conceitos técnicos necessário para entender o funcionamento do osciloscópio digital.
 
 ### 1. Conversão Analógico-Digital (A/D)
-Para analisar um sinal do mundo real (analógico), é necessário convertê-lo para um sinal digital. O osciloscópio irá dividir a tensão de entrada em níveis discretos, sendo o passo de quantização dado pela fórmula $q = \frac{V_{max}}{2^n}$, onde n é a quantidade de bits do conversor. Vale lembrar que o hardware de conversão operará na faixa de 0 a 3 V.
+Para analisar um sinal do mundo real (analógico), é necessário convertê-lo para um sinal digital. O osciloscópio irá dividir a tensão de entrada em níveis discretos, sendo o passo de quantização dado pela fórmula $q = \frac{V_{max}}{2^n}$, onde n é a quantidade de bits do conversor. 
 
 ### 2. Frequência Harmônica
 Sinais elétricos reais frequentemente não são senoides perfeitas. Para representar o formato da onda com fidelidade, o sistema considerará as frequências do sinal até a sua quinta harmônica. Matematicamente, ondas complexas podem ser representadas pela soma de uma onda fundamental com suas respectivas harmônicas. Com essa definição, determina-se que a maior frequência de interesse a ser processada pelo sistema será: 2 kHz * 5 = 10 kHz.
 
 ### 3. Amostragem
-Como o sinal de entrada é uma onda analógica contínua, serão coletadas amostras desse sinal para representá-lo digitalmente. Para isso, é necessário seguir o Teorema da Amostragem de Nyquist-Shannon, que estabelece que a frequência de amostragem deve ser maior que o dobro da frequência máxima do sinal. Caso contrário, o sistema sofrerá o efeito de aliasing (sobreposição indesejada de frequências). Como a maior frequência do sinal no sistema será de 10 kHz, a taxa de amostragem deve ser de pelo menos 20 kHz.
+Como o sinal de entrada é uma onda analógica contínua, serão coletadas amostras desse sinal para representá-lo digitalmente. Para isso, é necessário seguir o Teorema da Amostragem de Nyquist-Shannon, que estabelece que a frequência de amostragem deve ser maior que o dobro da frequência máxima do sinal. Caso contrário, o sistema sofrerá o efeito de aliasing (sobreposição indesejada de frequências). Como a maior frequência do sinal no sistema será de 10 kHz, a taxa de amostragem deve ser de pelo menos 20 kHz para evitar o alising.
 
 ### 4. Triggers
 O trigger (gatilho) é o evento responsável por sincronizar a captura de dados para manter a forma de onda estável no display. Ele ocorre quando o sinal atinge uma condição de tensão programada. O comportamento da aquisição a partir desse evento pode ser configurado das seguintes formas:
@@ -118,19 +118,19 @@ O trigger (gatilho) é o evento responsável por sincronizar a captura de dados 
 
 2. Trigger de borda: A captura é acionada no momento exato em que o sinal cruza um nível de tensão específico, avaliando apenas a transição do sinal (borda de subida ou de descida).
 
-3. Single-shot (Disparo único): O sistema aguarda a condição de trigger, realiza uma única captura completa para preencher o display e congela a imagem, não realizando novas aquisições até ser rearmado pelo usuário.
+3. Single-shot : O sistema aguarda a condição de trigger, realiza uma única captura completa para preencher o display e congela a imagem, não realizando novas aquisições até ser rearmado pelo usuário.
 
 ---
 
 ## Parte 1c - Especificação
-O objetivo do documento de especificação é formalizar os requisitos do sistema a ser desenvolvido. Cada requisito tem um identificador único. Requisitos são elaborados de forma a serem testáveis. Relembrar a aula sobre como escrever requisitos. Fazer referencias às necessidades de Stakeholders identificadas na Parte 1a.
 
 ### 1. Introdução
-O objetivo deste documento é apresentar a especificação do sistema de osciloscópio digital embarcado proposto para a disciplina de Sistemas Embarcados. O sistema será responsável por adquirir sinais analógicos, processar as amostras obtidas e apresentar graficamente as formas de onda em um display. Além disso, o usuário poderá configurar parâmetros básicos do osciloscópio por meio da interface do sistema. Esta especificação define os requisitos funcionais e não funcionais do projeto, servindo como base para as próximas etapas de desenvolvimento e implementação.
+O objetivo desta seção é apresentar a especificação do sistema de osciloscópio digital embarcado proposto para a disciplina de Sistemas Embarcados. O sistema será responsável por adquirir sinais analógicos, processar as amostras obtidas e apresentar graficamente as formas de onda em um display. Além disso, o usuário poderá configurar parâmetros básicos do osciloscópio por meio da interface do sistema. Esta especificação define os requisitos funcionais e não funcionais do projeto, servindo como base para as próximas etapas de desenvolvimento e implementação.
 
 ### 2. Estrutura do Sistema
 
 <img src="./assets/uml.png" alt="Meu diagrama" width="50%" />
+
 O diagrama acima apresenta a arquitetura conceitual do Osciloscópio Digital do ponto de vista do usuário e de suas interações com o ambiente externo. O sistema central interage com dois atores principais: o Usuário e o Sinal Analógico Externo. Internamente, o sistema é subdividido em quatro grandes blocos lógicos operacionais:
 * **Módulo de Aquisição:** Interface responsável por receber o sinal elétrico contínuo do mundo externo e traduzi-lo para o domínio do sistema.
 * **Módulo de Controle (Entrada):** Interface pela qual o usuário fornece as diretrizes de funcionamento, inserindo os parâmetros de configuração (como escalas, trigger e modo de operação).
