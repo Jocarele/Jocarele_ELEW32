@@ -110,6 +110,16 @@ O BoosterPack MKII possui um joystick analógico com dois eixos de movimentaçã
 #### 3. Conversor ADC e Temporizadores
 O microcontrolador TM4C1294NCPDT possui conversores analógico-digitais (ADC) de 12 bits, capazes de converter sinais analógicos em valores digitais com resolução de 4096 níveis. No osciloscópio digital embarcado, o ADC será utilizado para adquirir o sinal de entrada que será exibido no display. Adicionalmente, o mesmo recurso poderá ser empregado para a leitura dos eixos analógicos do joystick. Para garantir uma taxa de amostragem estável e previsível, as conversões do ADC serão acionadas por temporizadores de hardware (GPTM). Dessa forma, o instante de aquisição das amostras não depende da execução do software, aumentando a precisão temporal do sistema. A combinação entre temporizadores e ADC permite a aquisição periódica do sinal, requisito fundamental para a correta reconstrução e exibição da forma de onda no display.
 
+**Questões de Estudo da Plataforma**
+
+É possível comandar o início de cada conversão do ADC a partir de um timer de hardware? Qual o benefício?
+
+Sim. O módulo ADC do microcontrolador TM4C1294 permite que uma conversão seja iniciada automaticamente por um temporizador de hardware (GPTM). Dessa forma, as amostras são adquiridas em intervalos de tempo precisos e constantes, independentemente da carga de processamento do sistema. O principal benefício é garantir uma taxa de amostragem estável, reduzindo erros temporais (jitter) e melhorando a fidelidade da reconstrução do sinal.
+
+**Terminada uma conversão, o ADC consegue “avisar” que tem dado para ser lido? Como?**
+
+Sim. Ao término de uma conversão, o ADC pode gerar uma interrupção para o controlador NVIC. Essa interrupção aciona automaticamente uma rotina de tratamento (ISR), que realiza a leitura do valor convertido e o armazena em memória para posterior processamento. Dessa forma, não é necessário que o processador fique verificando continuamente se a conversão terminou.
+
 #### 4. Sistema Operacional em Tempo Real (ThreadX)
 O sistema utiliza o ThreadX RTOS (Real-Time Operating System), disponibilizado para a plataforma Tiva C Series, com o objetivo de organizar a execução concorrente das diferentes funcionalidades do osciloscópio digital embarcado. O uso de um sistema operacional em tempo real simplifica o desenvolvimento da aplicação, permitindo a divisão das responsabilidades em tarefas independentes e facilitando a sincronização entre os diversos módulos do sistema.
 
