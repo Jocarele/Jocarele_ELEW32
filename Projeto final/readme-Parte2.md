@@ -1,13 +1,12 @@
 # UTFPR
 ## UNIVERSIDADE TECNOLÓGICA FEDERAL DO PARANÁ
-Modelo elaborado pelo Prof. Douglas Renaux para uso no Projeto Final da disciplina de Sistemas Embarcados.
 
 **Documentação de Projeto - Parte 2**
 Design, Estudo da Plataforma
 
-* **Projeto:** Nome do Projeto
+* **Projeto:** Osciloscópio Diginal Embarcado
 * **Autores:** Bruno, João Lucas marques Camilo
-* **Versão:** xx-Mar-20xx
+* **Versão:** 06-Junho-2026
 
 ---
 
