@@ -31,7 +31,7 @@ O diagrama de arquitetura funcional apresentado ilustra o fluxo de dados e a div
 
 ### 3 Arquitetura Física (Arquitetura da Solução)
 
-![Diagrama da Arquitetura Física](./assets/UML_HW.png)
+<img src="./assets/UML_HW.png" style="background-color: white;">
 
 
 ### 4 Interface com o Usuário
@@ -81,15 +81,44 @@ A solução proposta utiliza uma plataforma de hardware predefinida, baseada no 
 **Maquina de estado**
 
 A maquina de estado representa os dois estados do algoritmo, o primeiro sendo o modo osciloscópio, onde é plotado a onda e através do evento de click do botão do Joystick, o segundo modo , configuração, é acionado. Após precionar 7 vezes no botão do joystick ou clicar voltar, a maquina de estado volta ao seu primeiro estado.
-![Máquina de Estado](./assets/state_machine.png)
+<img src="./assets/state_machine.png" style="background-color: white;">
 
 **Fluxograma**
 
 Esse fluxograma mostra o funcionamento da thread do Osciloscópio, em que fica num looping adquirindo sinal, fazendo as operações matemáticas, e caso esteja no estado de osciloscópio, manda as informações ao LCD, caso contrario, começa a adquirir dados novos e sobrescreve seus dados antigos.
 
-![Fluxograma](./assets/fluxograma.png)
+<img src="./assets/fluxograma.png" style="background-color: white;">
+
+**Planejamento Temporal: Aquisição e Processamento em Tempo Real**
+
+O sistema opera com uma taxa de amostragem fixa de fs = 20 kHz, o que garante a reconstrução fiel de sinais de até 2 kHz (abrangendo até a sua 5ª harmônica, 10 kHz). Isso equivale a um intervalo de tempo rigoroso entre as coletas. Dentro de cada intervalo, os eventos de hardware ocorrem de forma estrita, enquanto o processamento e a exibição ocorrem no tempo livre gerenciado pelo RTOS:
+
+* **Taxa de Amostragem:** `fs = 20 kHz` (Ts = 50μs).
+
+**Sequência de eventos por ciclo de amostragem (Ts = 50μs):**
+
+| Tempo (relativo) | Evento e Descrição |
+| :--- | :--- |
+| 0μs | GPTM (Timer de Hardware) aciona internamente o *trigger* do ADC. |
+| 0–1μs | ADC realiza a amostragem e conversão do sinal analógico. |
+| 1–2μs | Conversão finalizada (12 bits) e interrupção do ADC é disparada ao NVIC. |
+| 2–3μs | Execução da ISR (`HandlerOsciloscopio`), que salva a amostra no *Circular Buffer*. |
+| 3–50μs | A *Thread* `ScopeControl` consome os dados, aplica escalas, encontra o *trigger* visual e atualiza o display via SPI. |
+
+A seguir o diagrama de tempo evidenciando a divisão entre as etapas de hardware crítico e as tarefas assíncronas do RTOS:
+
+```text
+               :     :        :                                          :
+ Timer Trigger : ADC : ADCIRQ :       RTOS (ScopeControl Thread)         :
+  (Hardware)   :     :        : (Cálculos de Escala e Atualização do LCD):
+               :     :        :                                          :
+---------------|-----|--------|------------------------------------------|----> Tempo
+              0μs   1μs      3μs                                        50μs
+```
+
 
 **Escalonamento**
+
 O sistema utiliza o ThreadX RTOS com política de escalonamento preemptivo por prioridade fixa. As interrupções são tratadas diretamente pelo NVIC (prioridade absoluta de hardware), enquanto as tarefas de software são preemptíveis de acordo com sua prioridade. A estrutura de escalonamento é a seguinte:
 
 * **Timer IRQ (NVIC):** Prioridade máxima no NVIC. Gera o trigger periódico de hardware para o ADC.
