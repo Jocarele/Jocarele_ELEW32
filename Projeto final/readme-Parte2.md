@@ -116,7 +116,7 @@ O microcontrolador TM4C1294NCPDT possui conversores analógico-digitais (ADC) de
 
 Sim. O módulo ADC do microcontrolador TM4C1294 permite que uma conversão seja iniciada automaticamente por um temporizador de hardware (GPTM). Dessa forma, as amostras são adquiridas em intervalos de tempo precisos e constantes, independentemente da carga de processamento do sistema. O principal benefício é garantir uma taxa de amostragem estável, reduzindo erros temporais (jitter) e melhorando a fidelidade da reconstrução do sinal.
 
-**Terminada uma conversão, o ADC consegue “avisar” que tem dado para ser lido? Como?**
+Terminada uma conversão, o ADC consegue “avisar” que tem dado para ser lido? Como?
 
 Sim. Ao término de uma conversão, o ADC pode gerar uma interrupção para o controlador NVIC. Essa interrupção aciona automaticamente uma rotina de tratamento (ISR), que realiza a leitura do valor convertido e o armazena em memória para posterior processamento. Dessa forma, não é necessário que o processador fique verificando continuamente se a conversão terminou.
 
