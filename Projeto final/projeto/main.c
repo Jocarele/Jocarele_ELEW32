@@ -65,8 +65,6 @@
 #define TELA_ALTURA  128
 #define PART_TM4C1294NCPDT
 #define TARGET_IS_TM4C129_RA1
-#define PRIORIDADE_T0 10
-#define PREEMP_THRESHOLD_T0 0
 #define TIME_SLICE_T0 TX_NO_TIME_SLICE  //TX_NO_TIME_SLICE or number
 #define MUTEX 0
 
@@ -165,17 +163,17 @@ void ConfigurarADC0()
     MAP_GPIOPinTypeADC(GPIO_PORTE_BASE, GPIO_PIN_3 | GPIO_PIN_4);
 
 		
-		// =============BUTAO JOYSTICK
+	// =============BUTAO JOYSTICK
 	MAP_GPIOPinTypeGPIOInput(GPIO_PORTC_BASE, GPIO_PIN_6);
 	MAP_GPIOPadConfigSet(GPIO_PORTC_BASE, GPIO_PIN_6,
                          GPIO_STRENGTH_2MA,
                          GPIO_PIN_TYPE_STD_WPU);
-		//isr
+	//------------------isr
 	MAP_GPIOIntTypeSet(GPIO_PORTC_BASE, GPIO_PIN_6, GPIO_FALLING_EDGE);
     GPIOIntRegister(GPIO_PORTC_BASE, GPIOC_InterruptHandler);
     MAP_GPIOIntEnable(GPIO_PORTC_BASE, GPIO_PIN_6);
 	MAP_IntEnable(INT_GPIOC_TM4C129);
-		//=============ADC0
+	//=============ADC0
 			
     MAP_ADCSequenceConfigure(ADC0_BASE, 0, ADC_TRIGGER_PROCESSOR, 0);
     // CH9 = PE3 (X)
@@ -266,7 +264,7 @@ int main()
     SysTickEnable();
     SysTickIntEnable();
 	
-    tx_thread_sleep(1000); 
+    //tx_thread_sleep(100); 
 
     tx_kernel_enter();
 
@@ -373,7 +371,7 @@ void thread_0_entry(ULONG thread_input)
 
 void thread_1_entry(ULONG thread_input)
 {		
-		ConfigurarADC0();
+	ConfigurarADC0();
 	
     (void)thread_input;
     ULONG actual_flags;
@@ -389,10 +387,10 @@ void thread_1_entry(ULONG thread_input)
             estado_atual = MENU_PRINCIPAL;
             menu_selecionado = 0;
 					
-						tx_mutex_get(&display_mutex, TX_WAIT_FOREVER);
+			tx_mutex_get(&display_mutex, TX_WAIT_FOREVER);
             DesenharMenuPrincipal();
-						 tx_mutex_put(&display_mutex);
-            tx_thread_sleep(50); // Debounce para não pular telas
+			tx_mutex_put(&display_mutex);
+            tx_thread_sleep(50); 
         }
 
         // 2. MODO CONFIGURAÇÃO:
@@ -409,31 +407,29 @@ void thread_1_entry(ULONG thread_input)
             
             // Verifica se clicou de novo (TX_NO_WAIT para não travar o joystick)
             bool clicou = (tx_event_flags_get(&flag_0, 0x01, TX_OR_CLEAR, &actual_flags, TX_NO_WAIT) == TX_SUCCESS);
-            // ------------------------------------------------------
             // NAVEGAÇÃO: MENU PRINCIPAL
-            // ------------------------------------------------------
             if (estado_atual == MENU_PRINCIPAL) {
                 // Navega para Cima / Baixo (Limites de 0 a 4)
 								
                 if (joy_y > 3000 && menu_selecionado > 0) { 
                     menu_selecionado--; 
-										tx_mutex_get(&display_mutex, TX_WAIT_FOREVER);
+					
+					tx_mutex_get(&display_mutex, TX_WAIT_FOREVER);
                     DesenharMenuPrincipal(); 
-										tx_mutex_put(&display_mutex);
+					tx_mutex_put(&display_mutex);
 									
                 }
                 if (joy_y < 1000 && menu_selecionado < 4) { 
                     menu_selecionado++; 
-										tx_mutex_get(&display_mutex, TX_WAIT_FOREVER);
+					tx_mutex_get(&display_mutex, TX_WAIT_FOREVER);
                     DesenharMenuPrincipal(); 
-										tx_mutex_put(&display_mutex);
+					tx_mutex_put(&display_mutex);
                 }
-								if (joy_x < 200) {
-										estado_atual = TELA_PRINCIPAL;
-										tx_thread_sleep(50);
-										}
+				if (joy_x < 200) {
+					estado_atual = TELA_PRINCIPAL;
+					tx_thread_sleep(50);
+				}
                 
-                // Entra no submenu selecionado
                 if (clicou) {
                     if (menu_selecionado == 0) estado_atual = MENU_TAXA;
                     if (menu_selecionado == 1) estado_atual = MENU_VDIV;
@@ -442,17 +438,14 @@ void thread_1_entry(ULONG thread_input)
                     if (menu_selecionado == 4) estado_atual = MENU_BORDA_TRIG;
                 }
             }
-            // ------------------------------------------------------
-            // NAVEGAÇÃO: SUBMENUS DE VALORES
-            // ------------------------------------------------------
+            // NAVEGAÇÃO: SUBMENUS 
             else {
                 int* ptr_indice = NULL;
-                int max_indice = 2; // Quase todos têm 3 opções (índices 0, 1, 2)
+                int max_indice = 2; 
                 const char* titulo = "";
                 int valor = 0;
-								const char* unidade = "";
+				const char* unidade = "";
 								 
-                // Mapeia qual variável estamos editando de acordo com a tela
                 if (estado_atual == MENU_TAXA) {
                     ptr_indice = &indice_taxa; titulo = "Taxa Amostragem"; valor = valores_taxa[*ptr_indice];unidade = "V/div";
                 } else if (estado_atual == MENU_VDIV) {
@@ -463,36 +456,46 @@ void thread_1_entry(ULONG thread_input)
                     ptr_indice = &indice_nivel_trig; titulo = "Nivel Trigger"; valor = valores_nivel[*ptr_indice];unidade = "V";
                 } else if (estado_atual == MENU_BORDA_TRIG) {
                     ptr_indice = &indice_borda_trig; titulo = "Borda Trigger"; valor = (*ptr_indice);unidade = str_borda_trig[*ptr_indice];
-                    max_indice = 1; // Borda de trigger só tem 2 opções (0 e 1)
+                    max_indice = 1;
                 }
 								
-								tx_mutex_get(&display_mutex, TX_WAIT_FOREVER);
+				tx_mutex_get(&display_mutex, TX_WAIT_FOREVER);
                 DesenharSubMenu(titulo, valor,unidade,true);
-								tx_mutex_put(&display_mutex);
+				tx_mutex_put(&display_mutex);
 								
                 // Navega para Esquerda / Direita (Altera o valor)
                 if (joy_x < 1000 && *ptr_indice > 0) { (*ptr_indice)--; }
                 if (joy_x > 3000 && *ptr_indice < max_indice) { (*ptr_indice)++; }
-
-                // Volta pro menu principal forçando o joystick pra esquerda (Requisito)
+				
+				/*
                 if (joy_x < 200) {
                     estado_atual = MENU_PRINCIPAL;
-										tx_mutex_get(&display_mutex, TX_WAIT_FOREVER);
+					tx_mutex_get(&display_mutex, TX_WAIT_FOREVER);
                     DesenharMenuPrincipal();
-										tx_mutex_put(&display_mutex);
+					tx_mutex_put(&display_mutex);
                     tx_thread_sleep(30); 
                 }
+				*/
 
-                // Se clicou, salva, aplica no hardware e volta pra onda!
+                // TODO: Chamar as funções de hardware. 
                 if (clicou) {
-                    estado_atual = TELA_PRINCIPAL; 
                     
-                    // TODO: Chamar as funções de hardware aqui. 
-                    // Exemplo: if (estado_atual == MENU_TAXA) AttTaxaAmostragem(...);
+	                if (estado_atual == MENU_TAXA) {
+	                    ptr_indice = &indice_taxa; valor = valores_taxa[*ptr_indice];
+	                } else if (estado_atual == MENU_VDIV) {
+	                    ptr_indice = &indice_vdiv;  valor = valores_vdiv[*ptr_indice];
+	                } else if (estado_atual == MENU_HDIV) {
+	                    ptr_indice = &indice_hdiv; valor = valores_hdiv[*ptr_indice];
+	                } else if (estado_atual == MENU_NIVEL_TRIG) {
+	                    ptr_indice = &indice_nivel_trig;  valor = valores_nivel[*ptr_indice];
+	                } else if (estado_atual == MENU_BORDA_TRIG) {
+	                    ptr_indice = &indice_borda_trig; valor = (*ptr_indice);unidade = str_borda_trig[*ptr_indice];
+	                }
+					estado_atual = TELA_PRINCIPAL; 
                 }
             }
 
-            // Pausa de 15 ticks para o cursor não voar e dar tempo de soltar o joystick
+            // Pausa de 15 ticks
             tx_thread_sleep(15); 
         }
     }
