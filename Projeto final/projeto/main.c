@@ -10,7 +10,7 @@
 /**
  * @file     main.c
  * @author   Bruno Ribeiro Basilio
-						 João Lucas Marques Camilo
+						 JoÃ£o Lucas Marques Camilo
  * @brief   Projeto final da disciplina de sistemas embarcados
  *            
  *            
@@ -33,7 +33,7 @@
 #include "tx_api.h"
 
 #include "grlib/grlib.h"
-// Bibliotecas de Periféricos (DriverLib)
+// Bibliotecas de PerifÃ©ricos (DriverLib)
 #include "driverlib/sysctl.h"
 #include "driverlib/systick.h"
 #include "driverlib/interrupt.h"
@@ -109,10 +109,11 @@ int16_t height;
 void tx_application_define(void * first_unused_memory);
 
 void    thread_0_entry(ULONG thread_input);
-void    thread_1_entry(ULONG thread_input);
-void 		ConfigADC(void);
-void 		ADC1_InterruptHandler(void);
-void 		GPIOC_InterruptHandler(void);
+void   	thread_1_entry(ULONG thread_input);
+void 	ConfigADC(void);
+void 	ADC1_InterruptHandler(void);
+void 	GPIOC_InterruptHandler(void);
+void 	SysTick_Handler(void);
 
 /*------------------------------------------------------------------------------
  *
@@ -141,7 +142,10 @@ CircularBuffer osc_buffer = { .head = 0, .tail = 0, .count = 0 };
  *
  *------------------------------------------------------------------------------*/
 
-
+void SysTick_Handler(void)
+{
+    tx_event_flags_set(&flag_0, 0x04, TX_OR);
+}
 
 
 
@@ -150,27 +154,27 @@ void ConfigurarADC0()
 {
 		
     MAP_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOC);
-	  MAP_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOE);
+	MAP_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOE);
     MAP_SysCtlPeripheralEnable(SYSCTL_PERIPH_ADC0);
 
     
     while(!MAP_SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOC)){}
-		while(!MAP_SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOE)){}
-		while(!MAP_SysCtlPeripheralReady(SYSCTL_PERIPH_ADC0)){}
+	while(!MAP_SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOE)){}
+	while(!MAP_SysCtlPeripheralReady(SYSCTL_PERIPH_ADC0)){}
 			
     MAP_GPIOPinTypeADC(GPIO_PORTE_BASE, GPIO_PIN_3 | GPIO_PIN_4);
 
 		
 		// =============BUTAO JOYSTICK
-		MAP_GPIOPinTypeGPIOInput(GPIO_PORTC_BASE, GPIO_PIN_6);
-		MAP_GPIOPadConfigSet(GPIO_PORTC_BASE, GPIO_PIN_6,
+	MAP_GPIOPinTypeGPIOInput(GPIO_PORTC_BASE, GPIO_PIN_6);
+	MAP_GPIOPadConfigSet(GPIO_PORTC_BASE, GPIO_PIN_6,
                          GPIO_STRENGTH_2MA,
                          GPIO_PIN_TYPE_STD_WPU);
 		//isr
-		MAP_GPIOIntTypeSet(GPIO_PORTC_BASE, GPIO_PIN_6, GPIO_FALLING_EDGE);
+	MAP_GPIOIntTypeSet(GPIO_PORTC_BASE, GPIO_PIN_6, GPIO_FALLING_EDGE);
     GPIOIntRegister(GPIO_PORTC_BASE, GPIOC_InterruptHandler);
     MAP_GPIOIntEnable(GPIO_PORTC_BASE, GPIO_PIN_6);
-		MAP_IntEnable(INT_GPIOC_TM4C129);
+	MAP_IntEnable(INT_GPIOC_TM4C129);
 		//=============ADC0
 			
     MAP_ADCSequenceConfigure(ADC0_BASE, 0, ADC_TRIGGER_PROCESSOR, 0);
@@ -185,13 +189,14 @@ void ConfigurarADC0()
 		
 }
 
-void GPIOC_InterruptHandler(void){
-		uint32_t status = MAP_GPIOIntStatus(GPIO_PORTC_BASE, true);
-		MAP_GPIOIntClear(GPIO_PORTC_BASE, status);
+void GPIOC_InterruptHandler(void)
+{
+	uint32_t status = MAP_GPIOIntStatus(GPIO_PORTC_BASE, true);
+	MAP_GPIOIntClear(GPIO_PORTC_BASE, status);
 	
-		if(status & GPIO_PIN_6)
+	if(status & GPIO_PIN_6)
     {
-        tx_event_flags_set(&flag_0, 0x01, TX_OR);
+    	tx_event_flags_set(&flag_0, 0x01, TX_OR);
     }
 }
 
@@ -229,7 +234,7 @@ void ConfigurarOsciloscopioBackground(void)
     MAP_ADCSequenceEnable(ADC1_BASE, 0);
     MAP_ADCIntClear(ADC1_BASE, 0);
 
-    // Liga a ISR (Interrupção)
+    // Liga a ISR (InterrupÃ§Ã£o)
     ADCIntRegister(ADC1_BASE, 0, ADC1_InterruptHandler);
     MAP_ADCIntEnable(ADC1_BASE, 0);
     MAP_IntEnable(INT_ADC1SS0_TM4C129); 
@@ -254,15 +259,14 @@ int main()
 
     DisplaySetup();
 
-    GrContextForegroundSet(&grContext, ClrBlack);
-    tRectangle r = {0, 0, 127, 127};
-    GrRectFill(&grContext, &r);
+	
 
-    GrContextForegroundSet(&grContext, ClrWhite);
-    GrStringDrawCentered(&grContext, "ANTES DO TX", -1, 64, 60, false);
-    GrFlush(&grContext);
-
-    tx_thread_sleep(1000); // se der erro de contexto, remova esta linha
+	// Configura SysTick para 300ms
+    SysTickPeriodSet(clock / 300000);
+    SysTickEnable();
+    SysTickIntEnable();
+	
+    tx_thread_sleep(1000); 
 
     tx_kernel_enter();
 
@@ -272,7 +276,7 @@ int main()
 /**
  * Define os objetos iniciais do sistema
  *
- * @param[in] first_unused_memory - memória não utilizada
+ * @param[in] first_unused_memory - memÃ³ria nÃ£o utilizada
  */
 void    tx_application_define(void *first_unused_memory)
 {
@@ -297,7 +301,7 @@ void    tx_application_define(void *first_unused_memory)
 
     /* Allocate the stack for thread 1.  */
     tx_byte_allocate(&byte_pool_0, (VOID **) &pointer, DEMO_STACK_SIZE, TX_NO_WAIT);
-		tx_thread_create(&thread_1, "thread 1", thread_1_entry, 1,  
+	tx_thread_create(&thread_1, "thread 1", thread_1_entry, 1,  
             pointer, DEMO_STACK_SIZE, 
             10, 10, TX_NO_TIME_SLICE, TX_AUTO_START);
 		
@@ -308,8 +312,8 @@ void    tx_application_define(void *first_unused_memory)
 
     /* Release the block back to the pool.  */
     //tx_block_release(pointer);
-		estado_atual = TELA_PRINCIPAL;
-		tx_event_flags_create(&flag_0,"flag evento");
+	estado_atual = TELA_PRINCIPAL;
+	tx_event_flags_create(&flag_0,"flag evento");
 		
 }
 
@@ -327,21 +331,21 @@ void thread_0_entry(ULONG thread_input)
     uint32_t amostras_tela[128]; 
     bool is_running = true;
 
-    // Preenche os textos
-		const char* str_vdiv = "V: 1.0V/div";
+	const char* str_vdiv = "V: 1.0V/div";
     const char* str_tdiv = "T: 1ms/div";
 
     ConfigurarOsciloscopioBackground();
-		tx_event_flags_set(&flag_0, 0x02, TX_OR);
+	tx_event_flags_set(&flag_0, 0x02, TX_OR);
 
     while(1)
     {
+		tx_event_flags_get(&flag_0, 0x04, TX_OR_CLEAR, &actual_flags, TX_WAIT_FOREVER);
         uint16_t pontos_lidos = 0;
-
+		
 			
 			if (estado_atual == TELA_PRINCIPAL)
 				{
-					// TODO: MUTEX.Zona Crítica(buffer).
+					// TODO: MUTEX.Zona CrÃ­tica(buffer).
 					uint32_t status = tx_interrupt_control(TX_INT_DISABLE);
 					while(osc_buffer.count > 0 && pontos_lidos < 128) {
 							amostras_tela[pontos_lidos] = osc_buffer.data[osc_buffer.tail];
@@ -364,8 +368,6 @@ void thread_0_entry(ULONG thread_input)
 					osc_buffer.tail = 0;
 					tx_interrupt_control(status);
 			}
-        //TODO: FIX TO NOT TO BE SLEEP 
-        tx_thread_sleep(30); 
     }
 }
 
@@ -376,32 +378,27 @@ void thread_1_entry(ULONG thread_input)
     (void)thread_input;
     ULONG actual_flags;
     uint32_t adc_joy[2];
-		
+	tx_event_flags_get(&flag_0, 0x03, TX_OR_CLEAR, &actual_flags, TX_WAIT_FOREVER);
     
     while(1)
     {
-        // ==========================================================
-        // 1. MODO VISUALIZAÇÃO: Dorme até o botão ser clicado
-        // ==========================================================
+        // 1. MODO VISUALIZAÃ‡ÃƒO: 
         if (estado_atual == TELA_PRINCIPAL) {
-            tx_event_flags_get(&flag_0, 0x03, TX_OR_CLEAR, &actual_flags, TX_WAIT_FOREVER);
+            tx_event_flags_get(&flag_0, 0x01, TX_OR_CLEAR, &actual_flags, TX_WAIT_FOREVER);
             
-            // Acordou! Muda para o modo menu
             estado_atual = MENU_PRINCIPAL;
             menu_selecionado = 0;
 					
 						tx_mutex_get(&display_mutex, TX_WAIT_FOREVER);
             DesenharMenuPrincipal();
 						 tx_mutex_put(&display_mutex);
-            tx_thread_sleep(50); // Debounce para não pular telas
+            tx_thread_sleep(50); // Debounce para nÃ£o pular telas
         }
 
-        // ==========================================================
-        // 2. MODO CONFIGURAÇÃO: Loop de navegação ativa
-        // ==========================================================
+        // 2. MODO CONFIGURAÃ‡ÃƒO:
         while (estado_atual != TELA_PRINCIPAL) 
         {
-            // Lê o X e o Y do Joystick via ADC0
+            // LÃª o X e o Y do Joystick via ADC0
             MAP_ADCProcessorTrigger(ADC0_BASE, 0);
             while(!MAP_ADCIntStatus(ADC0_BASE, 0, false)) {}
             MAP_ADCIntClear(ADC0_BASE, 0);
@@ -410,10 +407,10 @@ void thread_1_entry(ULONG thread_input)
             uint32_t joy_x = adc_joy[0]; 
             uint32_t joy_y = adc_joy[1]; 
             
-            // Verifica se clicou de novo (TX_NO_WAIT para não travar o joystick)
+            // Verifica se clicou de novo (TX_NO_WAIT para nÃ£o travar o joystick)
             bool clicou = (tx_event_flags_get(&flag_0, 0x01, TX_OR_CLEAR, &actual_flags, TX_NO_WAIT) == TX_SUCCESS);
             // ------------------------------------------------------
-            // NAVEGAÇÃO: MENU PRINCIPAL
+            // NAVEGAÃ‡ÃƒO: MENU PRINCIPAL
             // ------------------------------------------------------
             if (estado_atual == MENU_PRINCIPAL) {
                 // Navega para Cima / Baixo (Limites de 0 a 4)
@@ -446,16 +443,16 @@ void thread_1_entry(ULONG thread_input)
                 }
             }
             // ------------------------------------------------------
-            // NAVEGAÇÃO: SUBMENUS DE VALORES
+            // NAVEGAÃ‡ÃƒO: SUBMENUS DE VALORES
             // ------------------------------------------------------
             else {
                 int* ptr_indice = NULL;
-                int max_indice = 2; // Quase todos têm 3 opções (índices 0, 1, 2)
+                int max_indice = 2; // Quase todos tÃªm 3 opÃ§Ãµes (Ã­ndices 0, 1, 2)
                 const char* titulo = "";
                 int valor = 0;
 								const char* unidade = "";
 								 
-                // Mapeia qual variável estamos editando de acordo com a tela
+                // Mapeia qual variÃ¡vel estamos editando de acordo com a tela
                 if (estado_atual == MENU_TAXA) {
                     ptr_indice = &indice_taxa; titulo = "Taxa Amostragem"; valor = valores_taxa[*ptr_indice];unidade = "V/div";
                 } else if (estado_atual == MENU_VDIV) {
@@ -466,7 +463,7 @@ void thread_1_entry(ULONG thread_input)
                     ptr_indice = &indice_nivel_trig; titulo = "Nivel Trigger"; valor = valores_nivel[*ptr_indice];unidade = "V";
                 } else if (estado_atual == MENU_BORDA_TRIG) {
                     ptr_indice = &indice_borda_trig; titulo = "Borda Trigger"; valor = (*ptr_indice);unidade = str_borda_trig[*ptr_indice];
-                    max_indice = 1; // Borda de trigger só tem 2 opções (0 e 1)
+                    max_indice = 1; // Borda de trigger sÃ³ tem 2 opÃ§Ãµes (0 e 1)
                 }
 								
 								tx_mutex_get(&display_mutex, TX_WAIT_FOREVER);
@@ -477,7 +474,7 @@ void thread_1_entry(ULONG thread_input)
                 if (joy_x < 1000 && *ptr_indice > 0) { (*ptr_indice)--; }
                 if (joy_x > 3000 && *ptr_indice < max_indice) { (*ptr_indice)++; }
 
-                // Volta pro menu principal forçando o joystick pra esquerda (Requisito)
+                // Volta pro menu principal forÃ§ando o joystick pra esquerda (Requisito)
                 if (joy_x < 200) {
                     estado_atual = MENU_PRINCIPAL;
 										tx_mutex_get(&display_mutex, TX_WAIT_FOREVER);
@@ -490,12 +487,12 @@ void thread_1_entry(ULONG thread_input)
                 if (clicou) {
                     estado_atual = TELA_PRINCIPAL; 
                     
-                    // TODO: Chamar as funções de hardware aqui. 
+                    // TODO: Chamar as funÃ§Ãµes de hardware aqui. 
                     // Exemplo: if (estado_atual == MENU_TAXA) AttTaxaAmostragem(...);
                 }
             }
 
-            // Pausa de 15 ticks para o cursor não voar e dar tempo de soltar o joystick
+            // Pausa de 15 ticks para o cursor nÃ£o voar e dar tempo de soltar o joystick
             tx_thread_sleep(15); 
         }
     }
