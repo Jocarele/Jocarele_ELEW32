@@ -1,0 +1,53 @@
+#ifndef DISPLAY_H
+#define DISPLAY_H
+
+#include <stdint.h>
+#include <stdbool.h>
+#include <stdio.h>
+#include "grlib/grlib.h"
+#include "Crystalfontz128x128_ST7735.h"
+#include "HAL_EK_TM4C1294XL_Crystalfontz128x128_ST7735.h"
+
+// ==========================================================
+// DEFINIÇÕES E ESTADOS (Exportados para a main.c)
+// ==========================================================
+typedef enum {
+    TELA_PRINCIPAL = 0, // Modo de Visualização
+    MENU_PRINCIPAL,     // Modo de Configuração
+    MENU_TAXA,
+    MENU_VDIV,
+    MENU_HDIV,
+    MENU_NIVEL_TRIG,
+    MENU_BORDA_TRIG
+} EstadoTela;
+
+// ==========================================================
+// VARIÁVEIS GLOBAIS EXPORTADAS
+// ==========================================================
+extern tContext grContext; // A main precisa conhecer o pincel
+extern volatile EstadoTela estado_atual;
+
+extern int menu_selecionado; 
+extern int indice_taxa;      
+extern int indice_vdiv;      
+extern int indice_hdiv;      
+extern int indice_nivel_trig;
+extern int indice_borda_trig;
+
+extern const int valores_taxa[];
+extern const int valores_vdiv[];
+extern const int valores_hdiv[];
+extern const int valores_nivel[];
+extern const char* str_borda_trig[];
+extern const char* titulos_menu[];
+
+// ==========================================================
+// PROTÓTIPOS DAS FUNÇÕES
+// ==========================================================
+void DisplaySetup(void);
+void DesenharMenuPrincipal(void);
+void DesenharSubMenu(const char* titulo,  int valor_atual,const char* unidade,bool dec); 
+void DesenharOsciloscopio(tContext *pContext, uint32_t *buffer, uint16_t num_pontos, 
+                          const char* texto_vdiv, const char* texto_tdiv, bool is_running);
+
+#endif // DISPLAY_H
