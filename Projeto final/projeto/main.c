@@ -70,6 +70,7 @@
 
 
 
+
 /*------------------------------------------------------------------------------
  *
  *      Global vars
@@ -87,7 +88,7 @@ TX_EVENT_FLAGS_GROUP    flag_0;
 UCHAR                   memory_area[DEMO_BYTE_POOL_SIZE];
 int16_t width;
 int16_t height;
-
+uint32_t ui32SysClock;
 
 /*------------------------------------------------------------------------------
  *
@@ -112,6 +113,9 @@ void 	ConfigADC(void);
 void 	ADC1_InterruptHandler(void);
 void 	GPIOC_InterruptHandler(void);
 void 	SysTick_Handler(void);
+void Timer1A_Handler(void);
+void ConfigurarTimer1A(uint32_t periodo_ms);
+
 
 /*------------------------------------------------------------------------------
  *
@@ -140,39 +144,62 @@ CircularBuffer osc_buffer = { .head = 0, .tail = 0, .count = 0 };
  *
  *------------------------------------------------------------------------------*/
 
-void SysTick_Handler(void)
+
+
+void Timer1A_Handler(void)
 {
+    MAP_TimerIntClear(TIMER1_BASE, TIMER_TIMA_TIMEOUT);
     tx_event_flags_set(&flag_0, 0x04, TX_OR);
 }
 
 
+void ConfigurarTimer1A(uint32_t periodo_ms)
+{
+    uint32_t carga;
+
+    MAP_SysCtlPeripheralEnable(SYSCTL_PERIPH_TIMER1);
+
+    while(!MAP_SysCtlPeripheralReady(SYSCTL_PERIPH_TIMER1)) {}
+
+    MAP_TimerDisable(TIMER1_BASE, TIMER_A);
+    MAP_TimerConfigure(TIMER1_BASE, TIMER_CFG_PERIODIC);
+    carga = ((ui32SysClock / 1000) * periodo_ms) - 1;
+
+    MAP_TimerLoadSet(TIMER1_BASE, TIMER_A, carga);
+    MAP_TimerIntClear(TIMER1_BASE, TIMER_TIMA_TIMEOUT);
 
 
+    TimerIntRegister(TIMER1_BASE, TIMER_A, Timer1A_Handler);
+    MAP_IntPrioritySet(INT_TIMER1A_TM4C129, 0x80);
+    MAP_TimerIntEnable(TIMER1_BASE, TIMER_TIMA_TIMEOUT);
+    MAP_IntEnable(INT_TIMER1A_TM4C129);
+    MAP_TimerEnable(TIMER1_BASE, TIMER_A);
+}
 void ConfigurarADC0()
 {
 		
     MAP_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOC);
-	MAP_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOE);
+		MAP_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOE);
     MAP_SysCtlPeripheralEnable(SYSCTL_PERIPH_ADC0);
 
     
     while(!MAP_SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOC)){}
-	while(!MAP_SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOE)){}
-	while(!MAP_SysCtlPeripheralReady(SYSCTL_PERIPH_ADC0)){}
+		while(!MAP_SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOE)){}
+		while(!MAP_SysCtlPeripheralReady(SYSCTL_PERIPH_ADC0)){}
 			
     MAP_GPIOPinTypeADC(GPIO_PORTE_BASE, GPIO_PIN_3 | GPIO_PIN_4);
 
 		
 	// =============BUTAO JOYSTICK
-	MAP_GPIOPinTypeGPIOInput(GPIO_PORTC_BASE, GPIO_PIN_6);
-	MAP_GPIOPadConfigSet(GPIO_PORTC_BASE, GPIO_PIN_6,
+		MAP_GPIOPinTypeGPIOInput(GPIO_PORTC_BASE, GPIO_PIN_6);
+		MAP_GPIOPadConfigSet(GPIO_PORTC_BASE, GPIO_PIN_6,
                          GPIO_STRENGTH_2MA,
                          GPIO_PIN_TYPE_STD_WPU);
 	//------------------isr
-	MAP_GPIOIntTypeSet(GPIO_PORTC_BASE, GPIO_PIN_6, GPIO_FALLING_EDGE);
+		MAP_GPIOIntTypeSet(GPIO_PORTC_BASE, GPIO_PIN_6, GPIO_FALLING_EDGE);
     GPIOIntRegister(GPIO_PORTC_BASE, GPIOC_InterruptHandler);
     MAP_GPIOIntEnable(GPIO_PORTC_BASE, GPIO_PIN_6);
-	MAP_IntEnable(INT_GPIOC_TM4C129);
+		MAP_IntEnable(INT_GPIOC_TM4C129);
 	//=============ADC0
 			
     MAP_ADCSequenceConfigure(ADC0_BASE, 0, ADC_TRIGGER_PROCESSOR, 0);
@@ -240,7 +267,7 @@ void ConfigurarOsciloscopioBackground(void)
     MAP_SysCtlPeripheralEnable(SYSCTL_PERIPH_TIMER0);
     while(!MAP_SysCtlPeripheralReady(SYSCTL_PERIPH_TIMER0)) {}
     MAP_TimerConfigure(TIMER0_BASE, TIMER_CFG_PERIODIC);
-    uint32_t carga_do_timer = (120000000 / 1000) - 1; 
+    uint32_t carga_do_timer = (ui32SysClock / 1000) - 1; 
     MAP_TimerLoadSet(TIMER0_BASE, TIMER_A, carga_do_timer);
 
     MAP_TimerControlTrigger(TIMER0_BASE, TIMER_A, true);
@@ -249,22 +276,14 @@ void ConfigurarOsciloscopioBackground(void)
 
 int main()
 {
-    uint32_t ui32SysClock;
+
     ui32SysClock = SysCtlClockFreqSet((SYSCTL_XTAL_25MHZ |
                                        SYSCTL_OSC_MAIN |
                                        SYSCTL_USE_PLL |
-                                       SYSCTL_CFG_VCO_240), 120000000/2);
+                                       SYSCTL_CFG_VCO_240), 120000000);
 
     DisplaySetup();
-
-	
-
-	// Configura SysTick para 300ms
-    SysTickPeriodSet(clock / 300000);
-    SysTickEnable();
-    SysTickIntEnable();
-	
-    //tx_thread_sleep(100); 
+		
 
     tx_kernel_enter();
 
@@ -276,43 +295,93 @@ int main()
  *
  * @param[in] first_unused_memory - memória não utilizada
  */
-void    tx_application_define(void *first_unused_memory)
+void tx_application_define(void *first_unused_memory)
 {
-		(void)first_unused_memory;
-		CHAR    *pointer = TX_NULL;
+    (void)first_unused_memory;
 
+    CHAR *pointer = TX_NULL;
+    UINT status;
 
-    /* Create a byte memory pool from which to allocate the thread stacks.  */
-    tx_byte_pool_create(&byte_pool_0, "byte pool 0", memory_area, DEMO_BYTE_POOL_SIZE);
+    /*
+     * 1. Cria o byte pool primeiro.
+     */
+    status = tx_byte_pool_create(&byte_pool_0,
+                                 "byte pool 0",
+                                 memory_area,
+                                 DEMO_BYTE_POOL_SIZE);
 
-    /* Put system definition stuff in here, e.g. thread creates and other assorted
-       create information.  */
+    if (status != TX_SUCCESS)
+        while(1) {}
 
-    /* Allocate the stack for thread 0.  */
-    tx_byte_allocate(&byte_pool_0, (VOID **) &pointer, DEMO_STACK_SIZE, TX_NO_WAIT);
+    /*
+     * 2. Cria objetos de sincronização.
+     */
+    status = tx_mutex_create(&display_mutex,
+                             "mutex 0",
+                             TX_NO_INHERIT);
 
-    /* Create the main thread.  */
-    tx_thread_create(&thread_0, "thread 0", thread_0_entry, 0,  
-            pointer, DEMO_STACK_SIZE, 
-            9, 9, TX_NO_TIME_SLICE, TX_AUTO_START);
+    if (status != TX_SUCCESS)
+        while(1) {}
 
+    status = tx_event_flags_create(&flag_0,
+                                   "flag evento");
 
-    /* Allocate the stack for thread 1.  */
-    tx_byte_allocate(&byte_pool_0, (VOID **) &pointer, DEMO_STACK_SIZE, TX_NO_WAIT);
-	tx_thread_create(&thread_1, "thread 1", thread_1_entry, 1,  
-            pointer, DEMO_STACK_SIZE, 
-            10, 10, TX_NO_TIME_SLICE, TX_AUTO_START);
-		
+    if (status != TX_SUCCESS)
+        while(1) {}
 
+    estado_atual = TELA_PRINCIPAL;
 
-		
-    tx_mutex_create(&display_mutex, "mutex 0", TX_NO_INHERIT);
+    /*
+     * 3. Aloca stack e cria thread_0.
+     */
+    status = tx_byte_allocate(&byte_pool_0,
+                              (VOID **) &pointer,
+                              DEMO_STACK_SIZE,
+                              TX_NO_WAIT);
 
-    /* Release the block back to the pool.  */
-    //tx_block_release(pointer);
-	estado_atual = TELA_PRINCIPAL;
-	tx_event_flags_create(&flag_0,"flag evento");
-		
+    if (status != TX_SUCCESS)
+        while(1) {}
+
+    status = tx_thread_create(&thread_0,
+                              "thread 0",
+                              thread_0_entry,
+                              0,
+                              pointer,
+                              DEMO_STACK_SIZE,
+                              9,
+                              9,
+                              TX_NO_TIME_SLICE,
+                              TX_AUTO_START);
+
+    if (status != TX_SUCCESS)
+        while(1) {}
+
+    /*
+     * 4. Aloca stack e cria thread_1.
+     */
+    pointer = TX_NULL;
+
+    status = tx_byte_allocate(&byte_pool_0,
+                              (VOID **) &pointer,
+                              DEMO_STACK_SIZE,
+                              TX_NO_WAIT);
+
+    if (status != TX_SUCCESS)
+        while(1) {}
+
+    status = tx_thread_create(&thread_1,
+                              "thread 1",
+                              thread_1_entry,
+                              1,
+                              pointer,
+                              DEMO_STACK_SIZE,
+                              10,
+                              10,
+                              TX_NO_TIME_SLICE,
+                              TX_AUTO_START);
+
+    if (status != TX_SUCCESS)
+        while(1) {}
 }
 
 
@@ -325,33 +394,34 @@ void    tx_application_define(void *first_unused_memory)
 void thread_0_entry(ULONG thread_input)
 {
     (void)thread_input;
-    
+    ULONG actual_flags;
     uint32_t amostras_tela[128]; 
     bool is_running = true;
+		ConfigurarTimer1A(300);
 
-	const char* str_vdiv = "V: 1.0V/div";
+		const char* str_vdiv = "V: 1.0V/div";
     const char* str_tdiv = "T: 1ms/div";
 
     ConfigurarOsciloscopioBackground();
-	tx_event_flags_set(&flag_0, 0x02, TX_OR);
+		tx_event_flags_set(&flag_0, 0x02, TX_OR);
 
     while(1)
     {
-		tx_event_flags_get(&flag_0, 0x04, TX_OR_CLEAR, &actual_flags, TX_WAIT_FOREVER);
+				tx_event_flags_get(&flag_0, 0x04, TX_OR_CLEAR, &actual_flags, TX_WAIT_FOREVER);
         uint16_t pontos_lidos = 0;
 		
 			
 			if (estado_atual == TELA_PRINCIPAL)
 				{
 					// TODO: MUTEX.Zona Crítica(buffer).
-					uint32_t status = tx_interrupt_control(TX_INT_DISABLE);
+					//uint32_t status = tx_interrupt_control(TX_INT_DISABLE);
 					while(osc_buffer.count > 0 && pontos_lidos < 128) {
 							amostras_tela[pontos_lidos] = osc_buffer.data[osc_buffer.tail];
 							osc_buffer.tail = (osc_buffer.tail + 1) % BUFFER_SIZE;
 							osc_buffer.count--;
 							pontos_lidos++;
 					}
-					tx_interrupt_control(status);
+					//tx_interrupt_control(status);
 					
 					// Atualiza a tela
 						tx_mutex_get(&display_mutex, TX_WAIT_FOREVER);
@@ -360,11 +430,11 @@ void thread_0_entry(ULONG thread_input)
 						tx_mutex_put(&display_mutex);
 				}
 			else{
-					uint32_t status = tx_interrupt_control(TX_INT_DISABLE);
+					//uint32_t status = tx_interrupt_control(TX_INT_DISABLE);
 					osc_buffer.count = 0;
 					osc_buffer.head = 0;
 					osc_buffer.tail = 0;
-					tx_interrupt_control(status);
+					//tx_interrupt_control(status);
 			}
     }
 }
@@ -376,7 +446,7 @@ void thread_1_entry(ULONG thread_input)
     (void)thread_input;
     ULONG actual_flags;
     uint32_t adc_joy[2];
-	tx_event_flags_get(&flag_0, 0x03, TX_OR_CLEAR, &actual_flags, TX_WAIT_FOREVER);
+		tx_event_flags_get(&flag_0, 0x02, TX_OR_CLEAR, &actual_flags, TX_WAIT_FOREVER);
     
     while(1)
     {
@@ -405,7 +475,6 @@ void thread_1_entry(ULONG thread_input)
             uint32_t joy_x = adc_joy[0]; 
             uint32_t joy_y = adc_joy[1]; 
             
-            // Verifica se clicou de novo (TX_NO_WAIT para não travar o joystick)
             bool clicou = (tx_event_flags_get(&flag_0, 0x01, TX_OR_CLEAR, &actual_flags, TX_NO_WAIT) == TX_SUCCESS);
             // NAVEGAÇÃO: MENU PRINCIPAL
             if (estado_atual == MENU_PRINCIPAL) {
@@ -414,16 +483,16 @@ void thread_1_entry(ULONG thread_input)
                 if (joy_y > 3000 && menu_selecionado > 0) { 
                     menu_selecionado--; 
 					
-					tx_mutex_get(&display_mutex, TX_WAIT_FOREVER);
+										tx_mutex_get(&display_mutex, TX_WAIT_FOREVER);
                     DesenharMenuPrincipal(); 
-					tx_mutex_put(&display_mutex);
+										tx_mutex_put(&display_mutex);
 									
                 }
                 if (joy_y < 1000 && menu_selecionado < 4) { 
                     menu_selecionado++; 
-					tx_mutex_get(&display_mutex, TX_WAIT_FOREVER);
+										tx_mutex_get(&display_mutex, TX_WAIT_FOREVER);
                     DesenharMenuPrincipal(); 
-					tx_mutex_put(&display_mutex);
+										tx_mutex_put(&display_mutex);
                 }
 				if (joy_x < 200) {
 					estado_atual = TELA_PRINCIPAL;
@@ -459,9 +528,9 @@ void thread_1_entry(ULONG thread_input)
                     max_indice = 1;
                 }
 								
-				tx_mutex_get(&display_mutex, TX_WAIT_FOREVER);
+								tx_mutex_get(&display_mutex, TX_WAIT_FOREVER);
                 DesenharSubMenu(titulo, valor,unidade,true);
-				tx_mutex_put(&display_mutex);
+								tx_mutex_put(&display_mutex);
 								
                 // Navega para Esquerda / Direita (Altera o valor)
                 if (joy_x < 1000 && *ptr_indice > 0) { (*ptr_indice)--; }
@@ -500,5 +569,3 @@ void thread_1_entry(ULONG thread_input)
         }
     }
 }
-
-
