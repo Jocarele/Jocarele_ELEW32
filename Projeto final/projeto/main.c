@@ -567,15 +567,16 @@ void ADC1_InterruptHandler(void)
 void ConfigurarOsciloscopioBackground(void)
 {
 		
-    MAP_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOE);
+    MAP_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOD);
     MAP_SysCtlPeripheralEnable(SYSCTL_PERIPH_ADC1);
+		while(!MAP_SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOD)) {}
     while(!MAP_SysCtlPeripheralReady(SYSCTL_PERIPH_ADC1)) {}
 
-    MAP_GPIOPinTypeADC(GPIO_PORTE_BASE, GPIO_PIN_2);
+    MAP_GPIOPinTypeADC(GPIO_PORTD_BASE, GPIO_PIN_2);
 
     // ISR
     MAP_ADCSequenceConfigure(ADC1_BASE, 0, ADC_TRIGGER_TIMER, 0);
-    MAP_ADCSequenceStepConfigure(ADC1_BASE, 0, 0, ADC_CTL_CH1 | ADC_CTL_IE | ADC_CTL_END);
+    MAP_ADCSequenceStepConfigure(ADC1_BASE, 0, 0, ADC_CTL_CH13 | ADC_CTL_IE | ADC_CTL_END);
     
     MAP_ADCSequenceEnable(ADC1_BASE, 0);
     MAP_ADCIntClear(ADC1_BASE, 0);
