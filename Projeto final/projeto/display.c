@@ -5,6 +5,22 @@
 
 #define TELA_LARGURA 128
 #define TELA_ALTURA  128
+#define ADC_REF_MV        3300
+#define ADC_CENTER_MV     1650
+#define PIXELS_POR_DIV    16
+#define TELA_CENTRO_Y     64
+
+
+
+Onda_conf onda = {
+    .taxa_khz = 1,
+    .v_div = 1000,
+    .h_div = 1,
+    .modo_single = 0,
+    .nivel = 0,
+		.borda_trigger=0
+	
+};
 
 tContext grContext;
 
@@ -14,16 +30,27 @@ int menu_selecionado = 0;
 int indice_taxa = 1;      
 int indice_vdiv = 1;      
 int indice_hdiv = 1;      
+int borda_trigger = 1;
+int modo_single = 0;
 int indice_nivel_trig = 1;
 int indice_borda_trig = 0;
+int indice_modo_single = 0;
 
-const int valores_taxa[] = {1, 5, 10};
-const int valores_vdiv[] = {5, 10, 20};
-const int valores_hdiv[] = {1, 5, 10};
-const int valores_nivel[] = {10, 15, 20}; 
+const int valores_taxa[] = {1, 5, 10, 20}; // kHz
+const int valores_vdiv[] = {500, 1000, 2000};
+const int valores_hdiv[] = {1, 5, 10}; 
+const int valores_nivel[] = {0, 500,1000,2000}; 
 
-const char* titulos_menu[] = {"Taxa (kHz)", "Escala V (V)", "Escala H (ms)", "Nivel (V)", "Borda"};
+const char* titulos_menu[] = {
+    "Taxa (kHz)",
+    "Escala V",
+    "Escala H",
+    "Nivel Trig",
+    "Borda Trig",
+    "Modo"
+};
 const char* str_borda_trig[] = {"Subida", "Descida"};
+const char* str_modo_single[] = {"continuo", "single-shot"};
 
 
 
@@ -37,19 +64,47 @@ void DisplaySetup(void) {
 }
 
 
-void FormatarValor(char* buf, int val, const char* unidade, bool decimais) {
+void FormatarValor(char* buf, int val, const char* unidade) {
+ 
+    char temp[12];
     int i = 0;
-    if(decimais) {
-        buf[i++] = (val / 10) + '0';
-        buf[i++] = '.';
-        buf[i++] = (val % 10) + '0';
-    } else {
-        buf[i++] = (val / 10) + '0'; // Exemplo simples
+    int j = 0;
+
+    if (val == 0)
+    {
+        buf[j++] = '0';
+        buf[j] = '\0';
+				if (*unidade != '\0'){
+							buf[j++] = ' ';
+							while(*unidade) buf[j++] = *unidade++;
+							buf[j] = '\0';
+				}
+        return;
     }
-    buf[i++] = ' ';
-    while(*unidade) buf[i++] = *unidade++;
-    buf[i] = '\0';
+
+    if (val < 0)
+    {
+        buf[j++] = '-';
+        val = -val;
+    }
+
+    while (val > 0)
+    {
+        temp[i++] = (val % 10) + '0';
+        val /= 10;
+    }
+
+    while (i > 0)
+    {
+        buf[j++] = temp[--i];
+    }
+
+		buf[j++] = ' ';
+    while(*unidade) buf[j++] = *unidade++;
+		buf[j] = '\0';
+
 }
+
 
 void DesenharMenuPrincipal(void) {
     tRectangle rectFundo = {0, 0, 127, 127};
@@ -62,7 +117,7 @@ void DesenharMenuPrincipal(void) {
     GrStringDrawCentered(&grContext, "CONFIGURACOES", -1, 64, 8, false);
     GrLineDraw(&grContext, 0, 16, 127, 16);
 
-    for(int i = 0; i < 5; i++) {
+    for(int i = 0; i < 6; i++) {
         int y_pos = 22 + (i * 18);
 
         if (menu_selecionado == i) {
@@ -79,7 +134,7 @@ void DesenharMenuPrincipal(void) {
     GrFlush(&grContext);
 }
 
-void DesenharSubMenu(const char* titulo, int valor, const char* unidade, bool dec) {
+void DesenharSubMenu(const char* titulo, int valor, const char* unidade) {
     char texto_valor[20];
     tRectangle rectFundo = {0, 0, 127, 127};
 
@@ -92,7 +147,7 @@ void DesenharSubMenu(const char* titulo, int valor, const char* unidade, bool de
     GrLineDraw(&grContext, 0, 20, 127, 20);
 
     // Substituímos o sprintf por esta chamada leve
-    FormatarValor(texto_valor, valor, unidade, dec);
+    FormatarValor(texto_valor, valor, unidade);
 
     // Valor Central
     GrStringDrawCentered(&grContext, "<", -1, 20, 64, false);
@@ -104,6 +159,26 @@ void DesenharSubMenu(const char* titulo, int valor, const char* unidade, bool de
     GrStringDraw(&grContext, "Voltar", -1, 5, 115, false);
     GrStringDraw(&grContext, "Sel", -1, 95, 115, false); // Encurtei para caber melhor
     GrFlush(&grContext);
+}
+static int16_t ADCParaYPixel(uint32_t valor_adc)
+{
+    int32_t tensao_mv;
+    int32_t tensao_relativa_mv;
+    int32_t y;
+	
+    tensao_mv = ((int32_t)valor_adc * ADC_REF_MV) / 4095;
+
+    tensao_relativa_mv = tensao_mv - ADC_CENTER_MV;
+
+    y = TELA_CENTRO_Y - ((tensao_relativa_mv * PIXELS_POR_DIV) / onda.v_div);
+
+    if (y < 0)
+        y = 0;
+
+    if (y > 127)
+        y = 127;
+
+    return (int16_t)y;
 }
 
 void DesenharOsciloscopio(tContext *pContext, uint32_t *buffer, uint16_t num_pontos, 
@@ -122,11 +197,9 @@ void DesenharOsciloscopio(tContext *pContext, uint32_t *buffer, uint16_t num_pon
 	
     // grade
     GrContextForegroundSet(pContext, ClrDarkSlateGray);
-	//TODO: V_DIV
     for (int i = 16; i < TELA_LARGURA; i += 16) {
         GrLineDraw(pContext, 0, i, TELA_LARGURA, i);
     }
-	//TODO: T_DIV
 	for (int i = 16; i < TELA_ALTURA; i += 16) {
         GrLineDraw(pContext, i, 0, i, TELA_ALTURA);
     }
@@ -161,15 +234,12 @@ void DesenharOsciloscopio(tContext *pContext, uint32_t *buffer, uint16_t num_pon
 
     int16_t x_anterior = 0;
     int16_t y_anterior = 0;
-	//TODO: V_DIV
-	// converte valor adc para tela
+
     for (uint16_t x = 0; x < num_pontos; x++) {
        
-        uint32_t valor_adc = buffer[x];
-        int16_t y_pixel = 127 - ((valor_adc * 127) / 4095);
+				uint32_t valor_adc = buffer[x];
 
-        if (y_pixel < 0) y_pixel = 0;
-        if (y_pixel > 127) y_pixel = 127;
+				int16_t y_pixel = ADCParaYPixel(valor_adc);
 
         if (x > 0) {
             GrLineDraw(pContext, x_anterior, y_anterior, x, y_pixel);

@@ -399,6 +399,16 @@
               <FileType>1</FileType>
               <FilePath>.\display.c</FilePath>
             </File>
+            <File>
+              <FileName>simula.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\simula.c</FilePath>
+            </File>
+            <File>
+              <FileName>simula.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\simula.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
