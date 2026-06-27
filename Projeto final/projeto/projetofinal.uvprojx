@@ -385,11 +385,6 @@
           <GroupName>src_my</GroupName>
           <Files>
             <File>
-              <FileName>main.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\main.c</FilePath>
-            </File>
-            <File>
               <FileName>display.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\display.h</FilePath>
@@ -408,6 +403,21 @@
               <FileName>simula.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\simula.h</FilePath>
+            </File>
+            <File>
+              <FileName>main.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\main.c</FilePath>
+            </File>
+            <File>
+              <FileName>hardware.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\hardware.c</FilePath>
+            </File>
+            <File>
+              <FileName>hardware.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\hardware.h</FilePath>
             </File>
           </Files>
         </Group>

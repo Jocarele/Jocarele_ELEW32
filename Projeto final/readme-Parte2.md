@@ -126,6 +126,29 @@ O sistema utiliza o ThreadX RTOS com política de escalonamento preemptivo por p
 * **Scope Control (ThreadX):** Tarefa com a maior prioridade no RTOS. Executa o processamento matemático das amostras (cálculo de trigger e aplicação de escala) e a atualização contínua do gráfico no display LCD.
 * **Joystick Control (ThreadX):** Tarefa de baixa prioridade. Realiza a leitura do botão e dos eixos do joystick, atualizando os parâmetros de configuração (taxa, escalas) e o texto do menu no display conforme necessário.
 
+**Tempo por pixel**
+
+Cada pixel do display de 128 representa um tempo determinado pela escala horinzotal. A escala horizontal é fixa e possui oito divisoes(128/16). Esta sendo trabalhado com as escalas: 500 us, 1ms, 5ms, 10ms, chegamos a seguinte tabela:
+
+| Escala horizontal | Tempo por pixel | 1 kHz               | 5 kHz               | 10 kHz              | 20 kHz              |
+| :---------------- | :-------------- | :------------------ | :------------------ | :------------------ | :------------------ |
+| 500 us/div        | 31,25 us/pixel  | 0,031 amostra/pixel | 0,156 amostra/pixel | 0,312 amostra/pixel | 0,625 amostra/pixel |
+| 1 ms/div          | 62,5 us/pixel   | 0,062 amostra/pixel | 0,312 amostra/pixel | 0,625 amostra/pixel | 1,25 amostra/pixel  |
+| 5 ms/div          | 312,5 us/pixel  | 0,312 amostra/pixel | 1,56 amostras/pixel | 3,12 amostras/pixel | 6,25 amostras/pixel |
+| 10 ms/div         | 625 us/pixel    | 0,625 amostra/pixel | 3,12 amostras/pixel | 6,25 amostras/pixel | 12,5 amostras/pixel |
+
+janela total = escala horizontal × 8
+
+| Escala horizontal | Janela total | 1 kHz       | 5 kHz        | 10 kHz       | 20 kHz        |
+| :---------------- | :----------- | :---------- | :----------- | :----------- | :------------ |
+| 500 us/div        | 4 ms         | 4 amostras  | 20 amostras  | 40 amostras  | 80 amostras   |
+| 1 ms/div          | 8 ms         | 8 amostras  | 40 amostras  | 80 amostras  | 160 amostras  |
+| 5 ms/div          | 40 ms        | 40 amostras | 200 amostras | 400 amostras | 800 amostras  |
+| 10 ms/div         | 80 ms        | 80 amostras | 400 amostras | 800 amostras | 1600 amostras |
+
+e por esse motivo esta sendo definido o tamanho do buffer circular para 2048 (caber 1600 amostras)
+
+
 ---
 
 ### Parte 2b - Estudo da Plataforma

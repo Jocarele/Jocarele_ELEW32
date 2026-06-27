@@ -3,14 +3,10 @@
 
 #include <stdint.h>
 #include <stdbool.h>
-#include <stdio.h>
 #include "grlib/grlib.h"
 #include "Crystalfontz128x128_ST7735.h"
 #include "HAL_EK_TM4C1294XL_Crystalfontz128x128_ST7735.h"
 
-// ==========================================================
-// DEFINIÇÕES E ESTADOS (Exportados para a main.c)
-// ==========================================================
 typedef enum {
     TELA_PRINCIPAL = 0, // Modo de Visualização
     MENU_PRINCIPAL,     // Modo de Configuração
@@ -26,11 +22,22 @@ typedef enum {
 typedef struct {
     int taxa_khz;
     int v_div;      // mV/div
-    int h_div;      // ms/div
+    int h_div;      // us/div
     int modo_single;
     int nivel;      // mV
 		int borda_trigger;
 } Onda_conf;
+
+typedef struct {
+    uint32_t primeiro;
+    uint32_t ultimo;
+    uint32_t minimo;
+    uint32_t maximo;
+    uint32_t pos_min;
+    uint32_t pos_max;
+    uint32_t qtd;
+} PixelBucket;
+
 
 // ==========================================================
 // VARIÁVEIS GLOBAIS EXPORTADAS
@@ -54,6 +61,7 @@ extern const char* str_borda_trig[];
 extern const char* titulos_menu[];
 extern const char* str_modo_single[];
 extern Onda_conf onda;
+#define TELA_PONTOS 128
 
 
 
@@ -61,11 +69,29 @@ extern Onda_conf onda;
 // PROTÓTIPOS DAS FUNÇÕES
 // ==========================================================
 void DisplaySetup(void);
+
 void DesenharMenuPrincipal(void);
-void DesenharSubMenu(const char* titulo,  int valor_atual,const char* unidade); 
-void DesenharOsciloscopio(tContext *pContext, uint32_t *buffer, uint16_t num_pontos, 
-                          const char* texto_vdiv, const char* texto_tdiv, bool is_running);
+
+void DesenharSubMenu(const char* titulo,
+                     int valor_atual,
+                     const char* unidade);
+
+void DesenharOsciloscopio(tContext *pContext,
+                          uint32_t *buffer,
+                          uint16_t num_pontos,
+                          const char* texto_vdiv,
+                          const char* texto_tdiv,
+                          bool is_running);
+
+void DesenharOsciloscopio2(tContext *pContext,
+                                 PixelBucket *buckets,
+                                 uint16_t num_pontos,
+                                 const char* texto_vdiv,
+                                 const char* texto_tdiv,
+                                 bool is_running);
+
 void FormatarValor(char* buf, int val, const char* unidade);
-static int16_t ADCParaYPixel(uint32_t valor_adc);
+
+
 
 #endif // DISPLAY_H
