@@ -338,9 +338,9 @@
             <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls></MiscControls>
-              <Define></Define>
+              <Define>PART_TM4C1294NCPDT,TARGET_IS_TM4C129_RA1</Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\..\TivaWare_C_Series-2.2.0.295;..\..\..\TivaWare_C_Series-2.2.0.295\examples\boards\ek-tm4c1294xl;..\..\..\threadx\ports\cortex_m4\keil\inc;..\..\..\threadx\common\inc;..\..\..\TivaWare_C_Series-2.2.0.295\grlib;.\src_other</IncludePath>
+              <IncludePath>..\..\..\TivaWare_C_Series-2.2.0.295;..\..\..\TivaWare_C_Series-2.2.0.295\examples\boards\ek-tm4c1294xl;..\..\..\threadx\ports\cortex_m4\keil\inc;..\..\..\threadx\common\inc;..\..\..\TivaWare_C_Series-2.2.0.295\grlib;.\src_other;..\..\..\dougrenaux_ELEW32_public\display_demo\src_other</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>

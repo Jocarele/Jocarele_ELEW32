@@ -109,10 +109,6 @@ CHAR    *pointer = TX_NULL;
             1, 1, TX_NO_TIME_SLICE, TX_AUTO_START);
 
 
-    /* Allocate the message queue.  */
-    tx_byte_allocate(&byte_pool_0, (VOID **) &pointer, DEMO_QUEUE_SIZE*sizeof(ULONG), TX_NO_WAIT);
-
-    
     /* Release the block back to the pool.  */
     tx_block_release(pointer);
 }

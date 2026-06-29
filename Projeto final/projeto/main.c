@@ -22,7 +22,7 @@
  *      File includes
  *
  *------------------------------------------------------------------------------*/
-#define OSC_USAR_SIMULADOR 1
+#define OSC_USAR_SIMULADOR 0
 #include <stdint.h>
 #include <stdbool.h>
 // Bibliotecas Base da TivaWare
@@ -60,7 +60,7 @@
  *
  *------------------------------------------------------------------------------*/
 #define DEMO_STACK_SIZE         2048
-#define DEMO_BYTE_POOL_SIZE     9120
+#define DEMO_BYTE_POOL_SIZE     18000
 #define PART_TM4C1294NCPDT
 #define TARGET_IS_TM4C129_RA1
 #define BUFFER_SIZE 2048
@@ -801,8 +801,8 @@ void thread_0_entry(ULONG thread_input)
     const char* str_tdiv = "us/div";
 
     #if OSC_USAR_SIMULADOR
-			SimuladorADC_SetTipoOnda(SIM_ONDA_SENOIDAL);
-			/* SimuladorADC_SetTipoOnda(SIM_ONDA_TRIANGULAR); */
+			//SimuladorADC_SetTipoOnda(SIM_ONDA_SENOIDAL);
+			SimuladorADC_SetTipoOnda(SIM_ONDA_TRIANGULAR); 
 			SimuladorADC_SetFrequenciaOnda(2000);
 			SimuladorADC_SetAmplitudeOffset(1500, 2048);
 			SimuladorADC_Configurar(ui32SysClock, onda.taxa_khz * 1000);

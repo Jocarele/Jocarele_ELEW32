@@ -1,0 +1,77 @@
+Dependencies for Project 'projetofinal', Target 'Target_1': (DO NOT MODIFY !)
+CompilerVersion: 6240000::V6.24::ARMCLANG
+F (.\display.h)(0x6A42565B)()
+F (.\display.c)(0x6A42565B)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O2 -ffunction-sections -Wall -Wextra -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../../../TivaWare_C_Series-2.2.0.295 -I ../../../TivaWare_C_Series-2.2.0.295/examples/boards/ek-tm4c1294xl -I ../../../threadx/ports/cortex_m4/keil/inc -I ../../../threadx/common/inc -I ../../../TivaWare_C_Series-2.2.0.295/grlib -I ./src_other -I ../../../dougrenaux_ELEW32_public/display_demo/src_other-I./RTE/_Target_1-IC:/Keil_v5/ARM/Packs/ARM/CMSIS/6.3.0/CMSIS/Core/Include-IC:/Keil_v5/ARM/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129-D__UVISION_VERSION="543" -DTM4C1294NCPDT -D_RTE_ -DPART_TM4C1294NCPDT -DTARGET_IS_TM4C129_RA1-o ./objects/display.o -MMD)
+I (display.h)(0x6A42565B)
+I (..\..\..\TivaWare_C_Series-2.2.0.295\grlib\grlib.h)(0x69F60561)
+I (..\..\..\dougrenaux_ELEW32_public\display_demo\src_other\Crystalfontz128x128_ST7735.h)(0x69F62E88)
+I (..\..\..\dougrenaux_ELEW32_public\display_demo\src_other\HAL_EK_TM4C1294XL_Crystalfontz128x128_ST7735.h)(0x69F62E88)
+I (..\..\..\TivaWare_C_Series-2.2.0.295\driverlib\sysctl.h)(0x69F6055B)
+F (.\simula.c)(0x6A42565B)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O2 -ffunction-sections -Wall -Wextra -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../../../TivaWare_C_Series-2.2.0.295 -I ../../../TivaWare_C_Series-2.2.0.295/examples/boards/ek-tm4c1294xl -I ../../../threadx/ports/cortex_m4/keil/inc -I ../../../threadx/common/inc -I ../../../TivaWare_C_Series-2.2.0.295/grlib -I ./src_other -I ../../../dougrenaux_ELEW32_public/display_demo/src_other-I./RTE/_Target_1-IC:/Keil_v5/ARM/Packs/ARM/CMSIS/6.3.0/CMSIS/Core/Include-IC:/Keil_v5/ARM/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129-D__UVISION_VERSION="543" -DTM4C1294NCPDT -D_RTE_ -DPART_TM4C1294NCPDT -DTARGET_IS_TM4C129_RA1-o ./objects/simula.o -MMD)
+I (..\..\..\TivaWare_C_Series-2.2.0.295\inc\hw_ints.h)(0x69F60562)
+I (..\..\..\TivaWare_C_Series-2.2.0.295\inc\hw_memmap.h)(0x69F60562)
+I (..\..\..\TivaWare_C_Series-2.2.0.295\driverlib\sysctl.h)(0x69F6055B)
+I (..\..\..\TivaWare_C_Series-2.2.0.295\driverlib\timer.h)(0x69F6055B)
+I (..\..\..\TivaWare_C_Series-2.2.0.295\driverlib\interrupt.h)(0x69F6055B)
+I (..\..\..\TivaWare_C_Series-2.2.0.295\driverlib\rom_map.h)(0x69F6055B)
+I (simula.h)(0x6A42565B)
+F (.\simula.h)(0x6A42565B)()
+F (.\main.c)(0x6A425BD5)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O2 -ffunction-sections -Wall -Wextra -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../../../TivaWare_C_Series-2.2.0.295 -I ../../../TivaWare_C_Series-2.2.0.295/examples/boards/ek-tm4c1294xl -I ../../../threadx/ports/cortex_m4/keil/inc -I ../../../threadx/common/inc -I ../../../TivaWare_C_Series-2.2.0.295/grlib -I ./src_other -I ../../../dougrenaux_ELEW32_public/display_demo/src_other-I./RTE/_Target_1-IC:/Keil_v5/ARM/Packs/ARM/CMSIS/6.3.0/CMSIS/Core/Include-IC:/Keil_v5/ARM/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129-D__UVISION_VERSION="543" -DTM4C1294NCPDT -D_RTE_ -DPART_TM4C1294NCPDT -DTARGET_IS_TM4C129_RA1-o ./objects/main.o -MMD)
+I (..\..\..\TivaWare_C_Series-2.2.0.295\inc\hw_ints.h)(0x69F60562)
+I (..\..\..\TivaWare_C_Series-2.2.0.295\inc\hw_memmap.h)(0x69F60562)
+I (..\..\..\threadx\common\inc\tx_api.h)(0x69F61A0B)
+I (..\..\..\threadx\ports\cortex_m4\keil\inc\tx_port.h)(0x69F61A0C)
+I (..\..\..\TivaWare_C_Series-2.2.0.295\grlib\grlib.h)(0x69F60561)
+I (..\..\..\TivaWare_C_Series-2.2.0.295\driverlib\sysctl.h)(0x69F6055B)
+I (..\..\..\TivaWare_C_Series-2.2.0.295\driverlib\systick.h)(0x69F6055B)
+I (..\..\..\TivaWare_C_Series-2.2.0.295\driverlib\interrupt.h)(0x69F6055B)
+I (..\..\..\TivaWare_C_Series-2.2.0.295\driverlib\gpio.h)(0x69F6055B)
+I (..\..\..\TivaWare_C_Series-2.2.0.295\driverlib\pin_map.h)(0x69F6055B)
+I (..\..\..\TivaWare_C_Series-2.2.0.295\driverlib\uart.h)(0x69F6055B)
+I (..\..\..\TivaWare_C_Series-2.2.0.295\driverlib\rom.h)(0x69F6055B)
+I (..\..\..\TivaWare_C_Series-2.2.0.295\driverlib\rom_map.h)(0x69F6055B)
+I (..\..\..\TivaWare_C_Series-2.2.0.295\driverlib\adc.h)(0x69F6055B)
+I (..\..\..\TivaWare_C_Series-2.2.0.295\driverlib\timer.h)(0x69F6055B)
+I (..\..\..\dougrenaux_ELEW32_public\display_demo\src_other\Crystalfontz128x128_ST7735.h)(0x69F62E88)
+I (..\..\..\dougrenaux_ELEW32_public\display_demo\src_other\HAL_EK_TM4C1294XL_Crystalfontz128x128_ST7735.h)(0x69F62E88)
+I (display.h)(0x6A42565B)
+I (hardware.h)(0x6A42565B)
+F (.\hardware.c)(0x6A425D97)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O2 -ffunction-sections -Wall -Wextra -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../../../TivaWare_C_Series-2.2.0.295 -I ../../../TivaWare_C_Series-2.2.0.295/examples/boards/ek-tm4c1294xl -I ../../../threadx/ports/cortex_m4/keil/inc -I ../../../threadx/common/inc -I ../../../TivaWare_C_Series-2.2.0.295/grlib -I ./src_other -I ../../../dougrenaux_ELEW32_public/display_demo/src_other-I./RTE/_Target_1-IC:/Keil_v5/ARM/Packs/ARM/CMSIS/6.3.0/CMSIS/Core/Include-IC:/Keil_v5/ARM/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129-D__UVISION_VERSION="543" -DTM4C1294NCPDT -D_RTE_ -DPART_TM4C1294NCPDT -DTARGET_IS_TM4C129_RA1-o ./objects/hardware.o -MMD)
+I (..\..\..\threadx\common\inc\tx_api.h)(0x69F61A0B)
+I (..\..\..\threadx\ports\cortex_m4\keil\inc\tx_port.h)(0x69F61A0C)
+I (..\..\..\TivaWare_C_Series-2.2.0.295\inc\hw_ints.h)(0x69F60562)
+I (..\..\..\TivaWare_C_Series-2.2.0.295\inc\hw_memmap.h)(0x69F60562)
+I (..\..\..\TivaWare_C_Series-2.2.0.295\driverlib\sysctl.h)(0x69F6055B)
+I (..\..\..\TivaWare_C_Series-2.2.0.295\driverlib\interrupt.h)(0x69F6055B)
+I (..\..\..\TivaWare_C_Series-2.2.0.295\driverlib\gpio.h)(0x69F6055B)
+I (..\..\..\TivaWare_C_Series-2.2.0.295\driverlib\adc.h)(0x69F6055B)
+I (..\..\..\TivaWare_C_Series-2.2.0.295\driverlib\timer.h)(0x69F6055B)
+I (..\..\..\TivaWare_C_Series-2.2.0.295\driverlib\rom_map.h)(0x69F6055B)
+I (hardware.h)(0x6A42565B)
+F (.\hardware.h)(0x6A42565B)()
+F (..\..\..\dougrenaux_ELEW32_public\display_demo\src_other\Crystalfontz128x128_ST7735.c)(0x69F62E88)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O2 -ffunction-sections -Wall -Wextra -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../../../TivaWare_C_Series-2.2.0.295 -I ../../../TivaWare_C_Series-2.2.0.295/examples/boards/ek-tm4c1294xl -I ../../../threadx/ports/cortex_m4/keil/inc -I ../../../threadx/common/inc -I ../../../TivaWare_C_Series-2.2.0.295/grlib -I ./src_other -I ../../../dougrenaux_ELEW32_public/display_demo/src_other-I./RTE/_Target_1-IC:/Keil_v5/ARM/Packs/ARM/CMSIS/6.3.0/CMSIS/Core/Include-IC:/Keil_v5/ARM/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129-D__UVISION_VERSION="543" -DTM4C1294NCPDT -D_RTE_ -DPART_TM4C1294NCPDT -DTARGET_IS_TM4C129_RA1-o ./objects/crystalfontz128x128_st7735.o -MMD)
+I (..\..\..\dougrenaux_ELEW32_public\display_demo\src_other\Crystalfontz128x128_ST7735.h)(0x69F62E88)
+I (..\..\..\TivaWare_C_Series-2.2.0.295\grlib\grlib.h)(0x69F60561)
+I (..\..\..\dougrenaux_ELEW32_public\display_demo\src_other\HAL_EK_TM4C1294XL_Crystalfontz128x128_ST7735.h)(0x69F62E88)
+I (..\..\..\TivaWare_C_Series-2.2.0.295\driverlib\sysctl.h)(0x69F6055B)
+F (..\..\..\dougrenaux_ELEW32_public\display_demo\src_other\Crystalfontz128x128_ST7735.h)(0x69F62E88)()
+F (..\..\..\dougrenaux_ELEW32_public\display_demo\src_other\HAL_EK_TM4C1294XL_Crystalfontz128x128_ST7735.c)(0x69F62E88)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O2 -ffunction-sections -Wall -Wextra -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../../../TivaWare_C_Series-2.2.0.295 -I ../../../TivaWare_C_Series-2.2.0.295/examples/boards/ek-tm4c1294xl -I ../../../threadx/ports/cortex_m4/keil/inc -I ../../../threadx/common/inc -I ../../../TivaWare_C_Series-2.2.0.295/grlib -I ./src_other -I ../../../dougrenaux_ELEW32_public/display_demo/src_other-I./RTE/_Target_1-IC:/Keil_v5/ARM/Packs/ARM/CMSIS/6.3.0/CMSIS/Core/Include-IC:/Keil_v5/ARM/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129-D__UVISION_VERSION="543" -DTM4C1294NCPDT -D_RTE_ -DPART_TM4C1294NCPDT -DTARGET_IS_TM4C129_RA1-o ./objects/hal_ek_tm4c1294xl_crystalfontz128x128_st7735.o -MMD)
+I (..\..\..\dougrenaux_ELEW32_public\display_demo\src_other\HAL_EK_TM4C1294XL_Crystalfontz128x128_ST7735.h)(0x69F62E88)
+I (..\..\..\TivaWare_C_Series-2.2.0.295\driverlib\sysctl.h)(0x69F6055B)
+I (..\..\..\TivaWare_C_Series-2.2.0.295\grlib\grlib.h)(0x69F60561)
+I (..\..\..\TivaWare_C_Series-2.2.0.295\inc\hw_memmap.h)(0x69F60562)
+I (..\..\..\TivaWare_C_Series-2.2.0.295\driverlib\gpio.h)(0x69F6055B)
+I (..\..\..\TivaWare_C_Series-2.2.0.295\driverlib\ssi.h)(0x69F6055B)
+I (..\..\..\TivaWare_C_Series-2.2.0.295\driverlib\pin_map.h)(0x69F6055B)
+F (..\..\..\dougrenaux_ELEW32_public\display_demo\src_other\HAL_EK_TM4C1294XL_Crystalfontz128x128_ST7735.h)(0x69F62E88)()
+F (..\..\..\threadx\ports\cortex_m4\keil\example_build\lib_obj\ThreadX_Library.lib)(0x69F639A8)()
+F (..\..\..\dougrenaux_ELEW32_public\ThreadX_demo\ModifiedSource\startup_TM4C129.s)(0x6A0B25E6)(--target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -masm=auto  -Wa,armasm,--diag_suppress=A1950W -c-gdwarf-4 -Wa,armasm,--pd,"__EVAL SETA 1"-I./RTE/_Target_1-IC:/Keil_v5/ARM/Packs/ARM/CMSIS/6.3.0/CMSIS/Core/Include-IC:/Keil_v5/ARM/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129-Wa,armasm,--pd,"__UVISION_VERSION SETA 543" -Wa,armasm,--pd,"TM4C1294NCPDT SETA 1" -Wa,armasm,--pd,"_RTE_ SETA 1" -Wa,armasm,--pd,"TX_ENABLE_WFI SETA 1"-o ./objects/startup_tm4c129.o)
+F (..\..\..\dougrenaux_ELEW32_public\ThreadX_demo\ModifiedSource\system_TM4C129.c)(0x69F62E88)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O2 -ffunction-sections -Wall -Wextra -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../../../TivaWare_C_Series-2.2.0.295 -I ../../../TivaWare_C_Series-2.2.0.295/examples/boards/ek-tm4c1294xl -I ../../../threadx/ports/cortex_m4/keil/inc -I ../../../threadx/common/inc -I ../../../TivaWare_C_Series-2.2.0.295/grlib -I ./src_other -I ../../../dougrenaux_ELEW32_public/display_demo/src_other-I./RTE/_Target_1-IC:/Keil_v5/ARM/Packs/ARM/CMSIS/6.3.0/CMSIS/Core/Include-IC:/Keil_v5/ARM/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129-D__UVISION_VERSION="543" -DTM4C1294NCPDT -D_RTE_ -DPART_TM4C1294NCPDT -DTARGET_IS_TM4C129_RA1-o ./objects/system_tm4c129.o -MMD)
+I (C:\Keil_v5\ARM\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C129\TM4C129.h)(0x69B887AE)
+I (C:\Keil_v5\ARM\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C129\TM4C1294NCPDT.h)(0x69B887AF)
+I (C:\Keil_v5\ARM\Packs\ARM\CMSIS\6.3.0\CMSIS\Core\Include\core_cm4.h)(0x69B88423)
+I (C:\Keil_v5\ARM\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C129\system_TM4C129.h)(0x69B887AE)
+F (..\..\..\dougrenaux_ELEW32_public\ThreadX_demo\ModifiedSource\TM4C1294NCPDT.h)(0x69F62E88)()
+F (..\..\..\dougrenaux_ELEW32_public\ThreadX_demo\ModifiedSource\tx_initialize_low_level.s)(0x69F62E88)(--target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -masm=auto  -Wa,armasm,--diag_suppress=A1950W -c-gdwarf-4 -Wa,armasm,--pd,"__EVAL SETA 1"-I./RTE/_Target_1-IC:/Keil_v5/ARM/Packs/ARM/CMSIS/6.3.0/CMSIS/Core/Include-IC:/Keil_v5/ARM/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129-Wa,armasm,--pd,"__UVISION_VERSION SETA 543" -Wa,armasm,--pd,"TM4C1294NCPDT SETA 1" -Wa,armasm,--pd,"_RTE_ SETA 1" -Wa,armasm,--pd,"TX_ENABLE_WFI SETA 1"-o ./objects/tx_initialize_low_level.o)
+F (..\..\..\TivaWare_C_Series-2.2.0.295\driverlib\rvmdk\driverlib.lib)(0x69F6055B)()
+F (..\..\..\TivaWare_C_Series-2.2.0.295\grlib\rvmdk\grlib.lib)(0x69F60562)()

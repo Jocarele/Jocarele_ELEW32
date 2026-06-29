@@ -1,0 +1,108 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: µVision V5.43.1.0
+Copyright (C) 2025 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: joao lucas Marques Camilo, UTFPR, LIC=----
+ 
+Tool Versions:
+Toolchain:       MDK-Lite  Version: 5.43.0.0
+Toolchain Path:  C:\Keil_v5\ARM\ARMCLANG\Bin
+C Compiler:      ArmClang.exe V6.24
+Assembler:       Armasm.exe V6.24
+Linker/Locator:  ArmLink.exe V6.24
+Library Manager: ArmAr.exe V6.24
+Hex Converter:   FromElf.exe V6.24
+CPU DLL:         SARMCM3.DLL V5.43.0.0
+Dialog DLL:      DCM.DLL V1.17.5.0
+Target DLL:      lmidk-agdi.dll V???
+Dialog DLL:      TCM.DLL V1.56.6.0
+ 
+<h2>Project:</h2>
+C:\ti\Jocarele_ELEW32\Projeto final\projeto\projetofinal.uvprojx
+Project File Date:  06/29/2026
+
+<h2>Output:</h2>
+*** Using Compiler 'V6.24', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
+Rebuild target 'Target_1'
+compiling hardware.c...
+compiling simula.c...
+compiling display.c...
+compiling HAL_EK_TM4C1294XL_Crystalfontz128x128_ST7735.c...
+main.c(64): warning: 'PART_TM4C1294NCPDT' macro redefined [-Wmacro-redefined]
+   64 | #define PART_TM4C1294NCPDT
+      |         ^
+<command line>(5): note: previous definition is here
+    5 | #define PART_TM4C1294NCPDT 1
+      |         ^
+main.c(65): warning: 'TARGET_IS_TM4C129_RA1' macro redefined [-Wmacro-redefined]
+   65 | #define TARGET_IS_TM4C129_RA1
+      |         ^
+<command line>(6): note: previous definition is here
+    6 | #define TARGET_IS_TM4C129_RA1 1
+      |         ^
+2 warnings generated.
+compiling main.c...
+assembling startup_TM4C129.s...
+../../../dougrenaux_ELEW32_public/display_demo/src_other/Crystalfontz128x128_ST7735.c(209): warning: unused parameter 'pvDisplayData' [-Wunused-parameter]
+  209 | static void Crystalfontz128x128_PixelDraw(void *pvDisplayData, int32_t lX, int32_t lY,
+      |                                                 ^
+../../../dougrenaux_ELEW32_public/display_demo/src_other/Crystalfontz128x128_ST7735.c(392): warning: unused parameter 'pvDisplayData' [-Wunused-parameter]
+  392 | static void Crystalfontz128x128_LineDrawH(void *pvDisplayData, int32_t lX1, int32_t lX2,
+      |                                                 ^
+../../../dougrenaux_ELEW32_public/display_demo/src_other/Crystalfontz128x128_ST7735.c(431): warning: unused parameter 'pvDisplayData' [-Wunused-parameter]
+  431 | static void Crystalfontz128x128_LineDrawV(void *pvDisplayData, int32_t lX, int32_t lY1,
+      |                                                 ^
+../../../dougrenaux_ELEW32_public/display_demo/src_other/Crystalfontz128x128_ST7735.c(458): warning: unused parameter 'pvDisplayData' [-Wunused-parameter]
+  458 | static void Crystalfontz128x128_RectFill(void *pvDisplayData, const tRectangle *pRect,
+      |                                                ^
+../../../dougrenaux_ELEW32_public/display_demo/src_other/Crystalfontz128x128_ST7735.c(467): warning: comparison of integers of different signs: 'uint32_t' (aka 'unsigned int') and 'int32_t' (aka 'int') [-Wsign-compare]
+  467 |         for (i = lY1; i <= lY2; i++) {
+      |                       ~ ^  ~~~
+../../../dougrenaux_ELEW32_public/display_demo/src_other/Crystalfontz128x128_ST7735.c(474): warning: comparison of integers of different signs: 'uint32_t' (aka 'unsigned int') and 'int32_t' (aka 'int') [-Wsign-compare]
+  474 |         for (i = lY1; i <= lY2; i++) {
+      |                       ~ ^  ~~~
+../../../dougrenaux_ELEW32_public/display_demo/src_other/Crystalfontz128x128_ST7735.c(485): warning: comparison of integers of different signs: 'uint32_t' (aka 'unsigned int') and 'int32_t' (aka 'int') [-Wsign-compare]
+  485 |         for (i = lX1; i < lX2; i += 2) {
+      |                       ~ ^ ~~~
+../../../dougrenaux_ELEW32_public/display_demo/src_other/Crystalfontz128x128_ST7735.c(508): warning: unused parameter 'pvDisplayData' [-Wunused-parameter]
+  508 | static uint32_t Crystalfontz128x128_ColorTranslate(void *pvDisplayData,
+      |                                                          ^
+../../../dougrenaux_ELEW32_public/display_demo/src_other/Crystalfontz128x128_ST7735.c(539): warning: unused parameter 'pvDisplayData' [-Wunused-parameter]
+  539 | Crystalfontz128x128_Flush(void *pvDisplayData)
+      |                                 ^
+9 warnings generated.
+compiling Crystalfontz128x128_ST7735.c...
+compiling system_TM4C129.c...
+assembling tx_initialize_low_level.s...
+linking...
+Program Size: Code=25640 RO-data=3340 RW-data=1644 ZI-data=65864  
+".\Objects\projetofinal.axf" - 0 Error(s), 11 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                https://www.keil.com/pack/ARM.CMSIS.6.3.0.pack
+                ARM::CMSIS@6.3.0
+                CMSIS (Common Microcontroller Software Interface Standard)
+   * Component: CORE Version: 6.2.0
+
+Package Vendor: Keil
+                http://www.keil.com/pack/Keil.TM4C_DFP.1.1.0.pack
+                Keil::TM4C_DFP@1.1.0
+                Texas Instruments Tiva C Series Device Support and Examples
+
+<h2>Collection of Component include folders:</h2>
+  ./RTE/_Target_1
+  C:/Keil_v5/ARM/Packs/ARM/CMSIS/6.3.0/CMSIS/Core/Include
+  C:/Keil_v5/ARM/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C129
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE@6.2.0
+Build Time Elapsed:  00:00:01
+</pre>
+</body>
+</html>

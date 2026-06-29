@@ -1,0 +1,16 @@
+--cpu=Cortex-M4.fp.sp
+".\objects\display.o"
+".\objects\simula.o"
+".\objects\main.o"
+".\objects\hardware.o"
+".\objects\crystalfontz128x128_st7735.o"
+".\objects\hal_ek_tm4c1294xl_crystalfontz128x128_st7735.o"
+"..\..\..\threadx\ports\cortex_m4\keil\example_build\lib_obj\ThreadX_Library.lib"
+".\objects\startup_tm4c129.o"
+".\objects\system_tm4c129.o"
+".\objects\tx_initialize_low_level.o"
+"..\..\..\TivaWare_C_Series-2.2.0.295\driverlib\rvmdk\driverlib.lib"
+"..\..\..\TivaWare_C_Series-2.2.0.295\grlib\rvmdk\grlib.lib"
+--ro-base 0x00000000 --entry 0x00000000 --rw-base 0x20000000 --entry Reset_Handler --first __Vectors --strict --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\Listings\projetofinal.map" -o .\Objects\projetofinal.axf

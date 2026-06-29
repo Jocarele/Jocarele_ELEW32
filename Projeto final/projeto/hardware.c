@@ -150,12 +150,17 @@ void ConfigurarADC0(void)
  */
 void ADC1_InterruptHandler(void)
 {
-    uint32_t adc_value[1];
+    uint32_t adc_values[8];
+    uint32_t qtd;
 
     MAP_ADCIntClear(ADC1_BASE, 0);
-    MAP_ADCSequenceDataGet(ADC1_BASE, 0, adc_value);
 
-    OscBufferPush(adc_value[0]);
+    qtd = MAP_ADCSequenceDataGet(ADC1_BASE, 0, adc_values);
+
+    for (uint32_t i = 0; i < qtd; i++)
+    {
+        OscBufferPush(adc_values[i]);
+    }
 }
 /**
  * @brief Configura a aquisição real do osciloscópio via ADC1.
